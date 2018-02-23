@@ -1,5 +1,12 @@
-# Personalizado
-.~lock
+
+# Created by https://www.gitignore.io/api/libreoffice
+#
+# ### LibreOffice ###
+# # LibreOffice locks
+.~lock.*#
+#
+#
+# # End of https://www.gitignore.io/api/libreoffice
 
 # Created by https://www.gitignore.io/api/eclipse,java-web
 
