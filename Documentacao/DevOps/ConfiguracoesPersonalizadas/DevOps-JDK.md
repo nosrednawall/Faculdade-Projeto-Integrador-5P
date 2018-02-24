@@ -1,4 +1,4 @@
-# Instalando o Java JDK 1.8 no Debian 9 "Strech"
+# Instalando o Java JDK 1.8 no Debian 9 "Stretch"
 
 Començando desinstale o plugin do IcedTea (openjre) para navegadores, mas não é necessário remover o OpenJDK, apenas esse plugin.
 <!-- language: shell -->
