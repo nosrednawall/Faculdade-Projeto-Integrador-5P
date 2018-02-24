@@ -1,6 +1,4 @@
-# MariaDB
-
-# Instalacao
+# Instalacao MariaDB no debian
 
 Efetue a instalação conforme esse [site](https://downloads.mariadb.org/mariadb/repositories/#mirror=UFSCar&distro=Debian&distro_release=stretch--stretch&version=10.2)
 <!-- language: shell -->
@@ -12,14 +10,14 @@ Efetue a instalação conforme esse [site](https://downloads.mariadb.org/mariadb
     sudo apt-get install mariadb-server
 <!-- language: shell -->
 
-Pronto deve estar instalado, agora verifique se está funcionando com os comandos abaixo:
+Pronto deve estar instalado, agora verifique se está funcionando com o comando abaixo:
 <!-- language: shell -->
     mysql -u root -p
 <!-- language: shell -->
 
 Se der erro é só seguir os procedimentos abaixo, descritos nesse [site](https://elias.praciano.com/2017/07/como-resolver-o-erro-1698-de-acesso-negado-no-mysql-e-mariadb/)
 
-Obs.: Os comandos abaixo que tiverem **MariaDB [] >** não precisa digitar porque isso quer dizer que você está dentro do shell do MariaDB, ou seja, apenas o que está após o **>** é o que importa.
+Obs.: Os comandos abaixo que tiverem *MariaDB [] >* não precisa digitar porque isso quer dizer que você está dentro do shell do MariaDB, ou seja, apenas o que está após o *>* é o que importa.
 
 <!-- language: shell -->
 
@@ -31,4 +29,4 @@ Obs.: Os comandos abaixo que tiverem **MariaDB [] >** não precisa digitar porqu
     $ mysql -u root -p
 <!-- language: shell --> 
 
-Se mesmo após tudo isso não resolver me envie um e-mail.
+Se mesmo após tudo isso não resolver me envie um [e-mail](mailto:nosrednawall@gmail.com)
