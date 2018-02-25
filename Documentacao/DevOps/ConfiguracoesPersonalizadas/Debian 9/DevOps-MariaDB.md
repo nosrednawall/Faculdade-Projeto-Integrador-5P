@@ -34,6 +34,10 @@ Pronto deve estar instalado, agora verifique se está funcionando com o comando 
     mysql -u root -p
 <!-- language: shell -->
 
+Solução de problemas:
+---
+---
+
 Se der erro é só seguir os procedimentos abaixo, descritos nesse [site](https://elias.praciano.com/2017/07/como-resolver-o-erro-1698-de-acesso-negado-no-mysql-e-mariadb/)
 
 Obs.: Os comandos abaixo que tiverem *MariaDB [] >* não precisa digitar porque isso quer dizer que você está dentro do shell do MariaDB, ou seja, apenas o que está após o *>* é o que importa.
