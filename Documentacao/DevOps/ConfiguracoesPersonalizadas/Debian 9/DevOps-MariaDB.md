@@ -1,4 +1,22 @@
-# Instalacao MariaDB no debian
+# RECOMENDADO Instalação do MariaDB com os pacotes do Debian
+
+<!-- language: shell -->
+    sudo apt update && sudo apt upgrade
+    sudo apt install mariadb-server
+<!-- language: shell -->
+
+Agora iremos inserir a senha do MariaDB
+
+<!-- language: shell -->
+    sudo mysql -u root 
+    use mysql; 
+    UPDATE user SET Password=PASSWORD('SENHA_SECNET') WHERE User='root'; 
+    FLUSH PRIVILEGES; 
+    exit;
+
+<!-- language: shell -->
+
+# NÃO RECOMENDADO Instalacao MariaDB no debian com os pacotes do MariaDB
 
 Efetue a instalação conforme esse [site](https://downloads.mariadb.org/mariadb/repositories/#mirror=UFSCar&distro=Debian&distro_release=stretch--stretch&version=10.2)
 <!-- language: shell -->
@@ -11,6 +29,7 @@ Efetue a instalação conforme esse [site](https://downloads.mariadb.org/mariadb
 <!-- language: shell -->
 
 Pronto deve estar instalado, agora verifique se está funcionando com o comando abaixo:
+
 <!-- language: shell -->
     mysql -u root -p
 <!-- language: shell -->
