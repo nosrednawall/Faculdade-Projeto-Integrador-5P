@@ -7,7 +7,7 @@ Após efetuar o download, abra o terminal, acesse o local e download e digite:
     $ sudo tar -zxvf eclipse* -C /opt/
     $ sudo mv /opt/eclipse*/ /opt/eclipse
     $ sudo wget https://dl2.macupdate.com/images/icons128/11662.png -O /opt/eclipse/eclipse.png
-    $ echo -e '[Desktop Entry]\n Version=1.0\n Name=eclipse\n Exec=/opt/eclipse/eclipse\n Icon=/opt/eclipse/eclipse.png\n Type=Application\n Categories=Application' | sudo tee /usr/share/applications/eclipse.desktop
+    $ echo -e '[Desktop Entry]\n Version=1.0\n Name=eclipse\n Exec=/opt/eclipse/eclipse\n Icon=/opt/eclipse/eclipse.png\n Type=Application\n Categories=Development' | sudo tee /usr/share/applications/eclipse.desktop
 <!-- language: shell -->
 
 Pronto Eclipse instalado.
