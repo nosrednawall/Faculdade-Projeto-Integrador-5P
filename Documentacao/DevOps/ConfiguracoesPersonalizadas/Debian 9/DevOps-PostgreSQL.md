@@ -13,7 +13,8 @@ Adicionando os repositórios
 
 Pronto instalado!
 
-## Configurando o seu usuário no postgree, e de quebra criando um db e privilégios ao adicionando o seu usuário sobre o db criado.
+### Pós instalação
+Configurando o seu usuário no postgree, e de quebra criando um db e privilégios ao adicionando o seu usuário sobre o db criado.
 
 <!-- language: shell -->
 	sudo sudo su - postgres //para acessar via adm
