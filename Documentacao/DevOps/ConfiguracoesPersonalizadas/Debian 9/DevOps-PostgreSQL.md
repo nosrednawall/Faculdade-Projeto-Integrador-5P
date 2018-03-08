@@ -7,8 +7,7 @@ Adicionando os repositórios
 	sudo apt-get install wget ca-certificates 
 	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 	sudo apt update && sudo apt upgrade
-	sudo apt install
-	sudo apt-get install postgresql-9.6 pgadmin3
+	sudo apt install postgresql-9.6 pgadmin3
 <!-- language: shell -->
 
 Pronto instalado!
