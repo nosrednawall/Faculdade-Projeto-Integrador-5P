@@ -16,7 +16,7 @@ Pronto instalado!
 Configurando o seu usuário no postgree, e de quebra criando um db e privilégios ao adicionando o seu usuário sobre o db criado.
 
 <!-- language: shell -->
-	sudo sudo su - postgres //para acessar via adm
+	sudo su - postgres //para acessar via adm
 	createdb mydb //para criar o bd, pode mudar o nome
 	createuser -P seu_nome //altere o seu_nome
 	psql mydb //para acessar o db
