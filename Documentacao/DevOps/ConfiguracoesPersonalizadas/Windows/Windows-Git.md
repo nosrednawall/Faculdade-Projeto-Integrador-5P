@@ -66,14 +66,14 @@ Vá até o arquivo em **C:\Users\Seu Usuário\.ssh** e abra o arquivo id_rsa com
 
 No GitHub já logado, click na sua imagem de user, vá em Settings
 
-![Imagem mostrando como ir no settings]()
+![Imagem mostrando como ir no settings](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/Documentacao/DevOps/ConfiguracoesPersonalizadas/imagens/git9.png?raw=true)
 
 Na barra vertical da sua esquerda click em **SSH and GPG keys**, depois click em New SSH key
 
-![Imagem mostrando o new SSH key]()
+![Imagem mostrando o new SSH key](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/Documentacao/DevOps/ConfiguracoesPersonalizadas/imagens/git10.png?raw=true)
 
 Dê um título a sua chave SSH, por exemplo pc casa, pc trabalho, etc... , e cole a sua chave no campo Key
 
-![Imagem mostrando onde cola o que]()
+![Imagem mostrando onde cola o que](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/Documentacao/DevOps/ConfiguracoesPersonalizadas/imagens/git11.png?raw=true)
 
 Click em Add SSH Key e pronto seu SSH foi adicionado com sucesso.
