@@ -7,3 +7,26 @@ Baixe o JDK na ultima versão (8u162) nesse [site](http://www.oracle.com/technet
 #### Passo 2
 
 Acesse o local onde baixou o arquivo e click com o botão direito e escolha executar como administrador.
+
+Avance, avance, avance ... install
+
+![imagem 1 de instalacao do jdk]()
+![imagem 2 de instalacao do jdk]()
+
+Pronto JDK instalado
+
+#### Passo 3
+
+Vamos configurar as variáveis de ambiente.
+
+Abra o CMD e digite:
+
+<!-- language: shell -->
+    setx JAVA_HOME "C:\Program Files\Java\jdk1.8.<versao>"
+    setx CLASSPATH "%JAVA_HOME%\lib"
+    setx PATH "%PATH%;%JAVA_HOME%\bin"
+<!-- language: shell -->
+
+Pronto JDK instalado e pronto para o uso, se o eclipse não reconhecer o JDK é só reiniciar a máquina.
+
+![imagem do cmd com as informacoes do JDK instalado]()
