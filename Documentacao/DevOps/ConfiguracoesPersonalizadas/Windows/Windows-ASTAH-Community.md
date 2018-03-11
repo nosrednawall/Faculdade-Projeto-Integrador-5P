@@ -7,7 +7,7 @@ Acesse a página de downloads do Astah community [aqui](https://members.change-v
 Member ID: gbh16557@miauj.com  
 Password: abc123
 
-![imagen de login do astah](endereco da imagem)
+![imagen de login do astah](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/Documentacao/DevOps/ConfiguracoesPersonalizadas/imagens/astah-login.png?raw=true)
 
 #### Passo 2
 
