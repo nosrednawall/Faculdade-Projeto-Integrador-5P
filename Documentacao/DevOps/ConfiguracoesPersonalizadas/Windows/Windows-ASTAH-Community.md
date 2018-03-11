@@ -17,6 +17,6 @@ Click no link de Download do astah community 7.2.0 e baixe a versão corresponde
 
 Click com o botão direito e selecione a opção executar como administrador.
 
-Avance, avance, avance.
+Avance, avance, avance ... e install
 
 Pronto Astah-community instalado
