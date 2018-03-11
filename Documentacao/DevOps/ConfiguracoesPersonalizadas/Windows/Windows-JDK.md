@@ -10,8 +10,8 @@ Acesse o local onde baixou o arquivo e click com o botão direito e escolha exec
 
 Avance, avance, avance ... install
 
-![imagem 1 de instalacao do jdk]()
-![imagem 2 de instalacao do jdk]()
+![imagem 1 de instalacao do jdk](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/Documentacao/DevOps/ConfiguracoesPersonalizadas/imagens/jdk1.png?raw=true)
+![imagem 2 de instalacao do jdk](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/Documentacao/DevOps/ConfiguracoesPersonalizadas/imagens/jdk2.png?raw=true)
 
 Pronto JDK instalado
 
@@ -29,4 +29,4 @@ Abra o CMD e digite:
 
 Pronto JDK instalado e pronto para o uso, se o eclipse não reconhecer o JDK é só reiniciar a máquina.
 
-![imagem do cmd com as informacoes do JDK instalado]()
+![imagem do cmd com as informacoes do JDK instalado](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/Documentacao/DevOps/ConfiguracoesPersonalizadas/imagens/jdk7.png?raw=true)
