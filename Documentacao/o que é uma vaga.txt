@@ -1,0 +1,8 @@
+
+O que é uma vaga:
+ID
+Título
+DESCrição
+DATA criação Gerada na hora.
+Data Limite.
+Setor 
