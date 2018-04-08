@@ -3,6 +3,8 @@ package br.org.iel.recrutaif.model.entity;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +33,12 @@ public class Usuario {
 	
 	@Email @NotNull
 	private String email;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoUsuario tipoUsuario;
 
+	
+	//getters and setters
 	public Integer getId() {
 		return id;
 	}
@@ -70,5 +77,13 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 }

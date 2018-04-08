@@ -3,6 +3,7 @@ package br.org.iel.recrutaif.model.entity;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,13 +39,14 @@ public class Vaga {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
 	
-	@Enumerated //será que é do enum?
-	// private enum Status();
+	@Enumerated(EnumType.STRING)
+	private StatusVaga status;
 	
 	@NotNull
 	@ManyToOne
 	private Setor setor;
 
+	//implementações a serem estudadas
 	public Vaga() {
 	}
 
