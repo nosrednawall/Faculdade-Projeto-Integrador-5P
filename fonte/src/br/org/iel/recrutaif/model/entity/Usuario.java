@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -18,13 +19,17 @@ public class Usuario {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
+	@NotNull
 	private String nome;
+	
+	@NotNull
 	private Integer matricula;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Calendar dataAdmissao;
 	
-	@Email
+	@Email @NotNull
 	private String email;
 
 	public Integer getId() {

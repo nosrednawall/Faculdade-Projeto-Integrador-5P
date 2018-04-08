@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -19,21 +20,28 @@ public class Vaga {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
+	@NotNull
 	private String titulo;
+	
+	@NotNull
 	private String descricao;
 
-	@Email
+	@Email @NotNull
 	private String email;
 
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCriacao;
 
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
 	
 	@Enumerated //será que é do enum?
 	// private enum Status();
-
+	
+	@NotNull
 	@ManyToOne
 	private Setor setor;
 
