@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.model.entity;
+package br.org.iel.recrutaif.model;
 
 import java.util.Calendar;
 
@@ -34,6 +34,7 @@ public class Usuario {
 	@Email @NotNull
 	private String email;
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private TipoUsuario tipoUsuario;
 

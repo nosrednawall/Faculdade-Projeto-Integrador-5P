@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.model.entity;
+package br.org.iel.recrutaif.model;
 
 import java.util.Calendar;
 
@@ -39,6 +39,7 @@ public class Vaga {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private StatusVaga status;
 	

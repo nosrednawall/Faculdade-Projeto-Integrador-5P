@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.model.entity;
+package br.org.iel.recrutaif.model;
 
 public enum TipoUsuario {
 	CANDIDATO,RECRUTADOR;

@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.org.iel.recrutaif.model.entity.Setor;
+import br.org.iel.recrutaif.model.Setor;
 
 @Stateless
 public class SetorDao {

@@ -1,7 +1,7 @@
 package br.org.iel.recrutaif.testes;
 
 import br.org.iel.recrutaif.dao.SetorDao;
-import br.org.iel.recrutaif.model.entity.Setor;
+import br.org.iel.recrutaif.model.Setor;
 
 public class TestaInsereSetor {
 	

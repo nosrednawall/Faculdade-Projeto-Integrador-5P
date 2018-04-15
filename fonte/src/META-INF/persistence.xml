@@ -8,9 +8,9 @@
 
 		<jta-data-source>java:/recrutaifDS</jta-data-source>
 
-		<class>br.org.iel.recrutaif.model.entity.Setor</class>
-		<class>br.org.iel.recrutaif.model.entity.Usuario</class>
-		<class>br.org.iel.recrutaif.model.entity.Vaga</class>
+		<class>br.org.iel.recrutaif.model.Setor</class>
+		<class>br.org.iel.recrutaif.model.Usuario</class>
+		<class>br.org.iel.recrutaif.model.Vaga</class>
 
 		<properties>
 
