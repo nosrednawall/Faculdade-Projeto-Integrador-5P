@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import com.google.gson.Gson;
+
 @Entity
 public class Setor {
 	
@@ -30,5 +32,9 @@ public class Setor {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String toGson() {
+		return new Gson().toJson(this);
 	}
 }
