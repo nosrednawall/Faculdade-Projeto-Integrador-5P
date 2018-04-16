@@ -33,8 +33,8 @@ public class Setor {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	public String toGson() {
 		return new Gson().toJson(this);
 	}
+	public Setor() {}
 }

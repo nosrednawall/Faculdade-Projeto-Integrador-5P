@@ -29,7 +29,6 @@ public class SetorDao {
 	}
 	public Setor busca(Integer id) {
 		Setor setor=manager.find(Setor.class, id);
-		
 		return setor;
 	}
 }
