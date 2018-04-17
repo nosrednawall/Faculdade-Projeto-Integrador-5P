@@ -9,6 +9,55 @@
 	<packaging>war</packaging>
 	<build>
 		<finalName>recrutaif</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.2.1.Final</version>
+				<configuration>
+					<hostname>http://localhost</hostname>
+					<port>8080</port>
+					<username>anderson</username>
+					<password>abc</password>
+					<timeout>30000</timeout>
+				</configuration>
+                <executions>
+                    <execution>
+                        <id>deploy-driver</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <groupId>postgresql</groupId>
+                            <artifactId>postgresql</artifactId>
+                            <name>postgresql.jar</name>
+                        </configuration>
+                        <goals>
+                            <goal>deploy-artifact</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>add-datasource</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <address>subsystem=datasources,data-source=myDatasource</address>
+                            <properties>
+                                <connection-url>jdbc:postgresql://localhost/recrutaif</connection-url>
+                                <jndi-name>java:/recrutaif</jndi-name>
+                                <enabled>true</enabled>
+                                <pool-name>recrutaifPool</pool-name>
+                                <user-name>anderson</user-name>
+                                <password>abc</password>
+                                <driver-name>postgresql.jar</driver-name>
+                            </properties>
+                        </configuration>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+
 	</build>
 	<dependencies>
 
@@ -34,9 +83,12 @@
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.wildfly.plugins/wildfly-maven-plugin 
-			<dependency> <groupId>org.wildfly.plugins</groupId> <artifactId>wildfly-maven-plugin</artifactId> 
-			<version>1.2.1.Final</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.wildfly.plugins/wildfly-maven-plugin -->
+		<dependency>
+			<groupId>org.wildfly.plugins</groupId>
+			<artifactId>wildfly-maven-plugin</artifactId>
+			<version>1.2.1.Final</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
