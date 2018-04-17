@@ -2,7 +2,7 @@ package br.org.iel.recrutaif.DTO;
 
 import com.google.gson.Gson;
 
-public class SetorDTO {
+public class Setor {
 	
 	private String nome;
 	private String id;
