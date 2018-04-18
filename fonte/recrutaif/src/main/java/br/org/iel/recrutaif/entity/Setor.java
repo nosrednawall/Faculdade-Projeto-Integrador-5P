@@ -1,5 +1,7 @@
 package br.org.iel.recrutaif.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +11,15 @@ import javax.validation.constraints.NotNull;
 import com.google.gson.Gson;
 
 @Entity
-public class Setor {
+public class Setor implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	
 	@NotNull
