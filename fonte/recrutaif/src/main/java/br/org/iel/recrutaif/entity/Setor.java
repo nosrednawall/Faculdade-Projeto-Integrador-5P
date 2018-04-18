@@ -36,5 +36,4 @@ public class Setor {
 	public String toGson() {
 		return new Gson().toJson(this);
 	}
-	public Setor() {}
 }

@@ -25,12 +25,11 @@ public class SetorREST {
     }
     
     @GET
-    @Path("lista/*")
     @Produces(MediaType.APPLICATION_JSON)
     public String mostraSetor() {
+//    	List<Setor> setores = new SetorDao().listaSetores();
+//    	return ((Setor) setores).toGson();
     	
-    	List<Setor> setores = new SetorDao().listaSetores();
-    	
-    	return ((Setor) setores).toGson();
+    	return "Acessou";
     }
 }
