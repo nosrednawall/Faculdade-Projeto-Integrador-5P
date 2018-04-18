@@ -9,14 +9,6 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-		<!-- DRIVER DO POSTGRES -->
-		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.2.2</version>
-		</dependency>
-
 		<!-- JUNIT PARA TESTES UNITÁRIOS -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
@@ -25,6 +17,7 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- GSON PARA PARSE DE OBJETOS -->
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
@@ -54,6 +47,12 @@
 			<version>2.27</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.27</version>
+		</dependency>
 
 
 	</dependencies>
@@ -77,6 +76,21 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>42.2.2</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-feature-pack -->
+			<dependency>
+				<groupId>org.wildfly</groupId>
+				<artifactId>wildfly-feature-pack</artifactId>
+				<version>11.0.0.Final</version>
+				<type>pom</type>
+				<scope>provided</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

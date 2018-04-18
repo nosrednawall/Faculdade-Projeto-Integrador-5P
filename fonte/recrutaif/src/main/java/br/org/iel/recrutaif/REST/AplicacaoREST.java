@@ -7,7 +7,9 @@ import javax.ws.rs.core.Application;
 public class AplicacaoREST extends Application {
 	
 	
-	
+	public AplicacaoREST() {
+		
+	}
 	
  
 }

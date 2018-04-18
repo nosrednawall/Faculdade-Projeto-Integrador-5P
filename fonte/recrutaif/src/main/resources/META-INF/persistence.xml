@@ -2,19 +2,21 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="recrutaifPool"
-		transaction-type="JTA">
+
+	<persistence-unit name="recrutaifPool">
+	
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:/recrutaif</jta-data-source>
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<jta-data-source>java:/recrutaifDS</jta-data-source>
+		
+		<class>br.org.iel.recrutaif.entity.Setor</class>
+		<class>br.org.iel.recrutaif.entity.Usuario</class>
+		<class>br.org.iel.recrutaif.entity.Vaga</class>
 
 		<properties>
-
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.transaction.flush_before_completion"
-				value="true" />
+			<property name="hibernate.transaction.flush_before_completion" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 		</properties>
 	</persistence-unit>

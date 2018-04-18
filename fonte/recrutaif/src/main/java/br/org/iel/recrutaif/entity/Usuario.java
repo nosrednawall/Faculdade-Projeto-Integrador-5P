@@ -24,11 +24,11 @@ public class Usuario {
 	
 	@NotNull
 	private Integer matricula;
-	
+
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Calendar dataAdmissao;
-	
+
 	@NotNull
 	private String email;
 	
