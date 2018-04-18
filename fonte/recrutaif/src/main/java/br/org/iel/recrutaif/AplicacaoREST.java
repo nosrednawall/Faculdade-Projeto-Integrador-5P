@@ -7,10 +7,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 @ApplicationPath("rest")
 public class AplicacaoREST extends ResourceConfig {
 	
-	
 	public AplicacaoREST() {
 		packages("br.org.iel.recrutaif.REST");
 	}
-	
- 
 }
