@@ -1,5 +1,6 @@
 package br.org.iel.recrutaif.entity;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -13,10 +14,15 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	
 	@NotNull
@@ -24,11 +30,11 @@ public class Usuario {
 	
 	@NotNull
 	private Integer matricula;
-	
+
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Calendar dataAdmissao;
-	
+
 	@NotNull
 	private String email;
 	
