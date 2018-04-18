@@ -5,22 +5,21 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
-import br.org.iel.recrutaif.dao.SetorDao;
 import br.org.iel.recrutaif.entity.Setor;
+import br.org.iel.recrutaif.dao.SetorDao;
 
 @Path("/setor")
 public class SetorREST {
 
     @GET
-    @Path("/listar")
-    @Produces("application/json")
-    @PathParam("param")
-    public Response printMessage(String msg) {
+    @Path("/busca/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String printMessage(@PathParam("id")Integer id) {
     	
-        String result = "Restful example: " + msg;
-        return Response.status(200).entity(result).build();
+    	Setor setor = new SetorDao().busca(id);
+    	return setor.toGson();
+        //return Response.status(200).entity(result).build();
     }
     
     @GET

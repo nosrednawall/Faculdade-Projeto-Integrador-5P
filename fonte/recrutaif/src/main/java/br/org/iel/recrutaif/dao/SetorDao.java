@@ -7,13 +7,11 @@ package br.org.iel.recrutaif.dao;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.org.iel.recrutaif.entity.Setor;
 
-@Stateless
 public class SetorDao {
 	
 	@PersistenceContext
