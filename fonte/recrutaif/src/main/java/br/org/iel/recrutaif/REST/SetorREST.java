@@ -1,13 +1,15 @@
 package br.org.iel.recrutaif.REST;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.org.iel.recrutaif.entity.Setor;
 import br.org.iel.recrutaif.dao.SetorDao;
+import br.org.iel.recrutaif.entity.Setor;
 
 @Path("/setor")
 public class SetorREST {
@@ -17,18 +19,19 @@ public class SetorREST {
     @Produces(MediaType.APPLICATION_JSON)
     public String printMessage(@PathParam("id")Integer id) {
     	
-    	Setor setor = new SetorDao().busca(id);
+    	Setor setor = new SetorDao().buscaSetor(id);
     	return setor.toGson();
         //return Response.status(200).entity(result).build();
     }
     
     @GET
-    @Path("/busca")
+    @Path("/lista/")
     @Produces(MediaType.APPLICATION_JSON)
-    @PathParam("id")
-    public String mostraSetor(Integer id) {
-    	Setor setor = new SetorDao().busca(id);
-    	return setor.toGson();
-    }
     
+    public String mostraSetor() {
+    	
+    	List<Setor> setores = new SetorDao().listaSetores();
+    	
+    	return ((Setor) setores).toGson();
+    }
 }

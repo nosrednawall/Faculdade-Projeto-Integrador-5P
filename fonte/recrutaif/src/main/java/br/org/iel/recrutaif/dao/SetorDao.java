@@ -20,15 +20,19 @@ public class SetorDao {
 	private EntityManager manager;
 	
 	/* Método para salvar um setor */
-	public void salva(Setor setor) {
+	public void adiciona(Setor setor) {
 		manager.persist(setor);
 	}
 	/* Método para listar os setores gravados no banco */
-	public List<Setor> todosSetores(){
+	public List<Setor> listaSetores(){
 		return manager.createQuery("select s from Setor",Setor.class).getResultList();
 	}
-	public Setor busca(Integer id) {
+	public Setor buscaSetor(Integer id) {
 		Setor setor=manager.find(Setor.class, id);
 		return setor;
+	}
+	public void deletaSetor(Integer id) {
+		Setor setor=manager.find(Setor.class, id);
+		manager.remove(setor);
 	}
 }
