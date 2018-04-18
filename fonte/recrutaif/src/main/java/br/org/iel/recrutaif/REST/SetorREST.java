@@ -11,11 +11,11 @@ import javax.ws.rs.core.MediaType;
 import br.org.iel.recrutaif.dao.SetorDao;
 import br.org.iel.recrutaif.entity.Setor;
 
-@Path("/setor")
+@Path("setor")
 public class SetorREST {
 
     @GET
-    @Path("/busca/{id}")
+    @Path("busca/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String printMessage(@PathParam("id")Integer id) {
     	
@@ -25,9 +25,8 @@ public class SetorREST {
     }
     
     @GET
-    @Path("/lista/")
+    @Path("lista/*")
     @Produces(MediaType.APPLICATION_JSON)
-    
     public String mostraSetor() {
     	
     	List<Setor> setores = new SetorDao().listaSetores();
