@@ -9,13 +9,15 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-
+		<!-- DRIVER DO POSTGRES -->
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.2.2</version>
 		</dependency>
+
+		<!-- JUNIT PARA TESTES UNITÁRIOS -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -23,7 +25,7 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- GSON PARA PARSE DE OBJETOS -->
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
