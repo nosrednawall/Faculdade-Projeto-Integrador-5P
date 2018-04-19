@@ -51,4 +51,12 @@ public class SetorDao {
 
 		manager.remove(setor);
 	}
+	
+	public void alteraSetor(Setor setor) {
+		
+		manager.persist(setor);
+		
+		System.out.println("[INFO] Alterou o Setor " + setor.getNome());
+
+	}
 }

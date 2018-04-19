@@ -7,9 +7,12 @@
 	
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/recrutaifDS</jta-data-source>
+		<class>br.org.iel.recrutaif.entity.Setor</class>
+		<class>br.org.iel.recrutaif.entity.Usuario</class>
+		<class>br.org.iel.recrutaif.entity.Vaga</class>
+		<shared-cache-mode>ALL</shared-cache-mode>
+		<validation-mode>AUTO</validation-mode>
 		
-		<validation-mode>CALLBACK</validation-mode>
-
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
@@ -17,5 +20,6 @@
 			<property name="hibernate.transaction.flush_before_completion" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 		</properties>
+	
 	</persistence-unit>
 </persistence>

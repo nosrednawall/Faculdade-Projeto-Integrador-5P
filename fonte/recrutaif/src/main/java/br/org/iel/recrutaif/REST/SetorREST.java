@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -59,10 +58,10 @@ public class SetorREST {
 		return Response.ok().build();
 	}
 
-	@PATCH
-	public Response alteraSetor(@PathParam("id") Integer id, String conteudo) {
-
-		// return provisório
-		return Response.ok().build();
-	}
+//	@PATCH
+//	public Response alteraSetor(@PathParam("id") Integer id, String conteudo) {
+//
+//		// return provisório
+//		return Response.ok().build();
+//	}
 }
