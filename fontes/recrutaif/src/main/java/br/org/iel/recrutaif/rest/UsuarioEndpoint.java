@@ -9,7 +9,6 @@ import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -18,49 +17,40 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import br.org.iel.recrutaif.model.Setor;
+import javax.ws.rs.core.Response.Status;
 
-/**
- * 
- */
+import br.org.iel.recrutaif.model.Setor;
+import br.org.iel.recrutaif.model.Usuario;
+
 @Stateless
-@Path("/setores")
-public class SetorEndpoint {
+@Path("/usuarios")
+public class UsuarioEndpoint {
+	// cria a unidade de persistencia que será passada pelo wildfly
 	@PersistenceContext(unitName = "recrutaif-persistence-unit")
 	private EntityManager em;
 
+	// método para criar um usuario
 	@POST
 	@Consumes("application/json")
-	public Response create(Setor entity) {
+	public Response create(Usuario entity) {
 		em.persist(entity);
-		return Response.created(
-				UriBuilder.fromResource(SetorEndpoint.class)
-						.path(String.valueOf(entity.getId())).build()).build();
-	}
-
-	@DELETE
-	@Path("/{id:[0-9][0-9]*}")
-	public Response deleteById(@PathParam("id") Long id) {
-		Setor entity = em.find(Setor.class, id);
-		if (entity == null) {
-			return Response.status(Status.NOT_FOUND).build();
-		}
-		em.remove(entity);
-		return Response.noContent().build();
+		// retorna o link de acesso ao usuario criado
+		return Response
+				.created(UriBuilder.fromResource(UsuarioEndpoint.class).path(String.valueOf(entity.getId())).build())
+				.build();
 	}
 
 	@GET
-	@Path("/{id:[0-9][0-9]*}")
+	@Path("/{id:[0-9][0-9]}")
 	@Produces("application/json")
-	public Response findById(@PathParam("id") Long id) {
-		TypedQuery<Setor> findByIdQuery = em.createQuery("SELECT DISTINCT s FROM Setor s WHERE s.id = :entityId ORDER BY s.id",
-						Setor.class);
-		findByIdQuery.setParameter("entityId", id);
-		Setor entity;
+	public Response buscaPorId(@PathParam("id") Long id) {
+		TypedQuery<Usuario> queryBuscaPorId = em
+				.createQuery("SELECT DISTINCT u FROM Usuario u WHERE u.id = :entityId ORDER BY u.id",Usuario.class);
+		queryBuscaPorId.setParameter("entityId", id);
+		Usuario entity;
 		try {
-			entity = findByIdQuery.getSingleResult();
+			entity = queryBuscaPorId.getSingleResult();
 		} catch (NoResultException nre) {
 			entity = null;
 		}
@@ -69,20 +59,20 @@ public class SetorEndpoint {
 		}
 		return Response.ok(entity).build();
 	}
-
+	
 	@GET
 	@Produces("application/json")
-	public List<Setor> listAll(@QueryParam("start") Integer startPosition,
+	public List<Usuario> listaUsuarios(@QueryParam("start") Integer startPosition,
 			@QueryParam("max") Integer maxResult) {
-		TypedQuery<Setor> findAllQuery = em.createQuery(
-				"SELECT DISTINCT s FROM Setor s ORDER BY s.id", Setor.class);
+		TypedQuery<Usuario> findAllQuery = em.createQuery(
+				"SELECT DISTINCT u FROM Usuario u ORDER BY u.id", Usuario.class);
 		if (startPosition != null) {
 			findAllQuery.setFirstResult(startPosition);
 		}
 		if (maxResult != null) {
 			findAllQuery.setMaxResults(maxResult);
 		}
-		final List<Setor> results = findAllQuery.getResultList();
+		final List<Usuario> results = findAllQuery.getResultList();
 		return results;
 	}
 
@@ -111,4 +101,5 @@ public class SetorEndpoint {
 
 		return Response.noContent().build();
 	}
+	
 }

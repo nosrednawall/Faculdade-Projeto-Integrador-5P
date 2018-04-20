@@ -42,7 +42,7 @@ Colar a pasta org dentro da pasta /<wildfly_home>/modules
 
             <datasources>
                 ...
-                <datasource jndi-name="java:/recrutaifDS" pool-name="recrutaifPool">
+                <datasource jndi-name="java:/jboss/datasources/recrutaifDS" pool-name="recrutaifPool">
                     <connection-url>jdbc:postgresql://localhost/recrutaif</connection-url>
                     <driver>postgres</driver>
                     <security>
