@@ -1,13 +1,13 @@
 package br.org.iel.recrutaif.model;
 
-import javax.persistence.Entity;
 import java.io.Serializable;
-import javax.persistence.Table;
-import javax.persistence.Id;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Column;
-import javax.persistence.Version;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -20,9 +20,9 @@ public class Setor implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
-	@Version
-	@Column(name = "version")
-	private int version;
+//	@Version
+//	@Column(name = "version")
+//	private int version;
 
 	private String nome;
 
@@ -34,13 +34,13 @@ public class Setor implements Serializable {
 		this.id = id;
 	}
 
-	public int getVersion() {
-		return this.version;
-	}
-
-	public void setVersion(final int version) {
-		this.version = version;
-	}
+//	public int getVersion() {
+//		return this.version;
+//	}
+//
+//	public void setVersion(final int version) {
+//		this.version = version;
+//	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -80,7 +80,7 @@ public class Setor implements Serializable {
 		String result = getClass().getSimpleName() + " ";
 		if (id != null)
 			result += "id: " + id;
-		result += ", version: " + version;
+//		result += ", version: " + version;
 		if (nome != null && !nome.trim().isEmpty())
 			result += ", nome: " + nome;
 		return result;
