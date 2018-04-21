@@ -7,10 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import br.org.iel.recrutaif.model.Setor;
-
-/**
- * DAO for Setor
- */
 @Stateless
 public class SetorDao {
 	@PersistenceContext(unitName = "recrutaif-persistence-unit")
@@ -26,7 +22,7 @@ public class SetorDao {
 			em.remove(entity);
 		}
 	}
-
+//Demais métodos estão suprimidos
 	public Setor findById(Long id) {
 		return em.find(Setor.class, id);
 	}

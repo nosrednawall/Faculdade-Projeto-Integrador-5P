@@ -22,9 +22,6 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 import br.org.iel.recrutaif.model.Setor;
 
-/**
- * 
- */
 @Stateless
 @Path("/setores")
 public class SetorEndpoint {
