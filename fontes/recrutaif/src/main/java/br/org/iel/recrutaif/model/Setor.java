@@ -2,6 +2,7 @@ package br.org.iel.recrutaif.model;
 
 import java.io.Serializable;
 
+//imports
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,14 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-@Table(name = "setor")
-@XmlRootElement
+//anotações
+@Entity // essa anotação indica ao JPA/Hibernate que esta classe é uma entidade, ou seja
+		// uma tabela
+@Table(name = "setor") // indica que o nome da tabela a ser criada
+@XmlRootElement // indica ao Jersey que essa classe deve ser utilizada para efetuar o parse de
+				// objetos a serem enviados ou recebidos via http
+
 public class Setor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id // indica que esse atributo deve ser o primary key da tabela
+	@GeneratedValue(strategy = GenerationType.AUTO) // indica que a estratégia de valores 
+													//a serem gerados é a padrão do banco
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 

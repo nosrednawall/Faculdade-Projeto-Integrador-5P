@@ -7,8 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import br.org.iel.recrutaif.model.Setor;
+
 @Stateless
 public class SetorDao {
+	
 	@PersistenceContext(unitName = "recrutaif-persistence-unit")
 	private EntityManager em;
 
@@ -22,7 +24,7 @@ public class SetorDao {
 			em.remove(entity);
 		}
 	}
-//Demais métodos estão suprimidos
+
 	public Setor findById(Long id) {
 		return em.find(Setor.class, id);
 	}
@@ -32,8 +34,7 @@ public class SetorDao {
 	}
 
 	public List<Setor> listAll(Integer startPosition, Integer maxResult) {
-		TypedQuery<Setor> findAllQuery = em.createQuery(
-				"SELECT DISTINCT s FROM Setor s ORDER BY s.id", Setor.class);
+		TypedQuery<Setor> findAllQuery = em.createQuery("SELECT DISTINCT s FROM Setor s ORDER BY s.id", Setor.class);
 		if (startPosition != null) {
 			findAllQuery.setFirstResult(startPosition);
 		}
@@ -42,4 +43,13 @@ public class SetorDao {
 		}
 		return findAllQuery.getResultList();
 	}
+
+	public EntityManager getEm() {
+		return em;
+	}
+
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
+
 }
