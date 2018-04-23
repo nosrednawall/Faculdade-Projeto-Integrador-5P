@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.model;
+package br.org.iel.recrutaif.entity;
 
 import java.io.Serializable;
 

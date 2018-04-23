@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.dao.SetorDao;
-import br.org.iel.recrutaif.model.Setor;
+import br.org.iel.recrutaif.entity.Setor;
 
 @Stateless 
 @Path("/setores")

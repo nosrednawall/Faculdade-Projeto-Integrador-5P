@@ -20,8 +20,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.Response.Status;
 
-import br.org.iel.recrutaif.model.Setor;
-import br.org.iel.recrutaif.model.Usuario;
+import br.org.iel.recrutaif.entity.Setor;
+import br.org.iel.recrutaif.entity.Usuario;
 
 @Stateless
 @Path("/usuarios")

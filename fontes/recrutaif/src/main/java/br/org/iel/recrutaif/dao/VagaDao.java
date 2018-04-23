@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import br.org.iel.recrutaif.model.Vaga;
+import br.org.iel.recrutaif.entity.Vaga;
 
 @Stateless
 public class VagaDao {
