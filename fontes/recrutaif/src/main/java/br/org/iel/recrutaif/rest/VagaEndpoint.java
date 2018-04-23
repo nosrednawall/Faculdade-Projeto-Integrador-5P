@@ -3,11 +3,9 @@ package br.org.iel.recrutaif.rest;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
+import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.persistence.OptimisticLockException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,25 +16,23 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import br.org.iel.recrutaif.entity.Setor;
-import br.org.iel.recrutaif.entity.Vaga;
-
 import javax.ws.rs.core.UriBuilder;
 
+import br.org.iel.recrutaif.dao.VagaDao;
+import br.org.iel.recrutaif.entity.Vaga;
 
 @Stateless
 @Path("/vagas")
 public class VagaEndpoint {
-	// cria a unidade de persistencia que será passada pelo wildfly
-	@PersistenceContext(unitName = "recrutaif-persistence-unit")
-	private EntityManager em;
+
+	@Inject
+	private VagaDao dao;
 
 	// método para criar um Vaga
 	@POST
 	@Consumes("application/json")
 	public Response create(Vaga entity) {
-		em.persist(entity);
+		dao.create(entity);
 		// retorna o link de acesso ao Vaga criado
 		return Response
 				.created(UriBuilder.fromResource(VagaEndpoint.class).path(String.valueOf(entity.getId())).build())
@@ -47,12 +43,9 @@ public class VagaEndpoint {
 	@Path("/{id:[0-9][0-9]}")
 	@Produces("application/json")
 	public Response buscaPorId(@PathParam("id") Long id) {
-		TypedQuery<Vaga> queryBuscaPorId = em
-				.createQuery("SELECT DISTINCT v FROM Vaga v WHERE v.id = :entityId ORDER BY v.id",Vaga.class);
-		queryBuscaPorId.setParameter("entityId", id);
 		Vaga entity;
 		try {
-			entity = queryBuscaPorId.getSingleResult();
+			entity = dao.buscaPorId(id);
 		} catch (NoResultException nre) {
 			entity = null;
 		}
@@ -61,20 +54,11 @@ public class VagaEndpoint {
 		}
 		return Response.ok(entity).build();
 	}
-	
+
 	@GET
 	@Produces("application/json")
-	public List<Vaga> listaVagas(@QueryParam("start") Integer startPosition,
-			@QueryParam("max") Integer maxResult) {
-		TypedQuery<Vaga> findAllQuery = em.createQuery(
-				"SELECT DISTINCT v FROM Vaga v ORDER BY v.id", Vaga.class);
-		if (startPosition != null) {
-			findAllQuery.setFirstResult(startPosition);
-		}
-		if (maxResult != null) {
-			findAllQuery.setMaxResults(maxResult);
-		}
-		final List<Vaga> results = findAllQuery.getResultList();
+	public List<Vaga> listaVagas(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
+		final List<Vaga> results = dao.listaTodos(startPosition, maxResult);
 		return results;
 	}
 
@@ -91,14 +75,13 @@ public class VagaEndpoint {
 		if (!id.equals(entity.getId())) {
 			return Response.status(Status.CONFLICT).entity(entity).build();
 		}
-		if (em.find(Setor.class, id) == null) {
+		if (dao.buscaPorId(id) == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		try {
-			entity = em.merge(entity);
+			entity = dao.atualiza(entity);
 		} catch (OptimisticLockException e) {
-			return Response.status(Response.Status.CONFLICT)
-					.entity(e.getEntity()).build();
+			return Response.status(Response.Status.CONFLICT).entity(e.getEntity()).build();
 		}
 
 		return Response.noContent().build();

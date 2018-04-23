@@ -21,24 +21,20 @@ import javax.ws.rs.core.UriBuilder;
 import br.org.iel.recrutaif.dao.SetorDao;
 import br.org.iel.recrutaif.entity.Setor;
 
-@Stateless 
+@Stateless
 @Path("/setores")
 public class SetorEndpoint {
-	
+
 	@Inject
-	SetorDao dao;
+	private SetorDao dao;
 
 	@POST
-	@Consumes("application/json") 
+	@Consumes("application/json")
 	public Response create(Setor entity) {
 		dao.create(entity);
-		return Response.created(
-				UriBuilder
-				.fromResource
-				(SetorEndpoint.class)
-				.path(String.valueOf
-						(entity.getId()))
-				.build()).build();
+		return Response
+				.created(UriBuilder.fromResource(SetorEndpoint.class).path(String.valueOf(entity.getId())).build())
+				.build();
 	}
 
 	@DELETE
@@ -54,15 +50,13 @@ public class SetorEndpoint {
 	public Response findById(@PathParam("id") Long id) {
 
 		Setor entity = dao.findById(id);
-		
+
 		return Response.ok(entity).build();
 	}
 
 	@GET
 	@Produces("application/json")
-	public List<Setor> listAll(
-			@QueryParam("start")Integer startPosition,
-			@QueryParam("max") Integer maxResult) {
+	public List<Setor> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
 
 		if (startPosition != null) {
 			startPosition = 1;
@@ -77,8 +71,7 @@ public class SetorEndpoint {
 	@PUT
 	@Path("/{id:[0-9][0-9]*}")
 	@Consumes("application/json")
-	public Response update(@PathParam("id")
-		Long id, Setor entity) {
+	public Response update(@PathParam("id") Long id, Setor entity) {
 		if (entity == null) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
@@ -94,8 +87,7 @@ public class SetorEndpoint {
 		try {
 			entity = dao.update(entity);
 		} catch (OptimisticLockException e) {
-			return Response.status(Response.Status.CONFLICT)
-					.entity(e.getEntity()).build();
+			return Response.status(Response.Status.CONFLICT).entity(e.getEntity()).build();
 		}
 
 		return Response.noContent().build();
