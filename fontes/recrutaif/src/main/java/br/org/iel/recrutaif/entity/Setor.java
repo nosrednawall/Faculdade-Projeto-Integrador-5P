@@ -27,6 +27,7 @@ public class Setor implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 
+	@Column(name = "nome", nullable=false)
 	private String nome;
 
 	// getters and setters

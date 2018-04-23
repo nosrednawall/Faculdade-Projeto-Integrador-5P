@@ -39,29 +39,33 @@ public class Usuario implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Calendar dataAdmissao;
+	// private LocalDateTime dataAdmissao;
 
 	@Enumerated
 	private TipoUsuario permissao;
 
-	// Para o hibernate
-	public Usuario() {
+	//para o hibernate
+	public Usuario() {}
+	
+	//um usuario só pode ser criado com os campos abaixo
+	public Usuario(String nome, String senha, Long matricula, Calendar dataAdmissao, TipoUsuario permissao) {
+		this.nome = nome;
+		this.senha = senha;
+		this.matricula = matricula;
+		this.dataAdmissao = dataAdmissao;
+		this.permissao = permissao;
+	}
 
+	public Calendar getDataAdmissao() {
+		return dataAdmissao;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getNome() {
 		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public String getSenha() {
@@ -74,18 +78,6 @@ public class Usuario implements Serializable {
 
 	public Long getMatricula() {
 		return matricula;
-	}
-
-	public void setMatricula(Long matricula) {
-		this.matricula = matricula;
-	}
-
-	public Calendar getDataAdmissao() {
-		return dataAdmissao;
-	}
-
-	public void setDataAdmissao(Calendar dataAdmissao) {
-		this.dataAdmissao = dataAdmissao;
 	}
 
 	public TipoUsuario getPermissao() {
