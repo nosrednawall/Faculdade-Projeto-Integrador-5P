@@ -1,51 +1,39 @@
-package dao;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-
-import org.glassfish.jersey.client.ClientConfig;
-import org.junit.Before;
-import org.junit.*;
-
-import br.org.iel.recrutaif.entity.Setor;
-
 public class TestaSetor {
 
 //	private HttpServer server;
-	private Client client;
-
-	// executa antes de efetuar o teste, nesse caso levanta o servidor e o cliente
-	@Before
-	public void startaServidor() {
-		// this.server = Servidor.inicializaServidor();
-
-		// cria uma configuração para cliente
-		ClientConfig config = new ClientConfig();
-		// adiciona o log do jersey a configuração
-		// config.register(new LoggingFilter());
-		// pegao cliente da classe e instancia com a configuracao
-		this.client = ClientBuilder.newClient(config);
-	}
-
-//	// exetuta depois de efetuar o teste, nesse caso fecha o servidor
-//	@After
-//	public void fechaServidor() {
-//		this.server.stop();
+//	private Client client;
+//
+//	// executa antes de efetuar o teste, nesse caso levanta o servidor e o cliente
+//	@Before
+//	public void startaServidor() {
+//		// this.server = Servidor.inicializaServidor();
+//
+//		// cria uma configuração para cliente
+//		ClientConfig config = new ClientConfig();
+//		// adiciona o log do jersey a configuração
+//		// config.register(new LoggingFilter());
+//		// pegao cliente da classe e instancia com a configuracao
+//		this.client = ClientBuilder.newClient(config);
 //	}
-
-	// inicia os testes
-
-	@Test
-	public void testaQueaBuscaUmCarrinhoEsperado() {
-
-		WebTarget target = client.target("http://localhost:8080");
-
-		Setor setor = target.path("/recrutaif/rest/setores/1").request().get(Setor.class);
-
-		Assert.assertEquals("TI", setor.getNome());
-
-	}
+//
+////	// exetuta depois de efetuar o teste, nesse caso fecha o servidor
+////	@After
+////	public void fechaServidor() {
+////		this.server.stop();
+////	}
+//
+//	// inicia os testes
+//
+//	@Test
+//	public void testaQueaBuscaUmCarrinhoEsperado() {
+//
+//		WebTarget target = client.target("http://localhost:8080");
+//
+//		Setor setor = target.path("/recrutaif/rest/setores/1").request().get(Setor.class);
+//
+//		Assert.assertEquals("TI", setor.getNome());
+//
+//	}
 
 //	@Test
 //	public void testaQueInsereUmCarrinho() {
