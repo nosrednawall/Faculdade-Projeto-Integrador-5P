@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,17 +39,18 @@ public class Vaga implements Serializable {
 	@Lob	//permite essa coluna possuir grande volume de dados
 	private String descricao;
 
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Setor> setores;
 
+	@Enumerated
+	private StatusVaga status;
+	
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCriacao;
 
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
 
-	@Enumerated
-	private StatusVaga status;
 
 	public Vaga() {
 	}
