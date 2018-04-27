@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Recrutaif - Login</title>
+</head>
+<body>
+	<form action="${request.getContextPath()}/j_security_check" method="post">
+		<LABEL>Login</LABEL>
+		<INPUT name="j_username"type="text"/>
+	
+		<LABEL>Senha</LABEL>
+		<INPUT name="j_password" type="password"/>
+	
+		<BUTTON type="submit">Login</BUTTON>
+	</form>
+</body>
+</html>

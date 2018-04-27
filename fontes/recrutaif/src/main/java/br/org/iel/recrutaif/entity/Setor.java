@@ -32,6 +32,10 @@ public class Setor implements Serializable {
 
 	// getters and setters
 
+	@Deprecated
+	public Setor() {
+	}
+	
 	public Long getId() {
 		return this.id;
 	}
