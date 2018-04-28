@@ -1,0 +1,63 @@
+<header ng-switch on="$location.path().indexOf('/Vagas/new') > -1">
+    <h3 ng-switch-when="true">Create a new Vaga</h3>
+    <h3 ng-switch-when="false">View or edit Vaga</h3>
+</header>
+<form id="VagaForm" name="VagaForm" class="form-horizontal" role="form">
+        <div class="form-group" ng-class="{'has-error': VagaForm.titulo.$invalid}">
+        <label for="titulo" class="col-sm-2 control-label">Titulo</label>
+        <div id="tituloControls" class="col-sm-10">
+            <input id="titulo" name="titulo" type="text" class="form-control" ng-model="vaga.titulo" placeholder="Enter the Vaga Titulo"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': VagaForm.descricao.$invalid}">
+        <label for="descricao" class="col-sm-2 control-label">Descricao</label>
+        <div id="descricaoControls" class="col-sm-10">
+            <input id="descricao" name="descricao" type="text" class="form-control" ng-model="vaga.descricao" placeholder="Enter the Vaga Descricao"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': VagaForm.setores.$invalid}">
+        <label for="setores" class="col-sm-2 control-label">Setores</label>
+        <div id="setoresControls" class="col-sm-10">
+            <select id="setores" name="setores" multiple class="form-control" ng-model="setoresSelection" ng-options="s.text for s in setoresSelectionList">
+                <option value="">Choose a Setores</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': VagaForm.dataExpiracao.$invalid}">
+        <label for="dataExpiracao" class="col-sm-2 control-label">Data Expiracao</label>
+        <div id="dataExpiracaoControls" class="col-sm-10">
+            <date id="dataExpiracao" name="dataExpiracao" ng-model="vaga.dataExpiracao" placeholder="Enter the Vaga Data Expiracao"></date>
+            <span class="help-block error" ng-show="VagaForm.dataExpiracao.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': VagaForm.status.$invalid}">
+        <label for="status" class="col-sm-2 control-label">Status</label>
+        <div id="statusControls" class="col-sm-10">
+        <select id="status" name="status" class="form-control" ng-model="vaga.status" ng-options="s for s in statusList"  >
+            <option value="">Choose a Status</option>
+        </select>
+        </div>
+    </div>
+
+
+    <div class="form-group" ng-class="{'has-error': VagaForm.dataCriacao.$invalid}">
+        <label for="dataCriacao" class="col-sm-2 control-label">Data Criacao</label>
+        <div id="dataCriacaoControls" class="col-sm-10">
+            <date id="dataCriacao" name="dataCriacao" ng-model="vaga.dataCriacao" placeholder="Enter the Vaga Data Criacao"></date>
+            <span class="help-block error" ng-show="VagaForm.dataCriacao.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveVaga" name="saveVaga" class="btn btn-primary" ng-disabled="isClean() || VagaForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteVaga" name="deleteVaga" class="btn btn-danger" ng-show="vaga.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>
