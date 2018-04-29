@@ -6,11 +6,16 @@
     <div class="col">
         <div class="form-group">
             <label for="nome-setor">Nome</label>
-            <input ng-model="setor.nome" type="text" class="form-control" name="nome" required/>
+            <input ng-model="setor.nome" type="text" class="form-control" name="nome"
+             required ng-maxlength="20"/>
             <span ng-show="formulario.$submitted && formulario.nome.$error.required" 
              class="form-control alert-danger">
                 Nome setor obligatório
             </span>
+            <span ng-show="formulario.nome.$error.maxlength" 
+            class="form-control alert-danger">
+               Deve conter no máximo 20 caracteres
+           </span>
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
