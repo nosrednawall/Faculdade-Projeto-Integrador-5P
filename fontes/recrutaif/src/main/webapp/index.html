@@ -28,12 +28,27 @@
             </div> -->
         <!-- </div> fim do panel-->
         
-        <div ng-repeat="setor in setores" class="panel panel-default">
+        <!-- <div ng-repeat="setor in setores" class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">{{setor.nome}}</h3>
             </div>
+        </div> -->
+        <div  class="panel panel-default">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome Setor</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="setor in setores">
+                    <tr>
+                        <th scope="row">{{setor.id}}</th>
+                        <th scope="row">{{setor.nome}}</th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
     </div> <!--fim do container-->
 </body>
 </html>
