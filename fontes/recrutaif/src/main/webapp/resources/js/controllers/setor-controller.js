@@ -16,12 +16,28 @@ angular.module('recrutaif').controller('SetorController',function($scope,$http){
     // ];
 
     $scope.setores = [];
-
-    var promise= $http.get('rest/setores/');
-
-    promise.then(function(retorno){
-        $scope.setores = retorno.data;
-    }).catch(function(error){
-        console.log("error");
+    
+    $http.get('rest/setores/')
+    .success(function(setores){
+        
+        $scope.setores = setores;
+    })
+    .error(function(error){
+        console.log("[ERROR] Erro ao listar os setores")
     });
+
+    // promise.then(function(retorno){
+    //     $scope.setores = retorno.data;
+    // }).catch(function(error){
+    //     console.log("error");
+    // });
+
+    // var promise= $http.get('rest/setores/');
+
+    // promise.then(function(retorno){
+    //     $scope.setores = retorno.data;
+    // }).catch(function(error){
+    //     console.log("error");
+    // });
+
 });
