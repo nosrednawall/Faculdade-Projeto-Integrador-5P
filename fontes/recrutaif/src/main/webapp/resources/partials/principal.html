@@ -1,6 +1,11 @@
 <div class="jumbotron">
     <h1 class="text-center">Recrutaif</h1>
 </div>
+
+<p class="alert alert-info" ng-show="mensagem.length">
+    {{mensagem}}
+</p>
+
 <div class="row">
     <div class="col-md-12">
         <form>
@@ -25,6 +30,8 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome Setor</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                 </thead>
                 <!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
@@ -33,6 +40,8 @@
                         <!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
                         <th scope="row">{{setor.id}}</th>
                         <th scope="row">{{setor.nome}}</th>
+                        <th scope="row"><a class="btn btn-primary btn-block" href="">Editar</a></th>
+                        <th scope="row"><button ng-click="remover(setor)" class="btn btn-danger btn-block" href="">Remover</button></th>
                     </tr>
                 </tbody>
             </table>

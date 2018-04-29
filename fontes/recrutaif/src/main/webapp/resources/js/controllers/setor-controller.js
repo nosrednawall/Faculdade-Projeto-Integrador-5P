@@ -1,22 +1,8 @@
 angular.module('recrutaif').controller('SetorController',function($scope,$http){
     
-    // $scope.fotos = [
-    //     {
-    //         titulo : 'Leão',
-    //         url : 'http://i.huffpost.com/gen/2841234/thumbs/o-LION-900.jpg?7'
-    //     },
-    //     {
-    //         titulo : 'Leão 2',
-    //         url : 'http://i.huffpost.com/gen/2841234/thumbs/o-LION-900.jpg?7'
-    //     },
-    //     {
-    //         titulo : 'Leão 3',
-    //         url : 'http://i.huffpost.com/gen/2841234/thumbs/o-LION-900.jpg?7'
-    //     }
-    // ];
-
     $scope.setores = [];
     $scope.filtro = '';
+    $scope.mensagem = '';
 
     $http.get('rest/setores/')
     .success(function(setores){
@@ -24,21 +10,20 @@ angular.module('recrutaif').controller('SetorController',function($scope,$http){
         $scope.setores = setores;
     })
     .error(function(error){
-        console.log("[ERROR] Erro ao listar os setores")
+        console.log(error);
+        console.log("[ERROR] Erro ao listar os setores");
     });
 
-    // promise.then(function(retorno){
-    //     $scope.setores = retorno.data;
-    // }).catch(function(error){
-    //     console.log("error");
-    // });
-
-    // var promise= $http.get('rest/setores/');
-
-    // promise.then(function(retorno){
-    //     $scope.setores = retorno.data;
-    // }).catch(function(error){
-    //     console.log("error");
-    // });
-
+    $scope.remover = function(setor){
+        $http.delete('rest/setores/' + setor.id)
+        .success(function(){
+            var indiceSetor = $scope.setores.indexOf(setor);
+            $scope.setores.splice(indiceSetor,1);
+            $scope.mensagem = "[INFO] Setor "+setor.nome+" foi removido com sucesso!";
+        })
+        .error(function(error){
+            console.log(error);
+            $scope.mensagem = "[ERROR] Erro ao remover o setor" + setor.nome;
+        });
+    };
 });
