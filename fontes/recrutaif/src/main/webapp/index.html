@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="resources/css/efeito.css"/>
     <script src="resources/js/lib/angular.min.js"></script>
+    <script src="resources/js/lib/angular-animate.min.js"></script>
+    <script src="resources/js/lib/angular-route.min.js"></script>
     <script src="resources/js/main.js"></script>
     <script src="resources/js/controllers/setor-controller.js"></script>
     <script src="resources/js/directives/minhas-diretivas.js"></script>
@@ -16,82 +18,9 @@
     
     <title>Recrutaif</title>
 </head>
-<body ng-controller="SetorController"> 
+<body> 
     <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">Recrutaif</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <form>
-                    <!--ng-model = "filtro" serve para transferir o input para o controller-->
-                    <input ng-model="filtro" class="form-control" placeholder="filtrar" 
-                    ng-model-options="{debounce: 500}"/>
-                    <!--ng-model-options="{debounce:500}"  serve para dar um delay e não aplicar locamente o filtro -->
-                </form>
-            </div> <!--/col-->
-        </div> <!--/row-->
-        <div class="row">
-            <div  class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome Setor</th>
-                            </tr>
-                        </thead>
-                        <!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
-                        <tbody ng-repeat="setor in setores | filter:filtro">
-                            <tr>
-                                <!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
-                                <th scope="row">{{setor.id}}</th>
-                                <th scope="row">{{setor.nome}}</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <ng-view></ng-view>
     </div> <!--fim do container-->
 </body>
 </html>
-
-
-<!--
-    
-       <meu-table ng-repeat="setor in setores" nome={{setor.nome}}></meu-table>
-    
-    
-    
-    <div class="table-responsive">
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome Setor</th>
-                </tr>
-            </thead>
-            <tbody ng-repeat="setor in setores">
-                <tr>
-                    <th scope="row">{{setor.id}}</th>
-                    <th scope="row">{{setor.nome}}</th>
-                </tr>
-            </tbody>
-        </table>
-    </div> 
-
-      <div ng-repeat="foto in fotos" class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{foto.titulo}}</h3>
-            </div>
-            <div class="panel-body">
-                <img class="img-responsive center-block" src="{{foto.url}}" alt="foto.titulo" />
-            </div> -->
-        <!-- </div> fim do panel-->
-        
-        <!-- <div ng-repeat="setor in setores" class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{setor.nome}}</h3>
-            </div>
-        </div> -->
