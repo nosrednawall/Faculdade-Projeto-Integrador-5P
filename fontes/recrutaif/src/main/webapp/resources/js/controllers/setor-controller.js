@@ -16,7 +16,8 @@ angular.module('recrutaif').controller('SetorController',function($scope,$http){
     // ];
 
     $scope.setores = [];
-    
+    $scope.filtro = '';
+
     $http.get('rest/setores/')
     .success(function(setores){
         

@@ -20,13 +20,45 @@
         <div class="jumbotron">
             <h1 class="text-center">Recrutaif</h1>
         </div>
-        <meu-table ng-repeat="setor in setores" nome={{setor.nome}}></meu-table>
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <input ng-model="filtro" class="form-control" placeholder="filtrar"/>
+                </form>
+            </div> <!--/col-->
+        </div> <!--/row-->
+        <div class="row">
+            <div  class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome Setor</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="setor in setores | filter:filtro">
+                            <tr>
+                                <th scope="row">{{setor.id}}</th>
+                                <th scope="row">{{setor.nome}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div> <!--fim do container-->
 </body>
 </html>
 
 
-<!-- <div class="table-responsive">
+<!--
+    
+       <meu-table ng-repeat="setor in setores" nome={{setor.nome}}></meu-table>
+    
+    
+    
+    <div class="table-responsive">
         <table class="table">
             <thead class="thead-dark">
                 <tr>
