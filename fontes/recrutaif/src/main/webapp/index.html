@@ -9,6 +9,8 @@
     <script src="resources/js/lib/angular.min.js"></script>
     <script src="resources/js/main.js"></script>
     <script src="resources/js/controllers/setor-controller.js"></script>
+    <script src="resources/js/directives/minhas-diretivas.js"></script>
+    
     
     
     <title>Recrutaif</title>
@@ -18,8 +20,30 @@
         <div class="jumbotron">
             <h1 class="text-center">Recrutaif</h1>
         </div>
+        <meu-table ng-repeat="setor in setores" nome={{setor.nome}}></meu-table>
+    </div> <!--fim do container-->
+</body>
+</html>
 
-        <!-- <div ng-repeat="foto in fotos" class="panel panel-default">
+
+<!-- <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome Setor</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="setor in setores">
+                <tr>
+                    <th scope="row">{{setor.id}}</th>
+                    <th scope="row">{{setor.nome}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+
+      <div ng-repeat="foto in fotos" class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">{{foto.titulo}}</h3>
             </div>
@@ -33,24 +57,3 @@
                 <h3 class="panel-title">{{setor.nome}}</h3>
             </div>
         </div> -->
-        <div  class="panel panel-default">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nome Setor</th>
-                        </tr>
-                    </thead>
-                    <tbody ng-repeat="setor in setores">
-                        <tr>
-                            <th scope="row">{{setor.id}}</th>
-                            <th scope="row">{{setor.nome}}</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div> <!--fim do container-->
-</body>
-</html>
