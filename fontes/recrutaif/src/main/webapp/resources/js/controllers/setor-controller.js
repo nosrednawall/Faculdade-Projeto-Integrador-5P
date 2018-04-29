@@ -26,4 +26,7 @@ angular.module('recrutaif').controller('SetorController',function($scope,$http){
             $scope.mensagem = "[ERROR] Erro ao remover o setor" + setor.nome;
         });
     };
+
+
+    
 });

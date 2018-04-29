@@ -14,6 +14,10 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute'])
         controller: 'AdicionaSetorController'
     });
     
+    $routeProvider.when('/setores/edit/:setorId',{
+        templateUrl: 'resources/partials/adiciona-setor.html',
+        controller: 'AdicionaSetorController'
+    });
     //caso o usuario digite algum caminho que não exista ele será redirecionado
     $routeProvider.otherwise({ redirectTo: '/setores'});
 }); //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos
