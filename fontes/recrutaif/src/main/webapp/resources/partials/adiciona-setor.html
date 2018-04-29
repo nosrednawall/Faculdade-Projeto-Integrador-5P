@@ -2,8 +2,8 @@
     <h1>{{setor.nome}}</h1>
 </div>
 
-<form name="formulario-adiciona-setor" class="row">
-    <div class="col-md-6">
+<form name="formulario-adiciona-setor" class="row" ng-submit="submeter()">
+    <div class="col">
         <div class="form-group">
             <label for="nome-setor">Nome</label>
             <input ng-model="setor.nome" type="text" class="form-control" name="setor-nome" />
