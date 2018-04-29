@@ -10,8 +10,7 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute'])
     });
 
     $routeProvider.when('/setores/new',{
-        templateUrl: 'resources/partials/principal.html',
-        controller: 'SetorController'
+        templateUrl: 'resources/partials/adiciona-setor.html',
     });
     
     //caso o usuario digite algum caminho que não exista ele será redirecionado
