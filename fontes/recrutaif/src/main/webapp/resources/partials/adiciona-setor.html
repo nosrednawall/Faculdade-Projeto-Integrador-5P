@@ -2,6 +2,8 @@
     <h1>{{setor.nome}}</h1>
 </div>
 
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
 <form novalidate name="formulario" class="row" ng-submit="submeter()">
     <div class="col">
         <div class="form-group">
@@ -17,6 +19,7 @@
                Deve conter no máximo 20 caracteres
            </span>
         </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
+        <a href="#/" class="btn btn-primary">Voltar</a> 
     </div>
 </form>
