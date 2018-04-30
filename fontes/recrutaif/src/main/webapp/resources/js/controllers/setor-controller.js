@@ -1,8 +1,8 @@
-//módulos que não são mais utilizados, porque estão sendo injetados pelo recursoSetor: $http,$resource
+angular.module('recrutaif').controller('SetorController',function($scope,recursoSetor){
+    //módulos que não são mais utilizados, porque estão sendo injetados pelo recursoSetor: $http,$resource
 
 //módulo controller, para setor
-angular.module('recrutaif').controller('SetorController',function($scope,recursoSetor){
-    
+
     //variáveis de interação com o scope
     $scope.setores = [];    //variável responsável pelo loop de setor dentro do scope
     $scope.filtro = ''; //variável responsável pelo filtro de setores, dentro do scope
