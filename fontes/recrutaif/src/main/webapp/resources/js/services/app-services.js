@@ -10,5 +10,4 @@ angular.module('appServices', ['ngResource'])
             method: 'PUT'
         }
     });
-
 });

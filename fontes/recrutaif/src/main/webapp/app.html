@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="recrutaif">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="resources/css/efeito.css"/>
+    <title>Recrutaif</title>
+</head>
+
+<body> 
+    <div class="container">
+        <ng-view></ng-view>
+    </div> <!--fim do container-->
+
+
+    <div id="footer">
+        <div class="container">
+            <p>Powered by <a href="https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/graphs/contributors">RecrutaIf Team</a></p>
+            <!-- <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p> -->
+        </div>
+    </div>
+
+    <!--recursos do angular-->
+    <script src="resources/js/lib/angular.min.js"></script>
+    <script src="resources/js/lib/angular-animate.min.js"></script>
+    <script src="resources/js/lib/angular-route.min.js"></script>
+    <script src="resources/js/lib/angular-resource.min.js"></script>
+
+    <!--main da aplicação-->
+    <script src="resources/js/main.js"></script>
+
+    <!--controllers da aplicação-->
+    <script src="resources/js/controllers/setor-controller.js"></script>
+    <script src="resources/js/controllers/adiciona-setor-controller.js"></script>
+
+    <!--Diretivas da aplicação-->
+    <script src="resources/js/directives/minhas-diretivas.js"></script>
+
+    <!--Serviços da aplicação-->
+    <script src="resources/js/services/app-services.js"></script>
+</body>
+</html>
