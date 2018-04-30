@@ -1,4 +1,4 @@
-angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','ngResource'])
+angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appServices'])
 .config(function($routeProvider){
 
     //oculta o # dos enderecos, porém o servidor não está preparado

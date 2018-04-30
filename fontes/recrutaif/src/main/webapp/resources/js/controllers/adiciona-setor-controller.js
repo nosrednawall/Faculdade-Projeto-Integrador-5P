@@ -1,4 +1,4 @@
-angular.module('recrutaif').controller('AdicionaSetorController',function($scope, $http, $routeParams){
+angular.module('recrutaif').controller('AdicionaSetorController',function($scope, recursoSetor, $routeParams){
     $scope.setor = {};
     $scope.mensagem = '';
     
@@ -17,17 +17,18 @@ angular.module('recrutaif').controller('AdicionaSetorController',function($scope
     $scope.submeter = function(){
         if($scope.formulario.$valid){
             if($scope.setor.id){
-                $http.put('rest/setores/' + $scope.setor.id, $scope.setor)
-                .success(function(){
+
+                recursoSetor.update({setorId : $scope.setor.id}, $scope.setor, function(){
+                 
                     console.log("[INFO]Setor "+ $scope.setor.nome +" foi atualizado com sucesso!");
                     $scope.mensagem = "[INFO]Setor "+ $scope.setor.nome +" foi atualizado com sucesso!";
-
                     $scope.setor = '';
-                })
-                .error(function(){
+
+                }, function(erro){
+
                     console.log("[ERROR] Não foi possível atualizar o setor");
                     $scope.mensagem = "[ERROR] Não foi possível atualizar o setor";
-                    
+
                 });
             }else{
                 $http.post('rest/setores/', $scope.setor)
