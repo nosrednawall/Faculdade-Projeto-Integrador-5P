@@ -25,7 +25,7 @@
 <div class="row">
     <div  class="col-md-12">
         <div class="table-responsive">
-            <table class="table">
+            <table class="table coluna-animada">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -36,7 +36,7 @@
                 </thead>
                 <!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
                 <tbody ng-repeat="setor in setores | filter:filtro">
-                    <tr class="coluna-animada">
+                    <tr>
                         <!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
                         <th scope="row">{{setor.id}}</th>
                         <th scope="row">{{setor.nome}}</th>
