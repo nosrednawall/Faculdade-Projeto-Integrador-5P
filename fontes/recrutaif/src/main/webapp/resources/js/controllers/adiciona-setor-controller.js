@@ -1,3 +1,5 @@
+//módulo para criar e editar setor
+
 angular.module('recrutaif').controller('AdicionaSetorController',function($scope, recursoSetor, $routeParams){
     $scope.setor = {};
     $scope.mensagem = '';

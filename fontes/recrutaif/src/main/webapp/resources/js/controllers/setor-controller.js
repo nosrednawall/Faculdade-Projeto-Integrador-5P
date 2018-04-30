@@ -1,11 +1,15 @@
+//módulo controller, para setor
+
 angular.module('recrutaif').controller('SetorController',function($scope,$http,$resource){
     
+    //variáveis de interação com o scope
     $scope.setores = [];
     $scope.filtro = '';
     $scope.mensagem = '';
 
     var recursoSetor = $resource('rest/setores/:setorId');
 
+    //função busca uma lista de setores
     recursoSetor.query(function(setores){
         $scope.setores = setores;
     }, function(erro){
@@ -13,6 +17,7 @@ angular.module('recrutaif').controller('SetorController',function($scope,$http,$
         console.log("[ERROR] Erro ao listar os setores");
     });
 
+    //funcao para remover setor
     $scope.remover = function(setor){
 
         recursoSetor.delete({setorId : setor.id}, function(){
