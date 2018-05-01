@@ -17,26 +17,27 @@
     <title>Recrutaif</title>
 </head>
 
-<body> 
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">Recrutaif</h1>
-        </div>
-    </div>
-            
-    <div class="container">
-        <!-- chama o módulo que coordena a view -->
-        <ng-view></ng-view>
-    </div> <!--fim do container-->
-
-    <!-- rodapé -->
-    <hr>
-    <div id="footer">
+<body>
+    <div class="wrap">
         <div class="container">
-            <p>Powered by <a href="https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/graphs/contributors">RecrutaIf Team</a></p>
+            <div class="jumbotron">
+                <h1 class="text-center">Recrutaif</h1>
+            </div>
+        </div>
+                
+        <div class="container">
+            <!-- chama o módulo que coordena a view -->
+            <ng-view></ng-view>
+        </div> <!--fim do container-->
+
+        <!-- rodapé -->
+        <hr>
+        <div id="footer">
+            <div class="container">
+                <p>Powered by <a href="https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/graphs/contributors">RecrutaIf Team</a></p>
+            </div>
         </div>
     </div>
-
     <!--recursos do angular-->
     <script src="resources/js/lib/angular.min.js"></script>
     <script src="resources/js/lib/angular-animate.min.js"></script>
