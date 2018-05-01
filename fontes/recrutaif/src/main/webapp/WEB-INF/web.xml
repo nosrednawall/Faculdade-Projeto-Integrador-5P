@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-  <display-name>recrutaif</display-name>
-  <session-config>
-    <session-timeout>30</session-timeout>
-  </session-config>
-  <mime-mapping>
-    <extension>ico</extension>
-    <mime-type>image/x-icon</mime-type>
-  </mime-mapping>
-  <welcome-file-list>
-    <welcome-file>/index.html</welcome-file>
-  </welcome-file-list>
-  
-  <security-constraint>
-  	<display-name>Administration</display-name>
-  	<web-resource-collection>
-  		<web-resource-name>administration</web-resource-name>
-  		<description>URLs que levam para a administracao da aplicação</description>
-  		<url-pattern>/recrutaif/*</url-pattern>
-  		<http-method>GET</http-method>
-  		<http-method>POST</http-method>
-  	</web-resource-collection>
-  	<auth-constraint>
-  		<role-name>ADMIN</role-name>
-  	</auth-constraint>
-  </security-constraint>
-  
-  <login-config>
-  	<auth-method>FORM</auth-method>
-  	<form-login-config>
-  		<form-login-page>
-  			/index.html
-  		</form-login-page>
-  		<form-error-page>
-  			/index.html
-  		</form-error-page>
-  	</form-login-config>
-  </login-config>
-  
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.1"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+	<display-name>recrutaif</display-name>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	<mime-mapping>
+		<extension>ico</extension>
+		<mime-type>image/x-icon</mime-type>
+	</mime-mapping>
+	<welcome-file-list>
+		<welcome-file>/index.html</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- Session configuration -->
+	<session-config>
+		<cookie-config>
+			<http-only>true</http-only> <!-- Prevent client side scripting from accessing/manipulating session cookie. -->
+		</cookie-config>
+		<tracking-mode>COOKIE</tracking-mode> <!-- This disables URL rewriting. -->
+	</session-config>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Authorize user pages</web-resource-name>
+			<url-pattern>/resources/tokens/*</url-pattern>
+		</web-resource-collection>
+		<!-- OMIT auth-constraint -->
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Admin pages</web-resource-name>
+			<url-pattern>/resources/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>member</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
 </web-app>
