@@ -30,8 +30,10 @@ angular.module('recrutaif').controller('SetorController',function($scope, recurs
                 console.log("entrou no then " + dados);
                 $scope.mensagem = dados.mensagem;
                 //se inclusao retornar true, ele limpa o objeto setor
-                if(dados.inclusao) $scope.setor = {};
-
+                if(dados.inclusao){ 
+                    $scope.setor = {};
+                    // $scope.focado = true;
+                }
                 //se der algum erro, o erro é capturado(catch), e atualizado a mensagem com o erro
             }).catch(function(erro){
                 $scope.mensagem = erro.mensagem;

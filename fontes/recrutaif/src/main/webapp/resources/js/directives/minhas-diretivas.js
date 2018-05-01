@@ -17,4 +17,23 @@ angular.module('minhasDiretivas',[]).directive('meuTable',function(){
     ddo.templateUrl = 'resources/js/directives/lista-setores.html';
 
     return ddo;
-});
+})
+// .directive('meuFocus',function(){
+//     var ddo={};
+
+//     ddo.restrict = "A";
+//     ddo.scope = {
+//         focado : '='
+//     };
+
+//     ddo.link = function(scope, element){
+//         scope.$watch('focado',function(){
+//             if(scope.focado){
+//                 element[0].focus();
+//                 scope.focado = false;
+//             }
+//         });
+//     }
+//     return ddo;
+// })
+;
