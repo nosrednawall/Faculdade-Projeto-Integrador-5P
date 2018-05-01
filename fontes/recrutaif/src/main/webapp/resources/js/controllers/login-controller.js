@@ -13,6 +13,8 @@ angular.module('recrutaif').controller('LoginController', function($scope, $http
                 $location.path('/');
             }, function(erro){
                 console.log(erro);
+
+                $scope.usuario = {};
                 $scope.mensagem = 'Login ou senha inválidos!';
             });
     };
