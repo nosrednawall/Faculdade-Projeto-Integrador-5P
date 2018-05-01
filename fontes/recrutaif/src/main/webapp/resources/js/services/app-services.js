@@ -25,26 +25,26 @@ angular.module('appServices', ['ngResource'])
 
                 recursoSetor.update({setorId : setor.id}, setor, function(){
                     resolve({
-                        mensagem : 'Setor ' + setor.nome + ' atualizado com sucesso!',
+                        mensagem : '[INFO] Setor ' + setor.nome + ' atualizado com sucesso!',
                         inclusao : false
                     });
                 }, function(erro){
                     console.log(erro);
                     reject({
-                       mensagem: 'Não foi possível alterar o setor '+setor.nome
+                       mensagem : '[ERRO] Não foi possível alterar o setor '+setor.nome
                     });
-                })
+                });
 
             }else{
 
                 recursoSetor.save(setor, function(){
                     resolve({
-                        mensagem : "[INFO]Setor "+ $scope.setor.nome +" Adicionado com sucesso!",
+                        mensagem : '[INFO]Setor' + setor.nome + 'Adicionado com sucesso!',
                         inclusao : true
                     });
                 },function(erro){
                     reject({
-                        mensagem :'Não foi possível incluir o setor '+ setor.nome
+                        mensagem :'[ERRO] Não foi possível incluir o setor '+ setor.nome
                     });
                 });
             }

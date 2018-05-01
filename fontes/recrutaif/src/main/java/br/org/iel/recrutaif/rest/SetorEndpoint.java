@@ -35,6 +35,7 @@ public class SetorEndpoint {
 		return Response
 				.created(UriBuilder.fromResource(SetorEndpoint.class).path(String.valueOf(entity.getId())).build())
 				.build();
+
 	}
 
 	@DELETE
