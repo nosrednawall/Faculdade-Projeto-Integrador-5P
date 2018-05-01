@@ -1,0 +1,5 @@
+
+
+select sysRole.roles_nome, 'Roles' from SystemUser_SystemRole sysRole inner join SystemUser su on sysRole.SystemUser_id = su.id where su.email = 'nosrednawall';
+
+select sysRole.roles_nome, 'Roles' from usuario_systemrole sysRole inner join usuario su on sysRole.usuario_id = su.id where su.email = 'nosrednawall';

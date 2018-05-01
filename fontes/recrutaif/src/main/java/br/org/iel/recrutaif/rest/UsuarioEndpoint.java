@@ -28,8 +28,7 @@ public class UsuarioEndpoint {
 
 	@Inject
 	private UsuarioDao dao;
-	
-	
+
 	// método para criar um usuario
 	@POST
 	@Consumes("application/json")

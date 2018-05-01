@@ -41,21 +41,6 @@ public class Usuario implements Serializable {
 	private String senha;
 	private Long matricula;
 	
-	
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	private String email;
 
 	@Temporal(TemporalType.DATE)
@@ -83,6 +68,22 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
+	
+	
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public Calendar getDataAdmissao() {
 		return dataAdmissao;
 	}
