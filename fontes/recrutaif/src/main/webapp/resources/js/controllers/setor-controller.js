@@ -1,41 +1,111 @@
-angular.module('recrutaif').controller('SetorController',function($scope,recursoSetor){
-    //módulos que não são mais utilizados, porque estão sendo injetados pelo recursoSetor: $http,$resource
-
-//módulo controller, para setor
-
-    //variáveis de interação com o scope
-    $scope.setores = [];    //variável responsável pelo loop de setor dentro do scope
-    $scope.filtro = ''; //variável responsável pelo filtro de setores, dentro do scope
-    $scope.mensagem = '';   //variável responsável pela mensagem de interação com o usuário dentro do scope
-
-    // essa variável não é mais utilizada porque está sendo injetada pelo recursoSetor nos módulos acima
-    // var recursoSetor = $resource('rest/setores/:setorId');
-
-    //função busca uma lista de setores
-    recursoSetor.query(function(setores){
-        //salva a lista de setores dentro da variável de escope $setores
-        $scope.setores = setores;
-    }, function(erro){
-        //caso dê erro imprime o erro para o usuário
-        console.log(error);
-        console.log("[ERROR] Erro ao listar os setores");
-    });
-
-    //funcao para remover setor
-    $scope.remover = function(setor){
-
-        //ele tenta remover um setor, passando o id em setor.id ao coringa setorId
-        recursoSetor.delete({setorId : setor.id}, function(){
-
-            //caso dê certo é atualizado a lista e informado o usuário
-            var indiceSetor = $scope.setores.indexOf(setor);
-            $scope.setores.splice(indiceSetor,1);
-            $scope.mensagem = "[INFO] Setor "+setor.nome+" foi removido com sucesso!";
-        }, function(){
-
-            //caso dê erro é informado o usuário
+angular.module('recrutaif').controller('SetorController',function($scope, recursoSetor, $routeParams){
+   
+   //variáveis para interação com o scopo
+    $scope.setor = {};
+    $scope.mensagem = '';
+    
+    //get ou busca setor
+    if($routeParams.setorId){
+        //faz uma requisição get, passando o numero do parametro da url para o coringa, 
+        recursoSetor.get({setorId: $routeParams.setorId},
+            //caso dê certo o que retornar será passado para setor
+            function(setor){
+            $scope.setor = setor;
+        },
+        //caso dê errado será passado mensagem de erro ao usuario
+        function(erro){
             console.log(error);
-            $scope.mensagem = "[ERROR] Erro ao remover o setor" + setor.nome;
+            $scope.mensagem = "[ERROR] Não foi encontrar setor de ID " + $routeParams.setorId;
         });
     };
+
+    //função adiciona um novo setor e ou atualiza um setor existente
+    $scope.submeter = function(){
+        //só será acessado seo scopo de formulario for válido
+        if($scope.formulario.$valid){
+            //verifica se o setor passado possui ID, se sim atualiza
+            if($scope.setor.id){
+                //tenta atuzalizar, caso dê certo informa ao usuário
+                recursoSetor.update({setorId : $scope.setor.id}, $scope.setor, function(){
+                 
+                    console.log("[INFO]Setor "+ $scope.setor.nome +" foi atualizado com sucesso!");
+                    $scope.mensagem = "[INFO]Setor "+ $scope.setor.nome +" foi atualizado com sucesso!";
+                    $scope.setor = '';
+
+                    //caso dê erro informa ao usuário
+                }, function(erro){
+
+                    console.log("[ERROR] Não foi possível atualizar o setor");
+                    $scope.mensagem = "[ERROR] Não foi possível atualizar o setor";
+
+                });
+            }else{
+                //se não insere
+                recursoSetor.save($scope.setor,function(){
+                    console.log("[INFO]Setor "+ $scope.setor.nome +" Adicionado com sucesso!");
+                    $scope.mensagem = "[INFO]Setor "+ $scope.setor.nome +" Adicionado com sucesso!";
+
+                    //para apagar os campos do html, é informado um objeto vazio
+                    $scope.setor = '';
+                }, function(erro){
+                    console.log("[ERROR] Não foi possível incluir setor");
+                    $scope.mensagem = "[ERROR] Não foi possível incluir setor";
+                    
+                });
+            }
+        }
+    };
 });
+
+//antes de refatorar
+
+// angular.module('recrutaif').controller('AdicionaSetorController',function($scope, recursoSetor, $routeParams){
+//     $scope.setor = {};
+//     $scope.mensagem = '';
+    
+//     if($routeParams.setorId){
+//         $http.get('rest/setores/' + $routeParams.setorId)
+//         .success(function(setor){
+//             $scope.setor = setor;
+//         })
+//         .error(function(error){
+//             console.log(error);
+//             $scope.mensagem = "[ERROR] Não foi encontrar setor de ID " + $routeParams.setorId;
+//         });
+//     };
+
+//     $scope.submeter = function(){
+//         if($scope.formulario.$valid){
+//             if($scope.setor.id){
+
+//                 recursoSetor.update({setorId : $scope.setor.id}, $scope.setor, function(){
+                 
+//                     console.log("[INFO]Setor "+ $scope.setor.nome +" foi atualizado com sucesso!");
+//                     $scope.mensagem = "[INFO]Setor "+ $scope.setor.nome +" foi atualizado com sucesso!";
+//                     $scope.setor = '';
+
+//                 }, function(erro){
+
+//                     console.log("[ERROR] Não foi possível atualizar o setor");
+//                     $scope.mensagem = "[ERROR] Não foi possível atualizar o setor";
+
+//                 });
+//             }else{
+//                 $http.post('rest/setores/', $scope.setor)
+//                 .success(function(){
+//                     console.log("[INFO]Setor "+ $scope.setor.nome +" Adicionado com sucesso!");
+//                     $scope.mensagem = "[INFO]Setor "+ $scope.setor.nome +" Adicionado com sucesso!";
+
+//                     $scope.setor = '';
+//                 })
+//                 .error(function(){
+//                     console.log("[ERROR] Não foi possível incluir setor");
+//                     $scope.mensagem = "[ERROR] Não foi possível incluir setor";
+                    
+//                 });
+//             }
+//         }
+//     };
+// });
+
+

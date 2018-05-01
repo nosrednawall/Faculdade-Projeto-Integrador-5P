@@ -19,12 +19,18 @@
 
 <body> 
     <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center">Recrutaif</h1>
+        </div>
+    </div>
+            
+    <div class="container">
         <!-- chama o módulo que coordena a view -->
         <ng-view></ng-view>
     </div> <!--fim do container-->
 
     <!-- rodapé -->
-    <hr class="hr">
+    <hr>
     <div id="footer">
         <div class="container">
             <p>Powered by <a href="https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/graphs/contributors">RecrutaIf Team</a></p>
@@ -45,8 +51,8 @@
     <script src="resources/js/main.js"></script>
 
     <!--controllers da aplicação-->
+    <script src="resources/js/controllers/setores-controller.js"></script>
     <script src="resources/js/controllers/setor-controller.js"></script>
-    <script src="resources/js/controllers/adiciona-setor-controller.js"></script>
 
     <!--Diretivas da aplicação-->
     <script src="resources/js/directives/minhas-diretivas.js"></script>

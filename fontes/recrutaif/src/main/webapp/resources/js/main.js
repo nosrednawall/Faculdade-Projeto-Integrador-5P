@@ -10,17 +10,17 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appService
     //configurração de rota, sempre a rota, o seu template e o controller correspondente
     $routeProvider.when('/setores',{
         templateUrl: 'resources/partials/principal.html',
-        controller: 'SetorController'
+        controller: 'SetoresController'
     });
 
     $routeProvider.when('/setores/new',{
         templateUrl: 'resources/partials/adiciona-setor.html',
-        controller: 'AdicionaSetorController'
+        controller: 'SetorController'
     });
     
     $routeProvider.when('/setores/edit/:setorId',{
         templateUrl: 'resources/partials/adiciona-setor.html',
-        controller: 'AdicionaSetorController'
+        controller: 'SetorController'
     });
     
     //caso o usuario digite algum caminho que não exista ele será redirecionado
