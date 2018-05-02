@@ -6,8 +6,6 @@ import java.util.List;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 
-import org.jboss.resteasy.util.Base64;
-
 public class SecurityFilter implements ContainerRequestFilter {
 
 	private static final String AUTHORIZATION_HEADER_KEY = "Authotization";
