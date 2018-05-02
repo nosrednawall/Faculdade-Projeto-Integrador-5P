@@ -33,35 +33,6 @@
 				<version>2.27</version>
 				<type>pom</type>
 			</dependency>
-			<!-- tiradas desse site https://medium.com/@swhp/secure-javaee-rest-api-with-soteria-and-json-web-token-a6587c99924e -->
-			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-api</artifactId>
-				<version>7.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.glassfish.soteria</groupId>
-				<artifactId>javax.security.enterprise</artifactId>
-				<version>1.0</version>
-			</dependency>
-			<dependency>
-				<groupId>com.nimbusds</groupId>
-				<artifactId>nimbus-jose-jwt</artifactId>
-				<version>5.1</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.json.bind</groupId>
-				<artifactId>javax.json.bind-api</artifactId>
-				<version>1.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse</groupId>
-				<artifactId>yasson</artifactId>
-				<version>1.0</version>
-			</dependency>
-
-
 
 		</dependencies>
 	</dependencyManagement>
