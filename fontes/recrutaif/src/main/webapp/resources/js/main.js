@@ -9,7 +9,7 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appService
 
     //configurração de rota, sempre a rota, o seu template e o controller correspondente
     $routeProvider.when('/setores',{
-        templateUrl: 'resources/partials/principal.html',
+        templateUrl: 'resources/partials/crud-setores.html',
         controller: 'SetoresController'
     });
 
