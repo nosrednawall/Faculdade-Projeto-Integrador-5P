@@ -28,7 +28,12 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appService
         controller: 'LoginController'
     });
 
+    $routeProvider.when('/principal', {
+        templateUrl: 'resources/partials/principal.html',
+        // controller: 'LoginController'
+    });
+
     
     //caso o usuario digite algum caminho que não exista ele será redirecionado
-    $routeProvider.otherwise({ redirectTo: '/setores'});
+    $routeProvider.otherwise({ redirectTo: '/principal'});
 }); //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos
