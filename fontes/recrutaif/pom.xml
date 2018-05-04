@@ -16,16 +16,6 @@
 			<artifactId>javaee-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
-	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-api</artifactId>
-				<version>7.0</version>
-				<scope>provided</scope>
-			</dependency>
 			<!-- https://mvnrepository.com/artifact/org.glassfish.jersey/project -->
 			<dependency>
 				<groupId>org.glassfish.jersey</groupId>
@@ -44,6 +34,16 @@
 				<artifactId>jjwt</artifactId>
 				<version>0.9.0</version>
 			</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>7.0</version>
+				<scope>provided</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 	<properties>
