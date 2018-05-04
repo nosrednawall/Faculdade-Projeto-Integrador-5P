@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //<<<<<<< HEAD
 ////package br.org.iel.recrutaif.security;
 ////
@@ -30,6 +31,8 @@
 ////
 //////tava assistindo a https://www.youtube.com/watch?v=W5jm4E0TTlA video
 //=======
+=======
+>>>>>>> 08206b6b8efb88aaa7cce864055a468fce461180
 //package br.org.iel.recrutaif.security;
 //
 //import java.io.IOException;
@@ -58,4 +61,8 @@
 //
 //
 ////tava assistindo a https://www.youtube.com/watch?v=W5jm4E0TTlA video
+<<<<<<< HEAD
 //>>>>>>> 42308dff1e2df5baa90cf28341ee819c522f22df
+=======
+
+>>>>>>> 08206b6b8efb88aaa7cce864055a468fce461180
