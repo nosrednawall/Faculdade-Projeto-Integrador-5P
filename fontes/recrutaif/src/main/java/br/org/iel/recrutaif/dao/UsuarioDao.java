@@ -17,8 +17,6 @@ public class UsuarioDao {
 	
 	public void create(Usuario entity) {
 		em.persist(entity);
-		
-
 	}
 	
 	public void deletaPorId(Long id) {
@@ -47,4 +45,8 @@ public class UsuarioDao {
 		}
 		return findAllQuery.getResultList();
 	}
+	
+
+	
+	
 }

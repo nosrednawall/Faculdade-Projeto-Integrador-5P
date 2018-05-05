@@ -2,6 +2,7 @@ package br.org.iel.recrutaif.rest;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.ejb.Stateless;
@@ -49,14 +50,22 @@ public class LoginEndpoint {
 			e.printStackTrace();
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
+		
+		
 	}
 
 	private void validarCrendenciais(Usuario crendencial) throws Exception {
 		try {
-			if(!crendencial.getEmail().equals("teste@teste.com") || !crendencial.getSenha().equals("123"))
-				throw new Exception("Crendencias não válidas!");
-
+			final List<Usuario> results = dao.listaTodos(0, 0);
+			
+			for(Usuario usuario : results) {
+				if(crendencial.getEmail().equals(usuario.getEmail()) || crendencial.getSenha().equals(usuario.getSenha())) {
+					return;
+				}
+			}
+			throw new Exception("Crendencias não válidas!");
 		} catch (Exception e) {
+			
 			throw e;
 		}
 
