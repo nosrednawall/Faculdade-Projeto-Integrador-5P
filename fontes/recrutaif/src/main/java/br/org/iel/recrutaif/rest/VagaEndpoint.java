@@ -20,7 +20,9 @@ import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.dao.VagaDao;
 import br.org.iel.recrutaif.entity.Vaga;
+import br.org.iel.recrutaif.security.Seguro;
 
+@Seguro
 @Stateless
 @Path("/vagas")
 public class VagaEndpoint {

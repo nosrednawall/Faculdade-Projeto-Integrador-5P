@@ -44,7 +44,7 @@ public class Usuario implements Serializable {
 	// private LocalDateTime dataAdmissao;
 
 	@Enumerated
-	private TipoUsuario permissao;
+	private NivelPermissao permissao;
 
 	//para o hibernate
 	@Deprecated
@@ -52,7 +52,7 @@ public class Usuario implements Serializable {
 	
 	//um usuario só pode ser criado com os campos abaixo
 	public Usuario(String nome, String senha, Long matricula, Calendar dataAdmissao,
-			TipoUsuario permissao, String email) {
+			NivelPermissao permissao, String email) {
 		this.nome = nome;
 		this.senha = senha;
 		this.matricula = matricula;
@@ -105,11 +105,11 @@ public class Usuario implements Serializable {
 		return matricula;
 	}
 
-	public TipoUsuario getPermissao() {
+	public NivelPermissao getPermissao() {
 		return permissao;
 	}
 
-	public void setPermissao(TipoUsuario permissao) {
+	public void setPermissao(NivelPermissao permissao) {
 		this.permissao = permissao;
 	}
 }

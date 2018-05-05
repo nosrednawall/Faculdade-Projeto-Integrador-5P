@@ -20,7 +20,9 @@ import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.dao.SetorDao;
 import br.org.iel.recrutaif.entity.Setor;
+import br.org.iel.recrutaif.security.Seguro;
 
+@Seguro
 @Stateless
 @Path("/setores")
 public class SetorEndpoint {
