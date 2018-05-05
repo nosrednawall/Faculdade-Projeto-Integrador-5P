@@ -9,28 +9,27 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appService
 
     //configurração de rota, sempre a rota, o seu template e o controller correspondente
     $routeProvider.when('/setores',{
-        templateUrl: 'resources/partials/crud-setores.html',
+        templateUrl: 'resources/js/angular/setor/setores.html',
         controller: 'SetoresController'
     });
 
-    $routeProvider.when('/setores/new',{
-        templateUrl: 'resources/partials/adiciona-setor.html',
+    $routeProvider.when('/setor/new',{
+        templateUrl: 'resources/js/angular/setor/setor.html',
         controller: 'SetorController'
     });
     
-    $routeProvider.when('/setores/edit/:setorId',{
-        templateUrl: 'resources/partials/adiciona-setor.html',
+    $routeProvider.when('/setor/edit/:setorId',{
+        templateUrl: 'resources/angular/setor/setor.html',
         controller: 'SetorController'
     });
     
     $routeProvider.when('/login', {
-        templateUrl: 'resources/partials/login.html',
+        templateUrl: 'resources/js/angular/login/login.html',
         controller: 'LoginController'
     });
 
     $routeProvider.when('/principal', {
-        templateUrl: 'resources/partials/principal.html',
-        // controller: 'LoginController'
+        templateUrl: 'resources/js/angular/principal/principal.html',
     });
 
     
