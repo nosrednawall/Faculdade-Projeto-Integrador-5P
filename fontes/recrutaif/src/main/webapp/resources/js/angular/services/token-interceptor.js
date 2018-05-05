@@ -1,6 +1,7 @@
-angular.module('recrutaif')
-    .factory('tokenInterceptor', function($q, $window, $location) {
+angular.module('recrutaif')     //faz parte do módulo recrutaif
+    .factory('tokenInterceptor', function($q, $window, $location) {     //o factory é quem cria o servico
 
+        //é o objeto configurado que será retornado no final
         var interceptor = {};
 
         interceptor.request = function(config) {
@@ -32,6 +33,7 @@ angular.module('recrutaif')
             return $q.reject(rejection);
         }
 
+        //objeto retornado
     return interceptor;
 
 });
