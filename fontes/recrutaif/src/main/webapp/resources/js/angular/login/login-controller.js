@@ -7,12 +7,16 @@ angular.module('recrutaif').controller('LoginController', function($scope, $http
 
         var usuario = $scope.usuario;
 
-        $http.post('rest/autenticar', 
-            {login: usuario.login, senha: usuario.senha })
+        $http.post('rest/login', 
+            {email: usuario.email, senha: usuario.senha })
             .then(function(){
                 $location.path('/');
+
+                console.log('Entrou em deu certo')
+
             }, function(erro){
                 console.log(erro);
+                console.log('Entrou em deu errado')
 
                 $scope.usuario = {};
                 $scope.mensagem = 'Login ou senha inválidos!';
