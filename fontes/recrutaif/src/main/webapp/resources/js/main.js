@@ -1,4 +1,4 @@
-angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appServices','ngResource'])
+angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','ngResource','appServices'])
 //angular = variável global do angular; .module = cria um módulo; [módulos em que a main é dependente]
 
 //função para rotas, ex quero ver uma lista de setores, vou em /recrutaif/#/setores
@@ -46,5 +46,5 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appService
 
     
     //caso o usuario digite algum caminho que não exista ele será redirecionado
-    $routeProvider.otherwise({ redirectTo: '/principal'});
+    $routeProvider.otherwise({ redirectTo: '/setores'});
 }); //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos

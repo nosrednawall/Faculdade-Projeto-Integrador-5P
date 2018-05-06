@@ -29,7 +29,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Path("/login")
 public class LoginEndpoint {
 
-	private static final String FRASE_SEGREDO = "Hipopotomonstrosesquipedaliofobia";
+	private static final String FRASE_SEGREDO = "Hipopo";
 
 	@Inject
 	UsuarioDao dao;
@@ -52,7 +52,9 @@ public class LoginEndpoint {
 			String token = gerarToken(entity.getEmail(), 1);
 
 			System.out.println("Bearer"+token);
-			return Response.ok("Bearer"+token).build();
+			
+			String tokenGson = gson.toJson(token);
+			return Response.ok(tokenGson).build();
 
 		} catch (Exception e) {
 

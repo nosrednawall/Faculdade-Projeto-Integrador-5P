@@ -9,6 +9,9 @@ angular.module('recrutaif')     //faz parte do módulo recrutaif
         //funcão responsável por colocar o token recebido em cada requisicao ao servidor
         //o config é o proprio token
         interceptor.request = function(config) {
+
+            console.log(config.headers);//teste
+
             // ele vai receber ele mesmo, caso não exista vai receber um objeto em branco
             config.headers = config.headers || {};
             
@@ -27,6 +30,8 @@ angular.module('recrutaif')     //faz parte do módulo recrutaif
         interceptor.response = function (response) {
             //var token recebida via header
             var token = response.headers('Bearer');
+
+            console.log(token);
             
             //verificar se o token não é null
             if (token != null) {
