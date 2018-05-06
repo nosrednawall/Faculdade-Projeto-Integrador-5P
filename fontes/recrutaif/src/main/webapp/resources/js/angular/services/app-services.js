@@ -11,19 +11,6 @@ angular.module('appServices', ['ngResource'])
             }
         });
     })
-    //login service
-    .factory('authFactory', ['$rootScope', '$http', function ($rootScope, $http) {
-    
-        var authFactory = {
-            authData: undefined
-        };
-
-        authFactory.login = function (user) {
-            return $http.post('http://localhost/recrutaif/rest/login', user);
-        };
-
-    return authFactory;
-    }])
                                                     //o $q serve para trabalhar com as promessas
     .factory('cadastroDeSetor', function(recursoSetor, $q){
 

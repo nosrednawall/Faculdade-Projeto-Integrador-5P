@@ -7,11 +7,7 @@ angular.module('recrutaif').controller('LoginController', function($scope, $http
 
         var usuario = $scope.usuario;
 
-        $http.post('rest/login', 
-            {
-                email: usuario.email,
-                senha: usuario.senha 
-            })
+        $http.post('rest/login', {email: usuario.email,senha: usuario.senha })
             .then(function(){
                 $location.path('/principal');
 

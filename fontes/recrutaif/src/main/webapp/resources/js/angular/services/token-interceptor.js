@@ -18,7 +18,7 @@ angular.module('recrutaif')     //faz parte do módulo recrutaif
                 //se existir ele é colocado no header   
                 console.log(token);
                 console.log('Enviando token já obtido em cada requisição');
-                config.headers['x-access-token'] = $window.sessionStorage.token;
+                config.headers['Bearer'] = $window.sessionStorage.token;
             }
             return config;
         },
@@ -26,7 +26,8 @@ angular.module('recrutaif')     //faz parte do módulo recrutaif
         //essa chamada response é chamada toda vez que o servidor manda algo para a aplicacao
         interceptor.response = function (response) {
             //var token recebida via header
-            var token = response.headers('x-access-token');
+            var token = response.headers('Bearer');
+            
             //verificar se o token não é null
             if (token != null) {
                 //se não for é adicionado o token na sessão da aba do navegador, fechou a aba perdeu o token
