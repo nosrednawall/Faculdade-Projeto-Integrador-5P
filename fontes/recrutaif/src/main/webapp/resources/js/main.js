@@ -2,10 +2,14 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appService
 //angular = variável global do angular; .module = cria um módulo; [módulos em que a main é dependente]
 
 //função para rotas, ex quero ver uma lista de setores, vou em /recrutaif/#/setores
-.config(function($routeProvider){
+.config(function($routeProvider, $locationProvider, $httpProvider){
 
     //oculta o # dos enderecos, porém o servidor não está preparado
     // $locationProvider.html5Mode(true);
+
+    //Esse é o interceptador de url na lista de urls
+    $httpProvider.interceptors.push('tokenInterceptor');
+
 
     //configurração de rota, sempre a rota, o seu template e o controller correspondente
     $routeProvider.when('/setores',{
@@ -28,8 +32,16 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','appService
         controller: 'LoginController'
     });
 
+    // $routeProvider.when('/rota-segura', {
+    //     templateUrl: 'resources/js/angular/principal/principal.html',
+    //     controller: 'mainController',
+    //     controllerAs: 'vm',
+    //     authorize: true
+    //   });
+
+
     $routeProvider.when('/principal', {
-        templateUrl: 'resources/js/angular/principal/principal.html',
+        templateUrl: 'resources/js/angular/login/login.html',
     });
 
     

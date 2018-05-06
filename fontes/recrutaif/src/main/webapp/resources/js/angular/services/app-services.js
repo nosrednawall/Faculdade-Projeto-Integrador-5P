@@ -19,7 +19,7 @@ angular.module('appServices', ['ngResource'])
         };
 
         authFactory.login = function (user) {
-            return $http.post('http://localhost/api/auth/', user);
+            return $http.post('http://localhost/recrutaif/rest/login', user);
         };
 
     return authFactory;
@@ -64,4 +64,4 @@ angular.module('appServices', ['ngResource'])
             });
         };
         return servico;
-    });
+});

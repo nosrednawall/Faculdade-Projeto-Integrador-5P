@@ -15,6 +15,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.xml.bind.DatatypeConverter;
 
+import com.google.gson.Gson;
+
 import br.org.iel.recrutaif.dao.UsuarioDao;
 import br.org.iel.recrutaif.entity.NivelPermissao;
 import br.org.iel.recrutaif.entity.Usuario;
@@ -35,17 +37,22 @@ public class LoginEndpoint {
 	// recebe um usuário
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response fazerLogin(Usuario entity) {
+//	@Consumes("application/json")
+	public Response fazerLogin(String usuarioGson) {
 
 		try {
+			
+			Gson gson = new Gson();
+			
+			Usuario entity = gson.fromJson(usuarioGson, Usuario.class);
+			
 			// valida o usuario
 			validarCrendenciais(entity);
 			// gera o token
 			String token = gerarToken(entity.getEmail(), 1);
 
-			System.out.println(token);
-
-			return Response.ok(token).build();
+			System.out.println("Bearer"+token);
+			return Response.ok("Bearer"+token).build();
 
 		} catch (Exception e) {
 
@@ -73,15 +80,23 @@ public class LoginEndpoint {
 
 	}
 
-	private String gerarToken(String login, Integer expiraEmDias) {
+	//pegou o email e a quantidade de dias para expirar o token
+	private String gerarToken(String email, Integer expiraEmDias) {
+		
+		System.out.println(email);
+		System.out.println(expiraEmDias);
+
 		// Defini qual vai ser o algotirmo da assinatura no caso vai ser o HMAC SHA512
 		SignatureAlgorithm algoritimoAssinatura = SignatureAlgorithm.HS512;
+		
 		// Data atual que data que o token foi gerado
 		Date agora = new Date();
+		
 		// Define até que data o token é pelo quantidade de dias que foi passo pelo
 		// parametro expiraEmDias
 		Calendar expira = Calendar.getInstance();
 		expira.add(Calendar.DAY_OF_MONTH, expiraEmDias);
+		
 		// Encoda a frase sergredo pra base64 pra ser usada na geração do token
 		byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(FRASE_SEGREDO);
 
@@ -89,7 +104,7 @@ public class LoginEndpoint {
 
 		// E finalmente utiliza o JWT builder pra gerar o token
 		JwtBuilder construtor = Jwts.builder().setIssuedAt(agora)// Data que o token foi gerado
-				.setIssuer(login)// Coloca o login do usuario mais podia qualquer outra informação
+				.setIssuer(email)// Coloca o login do usuario mais podia qualquer outra informação
 				.signWith(algoritimoAssinatura, key)// coloca o algoritimo de assinatura e frase segredo ja encodada
 				.setExpiration(expira.getTime());// coloca até que data que o token é valido
 
@@ -118,56 +133,4 @@ public class LoginEndpoint {
 		return NivelPermissao.ADMINISTRADOR;
 
 	}
-
-	// backup
-	// @POST
-	// @Consumes("application/json")
-	// public Response fazerLogin(String credenciaisJson) {
-	//
-	// try {
-	// Gson gson = new Gson();
-	// Credencial credencial = gson.fromJson(credenciaisJson, Credencial.class);
-	// String token = gerarToken(credencial.getEmail(), 1);
-	// return Response.ok(token).build();
-	//
-	// } catch (Exception e) {
-	//
-	// System.out.println(credenciaisJson);
-	// e.printStackTrace();
-	// return Response.status(Status.UNAUTHORIZED).build();
-	// }
-	//
-	// }
-	//
-	// private void validarCredenciais(Credencial credencial) throws Exception {
-	//
-	// try {
-	//
-	//
-	//
-	// if (!credencial.getEmail().equals("teste") ||
-	// !credencial.getSenha().equals("123"));
-	// throw new Exception("Crendencias não válidas!");
-	// } catch (Exception e) {
-	// throw e;
-	// }
-	// }
-	//
-	// private String gerarToken(String email, Integer expiraEmDias) {
-	//
-	// SignatureAlgorithm algoritmoAssinatura = SignatureAlgorithm.HS512;
-	// Date agora = new Date();
-	// Calendar expira = Calendar.getInstance();
-	// expira.add(Calendar.DAY_OF_MONTH, expiraEmDias);
-	// byte[] apiKeySecretBytes =
-	// DatatypeConverter.parseBase64Binary(FRASE_SEGREDO);
-	// SecretKeySpec key = new SecretKeySpec(apiKeySecretBytes,
-	// algoritmoAssinatura.getJcaName());
-	// JwtBuilder contrutor =
-	// Jwts.builder().setIssuedAt(agora).setIssuer(email).signWith(algoritmoAssinatura,
-	// key).setExpiration(expira.getTime());
-	// return contrutor.compact();
-	//
-	// }
-
 }
