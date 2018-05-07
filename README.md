@@ -114,13 +114,17 @@ Se estiver com dificuldades execute os comandos abaixo dentro do psql postgres:
 Após isso apenas click em **Start Server** e acesse o sistema em http://localhost:8080/recrutaif
 
 ## Aviso
-> O Software está em desenvolvimento, não estando próprio para qualquer uso não acadêmico, dúvidas e ou melhorias porfavor faça um [issue](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/issues)
+> O Software está em desenvolvimento, não estando próprio para qualquer uso não acadêmico, dúvidas e ou melhorias por favor faça um [issue](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/issues)
 >
 
 # Equipe
 
 [Everton Sausen](https://github.com/EvertonSausen) 	A.K.A  **Gerente de projeto**
+
 [Joziel Alves](https://github.com/jozielalves) A.K.A  **Analista de Requisitos**
+
 [Alisson](https://github.com/alibueno) A.K.A  **Analista de testes**
+
 [Fernando](https://github.com/FernandoAndreLima) A.K.A  **Analista de sistema**
+
 [Anderson J.S. Inácio](https://github.com/nosrednawall) A.K.A **DevOps**
