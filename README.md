@@ -45,7 +45,7 @@ Caso não tenha adicionado o wildfly, veja [esse tutorial](https://pablonobrega.
 Abra o standalone.xml
 ![](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/doc/DevOps/ConfiguracoesPersonalizadas/imagens/standlone.png?raw=true)
 
-Aperte Control+F para abrir a janela de busca, e busque **datasources**, será abaerto uma tela assim:
+Aperte Control+F para abrir a janela de busca, e busque **datasources**, será aberto uma tela assim:
 ![datasources](https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/blob/master/doc/DevOps/ConfiguracoesPersonalizadas/imagens/datasources.png?raw=true)
 
 Dentro das tags **datasources** você deverá colar o código abaixo
@@ -102,6 +102,7 @@ Acesse o psql do postgres, crie o seu **usuário** e depois crie o database **re
 
 Se estiver com dificuldades execute os comandos abaixo dentro do psql postgres:
 >create user sa_recrutaif with password 'abc';
+
 >create database recrutaif with owner sa_recrutaif;
 
 # Executando
