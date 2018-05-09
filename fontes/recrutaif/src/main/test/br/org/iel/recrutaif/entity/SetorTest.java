@@ -1,4 +1,23 @@
-public class TestaSetor {
+package br.org.iel.recrutaif.entity;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class SetorTest {
+
+	@Test
+	void retornaErroSeOArquivoForNaoForString() {
+		
+
+		fail("Not yet implemented");
+	}
+
+}
+
+
+
+//public class TestaSetor {
 
 //	private HttpServer server;
 //	private Client client;
@@ -71,4 +90,3 @@ public class TestaSetor {
 //		// Assert.assertTrue(conteudo.contains("Tablet"));
 //		Assert.assertEquals("Tablet", carrinhoCarregado.getProdutos().get(0).getNome());
 //	}
-}

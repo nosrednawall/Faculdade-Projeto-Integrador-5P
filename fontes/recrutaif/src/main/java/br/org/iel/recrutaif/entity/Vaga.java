@@ -1,7 +1,9 @@
 package br.org.iel.recrutaif.entity;
 
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -123,5 +125,7 @@ public class Vaga implements Serializable {
 	public Calendar getDataCriacao() {
 		return dataCriacao;
 	}
+
+
 
 }
