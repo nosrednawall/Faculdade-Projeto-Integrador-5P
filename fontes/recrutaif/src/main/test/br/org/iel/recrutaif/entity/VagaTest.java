@@ -1,8 +1,8 @@
 package br.org.iel.recrutaif.entity;
 
-import java.io.ByteArrayInputStream;
+import static org.junit.Assert.assertTrue;
+
 import java.text.ParseException;
-import java.util.Collection;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,17 +18,12 @@ public class VagaTest {
 	@Test
 	public void deveRetornarErroSeOCampoEstiverVazio() throws ParseException {
 		
-		String conteudo = "";
-		ByteArrayInputStream input = new ByteArrayInputStream(new byte[0]);
-		Vaga importador = new Vaga();
+		String conteudo = "neiueieiiewhieshihehiu";
+		Vaga vagaTeste = new Vaga();
 		
-		Collection<Vaga> Titulo = importador(input);
+		vagaTeste.setTitulo(conteudo);
 		
-//		Collection<titulo> Titulo  = importador.(input);
-		
-		
-		
-//		assertTrue("O campo está vazio", Titulo.isEmpty());
+		assertTrue("O campo está vazio", vagaTeste.getTitulo().isEmpty());
 		
 		
 }
