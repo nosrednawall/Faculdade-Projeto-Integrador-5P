@@ -11,6 +11,17 @@ angular.module('appServices', ['ngResource'])
             }
         });
     })
+
+        //cria uma fabrica de recursos
+        .factory('recursoVaga',function($resource){
+
+            //retorna um recurso
+            return $resource('rest/vagas/:vagaId', null,{
+                update :{
+                    method: 'PUT' //Estudar 
+                }
+            });
+        })
                                                     //o $q serve para trabalhar com as promessas
     .factory('cadastroDeSetor', function(recursoSetor, $q){
 

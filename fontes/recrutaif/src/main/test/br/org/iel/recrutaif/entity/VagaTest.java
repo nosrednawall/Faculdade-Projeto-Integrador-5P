@@ -1,5 +1,7 @@
 package br.org.iel.recrutaif.entity;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.ByteArrayInputStream;
 import java.text.ParseException;
 import java.util.Collection;
@@ -22,15 +24,20 @@ public class VagaTest {
 		ByteArrayInputStream input = new ByteArrayInputStream(new byte[0]);
 		Vaga importador = new Vaga();
 		
-		Collection<Vaga> Titulo = importador(input);
+		Collection<Setor> titulo = importador.getSetores();
 		
 //		Collection<titulo> Titulo  = importador.(input);
 		
 		
 		
-//		assertTrue("O campo está vazio", Titulo.isEmpty());
+		assertTrue("O campo está vazio", titulo.isEmpty());
 		
 		
+}
+
+private Collection<Vaga> importador(String conteudo) {
+	// TODO Auto-generated method stub
+	return null;
 }
 
 }
