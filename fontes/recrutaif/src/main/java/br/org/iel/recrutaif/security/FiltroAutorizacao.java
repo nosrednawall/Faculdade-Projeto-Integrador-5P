@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Priority;
+import javax.ejb.Stateless;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -28,6 +29,7 @@ import br.org.iel.recrutaif.rest.LoginEndpoint;
 //Nesse caso vai ser executada depois do FiltroAutenticacao,
 //pois a prioridade AUTHENTICATION é maio que o do AUTHORIZATION
 @Priority(Priorities.AUTHORIZATION)
+@Stateless
 public class FiltroAutorizacao implements ContainerRequestFilter {
 
 	//O JAX-RS faz a injeção do ResourceInfoque vai ter os informações

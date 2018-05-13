@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.Principal;
 
 import javax.annotation.Priority;
+import javax.ejb.Stateless;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
@@ -23,6 +24,7 @@ import io.jsonwebtoken.Claims;
 // E prioridade de execucao, pois podemos ter outras classe filtro
 // que devem ser executas em uma ordem expecifica
 @Priority(Priorities.AUTHENTICATION)
+@Stateless
 public class FiltroAutenticacao implements ContainerRequestFilter {
 
 	// Aqui fazemos o override do metodo filter que tem como parametro
@@ -36,7 +38,7 @@ public class FiltroAutenticacao implements ContainerRequestFilter {
 
 		System.out.println(autorizacaoNoHeader);
 		
-		if (autorizacaoNoHeader == null || !autorizacaoNoHeader.startsWith("Bearer ")) {
+		if (autorizacaoNoHeader == null || !autorizacaoNoHeader.startsWith("Bearer")) {
 			throw new NotAuthorizedException("Authorization header precisa ser provido");
 		}
 		// extrai o token do header

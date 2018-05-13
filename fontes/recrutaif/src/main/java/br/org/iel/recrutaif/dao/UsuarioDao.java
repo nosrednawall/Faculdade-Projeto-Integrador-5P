@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import br.org.iel.recrutaif.entity.Credencial;
 import br.org.iel.recrutaif.entity.Usuario;
 
 @Stateless
@@ -19,16 +20,17 @@ public class UsuarioDao {
 		em.persist(entity);
 	}
 	
-	public void deletaPorId(Long id) {
+	public void deletaPorId(Integer id) {
 		Usuario entity = em.find(Usuario.class, id);
 		if(entity != null) {
 			em.remove(entity);
 		}
 	}
 	
-	public Usuario buscaPorId(Long id) {
+	public Usuario buscaPorId(Integer id) {
 		return em.find(Usuario.class, id);
 	}
+	
 	
 	public Usuario atualiza(Usuario entity) {
 		return em.merge(entity);
@@ -47,6 +49,18 @@ public class UsuarioDao {
 	}
 	
 
-	
+    public List<Usuario> getBuscaPorEmail(Credencial credenciais) {
+
+        String jpql = "select distinct avg(u.email) from Usuario u where u.email=:pEmail "
+                + "and u.senha=:pSenha";
+
+        TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+
+        query.setParameter("pEmail", credenciais.getEmail());
+        query.setParameter("pSenha", credenciais.getSenha());
+
+        return query.getResultList();
+
+    }
 	
 }

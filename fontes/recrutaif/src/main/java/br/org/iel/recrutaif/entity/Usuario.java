@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,66 +32,43 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
-	private Long id;
+	private Integer id;
 
 	private String nome;
 	private String senha;
-	private Long matricula;
+	private Integer matricula;
 	
+	public Integer getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Integer matricula) {
+		this.matricula = matricula;
+	}
+	@Column(unique=true)
 	private String email;
 
 	@Temporal(TemporalType.DATE)
 	private Calendar dataAdmissao;
 	// private LocalDateTime dataAdmissao;
 
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private NivelPermissao permissao;
 
-	//para o hibernate
-	@Deprecated
-	public Usuario() {}
-	
-	//um usuario só pode ser criado com os campos abaixo
-	public Usuario(String nome, String senha, Long matricula, Calendar dataAdmissao,
-			NivelPermissao permissao, String email) {
-		this.nome = nome;
-		this.senha = senha;
-		this.matricula = matricula;
-		this.dataAdmissao = dataAdmissao;
-		this.permissao = permissao;
-		this.email = email;
-	}
-
-	public Usuario(String email, String senha) {
-		this.senha = senha;
-		this.email = email;
-	}
-	
-	
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	public Calendar getDataAdmissao() {
-		return dataAdmissao;
-	}
-
-	public Long getId() {
+	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
 		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSenha() {
@@ -101,8 +79,21 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public Long getMatricula() {
-		return matricula;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Calendar getDataAdmissao() {
+		return dataAdmissao;
+	}
+
+	public void setDataAdmissao(Calendar dataAdmissao) {
+		this.dataAdmissao = dataAdmissao;
 	}
 
 	public NivelPermissao getPermissao() {
@@ -112,4 +103,9 @@ public class Usuario implements Serializable {
 	public void setPermissao(NivelPermissao permissao) {
 		this.permissao = permissao;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }

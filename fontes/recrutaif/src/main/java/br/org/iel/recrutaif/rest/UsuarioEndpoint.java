@@ -44,7 +44,7 @@ public class UsuarioEndpoint {
 	@GET
 	@Path("/{id:[0-9][0-9]}")
 	@Produces("application/json")
-	public Response buscaPorId(@PathParam("id") Long id) {
+	public Response buscaPorId(@PathParam("id") Integer id) {
 		Usuario entity;
 		try {
 			entity = dao.buscaPorId(id);
@@ -68,7 +68,7 @@ public class UsuarioEndpoint {
 	@PUT
 	@Path("/{id:[0-9][0-9]*}")
 	@Consumes("application/json")
-	public Response update(@PathParam("id") Long id, Usuario entity) {
+	public Response update(@PathParam("id") Integer id, Usuario entity) {
 		if (entity == null) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}

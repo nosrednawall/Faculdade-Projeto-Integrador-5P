@@ -2,15 +2,17 @@ package br.org.iel.recrutaif.rest;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.xml.bind.DatatypeConverter;
@@ -18,12 +20,13 @@ import javax.xml.bind.DatatypeConverter;
 import com.google.gson.Gson;
 
 import br.org.iel.recrutaif.dao.UsuarioDao;
+import br.org.iel.recrutaif.entity.Credencial;
 import br.org.iel.recrutaif.entity.NivelPermissao;
-import br.org.iel.recrutaif.entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
 
 @Stateless
 @Path("/login")
@@ -36,45 +39,79 @@ public class LoginEndpoint {
 
 	// recebe um usuário
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-//	@Consumes("application/json")
-	public Response fazerLogin(String usuarioGson) {
+	@Consumes("application/json")
+	public Response fazerLogin(String credenciaisJson) {
 
 		try {
 			
+			System.out.println("credencial json " + credenciaisJson);
+			
 			Gson gson = new Gson();
 			
-			Usuario entity = gson.fromJson(usuarioGson, Usuario.class);
+			Credencial credencial = gson.fromJson(credenciaisJson, Credencial.class);	
 			
-			// valida o usuario
-			validarCrendenciais(entity);
-			// gera o token
-			String token = gerarToken(entity.getEmail(), 1);
+			System.out.println("credencial foi transformada em objeto " + credencial.getEmail()+" , "+ credencial.getSenha());
 
-			System.out.println("Bearer"+token);
+			validarCrendenciais(credencial);
 			
-			String tokenGson = gson.toJson(token);
-			return Response.ok(tokenGson).build();
+			System.out.println("Credencial foi validada");
+			// gera o token
+			String token = gerarToken(credencial.getEmail(),1);
+
+			System.out.println("A token gerada é: "+token);
+			
+            JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
+            jsonObjBuilder.add( "auth_token", token );
+            JsonObject jsonObj = jsonObjBuilder.build();
+			
+            System.out.println("O json gerado é : "+jsonObj);
+            
+            return getNoCacheResponseBuilder( Response.Status.OK ).entity( jsonObj.toString() ).build();
+
+//			
+//			System.out.println("A token gerada é: "+token);
+//			
+//			String tokenGson = gson.toJson(token);
+//			
+//			System.out.println("A token em json é: "+ tokenGson);
+//			
+//			return Response.ok(tokenGson).build();
 
 		} catch (Exception e) {
+			System.out.println("credencial json " + credenciaisJson);
 
 			e.printStackTrace();
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 
 	}
+	
+    private Response.ResponseBuilder getNoCacheResponseBuilder( Response.Status status ) {
+        CacheControl cc = new CacheControl();
+        cc.setNoCache( true );
+        cc.setMaxAge( -1 );
+        cc.setMustRevalidate( true );
+ 
+        return Response.status( status ).cacheControl( cc );
+    }
 
-	private void validarCrendenciais(Usuario crendencial) throws Exception {
+	private void validarCrendenciais(Credencial credencial) throws Exception {
 		try {
-			final List<Usuario> results = dao.listaTodos(0, 0);
-
-			for (Usuario usuario : results) {
-				if (crendencial.getEmail().equals(usuario.getEmail())
-						|| crendencial.getSenha().equals(usuario.getSenha())) {
-					return;
-				}
-			}
-			throw new Exception("Crendencias não válidas!");
+			
+			
+			
+			
+			
+//			Usuario user;
+//			//verifica se o usuario existe no bd
+//			if((user=dao.buscaPorEmail(credencial.getEmail())) != null ) {
+//				System.out.println("o email informado consta no banco de dados "+user.getEmail());
+//				//verifica se a senha informada é diferente
+//				if(user.getEmail()!= credencial.getEmail()) {
+//					throw new Exception("Crendencias não válidas!");
+//				}
+//			}
+			
 		} catch (Exception e) {
 
 			throw e;
@@ -84,9 +121,6 @@ public class LoginEndpoint {
 
 	//pegou o email e a quantidade de dias para expirar o token
 	private String gerarToken(String email, Integer expiraEmDias) {
-		
-		System.out.println(email);
-		System.out.println(expiraEmDias);
 
 		// Defini qual vai ser o algotirmo da assinatura no caso vai ser o HMAC SHA512
 		SignatureAlgorithm algoritimoAssinatura = SignatureAlgorithm.HS512;
