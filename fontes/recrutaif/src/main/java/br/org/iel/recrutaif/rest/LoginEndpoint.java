@@ -68,15 +68,6 @@ public class LoginEndpoint {
             
             return getNoCacheResponseBuilder( Response.Status.OK ).entity( jsonObj.toString() ).build();
 
-//			
-//			System.out.println("A token gerada é: "+token);
-//			
-//			String tokenGson = gson.toJson(token);
-//			
-//			System.out.println("A token em json é: "+ tokenGson);
-//			
-//			return Response.ok(tokenGson).build();
-
 		} catch (Exception e) {
 			System.out.println("credencial json " + credenciaisJson);
 
