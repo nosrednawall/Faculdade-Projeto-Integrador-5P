@@ -11,7 +11,7 @@
             <div class="input-group">
 
                 <span class="input-group-btn">
-                    <a href="#/setores/new" class="btn btn-primary">Novo Setor</a>
+                    <a href="#/setor/new" class="btn btn-primary">Novo Setor</a>
                 </span>
                 <input ng-model="filtro" class="form-control" placeholder="filtrar" 
                 ng-model-options="{debounce: 500}"/>
@@ -38,7 +38,7 @@
                         <!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
                         <th scope="row">{{setor.id}}</th>
                         <th scope="row">{{setor.nome}}</th>
-                        <th scope="row"><a class="btn btn-primary" href="#/setores/edit/{{setor.id}}">Editar</a></th>
+                        <th scope="row"><a class="btn btn-primary" href="#/setor/edit/{{setor.id}}">Editar</a></th>
                         <th scope="row"><button ng-click="remover(setor)" class="btn btn-danger " href="">Remover</button></th>
                     </tr>
                 </tbody>
