@@ -2,8 +2,7 @@ angular.module('recrutaif')     //faz parte do módulo recrutaif
     .factory('tokenInterceptor', function($q, $window, $location) {     //o factory é quem cria o servico
 
         //é o objeto configurado que será retornado no final
-        // var interceptor = {};
-        Interceptor.$inject = ['$q'];
+        var interceptor = {};
 
         //funcão responsável por colocar o token recebido em cada requisicao ao servidor
         //o config é o proprio token
@@ -16,7 +15,7 @@ angular.module('recrutaif')     //faz parte do módulo recrutaif
 
                 //se existir ele é colocado no header   
                 console.log('Enviando token já obtido em cada requisição');
-                config.headers['x-access-token'] = $window.sessionStorage.token;
+                config.headers['auth_token'] = $window.sessionStorage.token;
             }
             return config;
         },
@@ -24,7 +23,7 @@ angular.module('recrutaif')     //faz parte do módulo recrutaif
         //essa chamada response é chamada toda vez que o servidor manda algo para a aplicacao
         interceptor.response = function (response) {
             //var token recebida via header
-            var token = response.headers('x-access-token');
+            var token = response.headers('auth_token');
             // console.log(token);
             
             //verificar se o token não é null

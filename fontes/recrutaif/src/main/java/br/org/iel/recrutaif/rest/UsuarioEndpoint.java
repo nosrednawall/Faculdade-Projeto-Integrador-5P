@@ -20,9 +20,8 @@ import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.dao.UsuarioDao;
 import br.org.iel.recrutaif.entity.Usuario;
-import br.org.iel.recrutaif.security.Seguro;
 
-@Seguro
+//@Seguro
 @Stateless
 @Path("/usuarios")
 public class UsuarioEndpoint {

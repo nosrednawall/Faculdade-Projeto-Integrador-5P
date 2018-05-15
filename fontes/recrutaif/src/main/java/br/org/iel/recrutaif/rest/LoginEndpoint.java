@@ -138,26 +138,26 @@ public class LoginEndpoint {
 		return construtor.compact();// Constroi o token retorando a string dele
 	}
 
-	public Claims validaToken(String token) {
-		try {
-			// JJWT vai validar o token caso o token não seja valido ele vai executar uma
-			// exeption
-			// o JJWT usa a frase segredo pra descodificar o token e ficando assim possivel
-			// recuperar as informações que colocamos no payload
-			Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(FRASE_SEGREDO))
-					.parseClaimsJws(token).getBody();
-			// Aqui é um exemplo que se o token for valido e descodificado
-			// vai imprimir o login que foi colocamos no token
-			System.out.println(claims.getIssuer());
-			return claims;
-		} catch (Exception ex) {
-			throw ex;
-		}
-	}
-
-	public NivelPermissao buscarNivelPermissao(String login) {
-
-		return NivelPermissao.ADMINISTRADOR;
-
-	}
+//	public Claims validaToken(String token) {
+//		try {
+//			// JJWT vai validar o token caso o token não seja valido ele vai executar uma
+//			// exeption
+//			// o JJWT usa a frase segredo pra descodificar o token e ficando assim possivel
+//			// recuperar as informações que colocamos no payload
+//			Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(FRASE_SEGREDO))
+//					.parseClaimsJws(token).getBody();
+//			// Aqui é um exemplo que se o token for valido e descodificado
+//			// vai imprimir o login que foi colocamos no token
+//			System.out.println(claims.getIssuer());
+//			return claims;
+//		} catch (Exception ex) {
+//			throw ex;
+//		}
+//	}
+//
+//	public NivelPermissao buscarNivelPermissao(String login) {
+//
+//		return NivelPermissao.ADMINISTRADOR;
+//
+//	}
 }

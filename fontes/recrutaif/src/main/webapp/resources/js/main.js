@@ -19,7 +19,7 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','ngResource
     });
     
     $routeProvider.when('/setor/edit/:setorId',{
-        templateUrl: 'resources/angular/setor/setor.html',
+        templateUrl: 'resources/js/angular/setor/setor.html',
         controller: 'SetorController'
     });
     
@@ -29,8 +29,8 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','ngResource
     });
 
     $routeProvider.when('/principal', {
-        templateUrl: 'resources/js/angular/login/login.html',
+        templateUrl: 'resources/js/angular/principal/principal.html',
     });
 
-    $routeProvider.otherwise({ redirectTo: '/login'});
+    $routeProvider.otherwise({ redirectTo: '/principal'});
 }); //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos
