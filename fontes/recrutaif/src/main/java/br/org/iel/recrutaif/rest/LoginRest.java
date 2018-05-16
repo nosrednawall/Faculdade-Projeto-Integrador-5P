@@ -30,7 +30,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Stateless
 @Path("/login")
-public class LoginEndpoint {
+public class LoginRest {
 
 	private static final String FRASE_SEGREDO = "Hipopo";
 
