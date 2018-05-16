@@ -1,16 +1,42 @@
 
 
 Raiz
-  \- Documentação
-        \- Cronograma
-        \- DAS
+    \- doc
+        \- Contagem_pontos_de_funcao
+        \- DAS-Documento_de_arquitetura_de_software
+        \- Descricao_Casos_de_uso
         \- DevOps
-            \- Configurações personalizadas
-                \- Imagens
-                \- Linux
-                \- Windows
-        \- Diagramas Astah
-        \- Documento Visão
-        \- Levantamento de requisitos
-        \- Pautas
-        \- teste
+            \- configuracoes
+                \- ambiente
+                    \-datasource_wildfly
+                    \- git_ativando_ssh_sobre_http/
+                \- instalacoes_de_ferramentas
+                    \- Linux
+                    \- Windows
+                \- imagens
+                \- manuais_e_dicas
+        \- Diagrama_de_classes
+        \- Diagramas_Astah
+        \- Documento_visao
+        \- Entregas_Desenvolvimento_de_APP
+        \- Levantamento_de_requisitos
+        \- Prototipacao_de_telas
+
+    \-fontes
+        \- recrutaif
+            \- src
+                \- main
+                    \- java
+                        \-br/org/iel/recrutaif/
+                            \- dao
+                            \- entity
+                            \- rest
+                            \- security
+                    \- resources
+                        \- META-INF
+                    \- test
+                    \- webapp
+                        \-app
+                        \- resources
+                        \- WEB-INF
+    \-Gestao_de_projeto
