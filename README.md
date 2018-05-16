@@ -41,7 +41,20 @@ Após ser importado o Maven baixará todas as dependências descritas no **pom.x
 
 ### Adicionando o driver do postgre ao wildfly
 
-Acesse a pasta **doc/DevOps/configuracoes/ambiente/datasource_wildfly/** nela está a pasta **org**, copie ela e cole na pasta modules do wildfly.
+Acesse a pasta **doc/DevOps/configuracoes/ambiente/datasource_wildfly/**
+
+    Raiz
+        \- doc
+            \- DevOps
+                \- configuracoes
+                    \- ambiente
+                        \-datasource_wildfly
+
+nela está a pasta **org**, copie ela e cole dentro na pasta modules do wildfly, ficando com o caminho assim:
+
+    wildfly<versao>
+        \-modules
+            \-org
 
 ### Configurando o Wildfly
 Caso não tenha adicionado o wildfly, veja [esse tutorial](https://pablonobrega.wordpress.com/2016/06/06/configurando-o-wildfly-10-no-eclipse-mars/), só se atente a mudar as versões de 10 para 11 :)
