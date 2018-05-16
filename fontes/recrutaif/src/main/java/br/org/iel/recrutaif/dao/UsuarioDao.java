@@ -14,6 +14,11 @@ import br.org.iel.recrutaif.entity.Usuario;
 @Stateless
 public class UsuarioDao extends BaseDao<Usuario> implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@PersistenceContext(unitName = "recrutaif-persistence-unit")
 	private EntityManager em;
 	
