@@ -5,7 +5,7 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','ngResource
 .config(function($routeProvider, $locationProvider, $httpProvider){
 
     //Esse é o interceptador de url na lista de urls
-    $httpProvider.interceptors.push('tokenInterceptor');
+    //$httpProvider.interceptors.push('tokenInterceptor');
 
     //configurração de rota, sempre a rota, o seu template e o controller correspondente
     $routeProvider.when('/setores',{
@@ -32,5 +32,21 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','ngResource
         templateUrl: 'app/principal/principal.html',
     });
 
+    //vaga
+
+    $routeProvider.when('/vagas',{
+        templateUrl: 'app/vaga/vagas.html',
+        controller: 'VagasController'
+    });
+    
+    $routeProvider.when('/criavaga',{
+        templateUrl: 'app/vaga/criavaga.html',
+        controller: 'CriaVagaController'
+    });
+    
+    $routeProvider.when('/criavaga/edit/:vagaId',{
+        templateUrl: 'app/vaga/criavaga.html',
+        controller: 'CriaVagaController'
+    });
     $routeProvider.otherwise({ redirectTo: '/principal'});
 }); //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos
