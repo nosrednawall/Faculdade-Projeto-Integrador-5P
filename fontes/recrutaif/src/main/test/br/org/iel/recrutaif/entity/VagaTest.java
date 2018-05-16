@@ -72,28 +72,28 @@ public class VagaTest<Titulo> {
 	@DisplayName("Foi inserido caracter")
 	public void validaSeFoiInseridoCaracter() throws ParseException {
 		 
-		String conteudo = "okokoko";
+		String conteudo = "MumRáá";
 		Vaga vagaTeste = new Vaga();
 		vagaTeste.setTitulo(conteudo);
 	     if (Character.isAlphabetic((((String) conteudo).charAt(0))) && 
 	        Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1)))) 
-	    	 assertTrue("O campo contem caracteres", vagaTeste.getTitulo().isEmpty());{
+	    	 assertTrue("Campo contem caracteres", vagaTeste.getTitulo().isEmpty());{
 		          return;
 	          
 	     }
 }
 
 	@Test
-	@DisplayName("Foi inserido numero")
+	@DisplayName("Foi inserido número")
 	public void validaSeFoiInseridoNumero() throws ParseException {
 		 
-		String conteudo = "14141425";
+		String conteudo = "141425";
 		Vaga vagaTeste = new Vaga();
 		vagaTeste.setTitulo(conteudo);
 	     if (Character.isAlphabetic((((String) conteudo).charAt(0))) && 
 	        Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1)))) 
 	     
-	    	 assertTrue("O campo contem numeros", vagaTeste.getTitulo().isEmpty());{
+	    	 assertTrue("Campo contem numeros", vagaTeste.getTitulo().isEmpty());{
 	          return;
 	     
 	     }
