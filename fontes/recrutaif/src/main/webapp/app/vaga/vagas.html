@@ -8,6 +8,44 @@
 			<!--ng-model = "filtro" serve para transferir o input para o controller-->
 			<div class="input-group">
 
+<<<<<<< HEAD
+                <span class="input-group-btn">
+                    <a href="#/criavaga" class="btn btn-primary">Nova Vaga</a>
+                </span>
+                <input ng-model="filtro" class="form-control" placeholder="filtrar" 
+                ng-model-options="{debounce: 500}"/>
+            </div>
+            <!--ng-model-options="{debounce:500}"  serve para dar um delay e não aplicar locamente o filtro -->
+        </form>
+    </div> <!--/col-->
+</div> <!--/row-->
+<div class="row">
+    <div  class="col-md-12">
+        <div class="table-responsive">
+            <table class="table coluna-animada">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                </thead>
+                <!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
+                        <th scope="row">{{vaga.titulo}}</th>
+                        <tbody ng-repeat="vaga in vagas | filter:filtro">
+                    <tr>
+                        <!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
+                        <th scope="row">{{vaga.id}}</th>
+                        <th scope="row">{{vaga.titulo}}</th>
+                        <th scope="row"><a class="btn btn-primary" href="#/vaga/edit/{{vaga.id}}">Editar</a></th>
+                        <th scope="row"><button ng-click="remover(setor)" class="btn btn-danger " href="">Remover</button></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+=======
 				<span class="input-group-btn"> <a href="#/setores/new"
 					class="btn btn-primary">Novo Setor</a>
 				</span> <input ng-model="filtro" class="form-control" placeholder="filtrar"
@@ -46,4 +84,5 @@
 			</table>
 		</div>
 	</div>
+>>>>>>> bc3cdaccb45508aaa113df44d56cd22b373ce235
 </div>

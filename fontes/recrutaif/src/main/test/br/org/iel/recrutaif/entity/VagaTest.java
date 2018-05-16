@@ -1,4 +1,5 @@
 package br.org.iel.recrutaif.entity;
+
 import static junit.framework.Assert.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -17,8 +18,8 @@ public class VagaTest<Titulo> {
 
 	// 1-Não deve ficar em branco - OK
 
-	//@Nested
-	
+	// @Nested
+
 	@Test
 	@DisplayName("Retorna OK se o campo estiver vazio")
 	public void RetornarOKSeOCampoEstiverVazio() throws ParseException {
@@ -30,7 +31,7 @@ public class VagaTest<Titulo> {
 	}
 
 	@Test
-	@DisplayName("Retorna Erro se o campo estiver vazio")
+	@DisplayName("Retorna Erro se o campo estiver preenchido")
 	public void RetornarErroSeOCampoEstiverPreenchido() throws ParseException {
 
 		String conteudo = "dasdasd";
@@ -38,66 +39,65 @@ public class VagaTest<Titulo> {
 		vagaTeste.setTitulo(conteudo);
 		assertTrue("O campo está preenchido", vagaTeste.getTitulo().isEmpty());
 	}
-	
-	//@ParameterizedTest
-  
-	// 2-Não ultrapassar 50 caracteres
-	
+
+	// @ParameterizedTest
+
+	// 2-Não ultrapassar 50 caracteres - OK
+
 	@Test
 	@DisplayName("Limite de 50 caracteres respeitado")
-	public void LimiteDeCaracteresOK() throws ParseException {  
-	        String Cinquenta = "Antigos";
-	        		
-	        Vaga vagaTeste = new Vaga();
-		    vagaTeste.setTitulo(Cinquenta);
-	        //System.out.println(Cinquenta.length());  
-		    assertFalse("O campo está dentro de cinquenta caracteres", vagaTeste.getTitulo().isEmpty());
-	        } 
-	
-	@Test 
+	public void LimiteDeCaracteresOK() throws ParseException {
+		String Cinquenta = "Antigos";
+
+		Vaga vagaTeste = new Vaga();
+		vagaTeste.setTitulo(Cinquenta);
+		// System.out.println(Cinquenta.length());
+		assertFalse("O campo está dentro de cinquenta caracteres", vagaTeste.getTitulo().isEmpty());
+	}
+
+	@Test
 	@DisplayName("Limite de caracteres excedido")
-	public void LimiteDeCaracteresExcedido() throws ParseException {  
-        	String Cinquenta = "AntigosEspiritosDoMalTransformemEsteCodigoDecadenteEmJavaEterno";
-        		
-        	Vaga vagaTeste = new Vaga();
-        	vagaTeste.setTitulo(Cinquenta);
-        	//System.out.println(Cinquenta.length());  
-        	assertTrue("O campo está fora de cinquenta caracteres", vagaTeste.getTitulo().isEmpty());
-			}  
+	public void LimiteDeCaracteresExcedido() throws ParseException {
+		String Cinquenta = "AntigosEspiritosDoMalTransformemEsteCodigoDecadenteEmJavaEterno";
 
+		Vaga vagaTeste = new Vaga();
+		vagaTeste.setTitulo(Cinquenta);
+		// System.out.println(Cinquenta.length());
+		assertTrue("O campo está fora de cinquenta caracteres", vagaTeste.getTitulo().isEmpty());
+	}
 
-	// * 3-Não deve conter numeros	
-	
+	// 3-Não deve conter números
+
 	@Test
 	@DisplayName("Foi inserido caracter")
 	public void validaSeFoiInseridoCaracter() throws ParseException {
-		 
-		String conteudo = "okokoko";
+
+		String conteudo = "MumRáá";
 		Vaga vagaTeste = new Vaga();
 		vagaTeste.setTitulo(conteudo);
-	     if (Character.isAlphabetic((((String) conteudo).charAt(0))) && 
-	        Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1)))) 
-	    	 assertTrue("O campo contem caracteres", vagaTeste.getTitulo().isEmpty());{
-		          return;
-	          
-	     }
-}
+		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
+				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
+			assertTrue("Campo contem caracteres", vagaTeste.getTitulo().isEmpty());
+		{
+			return;
+
+		}
+	}
 
 	@Test
-	@DisplayName("Foi inserido numero")
+	@DisplayName("Foi inserido número")
 	public void validaSeFoiInseridoNumero() throws ParseException {
-		 
-		String conteudo = "14141425";
+
+		String conteudo = "141425";
 		Vaga vagaTeste = new Vaga();
 		vagaTeste.setTitulo(conteudo);
-	     if (Character.isAlphabetic((((String) conteudo).charAt(0))) && 
-	        Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1)))) 
-	     
-	    	 assertTrue("O campo contem numeros", vagaTeste.getTitulo().isEmpty());{
-	          return;
-	     
-	     }
+		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
+				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
+
+			assertTrue("Campo contem numeros", vagaTeste.getTitulo().isEmpty());
+		{
+			return;
+		}
 	}
-	
-	
+
 }

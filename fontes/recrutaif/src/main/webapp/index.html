@@ -14,10 +14,99 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Recrutaif</title>
 
+<<<<<<< HEAD
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="resources/css/starter-template.css" />
 	<link rel="stylesheet" href="resources/css/login.css" />
+=======
+<<<<<<< HEAD
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="resources/css/starter-template.css"/>
+    <link rel="stylesheet" href="resources/css/login.css"/>
+    
+
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#/principal">Recrutaif</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" 
+             aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#/vagas">Vagas <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+                <a class="nav-link" href="#/setores">Visualizar setores</a>
+          </li>
+          <li class="nav-item active">
+                 <a class="nav-link" href="#/usuarios">Visualizar usuários</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/alterar-dados">Alterar dados</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#/login">Sair</a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+        <ng-view></ng-view>
+    </main><!-- /.container -->
+
+    <hr>
+    <div id="footer">
+        <div class="container">
+            <p>Powered by <a href="https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P/graphs/contributors">RecrutaIf Team</a></p>
+        </div>
+    </div>
+   
+    <!--recursos do angular-->
+    <script src="resources/js/angular/angular.min.js"></script>
+    <script src="resources/js/angular/angular-animate.min.js"></script>
+    <script src="resources/js/angular/angular-route.min.js"></script>
+    <script src="resources/js/angular/angular-resource.min.js"></script>
+
+
+    <script src="resources/js/bootstrap/popper.min.js"></script>
+
+    <!--main da aplicação-->
+    <script src="app/main.js"></script>
+
+    <!--controllers da aplicação-->
+    <script src="app/setor/setor-controller.js"></script>
+    <script src="app/setor/setores-controller.js"></script>
+    <script src="app/login/login-controller.js"></script>
+    <script src="app/vaga/criavaga-controller.js"></script>
+    <script src="app/vaga/vagas-controller.js"></script>
+    
+
+    <!--Diretivas da aplicação-->
+    <script src="app/directives/minhas-diretivas.js"></script>
+    <script src="app/directives/diretiva-vagas.js"></script>
+
+    <!--Serviços da aplicação-->
+    <script src="app/services/app-services.js"></script>
+    <script src="app/services/token-interceptor.js"></script>
+  </body>
+=======
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="resources/css/starter-template.css" />
+<link rel="stylesheet" href="resources/css/login.css" />
+>>>>>>> b27be7c1919a7abc877f38e710ab8369a7eae71b
 
 </head>
 
@@ -98,5 +187,10 @@
 	<script src="app/services/app-services.js"></script>
 	<script src="app/services/token-interceptor.js"></script>
 </body>
+<<<<<<< HEAD
 
 </html>
+=======
+>>>>>>> bc3cdaccb45508aaa113df44d56cd22b373ce235
+</html>
+>>>>>>> b27be7c1919a7abc877f38e710ab8369a7eae71b
