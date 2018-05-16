@@ -1,5 +1,6 @@
 package br.org.iel.recrutaif.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,32 +9,37 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.org.iel.recrutaif.entity.Setor;
-
+/**
+ * 
+ * @author anderson
+ *
+ */
 @Stateless
-public class SetorDao {
-	
+public class SetorDao extends BaseDao<Setor> implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * Unidade de persistencia, fornecida pelo wildfly
+	 */
 	@PersistenceContext(unitName = "recrutaif-persistence-unit")
 	private EntityManager em;
 
-	public void create(Setor entity) {
-		em.persist(entity);
+	/**
+	 * Método responsável por fornecer a sessão do entity manager
+	 */
+	@Override
+	protected EntityManager getEntityManager() {
+		return this.em;
 	}
 
-	public void deleteById(Long id) {
-		Setor entity = em.find(Setor.class, id);
-		if (entity != null) {
-			em.remove(entity);
-		}
-	}
-
-	public Setor findById(Long id) {
-		return em.find(Setor.class, id);
-	}
-
-	public Setor update(Setor entity) {
-		return em.merge(entity);
-	}
-
+	/**
+	 * Método listar os setores, conforme os indices fornecidos, se não fornecer listará todos os setores
+	 * @param startPosition
+	 * @param maxResult
+	 * @return
+	 */
 	public List<Setor> listAll(Integer startPosition, Integer maxResult) {
 		TypedQuery<Setor> findAllQuery = em.createQuery("SELECT DISTINCT s FROM Setor s ORDER BY s.id", Setor.class);
 		if (startPosition != null) {
@@ -44,13 +50,4 @@ public class SetorDao {
 		}
 		return findAllQuery.getResultList();
 	}
-
-	public EntityManager getEm() {
-		return em;
-	}
-
-	public void setEm(EntityManager em) {
-		this.em = em;
-	}
-
 }

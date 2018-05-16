@@ -25,21 +25,38 @@ O software **Recruta-if** necessita dos seguintes softwares instalados para ser 
 > 
 > - Java JDK, na versão 1.8, que pode ser adquirido [aqui](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) 
 > - Wildfly 11, que pode ser adquirido [aqui](http://wildfly.org/downloads/)
-> - Navegador Firefox atualizado.
+> - Navegador Firefox atualizado até a versão 52.8.0 (64-bit).
 > - Navegado Chrome atualizado.
 > - Eclipse a na versão de março de 2018, que pode ser obtido [aqui](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen3a)
 >- JBoos Tools instalado no eclipse, caso não esteja procure no marketshare do eclipse.
 >- PostgreSQL na versão 10, e já com o seu usuário cadastrado.
 
-#### Obtendo o software
+### Obtendo o software
 Efetue um git clone:
 > git clone https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P.git
 
-#### Adicionando o projeto no eclipse
+### Adicionando o projeto no eclipse
 Adicione o projeto importando o como um projeto Maven existente, dúvidas veja [esse tutorial](https://javabydeveloper.com/import-maven-project-eclipse/)
 Após ser importado o Maven baixará todas as dependências descritas no **pom.xml**, se for na primeira vez pode ser que demore bastante.
 
-#### Configurando o Wildfly
+### Adicionando o driver do postgre ao wildfly
+
+Acesse a pasta **doc/DevOps/configuracoes/ambiente/datasource_wildfly/**
+
+    Raiz
+        \- doc
+            \- DevOps
+                \- configuracoes
+                    \- ambiente
+                        \-datasource_wildfly
+
+nela está a pasta **org**, copie ela e cole dentro na pasta modules do wildfly, ficando com o caminho assim:
+
+    wildfly<versao>
+        \-modules
+            \-org
+
+### Configurando o Wildfly
 Caso não tenha adicionado o wildfly, veja [esse tutorial](https://pablonobrega.wordpress.com/2016/06/06/configurando-o-wildfly-10-no-eclipse-mars/), só se atente a mudar as versões de 10 para 11 :)
 
 Abra o standalone.xml

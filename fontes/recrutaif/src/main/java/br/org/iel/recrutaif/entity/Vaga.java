@@ -74,7 +74,7 @@ public class Vaga implements Serializable {
 
 
 	public void setTitulo(String titulo) {
-		this.titulo = titulo + " 1.0 ";
+		this.titulo = titulo;
 	}
 
 

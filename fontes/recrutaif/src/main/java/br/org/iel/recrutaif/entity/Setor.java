@@ -11,31 +11,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-//anotações
-@Entity // essa anotação indica ao JPA/Hibernate que esta classe é uma entidade, ou seja
-		// uma tabela
-@Table(name = "setor") // indica que o nome da tabela a ser criada
-@XmlRootElement // indica ao Jersey que essa classe deve ser utilizada para efetuar o parse de
-				// objetos a serem enviados ou recebidos via http
-
+/**
+ * 
+ * @author anderson
+ *
+ */
+@Entity
+@Table(name = "setor")
+@XmlRootElement 
 public class Setor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@Id // indica que esse atributo deve ser o primary key da tabela
-	@GeneratedValue(strategy = GenerationType.AUTO) // indica que a estratégia de valores 
-													//a serem gerados é a padrão do banco
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 
-	@Column(name = "nome", nullable=false)
+	@Column(name = "nome", nullable=false,length=21)
 	private String nome;
 
-	// getters and setters
-
+	
 	@Deprecated
 	public Setor() {
 	}
 	
+	// getters and setters
+
 	public Long getId() {
 		return this.id;
 	}
@@ -82,7 +84,6 @@ public class Setor implements Serializable {
 		String result = getClass().getSimpleName() + " ";
 		if (id != null)
 			result += "id: " + id;
-		// result += ", version: " + version;
 		if (nome != null && !nome.trim().isEmpty())
 			result += ", nome: " + nome;
 		return result;

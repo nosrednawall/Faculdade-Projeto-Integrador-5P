@@ -24,7 +24,7 @@ import br.org.iel.recrutaif.entity.Vaga;
 //@Seguro
 @Stateless
 @Path("/vagas")
-public class VagaEndpoint {
+public class VagaRest {
 
 	@Inject
 	private VagaDao dao;
@@ -36,7 +36,7 @@ public class VagaEndpoint {
 		dao.create(entity);
 		// retorna o link de acesso ao Vaga criado
 		return Response
-				.created(UriBuilder.fromResource(VagaEndpoint.class).path(String.valueOf(entity.getId())).build())
+				.created(UriBuilder.fromResource(VagaRest.class).path(String.valueOf(entity.getId())).build())
 				.build();
 	}
 

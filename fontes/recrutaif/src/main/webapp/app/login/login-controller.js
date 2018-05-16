@@ -1,4 +1,5 @@
-angular.module('recrutaif').controller('LoginController', function($window,$q,$scope, $http, $location){
+angular.module('recrutaif').controller('LoginController',
+     function($window,$q,$scope, $http, $location){
 
     $scope.usuario = {};
     $scope.mensagem = '';
