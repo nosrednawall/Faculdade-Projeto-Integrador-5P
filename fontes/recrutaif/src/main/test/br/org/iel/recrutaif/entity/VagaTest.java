@@ -31,7 +31,7 @@ public class VagaTest<Titulo> {
 	}
 
 	@Test
-	@DisplayName("Retorna Erro se o campo estiver vazio")
+	@DisplayName("Retorna Erro se o campo estiver preenchido")
 	public void RetornarErroSeOCampoEstiverPreenchido() throws ParseException {
 
 		String conteudo = "dasdasd";
@@ -42,7 +42,7 @@ public class VagaTest<Titulo> {
 
 	// @ParameterizedTest
 
-	// 2-Não ultrapassar 50 caracteres
+	// 2-Não ultrapassar 50 caracteres - OK
 
 	@Test
 	@DisplayName("Limite de 50 caracteres respeitado")
@@ -66,7 +66,7 @@ public class VagaTest<Titulo> {
 		assertTrue("O campo está fora de cinquenta caracteres", vagaTeste.getTitulo().isEmpty());
 	}
 
-	// 3-Não deve conter numeros
+	// 3-Não deve conter números
 
 	@Test
 	@DisplayName("Foi inserido caracter")
@@ -97,7 +97,6 @@ public class VagaTest<Titulo> {
 			assertTrue("Campo contem numeros", vagaTeste.getTitulo().isEmpty());
 		{
 			return;
-
 		}
 	}
 
