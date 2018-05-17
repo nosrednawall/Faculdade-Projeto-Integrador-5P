@@ -11,6 +11,12 @@ import javax.persistence.TypedQuery;
 import br.org.iel.recrutaif.entity.Credencial;
 import br.org.iel.recrutaif.entity.Usuario;
 
+/**
+ * 
+ * @author anderson
+ *
+ */
+
 @Stateless
 public class UsuarioDao extends BaseDao<Usuario> implements Serializable{
 	
@@ -18,30 +24,21 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * Unidade de persistencia
+	 */
 	@PersistenceContext(unitName = "recrutaif-persistence-unit")
 	private EntityManager em;
 	
-	public void create(Usuario entity) {
-		em.persist(entity);
+	/**
+	 * Método responsável por fornecer a sessão do entity manager
+	 */
+	@Override
+	protected EntityManager getEntityManager() {
+		// TODO Auto-generated method stub
+		return this.em;
 	}
-	
-	public void deletaPorId(Integer id) {
-		Usuario entity = em.find(Usuario.class, id);
-		if(entity != null) {
-			em.remove(entity);
-		}
-	}
-	
-	public Usuario buscaPorId(Integer id) {
-		return em.find(Usuario.class, id);
-	}
-	
-	
-	public Usuario atualiza(Usuario entity) {
-		return em.merge(entity);
-	}
-	
+		
 	public List<Usuario> listaTodos(Integer startPosition, Integer maxResult){
 		TypedQuery<Usuario> findAllQuery = em.createQuery(
 				"SELECT DISTINCT u FROM Usuario u ORDER BY u.id", Usuario.class);
@@ -69,10 +66,6 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable{
 
     }
 
-	@Override
-	protected EntityManager getEntityManager() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 }
