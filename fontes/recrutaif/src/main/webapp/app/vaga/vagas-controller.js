@@ -28,14 +28,14 @@ angular.module('recrutaif').controller('VagasController',function($scope,recurso
         recursoVaga.delete({vagaId : vaga.id}, function(){
 
             //caso dê certo é atualizado a lista e informado o usuário
-            var indiceSetor = $scope.setores.indexOf(setor);
-            $scope.vagas.splice(indiceSetor,1);
-            $scope.mensagem = "[INFO] Setor "+vaga.titulo+" foi removido com sucesso!";
+            var indiceVagas = $scope.vagas.indexOf(vaga);
+            $scope.vagas.splice(indiceVagas,1);
+            $scope.mensagem = "[INFO] Vaga "+vaga.titulo+" foi removido com sucesso!";
         }, function(){
 
             //caso dê erro é informado o usuário
             console.log(error);
-            $scope.mensagem = "[ERROR] Erro ao remover o setor" + vaga.titulo;
+            $scope.mensagem = "[ERROR] Erro ao remover a vaga" + vaga.titulo;
         });
     };
 });

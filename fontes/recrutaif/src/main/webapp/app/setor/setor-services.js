@@ -1,4 +1,4 @@
-angular.module('appServices', ['ngResource'])
+angular.module('setorServices', ['ngResource'])
 //módulo que configura o caminho para acessar os recursos rest da aplicação TODA
 
     //cria uma fabrica de recursos
@@ -11,18 +11,8 @@ angular.module('appServices', ['ngResource'])
             }
         });
     })
-
-        //cria uma fabrica de recursos
-        .factory('recursoVaga',function($resource){
-
-            //retorna um recurso
-            return $resource('rest/vagas/:vagaId', null,{
-                update :{
-                    method: 'PUT' //Estudar 
-                }
-            });
-        })
-                                                    //o $q serve para trabalhar com as promessas
+    
+    //o $q serve para trabalhar com as promessas
     .factory('cadastroDeSetor', function(recursoSetor, $q){
 
         var servico = {};
