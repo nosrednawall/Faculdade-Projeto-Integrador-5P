@@ -26,7 +26,7 @@ O software **Recruta-if** necessita dos seguintes softwares instalados para ser 
 > - Java JDK, na versão 1.8, que pode ser adquirido [aqui](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) 
 > - Wildfly 11, que pode ser adquirido [aqui](http://wildfly.org/downloads/)
 > - Navegador Firefox atualizado até a versão 52.8.0 (64-bit).
-> - Navegado Chrome atualizado.
+> - Navegado Chrome atualizado até a versão 66.0.3359.181 64 bits.
 > - Eclipse a na versão de março de 2018, que pode ser obtido [aqui](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen3a)
 >- JBoos Tools instalado no eclipse, caso não esteja procure no marketshare do eclipse.
 >- PostgreSQL na versão 10, e já com o seu usuário cadastrado.

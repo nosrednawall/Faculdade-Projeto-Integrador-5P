@@ -1,5 +1,6 @@
 package br.org.iel.recrutaif.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -11,7 +12,12 @@ import br.org.iel.recrutaif.entity.Credencial;
 import br.org.iel.recrutaif.entity.Usuario;
 
 @Stateless
-public class UsuarioDao {
+public class UsuarioDao extends BaseDao<Usuario> implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName = "recrutaif-persistence-unit")
 	private EntityManager em;
@@ -62,5 +68,11 @@ public class UsuarioDao {
         return query.getResultList();
 
     }
+
+	@Override
+	protected EntityManager getEntityManager() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
