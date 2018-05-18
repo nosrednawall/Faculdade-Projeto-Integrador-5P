@@ -15,16 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import br.org.iel.recrutaif.model.enums.StatusVaga;
 
@@ -65,8 +62,8 @@ public class Vaga implements Serializable {
 	@Lob // permite essa coluna possuir grande volume de dados
 	private String descricao;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.SUBSELECT)
 	@JoinTable( name = "setores", joinColumns = @JoinColumn(name="vaga_id"), inverseJoinColumns = @JoinColumn(name="setor_id") )
 	private Set<Setor> setores;
 
