@@ -16,8 +16,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class VagaTest<Titulo> {
 
+	// Autor: Everton Sausen
 	// 1-Não deve ficar em branco - OK
-
+	
 	// @Nested
 
 	@Test
@@ -41,13 +42,14 @@ public class VagaTest<Titulo> {
 	}
 
 	// @ParameterizedTest
-
+	
+	// Autor: Everton Sausen
 	// 2-Não ultrapassar 50 caracteres - OK
-
+	
 	@Test
 	@DisplayName("Limite de 50 caracteres respeitado")
 	public void LimiteDeCaracteresOK() throws ParseException {
-		String Cinquenta = "Antigos";
+		String Cinquenta = "NaMinhaMaquinaFuncionaRá";
 
 		Vaga vagaTeste = new Vaga();
 		vagaTeste.setTitulo(Cinquenta);
@@ -66,6 +68,7 @@ public class VagaTest<Titulo> {
 		assertTrue("O campo está fora de cinquenta caracteres", vagaTeste.getTitulo().isEmpty());
 	}
 
+	// Autor: Everton Sausen
 	// 3-Não deve conter números
 
 	@Test
@@ -80,7 +83,6 @@ public class VagaTest<Titulo> {
 			assertTrue("Campo contem caracteres", vagaTeste.getTitulo().isEmpty());
 		{
 			return;
-
 		}
 	}
 
@@ -94,10 +96,9 @@ public class VagaTest<Titulo> {
 		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
 				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
 
-			assertTrue("Campo contem numeros", vagaTeste.getTitulo().isEmpty());
+			assertTrue("Campo contem números", vagaTeste.getTitulo().isEmpty());
 		{
 			return;
 		}
 	}
-
 }

@@ -37,7 +37,7 @@ public class Vaga implements Serializable {
 	private Long id;
 
 	private String titulo;
-	
+		
 	@Lob	//permite essa coluna possuir grande volume de dados
 	private String descricao;
 
@@ -72,7 +72,9 @@ public class Vaga implements Serializable {
 		return titulo;
 	}
 
-
+	
+	//Inserido limitador de coluna - Everton
+	@Column(name = "titulo" ,length = 2, nullable = false)
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
