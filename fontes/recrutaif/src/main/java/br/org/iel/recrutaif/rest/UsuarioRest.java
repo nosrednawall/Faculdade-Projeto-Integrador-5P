@@ -34,7 +34,7 @@ public class UsuarioRest {
 	@POST
 	@Consumes("application/json")
 	public Response create(Usuario entity) {
-		dao.create(entity);
+		dao.save(entity);
 		return Response
 				.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
 				.build();
@@ -46,7 +46,7 @@ public class UsuarioRest {
 	public Response buscaPorId(@PathParam("id") Integer id) {
 		Usuario entity;
 		try {
-			entity = dao.buscaPorId(id);
+			entity = dao.find(Usuario.class, id);
 		} catch (NoResultException nre) {
 			entity = null;
 		}
@@ -77,11 +77,11 @@ public class UsuarioRest {
 		if (!id.equals(entity.getId())) {
 			return Response.status(Status.CONFLICT).entity(entity).build();
 		}
-		if (dao.buscaPorId(id) == null) {
+		if (dao.find(Usuario.class, id) == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		try {
-			entity = dao.atualiza(entity);
+			entity = dao.update(entity);
 		} catch (OptimisticLockException e) {
 			return Response.status(Response.Status.CONFLICT).entity(e.getEntity()).build();
 		}
