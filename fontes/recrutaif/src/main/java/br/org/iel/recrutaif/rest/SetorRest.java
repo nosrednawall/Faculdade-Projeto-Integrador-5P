@@ -58,7 +58,7 @@ public class SetorRest {
 	 */
 	@DELETE
 	@Path("/{id:[0-9][0-9]*}")
-	public Response deleteById(@PathParam("id") Long id) {
+	public Response deleteById(@PathParam("id") Integer id) {
 		Setor entity = null;
 		if((entity = dao.find(Setor.class, id)) != null) {
 			dao.remove(entity);
@@ -74,7 +74,7 @@ public class SetorRest {
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	@Produces("application/json")
-	public Response findById(@PathParam("id") Long id) {
+	public Response findById(@PathParam("id") Integer id) {
 
 		Setor entity = dao.find(Setor.class, id);
 
@@ -110,7 +110,7 @@ public class SetorRest {
 	@PUT
 	@Path("/{id:[0-9][0-9]*}")
 	@Consumes("application/json")
-	public Response update(@PathParam("id") Long id, Setor entity) {
+	public Response update(@PathParam("id") Integer id, Setor entity) {
 		if (entity == null) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}

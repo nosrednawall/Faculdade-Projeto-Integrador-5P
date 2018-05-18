@@ -32,10 +32,10 @@ public class VagaDao extends BaseDao<Vaga> implements Serializable{
 	}
 	
 	/**
-	 * Comandos para listar e encontrar vaga
-	 * 
+	 * Método para listar vagas pelo status
+	 * @param status
+	 * @return
 	 */
-	
 	public List<Vaga> listaTodos(StatusVaga status) {
 		TypedQuery<Vaga> query = getEntityManager().createNamedQuery(
 				"Vaga.listarTodos", Vaga.class);
@@ -44,6 +44,12 @@ public class VagaDao extends BaseDao<Vaga> implements Serializable{
 
 		return query.getResultList();
 	}
+	
+	/**
+	 * Método para procurar vaga pelo ID
+	 * @param id
+	 * @return
+	 */
 	public Vaga find(Integer id) {
 		
 		TypedQuery<Vaga> query = getEntityManager().createNamedQuery(
