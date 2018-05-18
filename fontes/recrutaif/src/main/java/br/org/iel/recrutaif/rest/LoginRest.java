@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Credencial;
+import br.org.iel.recrutaif.model.entity.Usuario;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -50,7 +51,10 @@ public class LoginRest {
 			
 			System.out.println("credencial foi transformada em objeto " + credencial.getEmail()+" , "+ credencial.getSenha());
 
-			validarCrendenciais(credencial);
+			Usuario usuario = validarCrendenciais(credencial);
+			if(usuario ==  null) {
+				return Response.status(Status.BAD_REQUEST).build();
+			}
 			
 			System.out.println("Credencial foi validada");
 			// gera o token
@@ -84,28 +88,9 @@ public class LoginRest {
         return Response.status( status ).cacheControl( cc );
     }
 
-	private void validarCrendenciais(Credencial credencial) throws Exception {
-		try {
-			
-			
-			
-			
-			
-//			Usuario user;
-//			//verifica se o usuario existe no bd
-//			if((user=dao.buscaPorEmail(credencial.getEmail())) != null ) {
-//				System.out.println("o email informado consta no banco de dados "+user.getEmail());
-//				//verifica se a senha informada é diferente
-//				if(user.getEmail()!= credencial.getEmail()) {
-//					throw new Exception("Crendencias não válidas!");
-//				}
-//			}
-			
-		} catch (Exception e) {
-
-			throw e;
-		}
-
+	private Usuario validarCrendenciais(Credencial credencial) {
+		
+		return dao.getBuscaPorEmail(credencial);
 	}
 
 	//pegou o email e a quantidade de dias para expirar o token

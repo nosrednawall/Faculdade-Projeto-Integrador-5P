@@ -75,14 +75,14 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 	 * @param credenciais
 	 * @return
 	 */
-	public List<Usuario> getBuscaPorEmail(Credencial credenciais) {
+	public Usuario getBuscaPorEmail(Credencial credenciais) {
 
 		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.find", Usuario.class);
 
 		query.setParameter("pEmail", credenciais.getEmail());
 		query.setParameter("pSenha", credenciais.getSenha());
 
-		return query.getResultList();
+		return query.getSingleResult();
 
 	}
 }

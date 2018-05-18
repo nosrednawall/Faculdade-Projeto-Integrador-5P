@@ -28,6 +28,11 @@ angular.module('recrutaif', ['minhasDiretivas','ngAnimate','ngRoute','ngResource
         controller: 'LoginController'
     });
 
+    $routeProvider.when('/login/new', {
+        templateUrl: 'app/login/login-cadastro.html',
+        controller: 'LoginCadastroController'
+    });
+
     $routeProvider.when('/principal', {
         templateUrl: 'app/principal/principal.html',
     });
