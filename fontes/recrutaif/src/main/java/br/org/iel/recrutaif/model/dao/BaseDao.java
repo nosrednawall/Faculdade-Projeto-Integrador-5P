@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.dao;
+package br.org.iel.recrutaif.model.dao;
 
 import javax.persistence.EntityManager;
 

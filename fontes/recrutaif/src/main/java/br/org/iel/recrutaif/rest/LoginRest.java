@@ -19,10 +19,8 @@ import javax.xml.bind.DatatypeConverter;
 
 import com.google.gson.Gson;
 
-import br.org.iel.recrutaif.dao.UsuarioDao;
-import br.org.iel.recrutaif.entity.Credencial;
-import br.org.iel.recrutaif.entity.NivelPermissao;
-import io.jsonwebtoken.Claims;
+import br.org.iel.recrutaif.model.dao.UsuarioDao;
+import br.org.iel.recrutaif.model.entity.Credencial;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

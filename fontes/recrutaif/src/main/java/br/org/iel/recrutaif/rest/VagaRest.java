@@ -18,8 +18,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
-import br.org.iel.recrutaif.dao.VagaDao;
-import br.org.iel.recrutaif.entity.Vaga;
+import br.org.iel.recrutaif.model.dao.VagaDao;
+import br.org.iel.recrutaif.model.entity.Vaga;
+import br.org.iel.recrutaif.model.enums.StatusVaga;
 
 //@Seguro
 @Stateless
@@ -29,24 +30,32 @@ public class VagaRest {
 	@Inject
 	private VagaDao dao;
 
-	// método para criar um Vaga
+	/**
+	 * método salva vaga no bd e retorna o id da vaga salva
+	 * @param entity
+	 * @return
+	 */
 	@POST
 	@Consumes("application/json")
 	public Response create(Vaga entity) {
-		dao.create(entity);
-		// retorna o link de acesso ao Vaga criado
+		dao.save(entity);
 		return Response
 				.created(UriBuilder.fromResource(VagaRest.class).path(String.valueOf(entity.getId())).build())
 				.build();
 	}
 
+	/**
+	 * método recebe o id e retorna a vaga
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/{id:[0-9][0-9]}")
 	@Produces("application/json")
-	public Response buscaPorId(@PathParam("id") Long id) {
+	public Response buscaPorId(@PathParam("id") Integer id) {
 		Vaga entity;
 		try {
-			entity = dao.buscaPorId(id);
+			entity = dao.find(id);
 		} catch (NoResultException nre) {
 			entity = null;
 		}
@@ -56,17 +65,28 @@ public class VagaRest {
 		return Response.ok(entity).build();
 	}
 
+	/**
+	 * Lista todas as vagas, recebendo o status como argumento
+	 * @param status
+	 * @return
+	 */
 	@GET
 	@Produces("application/json")
-	public List<Vaga> listaVagas(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
-		final List<Vaga> results = dao.listaTodos(startPosition, maxResult);
+	public List<Vaga> listaVagas(@QueryParam("status") StatusVaga status) {
+		final List<Vaga> results = dao.listaTodos(status);
 		return results;
 	}
 
+	/**
+	 * Atualiza a vaga, recebe o id no caminho e no corpo a vaga completa e alterada
+	 * @param id
+	 * @param entity
+	 * @return
+	 */
 	@PUT
 	@Path("/{id:[0-9][0-9]*}")
 	@Consumes("application/json")
-	public Response update(@PathParam("id") Long id, Vaga entity) {
+	public Response update(@PathParam("id") Integer id, Vaga entity) {
 		if (entity == null) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
@@ -76,11 +96,11 @@ public class VagaRest {
 		if (!id.equals(entity.getId())) {
 			return Response.status(Status.CONFLICT).entity(entity).build();
 		}
-		if (dao.buscaPorId(id) == null) {
+		if (dao.find(id) == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		try {
-			entity = dao.atualiza(entity);
+			entity = dao.update(entity);
 		} catch (OptimisticLockException e) {
 			return Response.status(Response.Status.CONFLICT).entity(e.getEntity()).build();
 		}

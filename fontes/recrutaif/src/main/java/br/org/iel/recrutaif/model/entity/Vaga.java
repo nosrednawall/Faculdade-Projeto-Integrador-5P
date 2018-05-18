@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.entity;
+package br.org.iel.recrutaif.model.entity;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import br.org.iel.recrutaif.model.enums.StatusVaga;
+
 /**
  * 
  * @author anderson
@@ -36,14 +38,11 @@ import org.hibernate.annotations.FetchMode;
 
 	@NamedQuery(
 			name = "Vaga.listarTodos", 
-			query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setores"),
+			query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setores WHERE v.status = :pStatus"),
 	@NamedQuery(
 			name = "Vaga.find", 
 			query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setores WHERE v.id = :pId")
 })
-
-
-
 @Entity
 @Table(name = "vaga")
 @XmlRootElement

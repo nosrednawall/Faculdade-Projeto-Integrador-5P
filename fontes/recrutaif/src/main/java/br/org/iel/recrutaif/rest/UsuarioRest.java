@@ -18,8 +18,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
-import br.org.iel.recrutaif.dao.UsuarioDao;
-import br.org.iel.recrutaif.entity.Usuario;
+import br.org.iel.recrutaif.model.dao.UsuarioDao;
+import br.org.iel.recrutaif.model.entity.Usuario;
+import br.org.iel.recrutaif.model.enums.StatusUsuario;
 
 //@Seguro
 @Stateless
@@ -58,9 +59,8 @@ public class UsuarioRest {
 
 	@GET
 	@Produces("application/json")
-	public List<Usuario> listaUsuarios(@QueryParam("start") Integer startPosition,
-			@QueryParam("max") Integer maxResult) {
-		final List<Usuario> results = dao.listaTodos(startPosition, maxResult);
+	public List<Usuario> listaUsuarios(@QueryParam("status") StatusUsuario status) {
+		final List<Usuario> results = dao.listaTodos(status);
 		return results;
 	}
 

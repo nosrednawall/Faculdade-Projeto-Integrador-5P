@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.dao;
+package br.org.iel.recrutaif.model.dao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import br.org.iel.recrutaif.entity.Setor;
+import br.org.iel.recrutaif.model.entity.Setor;
 /**
  * 
  * @author anderson

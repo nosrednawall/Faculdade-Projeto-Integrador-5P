@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.entity;
+package br.org.iel.recrutaif.model.entity;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -10,15 +10,28 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import br.org.iel.recrutaif.model.enums.NivelPermissao;
+import br.org.iel.recrutaif.model.enums.StatusUsuario;
+
 /**
- * Entity implementation class for Entity: Usuario
+ * 
+ * @author anderson
  *
  */
+@NamedQueries({
+		@NamedQuery(name = "Usuario.listarTodos", query = "SELECT DISTINCT u FROM Usuario u WHERE u.status = :pStatus"),
+		@NamedQuery(name = "Usuario.find", query = "SELECT DISTINCT u FROM Usuario u WHERE u.id = :pId"),
+		@NamedQuery(name = "Usuario.loga", query = "SELECT DISTINCT u FROM Usuario u WHERE u.email = :pEmail AND u.senha = :pSenha")
+})
 @Entity
 @Table(name = "usuario")
 @XmlRootElement
@@ -29,15 +42,57 @@ public class Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Atributos
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
-
-	private String nome;
-	private String senha;
-	private Integer matricula;
 	
+	@Max(100)@Min(10)
+	@Column(updatable = false, nullable = false)
+	private String nome;
+	
+	@Max(50)@Min(6)
+	@Column(updatable = false, nullable = false)
+	private String senha;
+	
+	@Column(unique=true,updatable = false, nullable = false)
+	private Integer matricula;
+
+	@Column(unique = true)
+	private String email;
+	
+	@Temporal(TemporalType.DATE)
+	private Calendar dataAdmissao;
+	
+	@Enumerated(EnumType.STRING)
+	private NivelPermissao permissao;
+
+	@Enumerated(EnumType.STRING)
+	private StatusUsuario status;
+	
+	
+	/**
+	 * Contrutores e metodos
+	 */
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public String toString() {
+		return "Usuario [nome=" + nome + ", matricula=" + matricula + ", email=" + email + ", dataAdmissao="
+				+ dataAdmissao + "]";
+	}
+
+
+
+	/**
+	 * Getters and Setters
+	 * 
+	 */
 	public Integer getMatricula() {
 		return matricula;
 	}
@@ -45,15 +100,6 @@ public class Usuario implements Serializable {
 	public void setMatricula(Integer matricula) {
 		this.matricula = matricula;
 	}
-	@Column(unique=true)
-	private String email;
-
-	@Temporal(TemporalType.DATE)
-	private Calendar dataAdmissao;
-	// private LocalDateTime dataAdmissao;
-
-	@Enumerated(EnumType.STRING)
-	private NivelPermissao permissao;
 
 	public Integer getId() {
 		return id;
@@ -79,7 +125,6 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
@@ -104,8 +149,12 @@ public class Usuario implements Serializable {
 		this.permissao = permissao;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public StatusUsuario getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusUsuario status) {
+		this.status = status;
 	}
 
 }
