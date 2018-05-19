@@ -1,4 +1,4 @@
-angular.module('recrutaif').controller('LoginCadastroController',function($scope,recursoVaga){
+angular.module('recrutaif').controller('UsuarioCadastroController',function($scope,recursoVaga){
 
     $scope.usuario=[];
     $scope.mensagem = '';
