@@ -1,6 +1,6 @@
 angular.module('recrutaif').controller('LoginCadastroController',function($scope,recursoVaga){
 
-    $scope.usuario[];
+    $scope.usuario=[];
     $scope.mensagem = '';
   
         //função adiciona um novo setor e ou atualiza um setor existente
