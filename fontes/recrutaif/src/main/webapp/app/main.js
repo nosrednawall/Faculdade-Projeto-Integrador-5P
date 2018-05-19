@@ -19,11 +19,11 @@ angular.module('recrutaif', ['minhasDiretivas', 'ngAnimate', 'ngRoute', 'ngResou
         // | |___  | |_| | | |_| | | | | | \  | 
         // |_____| \_____/ \_____/ |_| |_|  \_| 
 
-        $routeProvider.when('/login/new', {
-            templateUrl: 'app/usuario/usuario-cadastro.html',
-            controller: 'UsuarioCadastroController'
-        });
 
+        $routeProvider.when('/login', {
+            templateUrl: 'app/login/login.html',
+            controller: 'LoginController'
+        });
         // __________________________________________________________________________
 
         // _____   _____   _____   _____   _____   
@@ -59,8 +59,8 @@ angular.module('recrutaif', ['minhasDiretivas', 'ngAnimate', 'ngRoute', 'ngResou
         // \_____/ /_____/ \_____/ /_/   |_| |_|  \_\ |_| \_____/ 
 
         $routeProvider.when('/usuario/new', {
-            templateUrl: 'app/login/login.html',
-            controller: 'LoginController'
+            templateUrl: 'app/usuario/usuario-cadastro.html',
+            controller: 'UsuarioCadastroController'
         });
 
         // __________________________________________________________________________

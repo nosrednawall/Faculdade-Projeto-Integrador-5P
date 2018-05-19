@@ -1,0 +1,32 @@
+<!-- $scope.mensagem -->
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+    <div class="col">
+        <div class="form-group">
+            <label for="nome-usuario">Nome</label>
+            <input ng-model="usuario.nome" type="text" class="form-control" name="nome" required ng-maxlength="100" ng-minlength="10"/>
+            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
+            <span ng-show="formulario.$submitted && formulario.nome.$error.required" class="form-control alert-danger"> Campo nome é obligatório </span>
+            <!--mostra erro quando é digitado mais de 20 caracteres-->
+            <span ng-show="formulario.nome.$error.maxlength" class="form-control alert-danger"> Deve conter no máximo 100 caracteres </span>
+        </div>
+        <div class="form-group">
+            <label for="matricula-usuario">Matrícula</label>
+            <input ng-model="usuario.nome" type="text" class="form-control" name="matricula" required ng-maxlength="5" ng-minlength="5"/>
+            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
+            <span ng-show="formulario.$submitted && formulario.matricula.$error.required" class="form-control alert-danger"> Campo matrícula é obligatório </span>
+            <!--mostra erro quando é digitado mais de 20 caracteres-->
+            <span ng-show="formulario.matricula.$error.maxlength && formulario.matricula.$error.minlength" class="form-control alert-danger"> Matrícula deve conter 5 números </span>
+        </div>
+        <div class="form-group">
+            <label for="data-admissao">Data Admissão</label>
+            <input ng-model="usuario.dataAdmissao" type="date" class="form-control" name="data-admissao" required id="datepicker" />
+        </div>
+        <!-- se o formulário for inválido o botão de enviar fica desabilitado -->
+        <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
+
+        <!-- Muda o foco para o botão de voltar, mas não funciona ainda -->
+        <a href="#/setores" class="btn btn-primary" meu-focus focado="focado">Voltar</a>
+    </div>
+</form>
