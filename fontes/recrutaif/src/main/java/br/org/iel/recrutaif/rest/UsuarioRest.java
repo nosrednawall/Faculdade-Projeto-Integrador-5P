@@ -91,11 +91,19 @@ public class UsuarioRest {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		try {
+			
+			System.out.println(entity.getNome());
+			System.out.println(entity.getEmail());
+			System.out.println(entity.getMatricula());
+			System.out.println(entity.getSenha());
+			
 			entity = dao.update(entity);
+			
+			System.out.println("depois");
 		} catch (OptimisticLockException e) {
 			return Response.status(Response.Status.CONFLICT).entity(e.getEntity()).build();
 		}
-
+		entity = dao.update(entity);
 		return Response.noContent().build();
 	}
 

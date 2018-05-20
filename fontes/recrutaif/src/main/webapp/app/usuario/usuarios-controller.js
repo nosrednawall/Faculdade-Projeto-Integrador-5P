@@ -22,10 +22,10 @@ angular.module('recrutaif').controller('UsuariosController',function($scope,recu
     });
 
     //funcao para remover usuarios
-    $scope.remover = function(usuario){
+    $scope.inativar = function(usuario){
 
         //ele tenta remover um usuarios, passando o id em usuarios.id ao coringa usuarioId
-        recursoSetor.delete({usuarioId : usuario.id}, function(){
+        recursoSetor.update({usuarioId : usuario.id}, function(){
 
             //caso dê certo é atualizado a lista e informado o usuário
             var indiceSetor = $scope.usuarios.indexOf(setor);
