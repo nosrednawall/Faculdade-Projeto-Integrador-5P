@@ -1,11 +1,11 @@
-angular.module('loginServices', ['ngResource'])
+angular.module('usuarioServices', ['ngResource'])
 //módulo que configura o caminho para acessar os recursos rest da aplicação TODA
 
     //cria uma fabrica de recursos
-    .factory('recursoLogin',function($resource){
+    .factory('recursoUsuario',function($resource){
 
         //retorna um recurso
-        return $resource('rest/login/:setorId', null,{
+        return $resource('rest/usuarios/:usuarioId', null,{
             update :{
                 method: 'PUT'
             }
@@ -13,39 +13,39 @@ angular.module('loginServices', ['ngResource'])
     })
     
     //o $q serve para trabalhar com as promessas
-    .factory('cadastroDeSetor', function(recursoSetor, $q){
+    .factory('cadastroUsuario', function(recursoUsuario, $q){
 
         var servico = {};
         
-        servico.cadastrar = function(setor){
+        servico.cadastrar = function(usuario){
             //retornando promessa na mão
             return $q(function(resolve, reject){
 
                 //verifica se o setor informado possui id
-                if(setor.id){
+                if(usuario.id){
 
-                    recursoSetor.update({setorId : setor.id}, setor, function(){
+                    recursoSetor.update({usuarioId : usuario.id}, usuario, function(){
                         resolve({
-                            mensagem : '[INFO] Setor ' + setor.nome + ' atualizado com sucesso!',
+                            mensagem : '[INFO] usuario ' + usuario.nome + ' atualizado com sucesso!',
                             inclusao : false
                         });
                     }, function(erro){
                         console.log(erro);
                         reject({
-                        mensagem : '[ERRO] Não foi possível alterar o setor '+setor.nome
+                        mensagem : '[ERRO] Não foi possível alterar o usuario '+usuario.nome
                         });
                     });
 
                 }else{
 
-                    recursoSetor.save(setor, function(){
+                    recursoUsuario.save(usuario, function(){
                         resolve({
-                            mensagem : '[INFO]Setor' + setor.nome + 'Adicionado com sucesso!',
+                            mensagem : '[INFO]usuario' + usuario.nome + 'Adicionado com sucesso!',
                             inclusao : true
                         });
                     },function(erro){
                         reject({
-                            mensagem :'[ERRO] Não foi possível incluir o setor '+ setor.nome
+                            mensagem :'[ERRO] Não foi possível incluir o usuario '+ usuario.nome
                         });
                     });
                 }
