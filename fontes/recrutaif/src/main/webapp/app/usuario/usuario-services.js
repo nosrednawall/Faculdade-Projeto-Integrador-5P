@@ -1,8 +1,10 @@
 angular.module('usuarioServices', ['ngResource'])
 //módulo que configura o caminho para acessar os recursos rest da aplicação TODA
 
+
     //cria uma fabrica de recursos
     .factory('recursoUsuario',function($resource){
+        console.log("Entrou no usuario services em recurso usuario");
 
         //retorna um recurso
         return $resource('rest/usuarios/:usuarioId', null,{
@@ -14,6 +16,7 @@ angular.module('usuarioServices', ['ngResource'])
     
     //o $q serve para trabalhar com as promessas
     .factory('cadastroUsuario', function(recursoUsuario, $q){
+        console.log("Entrou no usuario services em cadastro usuario");
 
         var servico = {};
         

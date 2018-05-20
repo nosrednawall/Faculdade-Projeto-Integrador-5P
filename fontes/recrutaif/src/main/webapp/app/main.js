@@ -1,4 +1,4 @@
-angular.module('recrutaif', ['minhasDiretivas', 'ngAnimate', 'ngRoute', 'ngResource', 'vagaServices', 'setorServices','usuarioServices'])
+angular.module('recrutaif', ['ngAnimate', 'ngRoute', 'ngResource','minhasDiretivas', 'vagaServices', 'setorServices','usuarioServices'])
     //angular = variável global do angular; .module = cria um módulo; [módulos em que a main é dependente]
 
     //função para rotas, ex quero ver uma lista de setores, vou em /recrutaif/#/setores
@@ -8,7 +8,7 @@ angular.module('recrutaif', ['minhasDiretivas', 'ngAnimate', 'ngRoute', 'ngResou
         // | |\| ¯|¯ |¯ |¯| |¯ |¯ |¯| ¯|¯ /¯\ |¯\ |¯| |¯| 
         // | | |  |  |¯ |¯\ |_ |¯ |¯   |  |¯| |_/ |_| |¯\ 
         //            ¯         ¯                         
-        $httpProvider.interceptors.push('tokenInterceptor');
+        // $httpProvider.interceptors.push('tokenInterceptor');
 
         // _______________________________________________________________________
 

@@ -1,4 +1,4 @@
-angular.module('recrutaif').controller('UsuarioCadastroController', function ($scope, recursoUsuario, $routeParams, cadastroUsuario) {
+angular.module('recrutaif').controller('UsuarioCadastroController', function ($scope, $routeParams, cadastroUsuario,recursoUsuario) {
 
     $scope.usuario = [];
     $scope.mensagem = '';
@@ -7,7 +7,7 @@ angular.module('recrutaif').controller('UsuarioCadastroController', function ($s
         //verifica se o formulario é válido
         $scope.mensagem = 'enttrou na function uhull';
 
-        if ($scope.formulario.$valid) {
+        if ($scope.cadastro.$valid) {
             //tenta cadastrar o setor usando a funcao cadastroDeSetor, passando o setor do scope
             $scope.mensagem = 'enttrou no primeiro if';
             cadastroUsuario.cadastrar($scope.usuario)

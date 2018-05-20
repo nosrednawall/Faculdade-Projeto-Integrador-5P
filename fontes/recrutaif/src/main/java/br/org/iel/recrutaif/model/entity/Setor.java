@@ -26,7 +26,7 @@ public class Setor implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
-	private Long id;
+	private Integer id;
 
 	@Column(name = "nome", nullable=false,length=21)
 	private String nome;
@@ -38,13 +38,6 @@ public class Setor implements Serializable {
 	
 	// getters and setters
 
-	public Long getId() {
-		return this.id;
-	}
-
-	public void setId(final Long id) {
-		this.id = id;
-	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -61,6 +54,14 @@ public class Setor implements Serializable {
 			}
 		}
 		return true;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Override

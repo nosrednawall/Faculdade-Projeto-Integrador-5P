@@ -1,31 +1,32 @@
 <!-- $scope.setor.nome -->
 <div class="page-header text-center">
-        <h1>{{usuario.nome}}</h1>
-    </div>
+    <h1>{{usuario.nome}}</h1>
+</div>
 <!-- $scope.mensagem -->
 <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
 
-<form novalidate name="formulario" class="row" ng-submit="submeter()">
+<form novalidate name="cadastro" class="row" ng-submit="submeter()">
     <div class="col">
 
         <div class="form-group">
             <label for="nome-usuario">Nome</label>
             <input ng-model="usuario.nome" type="text" class="form-control" name="nome" required ng-maxlength="100" ng-minlength="10"
             />
-            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
-            <span ng-show="formulario.$submitted && formulario.nome.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <!-- ng-show       mostra a mensagem quando ocorrer erro no cadastro,-->
+            <span ng-show="cadastro.$submitted && cadastro.nome.$error.required" class="form-control alert-danger"> Campo obligatório </span>
             <!--mostra erro quando é digitado mais de 20 caracteres-->
-            <span ng-show="formulario.nome.$error.maxlength" class="form-control alert-danger"> Deve conter no máximo 100 caracteres </span>
+            <span ng-show="cadastro.nome.$error.maxlength" class="form-control alert-danger"> Deve conter no máximo 100 caracteres </span>
         </div>
 
         <div class="form-group">
             <label for="matricula-usuario">Matrícula</label>
             <input ng-model="usuario.matricula" type="text" class="form-control" name="matricula" required ng-maxlength="5" ng-minlength="5"
             />
-            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
-            <span ng-show="formulario.$submitted && formulario.matricula.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <!-- ng-show       mostra a mensagem quando ocorrer erro no cadastro,-->
+            <span ng-show="cadastro.$submitted && cadastro.matricula.$error.required" class="form-control alert-danger"> Campo obligatório </span>
             <!--mostra erro quando é digitado mais de 20 caracteres-->
-            <span ng-show="formulario.matricula.$error.maxlength && formulario.matricula.$error.minlength" class="form-control alert-danger">
+            <span ng-show="cadastro.matricula.$error.maxlength && cadastro.matricula.$error.minlength" class="form-control alert-danger">
+                <span ng-show="cadastro.matricula.$error.maxlength && cadastro.matricula.$error.minlength" class="form-control alert-danger"></span>
                 Matrícula deve conter 5 números </span>
         </div>
 
@@ -34,17 +35,17 @@
             <div class="input date">
                 <input id="calendario" ng-model="usuario.dataAdmissao" type="text" class="form-control" name="data-admissao" required />
             </div>
-            <span ng-show="formulario.$submitted && formulario.dataAdmissao.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <span ng-show="cadastro.$submitted && cadastro.dataAdmissao.$error.required" class="form-control alert-danger"> Campo obligatório </span>
         </div>
 
         <div class="form-group">
             <label for="email-usuario">E-mail</label>
             <input ng-model="usuario.email" type="email" class="form-control" name="email" required ng-maxlength="50" ng-minlength="10"
             />
-            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
-            <span ng-show="formulario.$submitted && formulario.email.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <!-- ng-show       mostra a mensagem quando ocorrer erro no cadastro,-->
+            <span ng-show="cadastro.$submitted && cadastro.email.$error.required" class="form-control alert-danger"> Campo obligatório </span>
             <!--mostra erro quando é digitado mais de 20 caracteres-->
-            <span ng-show="formulario.email.$error.maxlength && formulario.email.$error.minlength" class="form-control alert-danger">
+            <span ng-show="cadastro.email.$error.maxlength && cadastro.email.$error.minlength" class="form-control alert-danger">
                 E-mail inválido </span>
         </div>
 
@@ -52,17 +53,17 @@
             <label for="senha-usuario">Senha</label>
             <input ng-model="usuario.senha" type="senha" class="form-control" name="senha" required ng-maxlength="50" ng-minlength="6"
             />
-            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
-            <span ng-show="formulario.$submitted && formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <!-- ng-show       mostra a mensagem quando ocorrer erro no cadastro,-->
+            <span ng-show="cadastro.$submitted && cadastro.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
             <!--mostra erro quando é digitado mais de 20 caracteres-->
-            <span ng-show="formulario.senha.$error.maxlength && formulario.senha.$error.minlength" class="form-control alert-danger">
+            <span ng-show="cadastro.senha.$error.maxlength && cadastro.senha.$error.minlength" class="form-control alert-danger">
                 Senha inválida </span>
         </div>
 
         <!-- se o formulário for inválido o botão de enviar fica desabilitado -->
-        <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
+        <button ng-disable="cadastro.$invalid" type="submit" class="btn btn-primary">Salvar</button>
 
         <!-- Muda o foco para o botão de voltar, mas não funciona ainda -->
-        <a href="#/setores" class="btn btn-primary" meu-focus focado="focado">Voltar</a>
+        <a href="#/setores" class="btn btn-primary" >Voltar</a>
     </div>
 </form>
