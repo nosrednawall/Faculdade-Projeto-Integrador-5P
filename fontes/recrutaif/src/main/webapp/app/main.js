@@ -59,10 +59,19 @@ angular.module('recrutaif', ['ngAnimate', 'ngRoute', 'ngResource','minhasDiretiv
         // \_____/ /_____/ \_____/ /_/   |_| |_|  \_\ |_| \_____/ 
 
         $routeProvider.when('/usuario/new', {
-            templateUrl: 'app/usuario/usuario-cadastro.html',
-            controller: 'UsuarioCadastroController'
+            templateUrl: 'app/usuario/usuario.html',
+            controller: 'UsuarioController'
         });
 
+        $routeProvider.when('/usuario/edit/:usuarioId', {
+            templateUrl: 'app/usuario/usuario.html',
+            controller: 'UsuarioController'
+        });
+
+        $routeProvider.when('/usuarios', {
+            templateUrl: 'app/usuario/usuarios.html',
+            controller: 'UsuariosController'
+        });
         // __________________________________________________________________________
 
         // _     _       ___   _____       ___  

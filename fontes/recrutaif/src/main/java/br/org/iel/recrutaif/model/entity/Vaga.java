@@ -64,7 +64,7 @@ public class Vaga implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY)
 //	@Fetch(FetchMode.SUBSELECT)
-	@JoinTable( name = "setores", joinColumns = @JoinColumn(name="vaga_id"), inverseJoinColumns = @JoinColumn(name="setor_id") )
+	@JoinTable( name = "vaga_setor", joinColumns = @JoinColumn(name="vaga_id"), inverseJoinColumns = @JoinColumn(name="setor_id") )
 	private Set<Setor> setores;
 
 	@Enumerated(EnumType.STRING)

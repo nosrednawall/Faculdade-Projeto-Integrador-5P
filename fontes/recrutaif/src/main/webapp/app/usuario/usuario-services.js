@@ -27,7 +27,8 @@ angular.module('usuarioServices', ['ngResource'])
                 //verifica se o setor informado possui id
                 if(usuario.id){
 
-                    recursoSetor.update({usuarioId : usuario.id}, usuario, function(){
+
+                    recursoUsuario.update({usuarioId : usuario.id}, usuario, function(){
                         resolve({
                             mensagem : '[INFO] usuario ' + usuario.nome + ' atualizado com sucesso!',
                             inclusao : false

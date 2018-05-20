@@ -47,9 +47,9 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 	 * @param status
 	 * @return
 	 */
-	public List<Usuario> listaTodos(StatusUsuario status) {
+	public List<Usuario> listaTodos() {
 		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.listarTodos", Usuario.class);
-		query.setParameter("pStatus", status);
+		query.setParameter("pStatus", StatusUsuario.ATIVO);
 
 		return query.getResultList();
 	}

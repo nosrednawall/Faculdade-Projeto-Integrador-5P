@@ -13,14 +13,12 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
-import br.org.iel.recrutaif.model.enums.StatusUsuario;
 
 //@Seguro
 @Stateless
@@ -35,6 +33,9 @@ public class UsuarioRest {
 	@POST
 	@Consumes("application/json")
 	public Response create(Usuario entity) {
+		System.out.println(entity.getNome());
+		System.out.println(entity.getEmail());
+		
 		dao.save(entity);
 		return Response
 				.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
@@ -42,7 +43,7 @@ public class UsuarioRest {
 	}
 
 	@GET
-	@Path("/{id:[0-9][0-9]}")
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces("application/json")
 	public Response buscaPorId(@PathParam("id") Integer id) {
 		Usuario entity;
@@ -59,11 +60,20 @@ public class UsuarioRest {
 
 	@GET
 	@Produces("application/json")
-	public List<Usuario> listaUsuarios(@QueryParam("status") StatusUsuario status) {
-		final List<Usuario> results = dao.listaTodos(status);
+	public List<Usuario> listaUsuarios() {
+		final List<Usuario> results = dao.listaTodos();
+			
 		return results;
 	}
 
+//	@GET
+//	@Produces("application/json")
+//	public List<Usuario> listaUsuarios(@QueryParam("status") StatusUsuario status) {
+//		final List<Usuario> results = dao.listaTodos(status);
+//		return results;
+//	}
+
+	
 	@PUT
 	@Path("/{id:[0-9][0-9]*}")
 	@Consumes("application/json")
@@ -77,7 +87,7 @@ public class UsuarioRest {
 		if (!id.equals(entity.getId())) {
 			return Response.status(Status.CONFLICT).entity(entity).build();
 		}
-		if (dao.find(Usuario.class, id) == null) {
+		if (dao.find(id) == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		try {
