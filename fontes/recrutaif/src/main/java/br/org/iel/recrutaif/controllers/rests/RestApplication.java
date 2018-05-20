@@ -1,4 +1,4 @@
-package br.org.iel.recrutaif.rest;
+package br.org.iel.recrutaif.controllers.rests;
 
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;

@@ -74,8 +74,22 @@ public class Usuario implements Serializable {
 	 * Contrutores e metodos
 	 */
 
+	@Deprecated
 	public Usuario() {
 	}
+
+	public Usuario(Integer id, String nome, String senha, String matricula, String email, Calendar dataAdmissao,
+			NivelPermissao permissao, StatusUsuario status) {
+		this.id = id;
+		this.nome = nome;
+		this.senha = senha;
+		this.matricula = matricula;
+		this.email = email;
+		this.dataAdmissao = dataAdmissao;
+		this.permissao = permissao;
+		this.status = status;
+	}
+
 
 
 	@Override
