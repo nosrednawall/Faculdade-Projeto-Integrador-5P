@@ -31,7 +31,9 @@ public class UsuarioValidator {
 				if(matcher.find()){
 					System.out.println("Não deve conter caracteres!");
 				}else {
-					
+					if(nomeUsuario.length()>=101) {
+						System.out.println("O nome não deve conter mais que 100 caracteres");
+					}
 					
 				}
 			}

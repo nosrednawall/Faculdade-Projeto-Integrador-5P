@@ -74,7 +74,7 @@ public class Usuario implements Serializable {
 	 * Contrutores e metodos
 	 */
 
-	@Deprecated
+//	@Deprecated preciso fazer alguns testes unitários
 	public Usuario() {
 	}
 
