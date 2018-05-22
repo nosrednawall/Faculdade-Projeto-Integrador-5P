@@ -1,18 +1,14 @@
 package br.org.iel.recrutaif.entity;
 
-import static junit.framework.Assert.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import java.io.ByteArrayInputStream;
+
 import java.text.ParseException;
-import org.junit.jupiter.api.Test;
-import junit.framework.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.stream.Stream;
-import junit.extensions.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+
+import br.org.iel.recrutaif.model.entity.Vaga;
 
 
 public class VagaTest<Titulo> {
