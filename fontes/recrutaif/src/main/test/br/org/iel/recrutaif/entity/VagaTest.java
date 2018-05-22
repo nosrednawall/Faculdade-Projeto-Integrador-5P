@@ -14,6 +14,7 @@ import junit.extensions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+
 public class VagaTest<Titulo> {
 
 	// Autor: Everton Sausen
@@ -22,6 +23,7 @@ public class VagaTest<Titulo> {
 	// @Nested
 
 	@Test
+	//(expected=RuntimeException.class)
 	@DisplayName("Retorna OK se o campo estiver vazio")
 	public void RetornarOKSeOCampoEstiverVazio() throws ParseException {
 
