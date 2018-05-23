@@ -1,43 +1,40 @@
-package br.org.iel.recrutaif.entity;
+package br.org.iel.recrutaif.model.entity;
 
-//import static org.junit.Assert.assertFalse;
-//import static org.junit.Assert.assertTrue;
-//
-//import java.text.ParseException;
-//
-//import org.junit.jupiter.api.DisplayName;
-//import org.junit.jupiter.api.Test;
-//
-//import br.org.iel.recrutaif.model.entity.Vaga;
-//
-//
-//public class VagaTest<Titulo> {
-//
-//	// Autor: Everton Sausen
-//	// 1-Não deve ficar em branco - OK
-//	
-//	// @Nested
-//
-//	@Test
-//	//(expected=RuntimeException.class)
-//	@DisplayName("Retorna OK se o campo estiver vazio")
-//	public void RetornarOKSeOCampoEstiverVazio() throws ParseException {
-//
-//		String conteudo = "";
-//		Vaga vagaTeste = new Vaga();
-//		vagaTeste.setTitulo(conteudo);
-//		assertTrue("O campo está vazio", vagaTeste.getTitulo().isEmpty());
-//	}
-//
-//	@Test
-//	@DisplayName("Retorna Erro se o campo estiver preenchido")
-//	public void RetornarErroSeOCampoEstiverPreenchido() throws ParseException {
-//
-//		String conteudo = "dasdasd";
-//		Vaga vagaTeste = new Vaga();
-//		vagaTeste.setTitulo(conteudo);
-//		assertTrue("O campo está preenchido", vagaTeste.getTitulo().isEmpty());
-//	}
+import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import java.text.ParseException;
+import org.junit.jupiter.api.DisplayName;
+import br.org.iel.recrutaif.model.entity.Vaga;
+
+public class VagaTest<TestaVaga> {
+
+	// Autor: Everton Sausen
+	// 1-Não deve ficar em branco - OK
+	
+	// @Nested
+
+	@Test
+	@DisplayName("Retorna OK se o campo estiver vazio")
+	public void RetornarOKSeOCampoEstiverVazio() throws ParseException {
+
+		String conteudo = "";
+		Vaga vagaTeste = new Vaga();
+		vagaTeste.setTitulo(conteudo);
+		assertTrue("O campo está vazio", vagaTeste.getTitulo().isEmpty());
+	}
+
+	@Test
+	@DisplayName("Retorna Erro se o campo estiver preenchido")
+	public void RetornarErroSeOCampoEstiverPreenchido() throws ParseException {
+
+		String conteudo = "dasdasd";
+		Vaga vagaTeste = new Vaga();
+		vagaTeste.setTitulo(conteudo);
+		assertTrue("O campo está preenchido", vagaTeste.getTitulo().isEmpty());
+	}
+}
+
 //
 //	// @ParameterizedTest
 //	

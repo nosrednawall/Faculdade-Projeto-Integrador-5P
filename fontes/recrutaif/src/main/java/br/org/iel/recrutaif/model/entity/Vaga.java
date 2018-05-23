@@ -111,7 +111,7 @@ public class Vaga implements Serializable {
 	}
 
 	// Inserido limitador de coluna - Everton
-	@Column(name = "titulo", length = 2, nullable = false)
+	@Column(name = "titulo", length = 10, nullable = false)
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
