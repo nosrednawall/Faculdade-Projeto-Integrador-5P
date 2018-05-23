@@ -20,6 +20,8 @@ class UsuarioValidatorTest {
 		boolean resultado = false;
 		
 		Usuario testaNome = new Usuario();
+		testaNome.setNome("");
+		resultado = new UsuarioValidator().validaUsuario(testaNome);
 
 		
 		return resultado;

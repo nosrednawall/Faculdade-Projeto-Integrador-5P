@@ -2,7 +2,7 @@ package br.org.iel.recrutaif.model.dao;
 
 import java.io.Serializable;
 
-import javax.persistence.EntityManager;
+ import javax.persistence.EntityManager;
 
 /**
  * 
