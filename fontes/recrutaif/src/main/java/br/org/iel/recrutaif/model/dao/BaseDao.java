@@ -1,5 +1,7 @@
 package br.org.iel.recrutaif.model.dao;
 
+import java.io.Serializable;
+
 import javax.persistence.EntityManager;
 
 /**
@@ -10,7 +12,12 @@ import javax.persistence.EntityManager;
  * @param entity entidade que será salva
  */
 
-public abstract class BaseDao<T> {
+public abstract class BaseDao<T> implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	//construtor em branco
     public BaseDao() {}
