@@ -5,6 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.text.ParseException;
 import org.junit.jupiter.api.DisplayName;
+
+import br.org.iel.recrutaif.controllers.validators.VagaValidator;
 import br.org.iel.recrutaif.model.entity.Vaga;
 import junit.framework.*;
 
@@ -23,7 +25,13 @@ public class VagaTest<TestaVaga> {
 		String conteudo = "";
 		Vaga vagaTeste = new Vaga();
 		vagaTeste.setTitulo(conteudo);
-		assertTrue("O campo está vazio", vagaTeste.getTitulo().isEmpty());
+		
+		VagaValidator.validar(vagaTeste);
+		
+//		vagaTeste.getTitulo().isEmpty()
+		
+//		assertTrue("O campo está vazio", VagaValidator.validar(vagaTeste); Corrigir isto
+		
 	}
 
 	@Test
