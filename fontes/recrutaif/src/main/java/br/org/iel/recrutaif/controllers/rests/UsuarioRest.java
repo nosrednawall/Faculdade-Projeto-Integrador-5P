@@ -36,6 +36,8 @@ public class UsuarioRest {
 		System.out.println(entity.getNome());
 		System.out.println(entity.getEmail());
 		
+//Conversamos sobre um if para testar via controlers
+		
 		dao.save(entity);
 		return Response
 				.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())

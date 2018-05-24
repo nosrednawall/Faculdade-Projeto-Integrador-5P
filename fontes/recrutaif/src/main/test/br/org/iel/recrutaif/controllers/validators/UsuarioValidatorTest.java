@@ -1,13 +1,10 @@
 package br.org.iel.recrutaif.controllers.validators;
 
 import static org.junit.Assert.assertTrue;
-
-import org.jboss.security.auth.login.ParseException;
-import org.junit.Before;
+import java.text.ParseException;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import br.org.iel.recrutaif.model.entity.Usuario;
-
 
 public class UsuarioValidatorTest<TestNew> {
 
@@ -17,12 +14,44 @@ public class UsuarioValidatorTest<TestNew> {
 	// @Nested
 
 	@Test
-//	@DisplayName("Retorna OK se o campo estiver vazio")
+	@DisplayName("Retorna OK se o campo estiver vazio")
 	public void RetornarOKSeOCampoEstiverVazio() throws ParseException {
 
 		String conteudo = "";
-		Usuario vagaTeste = new Usuario();
-		vagaTeste.setNome(conteudo);
-		assertTrue("O campo está vazio", vagaTeste.getNome().isEmpty());
+		Usuario nomeTeste = new Usuario();
+		nomeTeste.setNome(conteudo);
+		assertTrue("O campo está vazio", nomeTeste.getNome().isEmpty());
 	}
 }
+
+
+//package br.org.iel.recrutaif.controllers.validators;
+//
+////import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//
+//import br.org.iel.recrutaif.model.entity.Usuario;
+//
+//class UsuarioValidatorTest {
+////to copiando desse site
+////	https://howtoprogram.xyz/2016/09/09/junit-5-maven-example/
+//	
+////	@BeforeEach
+////	void init() {
+////		Usuario testaNome = new Usuario();
+////	}
+////	
+//	@Test
+//	boolean testValidaUsuarioNomeNotNull() {
+//		
+//		boolean resultado = false;
+//		
+//		Usuario testaNome = new Usuario();
+//		testaNome.setNome("");
+//		resultado = new UsuarioValidator().validaUsuario(testaNome);
+//
+//		
+//		return resultado;
+//	}
+//
+//}
