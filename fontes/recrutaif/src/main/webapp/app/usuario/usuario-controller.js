@@ -5,7 +5,7 @@ angular
 
             $scope.usuario = [];
             $scope.mensagem = '';
-            
+
             //get ou busca setor
             if ($routeParams.usuarioId) {
                 //faz uma requisição get, passando o numero do parametro da url para o coringa, 
@@ -24,11 +24,12 @@ angular
 
             $scope.submeter = function () {
                 //verifica se o formulario é válido
-                console.log($scope.usuario);
+                console.log("e o usuário é "+$scope.usuario);
 
                 if ($scope.formulario.$valid) {
                     //tenta cadastrar o setor usando a funcao cadastroDeSetor, passando o setor do scope
-                    $scope.mensagem = 'enttrou no primeiro if';
+                    $scope.mensagem = 'entrou no primeiro if';
+
                     cadastroUsuario.cadastrar($scope.usuario)
                         //se der certo a mensagem é atualizada com o sucesso
                         .then(function (dados) {
