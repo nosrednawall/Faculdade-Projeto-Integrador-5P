@@ -20,16 +20,6 @@
                 required 
 
             />
-            <!-- <span 
-                ng-show="formulario.$submitted && formulario.nome.$error.required" 
-                class="form-control alert-danger">
-                    Campo obligatório 
-            </span>
-            <span 
-                ng-show="formulario.nome.$error.maxlength" 
-                class="form-control alert-danger"> 
-                    Deve conter no máximo 100 caracteres 
-            </span> -->
         </div>
 
         <div class="form-group">
@@ -73,6 +63,10 @@
             <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger">
                 Senha inválida </span>
         </div>
+
+        <!-- Valores ocultos de um usuário, além do id -->
+        <input ng-model="usuario.permissao" type="hidden" value="ADMINISTRADOR" />
+        <input ng-model="usuario.status" type="hidden" value="ATIVO" />
 
         <!-- se o formulário for inválido o botão de enviar fica desabilitado -->
         <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
