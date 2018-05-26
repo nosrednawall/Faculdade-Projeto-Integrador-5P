@@ -1,4 +1,14 @@
-angular.module('recrutaif', ['ngAnimate', 'ngRoute', 'ngResource','minhasDiretivas', 'vagaServices', 'setorServices','usuarioServices'])
+angular.
+    module
+        ('recrutaif', [
+            'ngAnimate', 
+            'ngRoute', 
+            'ngResource',
+            'minhasDiretivas', 
+            'vagaServices', 
+            'setorServices',
+            'usuarioServices'
+        ])
     //angular = variável global do angular; .module = cria um módulo; [módulos em que a main é dependente]
 
     //função para rotas, ex quero ver uma lista de setores, vou em /recrutaif/#/setores
