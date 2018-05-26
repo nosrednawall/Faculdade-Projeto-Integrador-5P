@@ -7,7 +7,8 @@ angular.
             'minhasDiretivas', 
             'vagaServices', 
             'setorServices',
-            'usuarioServices'
+            'usuarioServices',
+            '720kb.datepicker'
         ])
     //angular = variável global do angular; .module = cria um módulo; [módulos em que a main é dependente]
 
