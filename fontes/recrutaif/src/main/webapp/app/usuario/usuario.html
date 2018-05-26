@@ -25,9 +25,14 @@
         </div>
 
         <div class="form-group">
-            <label for="data-admissao">Data Admissão</label>
-            <input id="calendario" ng-model="usuario.dataAdmissao" type="text" class="form-control" name="data-admissao" required />
-            <span ng-show="formulario.$submitted && formulario.dataAdmissao.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <md-content ng-controller="UsuarioController" layout-padding ng-cloak>
+                <div layout-gt-xs="row">
+                    <div flex-gt-xs>
+                        <h4>Standard date-picker</h4>
+                        <md-datepicker ng-model="usuario.dataAdmissao" md-placeholder="Enter date"></md-datepicker>
+                    </div>
+                </div>
+            </md-content>
         </div>
 
         <div class="form-group">
@@ -42,13 +47,12 @@
 
         <div class="form-group">
             <label for="senha-usuario">Senha</label>
-            <input ng-model="usuario.senha" type="senha" class="form-control" name="senha" required
-            />
+            <input ng-model="usuario.senha" type="senha" class="form-control" name="senha" required />
             <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
             <span ng-show="formulario.$submitted && formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
             <!--mostra erro quando é digitado mais de 20 caracteres-->
             <!-- <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger"> -->
-                <!-- Senha inválida </span> -->
+            <!-- Senha inválida </span> -->
         </div>
 
         <!-- Valores ocultos de um usuário, além do id -->
@@ -59,6 +63,6 @@
         <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
 
         <!-- Muda o foco para o botão de voltar, mas não funciona ainda -->
-        <a href="#/usuarios" class="btn btn-primary" >Voltar</a>
+        <a href="#/usuarios" class="btn btn-primary">Voltar</a>
     </div>
 </form>

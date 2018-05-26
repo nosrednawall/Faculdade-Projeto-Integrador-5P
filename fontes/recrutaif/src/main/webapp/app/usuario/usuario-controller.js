@@ -5,7 +5,7 @@ angular
 
             $scope.usuario = [];
             $scope.mensagem = '';
-
+            
             //get ou busca setor
             if ($routeParams.usuarioId) {
                 //faz uma requisição get, passando o numero do parametro da url para o coringa, 
