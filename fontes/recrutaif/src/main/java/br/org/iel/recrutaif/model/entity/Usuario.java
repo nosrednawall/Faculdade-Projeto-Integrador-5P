@@ -1,6 +1,7 @@
 package br.org.iel.recrutaif.model.entity;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,7 +60,7 @@ public class Usuario implements Serializable {
 	private String email;
 
 	@Temporal(TemporalType.DATE)
-	private java.util.Date dataAdmissao;
+	private Calendar dataAdmissao;
 
 	@Enumerated(EnumType.STRING)
 	private NivelPermissao permissao;

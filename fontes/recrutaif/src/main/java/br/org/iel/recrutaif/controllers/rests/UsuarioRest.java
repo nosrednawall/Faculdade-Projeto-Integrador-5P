@@ -18,6 +18,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
+import com.google.gson.Gson;
+
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
 import br.org.iel.recrutaif.model.enums.NivelPermissao;
@@ -33,42 +35,43 @@ public class UsuarioRest {
 	private UsuarioDao dao;
 
 	// // método para criar um usuario
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response create(String usuarioGson) {
+
+		Gson gson = new Gson();
+
+		Usuario entity = gson.fromJson(usuarioGson, Usuario.class);
+		entity.setPermissao(NivelPermissao.ADMINISTRADOR);
+		entity.setStatus(StatusUsuario.ATIVO);
+		// entity.setDataAdmissao(Calendar.getInstance());
+
+		System.out.println(entity);
+		// Conversamos sobre um if para testar via controlers
+		//
+		 dao.save(entity);
+		 return
+		 Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
+		 .build();
+
+//		return Response.ok().build();
+	}
+
 	// @POST
 	// @Consumes(MediaType.APPLICATION_JSON)
-	// public Response create(String usuarioGson) {
+	// public Response create(Usuario entity) {
 	//
-	// Gson gson = new Gson();
+	// // Conversamos sobre um if para testar via controlers
 	//
-	// Usuario entity = gson.fromJson(usuarioGson, Usuario.class);
 	// entity.setPermissao(NivelPermissao.ADMINISTRADOR);
 	// entity.setStatus(StatusUsuario.ATIVO);
-	// entity.setDataAdmissao(Calendar.getInstance());
-	//
-	// System.out.println(entity);
-	// // Conversamos sobre um if para testar via controlers
+	//// entity.setDataAdmissao();
 	//
 	// dao.save(entity);
 	// return
 	// Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
 	// .build();
-	//
-	//// return Response.ok().build();
 	// }
-
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(Usuario entity) {
-
-		// Conversamos sobre um if para testar via controlers
-		
-		entity.setPermissao(NivelPermissao.ADMINISTRADOR);
-		entity.setStatus(StatusUsuario.ATIVO);
-//		entity.setDataAdmissao();
-
-		dao.save(entity);
-		return Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
-				.build();
-	}
 
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
