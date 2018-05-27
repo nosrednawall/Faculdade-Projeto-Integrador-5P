@@ -30,6 +30,7 @@ angular
                     //tenta cadastrar o setor usando a funcao cadastroDeSetor, passando o setor do scope
                     $scope.mensagem = 'entrou no primeiro if';
 
+                    console.log($scope.usuario.dataAdmissao);
 
                     cadastroUsuario.cadastrar($scope.usuario)
                         //se der certo a mensagem é atualizada com o sucesso

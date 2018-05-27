@@ -45,20 +45,14 @@ angular.module('usuarioServices', ['ngResource'])
                         email: usuario.email,
                         senha: usuario.senha,
                         nome: usuario.nome,
-                        dataAdmissao: usuario.dataAdmissao,
-                        matricula: usuario.matricula,
-                        permissao: usuario.permissao,
-                        status: usuario.status
+                        matricula: usuario.matricula
                     })
                     .then(function () {
                         $scope.mensagem = 'Usuário '+usuario.nome+' cadastrado com sucesso!';
     
                     }, function (erro) {
-                        console.log('Esse é o erro de login ' + erro);
-                        console.log('Entrou em deu errado')
-    
                         $scope.usuario = {};
-                        $scope.mensagem = 'Login ou senha inválidos!';
+                        $scope.mensagem = 'Usuário não cadastrado!';
                     }
                 );
                 }
