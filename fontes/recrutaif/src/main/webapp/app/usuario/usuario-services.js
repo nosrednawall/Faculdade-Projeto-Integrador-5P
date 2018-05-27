@@ -15,7 +15,7 @@ angular.module('usuarioServices', ['ngResource'])
     })
     
     //o $q serve para trabalhar com as promessas
-    .factory('cadastroUsuario', function(recursoUsuario, $q){
+    .factory('cadastroUsuario', function(recursoUsuario, $q, $http){
         console.log("Entrou no usuario services em cadastro usuario");
 
         var servico = {};
@@ -41,17 +41,26 @@ angular.module('usuarioServices', ['ngResource'])
                     });
 
                 }else{
-
-                    recursoUsuario.save(usuario, function(){
-                        resolve({
-                            mensagem : '[INFO]usuario' + usuario.nome + 'Adicionado com sucesso!',
-                            inclusao : true
-                        });
-                    },function(erro){
-                        reject({
-                            mensagem :'[ERRO] Não foi possível incluir o usuario '+ usuario.nome
-                        });
-                    });
+                    $http.post('rest/usuarios', { 
+                        email: usuario.email,
+                        senha: usuario.senha,
+                        nome: usuario.nome,
+                        dataAdmissao: usuario.dataAdmissao,
+                        matricula: usuario.matricula,
+                        permissao: usuario.permissao,
+                        status: usuario.status
+                    })
+                    .then(function () {
+                        $scope.mensagem = 'Usuário '+usuario.nome+' cadastrado com sucesso!';
+    
+                    }, function (erro) {
+                        console.log('Esse é o erro de login ' + erro);
+                        console.log('Entrou em deu errado')
+    
+                        $scope.usuario = {};
+                        $scope.mensagem = 'Login ou senha inválidos!';
+                    }
+                );
                 }
             });
         };

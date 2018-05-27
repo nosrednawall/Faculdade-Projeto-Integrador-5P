@@ -25,7 +25,8 @@ angular.module('recrutaif').controller('LoginController',
 
                     $scope.usuario = {};
                     $scope.mensagem = 'Login ou senha inválidos!';
-                });
+                }
+            );
         };
 
     });
