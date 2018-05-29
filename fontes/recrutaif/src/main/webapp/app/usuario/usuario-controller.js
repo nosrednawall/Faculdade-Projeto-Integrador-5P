@@ -28,11 +28,16 @@ angular
              * variáveis criadas quando a tela do controlador é acessada
              */
             $scope.usuario = [
+
+                id = '',
                 nome = '',
                 matricula = '',
                 dataAdmissao = '',
                 email = '',
-                senha = ''
+                senha = '',
+                /**Esses dois ultimos são essenciais para o servidor aceitar o objeto */
+                status = '',
+                permissao = ''
             ];
             $scope.mensagem = '';
             //_________________________________________________________________________________________________________________________
