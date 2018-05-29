@@ -44,10 +44,11 @@ angular.module('usuarioServices', ['ngResource'])
 
                     recursoUsuario.save(usuario, function(){
                         resolve({
-                            mensagem : '[INFO]usuario' + usuario.nome + 'Adicionado com sucesso!',
+                            mensagem : '[INFO]usuario ' + usuario.nome + ' Adicionado com sucesso!',
                             inclusao : true
                         });
                     },function(erro){
+                        console.log(erro);
                         reject({
                             mensagem :'[ERRO] Não foi possível incluir o usuario '+ usuario.nome
                         });

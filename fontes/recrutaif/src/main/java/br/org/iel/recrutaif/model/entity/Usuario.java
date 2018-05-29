@@ -28,69 +28,54 @@ import br.org.iel.recrutaif.model.enums.StatusUsuario;
 @NamedQueries({
 		@NamedQuery(name = "Usuario.listarTodos", query = "SELECT DISTINCT u FROM Usuario u WHERE u.status = :pStatus"),
 		@NamedQuery(name = "Usuario.find", query = "SELECT DISTINCT u FROM Usuario u WHERE u.id = :pId"),
-		@NamedQuery(name = "Usuario.loga", query = "SELECT DISTINCT u FROM Usuario u WHERE u.email = :pEmail AND u.senha = :pSenha")
-})
+		@NamedQuery(name = "Usuario.loga", query = "SELECT DISTINCT u FROM Usuario u WHERE u.email = :pEmail AND u.senha = :pSenha") })
+@XmlRootElement
 @Entity
 @Table(name = "usuario")
-@XmlRootElement
 public class Usuario implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8161894339545359421L;
 
 	/**
 	 * Atributos
 	 */
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
-	
-	@Column(updatable = false, nullable = false)
+
+	@Column(nullable = false)
 	private String nome;
-	
-	@Column(updatable = false, nullable = false)
+
+	@Column(nullable = false)
 	private String senha;
-	
-	@Column(unique=true, nullable = false)
+
+	@Column(unique = true, nullable = false)
 	private String matricula;
 
 	@Column(unique = true)
 	private String email;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Calendar dataAdmissao;
-	
+
 	@Enumerated(EnumType.STRING)
 	private NivelPermissao permissao;
 
 	@Enumerated(EnumType.STRING)
 	private StatusUsuario status;
-	
-	
+
 	/**
 	 * Contrutores e metodos
 	 */
 
-//	@Deprecated preciso fazer alguns testes unitários
 	public Usuario() {
+		// TODO Auto-generated constructor stub
 	}
-
-	public Usuario(Integer id, String nome, String senha, String matricula, String email, Calendar dataAdmissao,
-			NivelPermissao permissao, StatusUsuario status) {
-		this.id = id;
-		this.nome = nome;
-		this.senha = senha;
-		this.matricula = matricula;
-		this.email = email;
-		this.dataAdmissao = dataAdmissao;
-		this.permissao = permissao;
-		this.status = status;
-	}
-
-
 
 	@Override
 	public String toString() {
@@ -98,96 +83,72 @@ public class Usuario implements Serializable {
 				+ dataAdmissao + "]";
 	}
 
-
 	/**
 	 * Getters and Setters
 	 * 
 	 */
 
-
 	public Integer getId() {
 		return id;
 	}
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
 	public String getNome() {
 		return nome;
 	}
-
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-
 	public String getSenha() {
 		return senha;
 	}
-
 
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
-
 	public String getMatricula() {
 		return matricula;
 	}
-
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public Calendar getDataAdmissao() {
 		return dataAdmissao;
 	}
-
 
 	public void setDataAdmissao(Calendar dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
 	}
 
-
 	public NivelPermissao getPermissao() {
 		return permissao;
 	}
-
 
 	public void setPermissao(NivelPermissao permissao) {
 		this.permissao = permissao;
 	}
 
-
 	public StatusUsuario getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(StatusUsuario status) {
 		this.status = status;
 	}
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-
 }
