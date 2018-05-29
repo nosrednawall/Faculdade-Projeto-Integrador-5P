@@ -28,7 +28,6 @@ angular
 
                 console.log($scope.usuario);
 
-
                 // if ($scope.formulario.$valid) {
                 //     //tenta cadastrar o setor usando a funcao cadastroDeSetor, passando o setor do scope
                 //     $scope.mensagem = 'entrou no primeiro if';
@@ -47,5 +46,20 @@ angular
                 //             $scope.mensagem = erro.mensagem;
                 //         });
                 // }
-            };
+                console.log($scope.usuario.dataAdmissao);
+
+                cadastroUsuario.cadastrar($scope.usuario)
+                    //se der certo a mensagem é atualizada com o sucesso
+                    .then(function (dados) {
+                        console.log("entrou no then " + dados);
+                        $scope.mensagem = dados.mensagem;
+                        //se inclusao retornar true, ele limpa o objeto setor
+                        if (dados.inclusao) {
+                            $scope.usuario = {};
+                        }
+                        //se der algum erro, o erro é capturado(catch), e atualizado a mensagem com o erro
+                    }).catch(function (erro) {
+                        $scope.mensagem = erro.mensagem;
+                    });
+            }
         });

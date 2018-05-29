@@ -73,15 +73,38 @@ public class Usuario implements Serializable {
 	 * Contrutores e metodos
 	 */
 
+	// @Deprecated preciso fazer alguns testes unitários
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
+	//
+	// public Usuario(Integer id, String nome, String senha, String matricula,
+	// String email, Calendar dataAdmissao,
+	// NivelPermissao permissao, StatusUsuario status) {
+	// this.id = id;
+	// this.nome = nome;
+	// this.senha = senha;
+	// this.matricula = matricula;
+	// this.email = email;
+	// this.dataAdmissao = dataAdmissao;
+	// this.permissao = permissao;
+	// this.status = status;
+	// }
+	//
 
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", matricula=" + matricula + ", email=" + email + ", dataAdmissao="
-				+ dataAdmissao + "]";
+		return "Usuario [id=" + id + ", nome=" + nome + ", senha=" + senha + ", matricula=" + matricula + ", email="
+				+ email + ", dataAdmissao=" + dataAdmissao + ", permissao=" + permissao + ", status=" + status + "]";
 	}
+
+	// @Override
+	// public String toString() {
+	// return "Usuario [nome=" + nome + ", matricula=" + matricula + ", email=" +
+	// email + ", dataAdmissao="
+	// + dataAdmissao + "]";
+	// }
+	//
 
 	/**
 	 * Getters and Setters
@@ -146,9 +169,5 @@ public class Usuario implements Serializable {
 
 	public StatusUsuario getStatus() {
 		return status;
-	}
-
-	public void setStatus(StatusUsuario status) {
-		this.status = status;
 	}
 }

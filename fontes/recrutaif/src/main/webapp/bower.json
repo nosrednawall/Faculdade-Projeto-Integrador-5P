@@ -27,6 +27,9 @@
     "ui-bootstrap": "^2.5.6",
     "angularjs-datepicker": "^2.1.23",
     "ngAnimate": "*",
-    "nganimate.css": "^3.2.0"
+    "nganimate.css": "^3.2.0",
+    "moment": "^2.22.1",
+    "moment-jdateformatparser": "^1.1.0",
+    "angular-momentjs": "^0.2.2"
   }
 }

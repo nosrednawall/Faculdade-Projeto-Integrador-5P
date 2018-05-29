@@ -21,6 +21,8 @@ import com.google.gson.Gson;
 
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
+import br.org.iel.recrutaif.model.enums.NivelPermissao;
+import br.org.iel.recrutaif.model.enums.StatusUsuario;
 
 /**
  * 
@@ -36,6 +38,7 @@ public class UsuarioRest {
 	@Inject
 	private UsuarioDao dao;
 
+	// // método para criar um usuario
 	@POST
 	// @Consumes(MediaType.APPLICATION_JSON)
 	@Produces("application/json")
@@ -43,16 +46,10 @@ public class UsuarioRest {
 	public Response create(String usuarioGson) {
 
 		Gson gson = new Gson();
-		
 		Usuario novoUsuario = gson.fromJson(usuarioGson, Usuario.class);
 
 		System.out.println(usuarioGson);
 		System.out.println(novoUsuario);
-
-		// Usuario entity = gson.fromJson(usuarioGson, Usuario.class);
-
-		// System.out.println(entity);
-		// Conversamos sobre um if para testar via controlers
 
 		// dao.save(entity);
 		// return
@@ -61,18 +58,6 @@ public class UsuarioRest {
 
 		return Response.ok().build();
 	}
-
-	// @POST
-	// @Consumes("application/json")
-	// public Response create(Usuario entity) {
-	//
-	// System.out.println(entity);
-	//
-	// dao.save(entity);
-	// return
-	// Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
-	// .build();
-	// }
 
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
