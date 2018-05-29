@@ -54,10 +54,6 @@
             <!-- Senha inválida </span> -->
         </div>
 
-        <!-- Valores ocultos de um usuário, além do id -->
-        <input ng-model="usuario.permissao" type="hidden" value="ADMINISTRADOR" />
-        <input ng-model="usuario.status" type="hidden" value="ATIVO" />
-
         <!-- se o formulário for inválido o botão de enviar fica desabilitado -->
         <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
 

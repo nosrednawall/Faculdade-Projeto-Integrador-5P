@@ -1,65 +1,92 @@
 angular
+    //      ___  ___   _____   _____   _   _   _       _____  
+    //     /   |/   | /  _  \ |  _  \ | | | | | |     /  _  \ 
+    //    / /|   /| | | | | | | | | | | | | | | |     | | | | 
+    //   / / |__/ | | | | | | | | | | | | | | | |     | | | | 
+    //  / /       | | | |_| | | |_| | | |_| | | |___  | |_| | 
+    // /_/        |_| \_____/ |_____/ \_____/ |_____| \_____/ 
+
     .module('recrutaif')
+
+    // _____   _____   __   _   _____   _____    _____   _       _       _____   _____   
+    // /  ___| /  _  \ |  \ | | |_   _| |  _  \  /  _  \ | |     | |     | ____| |  _  \  
+    // | |     | | | | |   \| |   | |   | |_| |  | | | | | |     | |     | |__   | |_| |  
+    // | |     | | | | | |\   |   | |   |  _  /  | | | | | |     | |     |  __|  |  _  /  
+    // | |___  | |_| | | | \  |   | |   | | \ \  | |_| | | |___  | |___  | |___  | | \ \  
+    // \_____| \_____/ |_|  \_|   |_|   |_|  \_\ \_____/ |_____| |_____| |_____| |_|  \_\ 
+
     .controller('UsuarioController',
+        // _____   _   _   __   _   _____       ___   _____  
+        // |  ___| | | | | |  \ | | /  ___|     /   | /  _  \ 
+        // | |__   | | | | |   \| | | |        / /| | | | | | 
+        // |  __|  | | | | | |\   | | |       / / | | | | | | 
+        // | |     | |_| | | | \  | | |___   / /  | | | |_| | 
+        // |_|     \_____/ |_|  \_| \_____| /_/   |_| \_____/ 
         function ($scope, $routeParams, cadastroUsuario, recursoUsuario) {
-
-            $scope.usuario = [];
+            //_________________________________________________________________________________________________________________________
+            /**
+             * variáveis criadas quando a tela do controlador é acessada
+             */
+            $scope.usuario = [
+                nome = '',
+                matricula = '',
+                dataAdmissao = '',
+                email = '',
+                senha = ''
+            ];
             $scope.mensagem = '';
+            //_________________________________________________________________________________________________________________________
 
-            //get ou busca setor
+            /**
+             * Verifica se na URL tem algum ID, se houver é feito a requisição via GET desse ID
+             */
             if ($routeParams.usuarioId) {
-                //faz uma requisição get, passando o numero do parametro da url para o coringa, 
                 recursoUsuario.get({ usuarioId: $routeParams.usuarioId },
-                    //caso dê certo o que retornar será passado para setor
                     function (usuario) {
                         $scope.usuario = usuario;
                     },
-                    //caso dê errado será passado mensagem de erro ao usuario
                     function (erro) {
                         console.log(error);
                         $scope.mensagem =
                             "[ERROR] Não foi encontrar usuario de ID " + $routeParams.usuarioId;
                     });
             };
+            //_________________________________________________________________________________________________________________________
+            // _____   _   _   __   _   _____       ___   _____  
+            // |  ___| | | | | |  \ | | /  ___|     /   | /  _  \ 
+            // | |__   | | | | |   \| | | |        / /| | | | | | 
+            // |  __|  | | | | | |\   | | |       / / | | | | | | 
+            // | |     | |_| | | | \  | | |___   / /  | | | |_| | 
+            // |_|     \_____/ |_|  \_| \_____| /_/   |_| \_____/ 
+            // _____   _   _   _____       ___  ___   _____   _____   _____   _____   
+            // /  ___/ | | | | |  _  \     /   |/   | | ____| |_   _| | ____| |  _  \  
+            // | |___  | | | | | |_| |    / /|   /| | | |__     | |   | |__   | |_| |  
+            // \___  \ | | | | |  _  {   / / |__/ | | |  __|    | |   |  __|  |  _  /  
+            //  ___| | | |_| | | |_| |  / /       | | | |___    | |   | |___  | | \ \  
+            // /_____/ \_____/ |_____/ /_/        |_| |_____|   |_|   |_____| |_|  \_\ 
 
+
+            /**
+             * essa função efetua a inserção ou atualização dos dados informados pelo formulario
+             */
             $scope.submeter = function () {
-                //verifica se o formulario é válido
-                console.log("e o usuário é " + $scope.usuario);
 
-                console.log($scope.usuario);
-
-                // if ($scope.formulario.$valid) {
-                //     //tenta cadastrar o setor usando a funcao cadastroDeSetor, passando o setor do scope
-                //     $scope.mensagem = 'entrou no primeiro if';
-                //     console.log($scope.usuario);
-                //     cadastroUsuario.cadastrar($scope.usuario)
-                //         //se der certo a mensagem é atualizada com o sucesso
-                //         .then(function (dados) {
-                //             console.log("entrou no then " + dados);
-                //             $scope.mensagem = dados.mensagem;
-                //             //se inclusao retornar true, ele limpa o objeto setor
-                //             if (dados.inclusao) {
-                //                 $scope.usuario = {};
-                //             }
-                //             //se der algum erro, o erro é capturado(catch), e atualizado a mensagem com o erro
-                //         }).catch(function (erro) {
-                //             $scope.mensagem = erro.mensagem;
-                //         });
-                // }
-                console.log($scope.usuario.dataAdmissao);
-
-                cadastroUsuario.cadastrar($scope.usuario)
-                    //se der certo a mensagem é atualizada com o sucesso
-                    .then(function (dados) {
-                        console.log("entrou no then " + dados);
-                        $scope.mensagem = dados.mensagem;
-                        //se inclusao retornar true, ele limpa o objeto setor
-                        if (dados.inclusao) {
-                            $scope.usuario = {};
-                        }
-                        //se der algum erro, o erro é capturado(catch), e atualizado a mensagem com o erro
-                    }).catch(function (erro) {
-                        $scope.mensagem = erro.mensagem;
-                    });
-            }
-        });
+                /**Verifica se o formulário é válido */
+                if ($scope.formulario.$valid) {
+                    cadastroUsuario.cadastrar($scope.usuario)
+                        //se der certo a mensagem é atualizada com o sucesso
+                        .then(function (dados) {
+                            console.log("entrou no then " + dados);
+                            $scope.mensagem = dados.mensagem;
+                            //se inclusao retornar true, ele limpa o objeto setor
+                            if (dados.inclusao) {
+                                $scope.usuario = {};
+                            }
+                            //se der algum erro, o erro é capturado(catch), e atualizado a mensagem com o erro
+                        }).catch(function (erro) {
+                            $scope.mensagem = erro.mensagem;
+                        });
+                }/** Fecha o if do formulario valido*/
+            }/**Fecha funcao submeter */
+        }/**Fecha função principal */
+    );/**fecha controller e angular */

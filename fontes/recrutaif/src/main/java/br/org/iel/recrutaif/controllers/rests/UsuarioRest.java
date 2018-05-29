@@ -13,7 +13,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -21,8 +20,6 @@ import com.google.gson.Gson;
 
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
-import br.org.iel.recrutaif.model.enums.NivelPermissao;
-import br.org.iel.recrutaif.model.enums.StatusUsuario;
 
 /**
  * 
@@ -33,23 +30,31 @@ import br.org.iel.recrutaif.model.enums.StatusUsuario;
 @Stateless
 @Path("/usuarios")
 public class UsuarioRest {
-	// cria a unidade de persistencia que será passada pelo wildfly
 
+	/**
+	 * Dao sendo injetado pelo CDI
+	 */
 	@Inject
 	private UsuarioDao dao;
 
-	// // método para criar um usuario
+	/**
+	 * Método para adicionar um usuario
+	 * @param usuarioGson
+	 * @return
+	 */
 	@POST
-	// @Consumes(MediaType.APPLICATION_JSON)
 	@Produces("application/json")
 	@Consumes("application/json")
 	public Response create(String usuarioGson) {
 
-		Gson gson = new Gson();
-		Usuario novoUsuario = gson.fromJson(usuarioGson, Usuario.class);
-
+		
 		System.out.println(usuarioGson);
-		System.out.println(novoUsuario);
+		
+//		Gson gson = new Gson();
+//		Usuario novoUsuario = gson.fromJson(usuarioGson, Usuario.class);
+
+//		System.out.println(usuarioGson);
+//		System.out.println(novoUsuario);
 
 		// dao.save(entity);
 		// return
