@@ -1,8 +1,6 @@
-<!-- $scope.setor.nome -->
 <div class="page-header text-center">
     <h1>{{usuario.nome}}</h1>
 </div>
-<!-- $scope.mensagem -->
 <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
 
 <form novalidate name="formulario" class="row" ng-submit="submeter()">
@@ -16,18 +14,16 @@
         <div class="form-group">
             <label for="matricula-usuario">Matrícula</label>
             <input ng-model="usuario.matricula" type="text" class="form-control" name="matricula" required />
-            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
             <span ng-show="formulario.$submitted && formulario.matricula.$error.required" class="form-control alert-danger"> Campo obligatório </span>
-            <!--mostra erro quando é digitado mais de 20 caracteres-->
-            <!-- <span ng-show="formulario.matricula.$error.maxlength || formulario.matricula.$error.minlength" class="form-control alert-danger">
+            <span ng-show="formulario.matricula.$error.maxlength || formulario.matricula.$error.minlength" class="form-control alert-danger">
                 <span ng-show="formulario.matricula.$error.maxlength || formulario.matricula.$error.minlength" class="form-control alert-danger"></span>
-                Matrícula deve conter 5 números </span> -->
+                Matrícula deve conter 5 números </span>
         </div>
 
         <div class="form-group">
             <label for="email-usuario">Data Admissão</label>
             <datepicker date-format="dd-MM-yyyy">
-                <input ng-model="usuario.dataAdmissao" type="text" class="form-control"/>
+                <input ng-model="usuario.dataAdmissao" type="text" class="form-control" />
                 <span class="input-group-addon" style="cursor: pointer">
                     <i class="fa fa-lg fa-calendar"></i>
                 </span>
@@ -37,27 +33,21 @@
         <div class="form-group">
             <label for="email-usuario">E-mail</label>
             <input ng-model="usuario.email" type="email" class="form-control" name="email" />
-            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
             <span ng-show="formulario.$submitted && formulario.email.$error.required" class="form-control alert-danger"> Campo obligatório </span>
-            <!--mostra erro quando é digitado mais de 20 caracteres-->
-            <!-- <span ng-show="formulario.email.$error.maxlength || formulario.email.$error.minlength" class="form-control alert-danger">
-                E-mail inválido </span> -->
+            <span ng-show="formulario.email.$error.maxlength || formulario.email.$error.minlength" class="form-control alert-danger">
+                E-mail inválido </span>
         </div>
 
         <div class="form-group">
             <label for="senha-usuario">Senha</label>
             <input ng-model="usuario.senha" type="senha" class="form-control" name="senha" required />
-            <!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
             <span ng-show="formulario.$submitted && formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
-            <!--mostra erro quando é digitado mais de 20 caracteres-->
-            <!-- <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger"> -->
-            <!-- Senha inválida </span> -->
+            <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger">
+                Senha inválida </span>
         </div>
 
-        <!-- se o formulário for inválido o botão de enviar fica desabilitado -->
         <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
 
-        <!-- Muda o foco para o botão de voltar, mas não funciona ainda -->
         <a href="#/usuarios" class="btn btn-primary">Voltar</a>
     </div>
 </form>

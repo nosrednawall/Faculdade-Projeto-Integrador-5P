@@ -81,14 +81,8 @@ angular
                     // ________________________________________________________________________________________________________
 
                     else {
-                        var validaUsuario = false;
-
-                        if (validaUsuario) {
-                            usuario.permissao = 'ADMINISTRADOR';
-                            usuario.status = 'ATIVO';
-                            validaUsuario = true;
-                            console.log(usuario);
-                        }
+                        usuario.permissao = 'ADMINISTRADOR';
+                        usuario.status = 'ATIVO';
 
                         recursoUsuario.save(usuario, function () {
                             resolve({
