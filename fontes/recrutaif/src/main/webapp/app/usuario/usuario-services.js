@@ -41,20 +41,19 @@ angular.module('usuarioServices', ['ngResource'])
                     });
 
                 }else{
-<<<<<<< HEAD
 
-                    recursoUsuario.save(usuario, function(){
-                        resolve({
-                            mensagem : '[INFO]usuario ' + usuario.nome + ' Adicionado com sucesso!',
-                            inclusao : true
-                        });
-                    },function(erro){
-                        console.log(erro);
-                        reject({
-                            mensagem :'[ERRO] Não foi possível incluir o usuario '+ usuario.nome
-                        });
-                    });
-=======
+//                    recursoUsuario.save(usuario, function(){
+//                        resolve({
+//                            mensagem : '[INFO]usuario ' + usuario.nome + ' Adicionado com sucesso!',
+//                            inclusao : true
+//                        });
+//                    },function(erro){
+//                        console.log(erro);
+//                        reject({
+//                            mensagem :'[ERRO] Não foi possível incluir o usuario '+ usuario.nome
+//                        });
+//                    });
+
                     $http.post('rest/usuarios', { 
                         email: usuario.email,
                         senha: usuario.senha,
@@ -75,7 +74,6 @@ angular.module('usuarioServices', ['ngResource'])
                         $scope.mensagem = 'Login ou senha inválidos!';
                     }
                 );
->>>>>>> 15ca4633b94de2cdf6565f30578e66c9db8493f4
                 }
             });
         };
