@@ -16,8 +16,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.google.gson.Gson;
-
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
 

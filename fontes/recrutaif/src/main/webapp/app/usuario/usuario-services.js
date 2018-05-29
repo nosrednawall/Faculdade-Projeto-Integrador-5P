@@ -77,47 +77,36 @@ angular
                             });
                         }); /**Fecha o resursoUsuario.update */
 
-                    } else {
+                    }/**Fecha o if usuario.id */
+                    // ________________________________________________________________________________________________________
 
+                    else {
+                        var validaUsuario = false;
 
-
-
-
+                        if (validaUsuario) {
+                            usuario.permissao = 'ADMINISTRADOR';
+                            usuario.status = 'ATIVO';
+                            validaUsuario = true;
+                            console.log(usuario);
+                        }
 
                         recursoUsuario.save(usuario, function () {
                             resolve({
                                 mensagem: '[INFO]usuario ' + usuario.nome + ' Adicionado com sucesso!',
                                 inclusao: true
                             });
-                        }, function (erro) {
-                            console.log(erro);
-                            reject({
-                                mensagem: '[ERRO] Não foi possível incluir o usuario ' + usuario.nome
-                            });
-                        });
-
-                        $http.post('rest/usuarios', {
-                            email: usuario.email,
-                            senha: usuario.senha,
-                            nome: usuario.nome,
-                            dataAdmissao: usuario.dataAdmissao,
-                            matricula: usuario.matricula,
-                            permissao: usuario.permissao,
-                            status: usuario.status
-                        })
-                            .then(function () {
-                                $scope.mensagem = 'Usuário ' + usuario.nome + ' cadastrado com sucesso!';
-
-                            }, function (erro) {
-                                console.log('Esse é o erro de login ' + erro);
-                                console.log('Entrou em deu errado')
-
-                                $scope.usuario = {};
-                                $scope.mensagem = 'Login ou senha inválidos!';
-                            }
-                            );
-                    }
-                });
-            };
+                        } /**Fecha o function sucess */
+                            , function (erro) {
+                                console.log(erro);
+                                reject({
+                                    mensagem: '[ERRO] Não foi possível incluir o usuario ' + usuario.nome
+                                });
+                            } /**Fecha o function erro */
+                        ); /**Fecha o recursoUsuario.save */
+                    }/**Fecha o else */
+                }); /**Fecha o return da promessa $q */
+            }; /**Fecha o servico cadastrar */
+            /**Retorna o servico executado */
             return servico;
-        });
+        } /**Fecha a funcao */
+    );/**Fecha a factory2 e o angular*/

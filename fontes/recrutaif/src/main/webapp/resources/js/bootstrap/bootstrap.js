@@ -118,10 +118,10 @@
       return this;
     }
 
-    // function setTransitionEndSupport() {
-    //   $$$1.fn.emulateTransitionEnd = transitionEndEmulator;
-    //   $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
-    // }
+    function setTransitionEndSupport() {
+      $$$1.fn.emulateTransitionEnd = transitionEndEmulator;
+      $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+    }
     /**
      * --------------------------------------------------------------------------
      * Public Util Api
