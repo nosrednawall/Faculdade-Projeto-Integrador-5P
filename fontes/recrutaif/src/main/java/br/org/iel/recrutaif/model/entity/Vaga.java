@@ -12,9 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,15 +34,10 @@ import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
  *
  */
 
-@NamedQueries({ 
+@NamedQueries({
 
-	@NamedQuery(
-			name = "Vaga.listarTodos", 
-			query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setores WHERE v.status = :pStatus"),
-	@NamedQuery(
-			name = "Vaga.find", 
-			query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setores WHERE v.id = :pId")
-})
+		@NamedQuery(name = "Vaga.listarTodos", query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setor LEFT JOIN FETCH v.inscritos WHERE v.status = :pStatus"),
+		@NamedQuery(name = "Vaga.find", query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setor LEFT JOIN FETCH v.inscritos WHERE v.id = :pId") })
 @Entity
 @Table(name = "vaga")
 @XmlRootElement
@@ -60,18 +54,25 @@ public class Vaga implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Column(name = "titulo", length = 2, nullable = false) // copiado do Everton by Anderson
 	private String titulo;
-
-	@Lob // permite essa coluna possuir grande volume de dados
-	private String descricao;
 
 	@NotNull
 	@NotBlank
 	@NotEmpty
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinTable( name = "vaga_setor", joinColumns = @JoinColumn(name="vaga_id"), inverseJoinColumns = @JoinColumn(name="setor_id") )
-	private Set<Setor> setores;
+	@Lob // permite essa coluna possuir grande volume de dados
+	private String descricao;
+
+	// @NotNull
+	// @NotBlank
+	// @NotEmpty
+	// @OneToMany(fetch = FetchType.LAZY)
+	// @JoinTable( name = "vaga_setor", joinColumns = @JoinColumn(name="vaga_id"),
+	// inverseJoinColumns = @JoinColumn(name="setor_id") )
+	// private Set<Setor> setores;
 
 	@NotNull
 	@NotBlank
@@ -91,34 +92,24 @@ public class Vaga implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
 
-	@OneToMany(mappedBy="vaga")
+	@NotNull
+	@NotBlank
+	@NotEmpty
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Setor setor;
+
+	@OneToMany(mappedBy = "vaga")
 	private Set<VagaPreenchida> inscritos;
+
 	/**
 	 * Construtores e métodos
 	 */
 
-	//para o hibernate
-	public Vaga() {}
-
-	// constrututor seguro, porém ainda não implementado
-	// public Vaga(String titulo, String descricao, List<Setor> setores, Calendar
-	// dataCriacao, Calendar dataExpiracao,
-	// StatusVaga status) {
-	// this.titulo = titulo;
-	// this.descricao = descricao;
-	// this.setores = setores;
-	// this.dataCriacao = dataCriacao;
-	// this.dataExpiracao = dataExpiracao;
-	// this.status = status;
-	// }
-
-	@Override
-	public String toString() {
-		return "Vaga [titulo=" + titulo + ", descricao=" + descricao + ", setores=" + setores + ", status=" + status
-				+ ", dataCriacao=" + dataCriacao + ", dataExpiracao=" + dataExpiracao + "]";
+	// para o hibernate
+	public Vaga() {
 	}
 
-	/**
+	/*
 	 * Getters and Setters
 	 * 
 	 */
@@ -173,12 +164,19 @@ public class Vaga implements Serializable {
 		return dataCriacao;
 	}
 
-	public Set<Setor> getSetores() {
-		return setores;
+	public Set<VagaPreenchida> getInscritos() {
+		return inscritos;
 	}
 
-	public void setSetores(Set<Setor> setores) {
-		this.setores = setores;
+	public void setInscritos(Set<VagaPreenchida> inscritos) {
+		this.inscritos = inscritos;
 	}
 
+	public Setor getSetor() {
+		return setor;
+	}
+
+	public void setSetor(Setor setor) {
+		this.setor = setor;
+	}
 }

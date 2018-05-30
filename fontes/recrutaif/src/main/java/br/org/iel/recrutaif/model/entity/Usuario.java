@@ -29,9 +29,9 @@ import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
  *
  */
 @NamedQueries({
-		@NamedQuery(name = "Usuario.listarTodos", query = "SELECT DISTINCT u FROM Usuario u WHERE u.status = :pStatus"),
-		@NamedQuery(name = "Usuario.find", query = "SELECT DISTINCT u FROM Usuario u WHERE u.id = :pId"),
-		@NamedQuery(name = "Usuario.loga", query = "SELECT DISTINCT u FROM Usuario u WHERE u.email = :pEmail AND u.senha = :pSenha") })
+		@NamedQuery(name = "Usuario.listarTodos", query = "SELECT DISTINCT u FROM Usuario u LEFT JOIN FETCH u.candidaturas WHERE u.status = :pStatus"),
+		@NamedQuery(name = "Usuario.find", query = "SELECT DISTINCT u FROM Usuario u LEFT JOIN FETCH u.candidaturas WHERE u.id = :pId"),
+		@NamedQuery(name = "Usuario.loga", query = "SELECT DISTINCT u FROM Usuario u  LEFT JOIN FETCH u.candidaturas WHERE u.email = :pEmail AND u.senha = :pSenha") })
 @XmlRootElement
 @Entity
 @Table(name = "usuario")
@@ -145,12 +145,6 @@ public class Usuario implements Serializable {
 
 	public void setStatus(StatusBinarioEnum status) {
 		this.status = status;
-	}
-
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", senha=" + senha + ", matricula=" + matricula + ", email="
-				+ email + ", dataAdmissao=" + dataAdmissao + ", permissao=" + permissao + ", status=" + status + "]";
 	}
 
 	/**
