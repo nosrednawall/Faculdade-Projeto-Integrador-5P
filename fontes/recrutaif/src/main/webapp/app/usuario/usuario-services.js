@@ -23,12 +23,16 @@ angular
 
             /**Toda vez que solicitar esse service, será dado o caminho rest, para quase todos os verbos http */
             return $resource('rest/usuarios/:usuarioId', null, {
-                update: {
-                    method: 'PUT'
-                }
+                create: {method: 'POST'},
+                get:    {method: 'GET'},
+                getAll: {method: 'GET', isArray:true},
+                update: {method: 'PUT'},
+                delete: {method: 'DELETE'}
             }); /**Fecha return */
         } /**Fecha funcão */
     ) /**Fecha Factory 1 */
+
+
     // ________________________________________________________________________________________________________
     // _____       ___   _____   _____   _____   _____   __    __       _____  
     // |  ___|     /   | /  ___| |_   _| /  _  \ |  _  \  \ \  / /      /___  \ 
@@ -60,7 +64,7 @@ angular
                     /**Uma promessa tem dois destino, a de resolve que deu tudo certo, foi resolvido, e a reject, que deu tudo errado, foi rejeitado */
 
                     /**Verifica se o usuário possui ID, se sim é atualizado, se não é inserido um novo usuário */
-                    if (usuario.id) {
+                    if (usuario.id != null) {
 
                         /**Pega a funcao da factory1, ali em cima, e adiciona o verbete update mais o usuário */
                         recursoUsuario.update({ usuarioId: usuario.id }, usuario, function () {
@@ -83,6 +87,9 @@ angular
                     else {
                         usuario.permissao = 'ADMINISTRADOR';
                         usuario.status = 'ATIVO';
+
+                        /**Descobri que o usuário está chegando vazio aqui */
+                        console.log(usuario);
 
                         recursoUsuario.save(usuario, function () {
                             resolve({
