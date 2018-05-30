@@ -65,6 +65,11 @@ Windows
     alter table compras rename form_pagamento to forma_pagamento;
     alter table compras alter COLUMN forma_pagamento set not null ;
     
+    
+# Exemplo adicionar uma coluna em uma tabela
+
+    alter table loja ADD contato VARCHAR(100) NOT NULL;
+    
 # Exemplo de enum
 
     create type enum_pagamento as enum('cartao','boleto','dinheiro');
