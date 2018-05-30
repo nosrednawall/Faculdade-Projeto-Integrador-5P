@@ -21,7 +21,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
@@ -62,20 +66,33 @@ public class Vaga implements Serializable {
 	@Lob // permite essa coluna possuir grande volume de dados
 	private String descricao;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@OneToMany(fetch = FetchType.LAZY)
-//	@Fetch(FetchMode.SUBSELECT)
 	@JoinTable( name = "vaga_setor", joinColumns = @JoinColumn(name="vaga_id"), inverseJoinColumns = @JoinColumn(name="setor_id") )
 	private Set<Setor> setores;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Enumerated(EnumType.STRING)
 	private StatusBinarioEnum status;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCriacao;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
 
+	@OneToMany(mappedBy="vaga")
+	private Set<VagaPreenchida> inscritos;
 	/**
 	 * Construtores e métodos
 	 */
