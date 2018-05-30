@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.org.iel.recrutaif.model.entity.Vaga;
-import br.org.iel.recrutaif.model.enums.StatusVaga;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 @Stateless
 public class VagaDao extends BaseDao<Vaga> implements Serializable{
@@ -36,7 +36,7 @@ public class VagaDao extends BaseDao<Vaga> implements Serializable{
 	 * @param status
 	 * @return
 	 */
-	public List<Vaga> listaTodos(StatusVaga status) {
+	public List<Vaga> listaTodos(StatusBinarioEnum status) {
 		TypedQuery<Vaga> query = getEntityManager().createNamedQuery(
 				"Vaga.listarTodos", Vaga.class);
 		

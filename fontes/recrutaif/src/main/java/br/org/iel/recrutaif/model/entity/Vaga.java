@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import br.org.iel.recrutaif.model.enums.StatusVaga;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 /**
  * 
@@ -68,7 +68,7 @@ public class Vaga implements Serializable {
 	private Set<Setor> setores;
 
 	@Enumerated(EnumType.STRING)
-	private StatusVaga status;
+	private StatusBinarioEnum status;
 
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCriacao;
@@ -132,11 +132,11 @@ public class Vaga implements Serializable {
 		this.dataExpiracao = dataExpiracao;
 	}
 
-	public StatusVaga getStatus() {
+	public StatusBinarioEnum getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusVaga status) {
+	public void setStatus(StatusBinarioEnum status) {
 		this.status = status;
 	}
 

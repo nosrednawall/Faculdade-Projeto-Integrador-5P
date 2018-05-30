@@ -15,9 +15,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 /**
  * 
@@ -37,29 +39,30 @@ public class UsuarioRest {
 
 	/**
 	 * Método para adicionar um usuario
+	 * 
 	 * @param usuarioGson
 	 * @return
 	 */
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response create(String usuarioGson) {
+	public Response create(Usuario entity) {
 
-		
-		System.out.println(usuarioGson);
-		
-//		Gson gson = new Gson();
-//		Usuario novoUsuario = gson.fromJson(usuarioGson, Usuario.class);
+		System.out.println(entity);
 
-//		System.out.println(usuarioGson);
-//		System.out.println(novoUsuario);
+		// System.out.println(usuarioGson);
+		//
+		// Gson gson = new Gson();
+		// Usuario novoUsuario = gson.fromJson(usuarioGson, Usuario.class);
 
-		// dao.save(entity);
-		// return
-		// Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
-		// .build();
+		// System.out.println(usuarioGson);
+		// System.out.println(novoUsuario);
 
-		return Response.ok().build();
+		dao.save(entity);
+		return Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
+				.build();
+
+		// return Response.ok().build();
 	}
 
 	@GET
@@ -81,7 +84,7 @@ public class UsuarioRest {
 	@GET
 	@Produces("application/json")
 	public List<Usuario> listaUsuarios() {
-		final List<Usuario> results = dao.listaTodos();
+		final List<Usuario> results = dao.listaTodos(StatusBinarioEnum.ATIVO);
 
 		return results;
 	}
@@ -120,25 +123,4 @@ public class UsuarioRest {
 		entity = dao.update(entity);
 		return Response.noContent().build();
 	}
-
 }
-
-//// método para criar um usuario
-// @POST
-// @Consumes(MediaType.APPLICATION_JSON)
-// public Response create(String usuarioGson) {
-//
-// Gson gson = new Gson();
-//
-// Usuario entity = gson.fromJson(usuarioGson, Usuario.class);
-//
-// System.out.println(entity);
-// // Conversamos sobre um if para testar via controlers
-//
-//// dao.save(entity);
-//// return
-//// Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
-//// .build();
-//
-// return Response.ok().build();
-// }

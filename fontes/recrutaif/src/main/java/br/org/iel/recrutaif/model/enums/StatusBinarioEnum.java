@@ -1,10 +1,10 @@
 package br.org.iel.recrutaif.model.enums;
 
 /**
- * Enum que identifica um usuario ativo e inativo
+ * Enum que seta o status de uma vaga
  * @author anderson
  *
  */
-public enum StatusUsuario {
+public enum StatusBinarioEnum {
 	ATIVO,INATIVO;
 }

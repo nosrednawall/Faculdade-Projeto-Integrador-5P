@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 import br.org.iel.recrutaif.model.entity.Credencial;
 import br.org.iel.recrutaif.model.entity.Usuario;
-import br.org.iel.recrutaif.model.enums.StatusUsuario;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 /**
  * 
@@ -47,9 +47,9 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 	 * @param status
 	 * @return
 	 */
-	public List<Usuario> listaTodos() {
+	public List<Usuario> listaTodos(StatusBinarioEnum status) {
 		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.listarTodos", Usuario.class);
-		query.setParameter("pStatus", StatusUsuario.ATIVO);
+		query.setParameter("pStatus", status);
 
 		return query.getResultList();
 	}

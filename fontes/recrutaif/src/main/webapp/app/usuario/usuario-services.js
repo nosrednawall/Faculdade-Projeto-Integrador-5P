@@ -85,11 +85,9 @@ angular
                     // ________________________________________________________________________________________________________
 
                     else {
+                        /**Esses parâmetros são apenas para teste, irão sair daqui com o crescimento da aplicação*/
                         usuario.permissao = 'ADMINISTRADOR';
                         usuario.status = 'ATIVO';
-
-                        /**Descobri que o usuário está chegando vazio aqui */
-                        console.log(usuario);
 
                         recursoUsuario.save(usuario, function () {
                             resolve({

@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.org.iel.recrutaif.model.enums.NivelPermissao;
-import br.org.iel.recrutaif.model.enums.StatusUsuario;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 /**
  * 
@@ -67,7 +67,7 @@ public class Usuario implements Serializable {
 	private NivelPermissao permissao;
 
 	@Enumerated(EnumType.STRING)
-	private StatusUsuario status;
+	private StatusBinarioEnum status;
 
 	/**
 	 * Contrutores e metodos
@@ -75,41 +75,7 @@ public class Usuario implements Serializable {
 
 	// @Deprecated preciso fazer alguns testes unitários
 	public Usuario() {
-		// TODO Auto-generated constructor stub
 	}
-	//
-	// public Usuario(Integer id, String nome, String senha, String matricula,
-	// String email, Calendar dataAdmissao,
-	// NivelPermissao permissao, StatusUsuario status) {
-	// this.id = id;
-	// this.nome = nome;
-	// this.senha = senha;
-	// this.matricula = matricula;
-	// this.email = email;
-	// this.dataAdmissao = dataAdmissao;
-	// this.permissao = permissao;
-	// this.status = status;
-	// }
-	//
-
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", senha=" + senha + ", matricula=" + matricula + ", email="
-				+ email + ", dataAdmissao=" + dataAdmissao + ", permissao=" + permissao + ", status=" + status + "]";
-	}
-
-	// @Override
-	// public String toString() {
-	// return "Usuario [nome=" + nome + ", matricula=" + matricula + ", email=" +
-	// email + ", dataAdmissao="
-	// + dataAdmissao + "]";
-	// }
-	//
-
-	/**
-	 * Getters and Setters
-	 * 
-	 */
 
 	public Integer getId() {
 		return id;
@@ -167,7 +133,23 @@ public class Usuario implements Serializable {
 		this.permissao = permissao;
 	}
 
-	public StatusUsuario getStatus() {
+	public StatusBinarioEnum getStatus() {
 		return status;
 	}
+
+	public void setStatus(StatusBinarioEnum status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", senha=" + senha + ", matricula=" + matricula + ", email="
+				+ email + ", dataAdmissao=" + dataAdmissao + ", permissao=" + permissao + ", status=" + status + "]";
+	}
+
+	/**
+	 * Getters and Setters
+	 * 
+	 */
+
 }
