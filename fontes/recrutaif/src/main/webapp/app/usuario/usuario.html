@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <label for="senha-usuario">Senha</label>
-            <input ng-model="usuario.senha" type="senha" class="form-control" name="senha" required />
+            <input ng-model="usuario.senha" type="password" class="form-control" name="senha" required />
             <span ng-show="formulario.$submitted && formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
             <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger">
                 Senha inválida </span>
