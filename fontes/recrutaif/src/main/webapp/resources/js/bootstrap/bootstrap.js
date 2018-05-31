@@ -122,6 +122,12 @@
       $$$1.fn.emulateTransitionEnd = transitionEndEmulator;
       $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
+
+// backup
+    // function setTransitionEndSupport() {
+    //   $$$1.fn.emulateTransitionEnd = transitionEndEmulator;
+    //   $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+    // }
     /**
      * --------------------------------------------------------------------------
      * Public Util Api

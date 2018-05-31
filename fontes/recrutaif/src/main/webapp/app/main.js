@@ -1,15 +1,16 @@
 angular.
     module
-        ('recrutaif', [
-            'ngAnimate', 
-            'ngRoute', 
-            'ngResource',
-            'minhasDiretivas', 
-            'vagaServices', 
-            'setorServices',
-            'usuarioServices',
-            '720kb.datepicker'
-        ])
+    ('recrutaif', [
+        'ngAnimate',
+        'ngRoute',
+        'ngResource',
+        'ngCookies',
+        'minhasDiretivas',
+        'vagaServices',
+        'setorServices',
+        'usuarioServices',
+        '720kb.datepicker'
+    ])
     //angular = variável global do angular; .module = cria um módulo; [módulos em que a main é dependente]
 
     //função para rotas, ex quero ver uma lista de setores, vou em /recrutaif/#/setores
@@ -123,5 +124,5 @@ angular.
         $routeProvider.when('/principal', {
             templateUrl: 'app/principal/principal.html',
         });
-        $routeProvider.otherwise({ redirectTo: '/principal' });
+        $routeProvider.otherwise({ redirectTo: '/setores' });
     }); //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos

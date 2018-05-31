@@ -1,6 +1,7 @@
 angular.module('recrutaif').controller('LoginController',
-    function ($window, $q, $scope, $http, $location) {
+    function ($window, $q, $scope, $http, $location, $cookies) {
 
+        $scope.cookieValue = $cookies.text;
         $scope.usuario = {};
         $scope.mensagem = '';
 
@@ -15,9 +16,14 @@ angular.module('recrutaif').controller('LoginController',
 
 
             $http.post('rest/login', { email: usuario.email, senha: usuario.senha })
-                .then(function () {
-                    $location.path('/setores');
-                    console.log('Entrou em deu certo')
+                .then(function (usuario) {
+
+                    $cookie.put("nome",usuario.nome);
+                    $cookie.put("id",usuario.id);
+                    $cookie.put("permissao",usuario.permissao);
+                    $cookie.put("logado",true);
+                
+                    $location.path('/principal');
 
                 }, function (erro) {
                     console.log('Esse é o erro de login ' + erro);
@@ -26,7 +32,7 @@ angular.module('recrutaif').controller('LoginController',
                     $scope.usuario = {};
                     $scope.mensagem = 'Login ou senha inválidos!';
                 }
-            );
+                );
         };
 
     });

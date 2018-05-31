@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class VagaPreenchida implements Serializable{
 
 	/**
-	 * 
+	 * serial
 	 */
 	private static final long serialVersionUID = 1L;
 

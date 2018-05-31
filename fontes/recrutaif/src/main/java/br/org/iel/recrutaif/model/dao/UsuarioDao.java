@@ -77,12 +77,19 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 	 */
 	public Usuario getBuscaPorEmail(Credencial credenciais) {
 
-		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.find", Usuario.class);
+		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.loga", Usuario.class);
 
 		query.setParameter("pEmail", credenciais.getEmail());
 		query.setParameter("pSenha", credenciais.getSenha());
 
-		return query.getSingleResult();
+		try {
+			
+			return query.getSingleResult();
 
+		} catch (javax.ejb.EJBTransactionRolledbackException e) {
+			System.out.println("[INFO] Usuário não existe no banco de dados");
+		}
+		
+		return null;
 	}
 }
