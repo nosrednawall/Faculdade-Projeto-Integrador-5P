@@ -23,25 +23,27 @@
             <table class="table coluna-animada">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Nome </th>
-                        <th scope="col">Data Admissão </th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Inativar</th>
+                        <th scope="col">Matrícula </th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Data Admissão</th>
+                        <th scope="col">Processos em aberto</th>
+                        <th scope="col">Processos encerrados</th>
                     </tr>
                 </thead>
                 <!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
-                <tbody ng-repeat="usuario in usuarios | filter:filtro">
+                 <tbody > <!--ng-repeat="usuario in usuarios" -->
                     <tr>
                         <!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
-                        <th scope="row">{{usuario.id}}</th>
                         <th scope="row">{{usuario.nome}}</th>
+                        <th scope="row">{{usuario.matricula}}</th>
+                        <th scope="row">{{usuario.email}}</th>
                         <th scope="row">{{usuario.dataAdmissao}}</th>
                         <th scope="row">
-                            <a class="btn btn-primary" href="#/usuario/edit/{{usuario.id}}">Editar</a>
+                            <a class="btn btn-primary" href="">Ativos</a>
                         </th>
                         <th scope="row">
-                            <button ng-click="inativar(usuario)" class="btn btn-danger " href="">Inativar</button>
+                            <a class="btn btn-primary " href="">Encerrados</a>
                         </th>
                     </tr>
                 </tbody>

@@ -10,7 +10,6 @@
             'vagaServices',
             'setorServices',
             'usuarioServices',
-            'alterarSenhaServices',
             '720kb.datepicker'
         ]).config(config).run(run);
 
@@ -41,7 +40,7 @@
         // /_____/ |_____| |_|  \_| |_| |_| /_/   |_| 
 
         $routeProvider.when('/alterar-senha', {
-            templateUrl: 'app/alterar-senha.html',
+            templateUrl: 'app/alterar-senha/alterar-senha.html',
             controller: 'AlterarSenhaController'
         });
 
