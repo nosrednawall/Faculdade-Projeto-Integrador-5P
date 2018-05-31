@@ -86,7 +86,7 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 			
 			return query.getSingleResult();
 
-		} catch (javax.ejb.EJBTransactionRolledbackException e) {
+		} catch (Exception e) {
 			System.out.println("[INFO] Usuário não existe no banco de dados");
 		}
 		

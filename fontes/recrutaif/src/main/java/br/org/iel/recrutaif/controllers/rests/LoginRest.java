@@ -6,9 +6,6 @@ import java.util.Date;
 import javax.crypto.spec.SecretKeySpec;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -90,7 +87,8 @@ public class LoginRest {
 
 	}
 	
-    private Response.ResponseBuilder getNoCacheResponseBuilder( Response.Status status ) {
+    @SuppressWarnings("unused")
+	private Response.ResponseBuilder getNoCacheResponseBuilder( Response.Status status ) {
         CacheControl cc = new CacheControl();
         cc.setNoCache( true );
         cc.setMaxAge( -1 );
@@ -105,6 +103,7 @@ public class LoginRest {
 	}
 
 	//pegou o email e a quantidade de dias para expirar o token
+	@SuppressWarnings("unused")
 	private String gerarToken(String email, Integer expiraEmDias) {
 
 		// Defini qual vai ser o algotirmo da assinatura no caso vai ser o HMAC SHA512

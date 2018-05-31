@@ -37,6 +37,21 @@
             templateUrl: 'app/login/login.html',
             controller: 'LoginController'
         });
+
+        // __________________________________________________________________________
+
+        // _____    _____   _____   _   _____   _____   _____   _____   
+        // |  _  \  | ____| /  ___| | | /  ___/ |_   _| | ____| |  _  \  
+        // | |_| |  | |__   | |     | | | |___    | |   | |__   | |_| |  
+        // |  _  /  |  __|  | |  _  | | \___  \   | |   |  __|  |  _  /  
+        // | | \ \  | |___  | |_| | | |  ___| |   | |   | |___  | | \ \  
+        // |_|  \_\ |_____| \_____/ |_| /_____/   |_|   |_____| |_|  \_\ 
+
+        $routeProvider.when('/register', {
+            templateUrl: 'app/usuario/usuario.html',
+            controller: 'UsuarioController'
+        });
+
         // __________________________________________________________________________
 
         // _____   _____   _____   _____   _____   
@@ -132,9 +147,9 @@
     function run($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};
-        if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
-        }
+        // if ($rootScope.globals.currentUser) {
+        //     $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        // }
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in and trying to access a restricted page

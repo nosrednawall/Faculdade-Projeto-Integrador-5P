@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('recrutaif').controller('LoginController',
-        function ($cookieStore, $window, $q, $scope, $http, $location) {
+        function ($cookieStore, $window, $q, $scope, $http, $location, $rootScope) {
 
             $scope.usuario = {};
             $scope.mensagem = '';
@@ -17,19 +17,22 @@
                 $http.post('rest/login', { email: usuarioNaoLogado.email, senha: usuarioNaoLogado.senha })
                     .then(function (usuarioLogado) {
 
-
-                        console.log(usuarioLogado);
-
+                        /**Quando o login é um sucesso é salvo as informações do usuário dentro dos cookies e do rootscope */
                         $cookieStore.put('nome', usuarioLogado.data.nome);
-                        console.log($cookieStore.get('nome'))
                         $cookieStore.put('id', usuarioLogado.data.id);
                         $cookieStore.put('permissao', usuarioLogado.data.permissao);
                         $cookieStore.put('logado', true);
 
+                        $rootScope.globals = {
+                            currentUser: {
+                                nome: usuarioLogado.data.nome,
+                                id: usuarioLogado.data.id,
+                                permissao: usuarioLogado.data.permissao,
+                                logado: true
+                            }
+                        };
+                        /**Efetuado o redirecionamento do usuário para a parte principal do sistema */
                         $location.path('/principal');
-
-                        // { "id": 3, "nome": "Ghost", "senha": "ghost", "matricula": "1011", "email": "ghost@ghost", "dataAdmissao": { "year": 2018, "month": 4, "dayOfMonth": 17, "hourOfDay": 0, "minute": 0, "second": 0 }, "permissao": "ADMINISTRADOR", "status": "ATIVO", "candidaturas": [] }
-
 
                     }, function (erro) {
                         console.log('Esse é o erro de login ' + erro);
