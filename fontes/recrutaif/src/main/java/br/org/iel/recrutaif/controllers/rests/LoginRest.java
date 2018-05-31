@@ -61,11 +61,13 @@ public class LoginRest {
 			System.out.println("Credencial foi validada");
 			
 			
+			String usuarioGson = gson.toJson(entity);
+			
+			System.out.println(usuarioGson);
 			
 			
-			
-			
-			return Response.ok(entity).build();
+			return Response.accepted(usuarioGson).build();
+//			return Response.ok(usuarioGson).build();
 //			// gera o token
 //			String token = gerarToken(credencial.getEmail(),1);
 //
