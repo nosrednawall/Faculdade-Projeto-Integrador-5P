@@ -1,28 +1,30 @@
-angular.module('recrutaif').controller('LoginController',
-    function ($window, $q, $scope, $http, $location, $cookies) {
+angular.module('recrutaif').controller('LoginController',['$cookieStore',
+    function ($cookieStore, $window, $q, $scope, $http, $location) {
 
-        $scope.cookieValue = $cookies.text;
         $scope.usuario = {};
         $scope.mensagem = '';
 
         delete $window.sessionStorage.token;
 
+
         $scope.autenticar = function () {
 
-            var usuario = $scope.usuario;
+            var usuarioNaoLogado = $scope.usuario;
 
-            console.log('email: ' + usuario.email);
-            console.log('senha: ' + usuario.senha);
+            console.log('email: ' + usuarioNaoLogado.email);
+            console.log('senha: ' + usuarioNaoLogado.senha);
 
 
-            $http.post('rest/login', { email: usuario.email, senha: usuario.senha })
-                .then(function (usuario) {
+            $http.post('rest/login', { email: usuarioNaoLogado.email, senha: usuarioNaoLogado.senha })
+                .then(function (usuarioLogado) {
 
-                    $cookie.put("nome",usuario.nome);
-                    $cookie.put("id",usuario.id);
-                    $cookie.put("permissao",usuario.permissao);
-                    $cookie.put("logado",true);
-                
+                    console.log(usuarioLogado);
+
+                    $cookieStore.put("nome", usuarioLogado.nome);
+                    $cookieStore.put("id", usuarioLogado.id);
+                    $cookieStore.put("permissao", usuarioLogado.permissao);
+                    $cookieStore.put("logado", true);
+
                     $location.path('/principal');
 
                 }, function (erro) {
@@ -35,4 +37,4 @@ angular.module('recrutaif').controller('LoginController',
                 );
         };
 
-    });
+    }]);
