@@ -1,0 +1,70 @@
+<div class="page-header text-center">
+    <h1>{{usuario.nome}}</h1>
+</div>
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <!--ng-model = "filtro" serve para transferir o input para o controller-->
+            <div class="input-group">
+
+                <input ng-model="filtro" class="form-control" placeholder="filtrar" ng-model-options="{debounce: 500}" />
+            </div>
+            <!--ng-model-options="{debounce:500}"  serve para dar um delay e não aplicar locamente o filtro -->
+        </form>
+    </div>
+    <!--/col-->
+</div>
+<!--/row-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table coluna-animada">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome </th>
+                        <th scope="col">Data Admissão </th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Inativar</th>
+                    </tr>
+                </thead>
+                <!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
+                <tbody ng-repeat="usuario in usuarios | filter:filtro">
+                    <tr>
+                        <!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
+                        <th scope="row">{{usuario.id}}</th>
+                        <th scope="row">{{usuario.nome}}</th>
+                        <th scope="row">{{usuario.dataAdmissao}}</th>
+                        <th scope="row">
+                            <a class="btn btn-primary" href="#/usuario/edit/{{usuario.id}}">Editar</a>
+                        </th>
+                        <th scope="row">
+                            <button ng-click="inativar(usuario)" class="btn btn-danger " href="">Inativar</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+
+    <div class="col">
+
+        <div class="form-group">
+            <label for="senha-usuario">Senha</label>
+            <input ng-model="usuario.senha" type="password" class="form-control" name="senha" required />
+            <span ng-show="formulario.$submitted && formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger">
+                Senha inválida </span>
+        </div>
+
+        <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
+
+        <a href="#/usuarios" class="btn btn-primary">Voltar</a>
+    </div>
+</form>
