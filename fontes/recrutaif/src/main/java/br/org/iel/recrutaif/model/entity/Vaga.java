@@ -12,18 +12,21 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import br.org.iel.recrutaif.model.enums.StatusVaga;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 /**
  * 
@@ -31,15 +34,10 @@ import br.org.iel.recrutaif.model.enums.StatusVaga;
  *
  */
 
-@NamedQueries({ 
+@NamedQueries({
 
-	@NamedQuery(
-			name = "Vaga.listarTodos", 
-			query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setores WHERE v.status = :pStatus"),
-	@NamedQuery(
-			name = "Vaga.find", 
-			query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setores WHERE v.id = :pId")
-})
+		@NamedQuery(name = "Vaga.listarTodos", query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setor LEFT JOIN FETCH v.inscritos WHERE v.status = :pStatus"),
+		@NamedQuery(name = "Vaga.find", query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setor LEFT JOIN FETCH v.inscritos WHERE v.id = :pId") })
 @Entity
 @Table(name = "vaga")
 @XmlRootElement
@@ -56,52 +54,62 @@ public class Vaga implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Column(name = "titulo", length = 2, nullable = false) // copiado do Everton by Anderson
 	private String titulo;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Lob // permite essa coluna possuir grande volume de dados
 	private String descricao;
 
-	@OneToMany(fetch = FetchType.LAZY)
-//	@Fetch(FetchMode.SUBSELECT)
-	@JoinTable( name = "vaga_setor", joinColumns = @JoinColumn(name="vaga_id"), inverseJoinColumns = @JoinColumn(name="setor_id") )
-	private Set<Setor> setores;
+	// @NotNull
+	// @NotBlank
+	// @NotEmpty
+	// @OneToMany(fetch = FetchType.LAZY)
+	// @JoinTable( name = "vaga_setor", joinColumns = @JoinColumn(name="vaga_id"),
+	// inverseJoinColumns = @JoinColumn(name="setor_id") )
+	// private Set<Setor> setores;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Enumerated(EnumType.STRING)
-	private StatusVaga status;
+	private StatusBinarioEnum status;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCriacao;
 
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
+
+	@NotNull
+	@NotBlank
+	@NotEmpty
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Setor setor;
+
+	@OneToMany(mappedBy = "vaga")
+	private Set<VagaPreenchida> inscritos;
 
 	/**
 	 * Construtores e métodos
 	 */
 
-	//para o hibernate
-	public Vaga() {}
-
-	// constrututor seguro, porém ainda não implementado
-	// public Vaga(String titulo, String descricao, List<Setor> setores, Calendar
-	// dataCriacao, Calendar dataExpiracao,
-	// StatusVaga status) {
-	// this.titulo = titulo;
-	// this.descricao = descricao;
-	// this.setores = setores;
-	// this.dataCriacao = dataCriacao;
-	// this.dataExpiracao = dataExpiracao;
-	// this.status = status;
-	// }
-
-	@Override
-	public String toString() {
-		return "Vaga [titulo=" + titulo + ", descricao=" + descricao + ", setores=" + setores + ", status=" + status
-				+ ", dataCriacao=" + dataCriacao + ", dataExpiracao=" + dataExpiracao + "]";
+	// para o hibernate
+	public Vaga() {
 	}
 
-	/**
+	/*
 	 * Getters and Setters
 	 * 
 	 */
@@ -111,7 +119,7 @@ public class Vaga implements Serializable {
 	}
 
 	// Inserido limitador de coluna - Everton
-	@Column(name = "titulo", length = 2, nullable = false)
+	@Column(name = "titulo", length = 10, nullable = false)
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -132,11 +140,11 @@ public class Vaga implements Serializable {
 		this.dataExpiracao = dataExpiracao;
 	}
 
-	public StatusVaga getStatus() {
+	public StatusBinarioEnum getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusVaga status) {
+	public void setStatus(StatusBinarioEnum status) {
 		this.status = status;
 	}
 
@@ -156,12 +164,19 @@ public class Vaga implements Serializable {
 		return dataCriacao;
 	}
 
-	public Set<Setor> getSetores() {
-		return setores;
+	public Set<VagaPreenchida> getInscritos() {
+		return inscritos;
 	}
 
-	public void setSetores(Set<Setor> setores) {
-		this.setores = setores;
+	public void setInscritos(Set<VagaPreenchida> inscritos) {
+		this.inscritos = inscritos;
 	}
 
+	public Setor getSetor() {
+		return setor;
+	}
+
+	public void setSetor(Setor setor) {
+		this.setor = setor;
+	}
 }

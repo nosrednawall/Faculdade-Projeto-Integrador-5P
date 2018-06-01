@@ -19,27 +19,50 @@ import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
-//@Seguro
+/**
+ * 
+ * @author anderson
+ *
+ */
+// @Seguro
 @Stateless
 @Path("/usuarios")
 public class UsuarioRest {
-	// cria a unidade de persistencia que será passada pelo wildfly
 
+	/**
+	 * Dao sendo injetado pelo CDI
+	 */
 	@Inject
 	private UsuarioDao dao;
 
-	// método para criar um usuario
+	/**
+	 * Método para adicionar um usuario
+	 * 
+	 * @param usuarioGson
+	 * @return
+	 */
 	@POST
+	@Produces("application/json")
 	@Consumes("application/json")
 	public Response create(Usuario entity) {
-		System.out.println(entity.getNome());
-		System.out.println(entity.getEmail());
-		
+
+		System.out.println(entity);
+
+		// System.out.println(usuarioGson);
+		//
+		// Gson gson = new Gson();
+		// Usuario novoUsuario = gson.fromJson(usuarioGson, Usuario.class);
+
+		// System.out.println(usuarioGson);
+		// System.out.println(novoUsuario);
+
 		dao.save(entity);
-		return Response
-				.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
+		return Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
 				.build();
+
+		// return Response.ok().build();
 	}
 
 	@GET
@@ -61,19 +84,19 @@ public class UsuarioRest {
 	@GET
 	@Produces("application/json")
 	public List<Usuario> listaUsuarios() {
-		final List<Usuario> results = dao.listaTodos();
-			
+		final List<Usuario> results = dao.listaTodos(StatusBinarioEnum.ATIVO);
+
 		return results;
 	}
 
-//	@GET
-//	@Produces("application/json")
-//	public List<Usuario> listaUsuarios(@QueryParam("status") StatusUsuario status) {
-//		final List<Usuario> results = dao.listaTodos(status);
-//		return results;
-//	}
+	// @GET
+	// @Produces("application/json")
+	// public List<Usuario> listaUsuarios(@QueryParam("status") StatusUsuario
+	// status) {
+	// final List<Usuario> results = dao.listaTodos(status);
+	// return results;
+	// }
 
-	
 	@PUT
 	@Path("/{id:[0-9][0-9]*}")
 	@Consumes("application/json")
@@ -91,20 +114,13 @@ public class UsuarioRest {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		try {
-			
-			System.out.println(entity.getNome());
-			System.out.println(entity.getEmail());
-			System.out.println(entity.getMatricula());
-			System.out.println(entity.getSenha());
-			
+
 			entity = dao.update(entity);
-			
-			System.out.println("depois");
+
 		} catch (OptimisticLockException e) {
 			return Response.status(Response.Status.CONFLICT).entity(e.getEntity()).build();
 		}
 		entity = dao.update(entity);
 		return Response.noContent().build();
 	}
-
 }

@@ -6,12 +6,10 @@ import java.util.Date;
 import javax.crypto.spec.SecretKeySpec;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -39,6 +37,7 @@ public class LoginRest {
 	// recebe um usuário
 	@POST
 	@Consumes("application/json")
+	@Produces("application/json")
 	public Response fazerLogin(String credenciaisJson) {
 
 		try {
@@ -51,24 +50,33 @@ public class LoginRest {
 			
 			System.out.println("credencial foi transformada em objeto " + credencial.getEmail()+" , "+ credencial.getSenha());
 
-			Usuario usuario = validarCrendenciais(credencial);
-			if(usuario ==  null) {
+			Usuario entity = validarCrendenciais(credencial);
+			if(entity ==  null) {
 				return Response.status(Status.BAD_REQUEST).build();
 			}
 			
 			System.out.println("Credencial foi validada");
-			// gera o token
-			String token = gerarToken(credencial.getEmail(),1);
-
-			System.out.println("A token gerada é: "+token);
 			
-            JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
-            jsonObjBuilder.add( "auth_token", token );
-            JsonObject jsonObj = jsonObjBuilder.build();
 			
-            System.out.println("O json gerado é : "+jsonObj);
-            
-            return getNoCacheResponseBuilder( Response.Status.OK ).entity( jsonObj.toString() ).build();
+			String usuarioGson = gson.toJson(entity);
+			
+			System.out.println(usuarioGson);
+			
+			
+			return Response.accepted(usuarioGson).build();
+//			return Response.ok(usuarioGson).build();
+//			// gera o token
+//			String token = gerarToken(credencial.getEmail(),1);
+//
+//			System.out.println("A token gerada é: "+token);
+//			
+//            JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
+//            jsonObjBuilder.add( "auth_token", token );
+//            JsonObject jsonObj = jsonObjBuilder.build();
+//			
+//            System.out.println("O json gerado é : "+jsonObj);
+//            
+//            return getNoCacheResponseBuilder( Response.Status.OK ).entity( jsonObj.toString() ).build();
 
 		} catch (Exception e) {
 			System.out.println("credencial json " + credenciaisJson);
@@ -79,7 +87,8 @@ public class LoginRest {
 
 	}
 	
-    private Response.ResponseBuilder getNoCacheResponseBuilder( Response.Status status ) {
+    @SuppressWarnings("unused")
+	private Response.ResponseBuilder getNoCacheResponseBuilder( Response.Status status ) {
         CacheControl cc = new CacheControl();
         cc.setNoCache( true );
         cc.setMaxAge( -1 );
@@ -94,6 +103,7 @@ public class LoginRest {
 	}
 
 	//pegou o email e a quantidade de dias para expirar o token
+	@SuppressWarnings("unused")
 	private String gerarToken(String email, Integer expiraEmDias) {
 
 		// Defini qual vai ser o algotirmo da assinatura no caso vai ser o HMAC SHA512

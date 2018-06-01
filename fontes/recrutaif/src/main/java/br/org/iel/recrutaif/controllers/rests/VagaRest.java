@@ -13,14 +13,13 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.model.dao.VagaDao;
 import br.org.iel.recrutaif.model.entity.Vaga;
-import br.org.iel.recrutaif.model.enums.StatusVaga;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 //@Seguro
 @Stateless
@@ -72,8 +71,8 @@ public class VagaRest {
 	 */
 	@GET
 	@Produces("application/json")
-	public List<Vaga> listaVagas(@QueryParam("status") StatusVaga status) {
-		final List<Vaga> results = dao.listaTodos(status);
+	public List<Vaga> listaVagas() {
+		final List<Vaga> results = dao.listaTodos(StatusBinarioEnum.ATIVO);
 		return results;
 	}
 

@@ -1,14 +1,49 @@
-angular.module('recrutaif', ['ngAnimate', 'ngRoute', 'ngResource','minhasDiretivas', 'vagaServices', 'setorServices','usuarioServices'])
-    //angular = variável global do angular; .module = cria um módulo; [módulos em que a main é dependente]
+(function () {
+    'use strict';
+    angular.
+        module('recrutaif', [
+            'ngAnimate',
+            'ngRoute',
+            'ngResource',
+            'ngCookies',
+            'minhasDiretivas',
+            'vagaServices',
+            'setorServices',
+            'usuarioServices',
+            '720kb.datepicker'
+        ]).config(config).run(run);
 
-    //função para rotas, ex quero ver uma lista de setores, vou em /recrutaif/#/setores
-    .config(function ($routeProvider, $locationProvider, $httpProvider) {
+    config.$inject = ['$routeProvider', '$locationProvider'];
+    function config($routeProvider, $locationProvider, $httpProvider) {
+        // .config(function ($routeProvider, $locationProvider, ) {
 
 
         // | |\| ¯|¯ |¯ |¯| |¯ |¯ |¯| ¯|¯ /¯\ |¯\ |¯| |¯| 
         // | | |  |  |¯ |¯\ |_ |¯ |¯   |  |¯| |_/ |_| |¯\ 
         //            ¯         ¯                         
         // $httpProvider.interceptors.push('tokenInterceptor');
+
+        // _______________________________________________________________________
+
+
+        //     ___   _       _____   _____   _____        ___   _____   
+        //     /   | | |     |_   _| | ____| |  _  \      /   | |  _  \  
+        //    / /| | | |       | |   | |__   | |_| |     / /| | | |_| |  
+        //   / / | | | |       | |   |  __|  |  _  /    / / | | |  _  /  
+        //  / /  | | | |___    | |   | |___  | | \ \   / /  | | | | \ \  
+        // /_/   |_| |_____|   |_|   |_____| |_|  \_\ /_/   |_| |_|  \_\ 
+        // _____   _____   __   _   _   _       ___  
+        // /  ___/ | ____| |  \ | | | | | |     /   | 
+        // | |___  | |__   |   \| | | |_| |    / /| | 
+        // \___  \ |  __|  | |\   | |  _  |   / / | | 
+        //  ___| | | |___  | | \  | | | | |  / /  | | 
+        // /_____/ |_____| |_|  \_| |_| |_| /_/   |_| 
+
+        $routeProvider.when('/alterar-senha', {
+            templateUrl: 'app/alterar-senha/alterar-senha.html',
+            controller: 'AlterarSenhaController'
+        });
+
 
         // _______________________________________________________________________
 
@@ -24,6 +59,21 @@ angular.module('recrutaif', ['ngAnimate', 'ngRoute', 'ngResource','minhasDiretiv
             templateUrl: 'app/login/login.html',
             controller: 'LoginController'
         });
+
+        // __________________________________________________________________________
+
+        // _____    _____   _____   _   _____   _____   _____   _____   
+        // |  _  \  | ____| /  ___| | | /  ___/ |_   _| | ____| |  _  \  
+        // | |_| |  | |__   | |     | | | |___    | |   | |__   | |_| |  
+        // |  _  /  |  __|  | |  _  | | \___  \   | |   |  __|  |  _  /  
+        // | | \ \  | |___  | |_| | | |  ___| |   | |   | |___  | | \ \  
+        // |_|  \_\ |_____| \_____/ |_| /_____/   |_|   |_____| |_|  \_\ 
+
+        $routeProvider.when('/register', {
+            templateUrl: 'app/usuario/usuario.html',
+            controller: 'UsuarioController'
+        });
+
         // __________________________________________________________________________
 
         // _____   _____   _____   _____   _____   
@@ -112,5 +162,25 @@ angular.module('recrutaif', ['ngAnimate', 'ngRoute', 'ngResource','minhasDiretiv
         $routeProvider.when('/principal', {
             templateUrl: 'app/principal/principal.html',
         });
-        $routeProvider.otherwise({ redirectTo: '/principal' });
-    }); //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos
+        $routeProvider.otherwise({ redirectTo: '/setores' });
+    } //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos
+
+    run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
+    function run($rootScope, $location, $cookieStore, $http) {
+        // keep user logged in after page refresh
+        $rootScope.globals = $cookieStore.get('globals') || {};
+        // if ($rootScope.globals.currentUser) {
+        //     $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        // }
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in and trying to access a restricted page
+            var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+            var loggedIn = $rootScope.globals.currentUser;
+            if (restrictedPage && !loggedIn) {
+                $location.path('/login');
+            }
+        });
+    }
+
+})();

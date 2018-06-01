@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 import br.org.iel.recrutaif.model.entity.Credencial;
 import br.org.iel.recrutaif.model.entity.Usuario;
-import br.org.iel.recrutaif.model.enums.StatusUsuario;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 /**
  * 
@@ -47,9 +47,9 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 	 * @param status
 	 * @return
 	 */
-	public List<Usuario> listaTodos() {
+	public List<Usuario> listaTodos(StatusBinarioEnum status) {
 		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.listarTodos", Usuario.class);
-		query.setParameter("pStatus", StatusUsuario.ATIVO);
+		query.setParameter("pStatus", status);
 
 		return query.getResultList();
 	}
@@ -77,12 +77,19 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 	 */
 	public Usuario getBuscaPorEmail(Credencial credenciais) {
 
-		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.find", Usuario.class);
+		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.loga", Usuario.class);
 
 		query.setParameter("pEmail", credenciais.getEmail());
 		query.setParameter("pSenha", credenciais.getSenha());
 
-		return query.getSingleResult();
+		try {
+			
+			return query.getSingleResult();
 
+		} catch (Exception e) {
+			System.out.println("[INFO] Usuário não existe no banco de dados");
+		}
+		
+		return null;
 	}
 }

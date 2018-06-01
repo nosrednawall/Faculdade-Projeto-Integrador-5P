@@ -15,10 +15,13 @@
   <title>Recrutaif</title>
 
   <!-- Bootstrap core CSS -->
+  <!-- <link rel="stylesheet" href="resources/css/bootstrap.css" /> -->
   <link rel="stylesheet" href="resources/css/bootstrap.css" />
   <!-- Stilos próprios -->
   <link rel="stylesheet" href="resources/css/starter-template.css" />
   <link rel="stylesheet" href="resources/css/login.css" />
+  <!-- Stilo do datepicker -->
+  <link rel="stylesheet" href="resources/css/angular-datepicker.css" />
 </head>
 
 <body>
@@ -44,7 +47,7 @@
           <a class="nav-link" href="#/usuarios">Visualizar usuários</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#/alterar-dados">Alterar dados
+          <a class="nav-link" href="#/alterar-senha">Alterar dados
           </a>
         </li>
       </ul>
@@ -78,10 +81,17 @@
   <script src="resources/js/angular/angular-animate.min.js"></script>
   <script src="resources/js/angular/angular-route.min.js"></script>
   <script src="resources/js/angular/angular-resource.min.js"></script>
+  <script src="resources/js/angular/angular-datepicker.js"></script>
+  <script src="resources/js/angular/angular-cookies.min.js"></script>
+
+
+
 
   <!-- recursos bootstrap -->
-  <script src="resources/js/bootstrap/popper.min.js"></script>
+  <script src="resources/js/bootstrap/jquery-3.0.0.min.js"></script>
   <script src="resources/js/bootstrap/bootstrap.js"></script>
+  <script src="resources/js/bootstrap/popper.min.js"></script>
+
 
   <!--main da aplicação-->
   <script src="app/main.js"></script>
@@ -92,6 +102,7 @@
   <script src="app/login/login-controller.js"></script>
   <script src="app/usuario/usuario-controller.js"></script>
   <script src="app/usuario/usuarios-controller.js"></script>
+  <script src="app/alterar-senha/alterar-senha-controller.js"></script>
 
 
   <!--Diretivas da aplicação-->
