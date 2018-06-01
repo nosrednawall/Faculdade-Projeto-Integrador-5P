@@ -165,6 +165,9 @@
         $routeProvider.otherwise({ redirectTo: '/setores' });
     } //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos
 
+    
+    
+    
     run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
     function run($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
