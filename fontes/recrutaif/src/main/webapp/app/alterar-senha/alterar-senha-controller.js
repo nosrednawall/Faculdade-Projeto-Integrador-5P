@@ -1,4 +1,4 @@
-angular.module('recrutaif').controller('AlterarSenhaController', function ($cookieStore, $rootScope, $scope, recursoUsuario, ) {
+angular.module('recrutaif').controller('AlterarSenhaController', function ($cookieStore, $rootScope, $scope, recursoUsuario ) {
     //módulos que não são mais utilizados, porque estão sendo injetados pelo recursoSetor: $http,$resource
 
     //módulo controller, para setor

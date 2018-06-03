@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
+import com.google.gson.Gson;
+
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
@@ -78,7 +80,16 @@ public class UsuarioRest {
 		if (entity == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		return Response.ok(entity).build();
+//		return Response.ok(entity).build();
+		
+		Gson gson = new Gson();
+		
+		String usuarioGson = gson.toJson(entity);
+		
+		System.out.println(usuarioGson);
+		
+		
+		return Response.accepted(usuarioGson).build();
 	}
 
 	@GET
