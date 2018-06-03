@@ -22,7 +22,7 @@ angular
         // |  __|  | | | | | |\   | | |       / / | | | | | | 
         // | |     | |_| | | | \  | | |___   / /  | | | |_| | 
         // |_|     \_____/ |_|  \_| \_____| /_/   |_| \_____/ 
-        function ($scope, $routeParams, cadastroUsuario, recursoUsuario) {
+        function ($scope, $routeParams, $filter, cadastroUsuario, recursoUsuario) {
             //_________________________________________________________________________________________________________________________
             /**
              * variáveis criadas quando a tela do controlador é acessada
@@ -40,6 +40,7 @@ angular
                 recursoUsuario.get({ usuarioId: $routeParams.usuarioId },
                     function (usuario) {
                         $scope.usuario = usuario;
+                        $scope.usuario.dataAdmissao = $filter('date')(usuario.dataAdmissao, 'yyyy/MM/dd');
                     },
                     function (erro) {
                         console.log(error);
