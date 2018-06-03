@@ -15,6 +15,7 @@ angular.module('recrutaif').controller('UsuariosController',function($scope,recu
     recursoUsuario.query(function(usuarios){
         //salva a lista de setores dentro da variável de escope $setores
         $scope.usuarios = usuarios;
+        console.log(usuarios);
     }, function(erro){
         //caso dê erro imprime o erro para o usuário
         console.log(error);

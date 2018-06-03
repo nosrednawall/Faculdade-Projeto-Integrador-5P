@@ -63,7 +63,7 @@ angular
 
                     /**Verifica se o usuário possui ID, se sim é atualizado, se não é inserido um novo usuário */
                     if (usuario.id != null) {
-                        console.log(usuario);
+                        console.log(usuario.dataAdmissao);
                         /**Pega a funcao da factory1, ali em cima, e adiciona o verbete update mais o usuário */
                         recursoUsuario.update({ usuarioId: usuario.id }, usuario, function () {
                             /**Caso dê certo */
@@ -87,6 +87,7 @@ angular
                         usuario.permissao = 'ADMINISTRADOR';
                         usuario.status = 'ATIVO';
 
+                        console.log(usuario.dataAdmissao);
                         recursoUsuario.save(usuario, function () {
                             resolve({
                                 mensagem: '[INFO]usuario ' + usuario.nome + ' Adicionado com sucesso!',
