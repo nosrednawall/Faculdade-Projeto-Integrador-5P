@@ -63,7 +63,7 @@ angular
 
                     /**Verifica se o usuário possui ID, se sim é atualizado, se não é inserido um novo usuário */
                     if (usuario.id != null) {
-
+                        console.log(usuario);
                         /**Pega a funcao da factory1, ali em cima, e adiciona o verbete update mais o usuário */
                         recursoUsuario.update({ usuarioId: usuario.id }, usuario, function () {
                             /**Caso dê certo */

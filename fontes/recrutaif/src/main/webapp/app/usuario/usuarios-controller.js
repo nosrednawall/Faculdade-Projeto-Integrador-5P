@@ -28,7 +28,7 @@ angular.module('recrutaif').controller('UsuariosController',function($scope,recu
         usuario.status = 'INATIVO';
         console.log(usuario.status);
 
-        //ele tenta remover um usuarios, passando o id em usuarios.id ao coringa usuarioId
+        //ele tenta atualiza um usuarios, passando o id em usuarios.id ao coringa usuarioId
         recursoUsuario.update({usuarioId : usuario.id}, usuario, function(){
 
             //caso dê certo é atualizado a lista e informado o usuário
