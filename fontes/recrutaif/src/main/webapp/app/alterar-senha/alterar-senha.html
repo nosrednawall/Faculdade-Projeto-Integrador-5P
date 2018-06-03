@@ -24,7 +24,7 @@
                         <th scope="row">{{usuario.nome}}</th>
                         <th scope="row">{{usuario.matricula}}</th>
                         <th scope="row">{{usuario.email}}</th>
-                        <th scope="row">{{usuario.dataAdmissao}}</th>
+                        <th scope="row">{{angular.isDate(usuario.dataAdmissao)  | date: "yyyy-MM-dd"}}</th>
                         <th scope="row">
                             <a class="btn btn-primary" href="">Ativos</a>
                         </th>
