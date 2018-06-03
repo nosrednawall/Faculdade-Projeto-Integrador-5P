@@ -24,11 +24,15 @@ angular.module('recrutaif').controller('UsuariosController',function($scope,recu
     //funcao para remover usuarios
     $scope.inativar = function(usuario){
 
+        console.log(usuario.status);
+        usuario.status = 'INATIVO';
+        console.log(usuario.status);
+
         //ele tenta remover um usuarios, passando o id em usuarios.id ao coringa usuarioId
-        recursoSetor.update({usuarioId : usuario.id}, function(){
+        recursoUsuario.update({usuarioId : usuario.id}, usuario, function(){
 
             //caso dê certo é atualizado a lista e informado o usuário
-            var indiceSetor = $scope.usuarios.indexOf(setor);
+            var indiceUsuario = $scope.usuarios.indexOf(usuario);
             $scope.usuarios.splice(indiceUsuario,1);
             $scope.mensagem = "[INFO] usuario "+usuario.nome+" foi removido com sucesso!";
         }, function(){

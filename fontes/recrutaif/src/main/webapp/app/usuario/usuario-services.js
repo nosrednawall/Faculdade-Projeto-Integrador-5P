@@ -23,12 +23,10 @@ angular
 
             /**Toda vez que solicitar esse service, será dado o caminho rest, para quase todos os verbos http */
             return $resource('rest/usuarios/:usuarioId', null, {
-                create: {method: 'POST'},
-                get:    {method: 'GET'},
-                getAll: {method: 'GET', isArray:true},
-                update: {method: 'PUT'},
-                delete: {method: 'DELETE'}
-            }); /**Fecha return */
+                update: {
+                    method: 'PUT'
+                }
+            });
         } /**Fecha funcão */
     ) /**Fecha Factory 1 */
 
