@@ -1,10 +1,10 @@
 package br.org.iel.recrutaif.controllers.validators;
 
-import br.org.iel.recrutaif.model.entity.Credencial;
+import br.org.iel.recrutaif.model.entity.Usuario;
 
-public class RegistroValidar extends Credencial{
+public class RegistroValidar extends Usuario{
 	
-	static Credencial credencial;
+	static Usuario Usuariol;
 	
 	private boolean email;
 	private boolean senha;
@@ -28,6 +28,7 @@ public class RegistroValidar extends Credencial{
 		return true;
 	}
 
+	
 }
 
 
