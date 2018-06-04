@@ -1,10 +1,11 @@
 package br.org.iel.recrutaif.controllers.validators;
 
 import java.util.Calendar;
+
 import br.org.iel.recrutaif.model.entity.Vaga;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
-public class VagaValidator {
+public class VagaValidator extends Vaga{
 	
 	static Vaga vaga;
 	
@@ -67,8 +68,8 @@ public class VagaValidator {
 
 
 
-	public static boolean validar(Vaga vagaTeste) {
-		vaga = vagaTeste;
+	public static boolean valida(Vaga LimiteDeCaracterNoCampo) {
+		vaga = LimiteDeCaracterNoCampo;
 		
 		return false;
 		
@@ -76,22 +77,3 @@ public class VagaValidator {
 	}
 }
 
-
-//package br.org.iel.recrutaif.controllers.validators;
-//
-//import br.org.iel.recrutaif.model.entity.Vaga;
-//
-//public class VagaValidator {
-//
-//	public static boolean validar(Vaga vagaTeste) {
-////		vaga = vagaTeste;
-////		
-////		DataValidaIntervalo.valida(vagaTeste.getDataCriacao());
-////		DataValidaDiasInvalidos.valida(vagaTeste.getDataCriacao());
-////		DataValidaDiasFeriados.valida(vagaTeste.getDataCriacao());
-//		
-//		return false;
-//		
-//		
-//	}
-//}
