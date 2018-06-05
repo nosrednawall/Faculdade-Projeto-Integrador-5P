@@ -2,9 +2,9 @@ package br.org.iel.recrutaif.controllers.validators;
 
 import br.org.iel.recrutaif.model.entity.Vaga;
 
-public class VagaValidator {
 
-	public boolean validaVaga(Vaga vaga) {
+public class VagaValidator {
+public boolean validaVaga(Vaga vaga) {
 		boolean resultado = true;
 
 		if(dataEhValida(vaga) == false) {
