@@ -1,10 +1,13 @@
 package br.org.iel.recrutaif.controllers.validators;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import br.org.iel.recrutaif.model.entity.Usuario;
 
 public class RegistroValidar extends Usuario{
 	
-	static Usuario Usuariol;
+	static Usuario Usuario;
 	
 	private boolean email;
 	private boolean senha;
@@ -24,51 +27,23 @@ public class RegistroValidar extends Usuario{
 		return matricula;
 	}
 
-	private boolean validarNome() {
-		return true;
-	}
-
-	
+	private void validaNome(String nomeUsuario) {
+		//verifica se não é null
+		if(nomeUsuario != null) {
+		//verifica se não está vazio
+			if(!nomeUsuario.isEmpty()) {
+				//verifica se está com números
+				Pattern pattern = Pattern.compile("[0-9]");
+				Matcher matcher = pattern.matcher(nomeUsuario);
+				if(matcher.find()){
+					System.out.println("Não deve conter caracteres!");
+						}else {
+							if(nomeUsuario.length()>=101) {
+								System.out.println("O nome não deve conter mais que 100 caracteres");
+							}
+							
+						}
+				}
+			}
+		}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*package br.org.iel.recrutaif.controllers.validators;
-
-import br.org.iel.recrutaif.model.entity.Vaga;
-
-public class RegistroValidar {
-
-	public static boolean validar(Vaga vagaTeste) {
-		vaga = vagaTeste;
-		
-		DataValidaIntervalo.valida(vagaTeste.getDataCriacao());
-		DataValidaDiasInvalidos.valida(vagaTeste.getDataCriacao());
-		DataValidaDiasFeriados.valida(vagaTeste.getDataCriacao());
-		
-		return false;
-
-}
-*/
