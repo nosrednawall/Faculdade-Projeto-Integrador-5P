@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
+import br.org.iel.recrutaif.controllers.validators.VagaValidator;
 import br.org.iel.recrutaif.model.dao.VagaDao;
 import br.org.iel.recrutaif.model.entity.Vaga;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
@@ -37,10 +38,20 @@ public class VagaRest {
 	@POST
 	@Consumes("application/json")
 	public Response create(Vaga entity) {
-		dao.save(entity);
-		return Response
-				.created(UriBuilder.fromResource(VagaRest.class).path(String.valueOf(entity.getId())).build())
-				.build();
+		
+		VagaValidator validacao = new VagaValidator();
+		
+		
+		if(validacao.validaVaga(entity)) {
+			dao.save(entity);
+			return Response
+					.created(UriBuilder.fromResource(VagaRest.class).path(String.valueOf(entity.getId())).build())
+					.build();
+		}
+		
+
+		return Response.status(Status.CONFLICT).entity(entity).build();
+		
 	}
 
 	/**

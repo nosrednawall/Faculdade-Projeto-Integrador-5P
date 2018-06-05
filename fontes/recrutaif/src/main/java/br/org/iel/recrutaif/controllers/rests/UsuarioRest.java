@@ -19,6 +19,8 @@ import javax.ws.rs.core.UriBuilder;
 
 import com.google.gson.Gson;
 
+import br.org.iel.recrutaif.controllers.validators.UsuarioValidator;
+import br.org.iel.recrutaif.controllers.validators.VagaValidator;
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
@@ -50,19 +52,17 @@ public class UsuarioRest {
 	@Consumes("application/json")
 	public Response create(Usuario entity) {
 
-		System.out.println(entity);
+		UsuarioValidator validacao = new UsuarioValidator();
 
-		// System.out.println(usuarioGson);
-		//
-		// Gson gson = new Gson();
-		// Usuario novoUsuario = gson.fromJson(usuarioGson, Usuario.class);
+		if (validacao.validaVaga(entity)) {
+			dao.save(entity);
+			return Response
+					.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
+					.build();
+		}
 
-		// System.out.println(usuarioGson);
-		// System.out.println(novoUsuario);
-
-		dao.save(entity);
-		return Response.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
-				.build();
+		System.out.println("Caiu fora do if dentro do usuario rest");
+		return Response.status(Status.CONFLICT).entity(entity).build();
 
 		// return Response.ok().build();
 	}
@@ -80,15 +80,14 @@ public class UsuarioRest {
 		if (entity == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-//		return Response.ok(entity).build();
-		
+		// return Response.ok(entity).build();
+
 		Gson gson = new Gson();
-		
+
 		String usuarioGson = gson.toJson(entity);
-		
+
 		System.out.println(usuarioGson);
-		
-		
+
 		return Response.accepted(usuarioGson).build();
 	}
 
