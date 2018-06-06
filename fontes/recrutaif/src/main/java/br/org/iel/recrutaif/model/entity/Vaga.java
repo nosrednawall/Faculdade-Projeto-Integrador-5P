@@ -1,7 +1,7 @@
 package br.org.iel.recrutaif.model.entity;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -60,10 +60,10 @@ public class Vaga implements Serializable {
 	private StatusBinarioEnum status;
 
 	@Temporal(TemporalType.DATE)
-	private Calendar dataCriacao;
+	private Date dataCriacao;
 
 	@Temporal(TemporalType.DATE)
-	private Calendar dataExpiracao;
+	private Date dataExpiracao;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Setor setor;
@@ -111,19 +111,19 @@ public class Vaga implements Serializable {
 		this.status = status;
 	}
 
-	public Calendar getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Calendar dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public Calendar getDataExpiracao() {
+	public Date getDataExpiracao() {
 		return dataExpiracao;
 	}
 
-	public void setDataExpiracao(Calendar dataExpiracao) {
+	public void setDataExpiracao(Date dataExpiracao) {
 		this.dataExpiracao = dataExpiracao;
 	}
 

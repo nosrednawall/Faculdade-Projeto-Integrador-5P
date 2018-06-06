@@ -1,6 +1,6 @@
 package br.org.iel.recrutaif.controllers.rests;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -36,15 +36,18 @@ public class VagaRest {
 	 * 
 	 * @param entity
 	 * @return
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
 	@POST
 	@Consumes("application/json")
-	public Response create(Vaga entity) {
+	public Response create(Vaga entity) throws InstantiationException, IllegalAccessException {
 
 		System.out.println(entity);
 		VagaValidator validacao = new VagaValidator();
 
-		entity.setDataCriacao(Calendar.getInstance());
+//		entity.setDataCriacao(Calendar.getInstance());
+		entity.setDataCriacao(Date.class.newInstance());
 		entity.setStatus(StatusBinarioEnum.ATIVO);
 
 		if (validacao.validaVaga(entity)) {

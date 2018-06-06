@@ -22,10 +22,12 @@ angular.module('recrutaif').controller('VagasController',function($scope,recurso
     });
 
     //funcao para remover setor
-    $scope.remover = function(vagas){
+    $scope.inativar = function(vagas){
+
+        vaga.status = 'INATIVO';
 
         //ele tenta remover um setor, passando o id em setor.id ao coringa setorId
-        recursoVaga.delete({vagaId : vaga.id}, function(){
+        recursoVaga.update({vagaId : vaga.id},vaga, function(){
 
             //caso dê certo é atualizado a lista e informado o usuário
             var indiceVagas = $scope.vagas.indexOf(vaga);
