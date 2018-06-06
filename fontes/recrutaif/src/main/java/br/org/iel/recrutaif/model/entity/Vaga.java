@@ -57,7 +57,7 @@ public class Vaga implements Serializable {
 	@NotNull
 	@NotBlank
 	@NotEmpty
-	@Column(name = "titulo", length = 2, nullable = false) // copiado do Everton by Anderson
+	@Column(name = "titulo", length = 20, nullable = false) // copiado do Everton by Anderson
 	private String titulo;
 
 	@NotNull
