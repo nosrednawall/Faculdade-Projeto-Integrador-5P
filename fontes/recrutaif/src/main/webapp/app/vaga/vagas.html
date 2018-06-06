@@ -8,7 +8,7 @@
 			<div class="input-group">
 
 				<span class="input-group-btn">
-					<a href="#/setores/new" class="btn btn-primary">Novo Setor</a>
+					<a href="#/vaga/new" class="btn btn-primary">Nova vaga</a>
 				</span>
 				<input ng-model="filtro" class="form-control" placeholder="filtrar" ng-model-options="{debounce: 500}" />
 			</div>
@@ -24,23 +24,27 @@
 			<table class="table coluna-animada">
 				<thead class="thead-dark">
 					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Nome Setor</th>
+						<th scope="col">Titulo</th>
+						<th scope="col">Setor</th>
+						<th scope="col">Data criação</th>
+						<th scope="col">Data expiração</th>
 						<th scope="col">Editar</th>
 						<th scope="col">Remover</th>
 					</tr>
 				</thead>
 				<!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
-				<tbody ng-repeat="setor in setores | filter:filtro">
+				<tbody ng-repeat="vaga in vagas | filter:filtro">
 					<tr>
 						<!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
-						<th scope="row">{{setor.id}}</th>
-						<th scope="row">{{setor.nome}}</th>
+						<th scope="row">{{vaga.titulo}}</th>
+						<th scope="row">{{vaga.setor}}</th>
+						<th scope="row">{{vaga.dataCriacao}}</th>
+						<th scope="row">{{vaga.dataExpiracao}}</th>
 						<th scope="row">
-							<a class="btn btn-primary" href="#/setores/edit/{{setor.id}}">Editar</a>
+							<a class="btn btn-primary" href="#/vaga/edit/{{vaga.id}}">Editar</a>
 						</th>
 						<th scope="row">
-							<button ng-click="remover(setor)" class="btn btn-danger " href="">Remover</button>
+							<button ng-click="remover(vaga)" class="btn btn-danger " href="">Remover</button>
 						</th>
 					</tr>
 				</tbody>
