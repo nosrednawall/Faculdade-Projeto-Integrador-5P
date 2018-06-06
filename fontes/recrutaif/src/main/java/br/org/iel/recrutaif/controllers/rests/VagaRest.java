@@ -45,6 +45,7 @@ public class VagaRest {
 		VagaValidator validacao = new VagaValidator();
 
 		entity.setDataCriacao(Calendar.getInstance());
+		entity.setStatus(StatusBinarioEnum.ATIVO);
 
 		if (validacao.validaVaga(entity)) {
 			dao.save(entity);

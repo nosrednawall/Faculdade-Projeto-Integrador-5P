@@ -20,11 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
@@ -54,38 +50,22 @@ public class Vaga implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Column(name = "titulo", nullable = false) // copiado do Everton by Anderson
 	private String titulo;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
-	// @Lob // permite essa coluna possuir grande volume de dados
 	@Column(name = "descricao", nullable = false)
 	private String descricao;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Enumerated(EnumType.STRING)
 	private StatusBinarioEnum status;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCriacao;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
 
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Setor setor;
 
 	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY)
@@ -99,17 +79,18 @@ public class Vaga implements Serializable {
 	public Vaga() {
 	}
 
-	/*
-	 * Getters and Setters
-	 * 
-	 */
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-	// Inserido limitador de coluna - Everton
-	@Column(name = "titulo", length = 10, nullable = false)
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -122,14 +103,6 @@ public class Vaga implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Calendar getDataExpiracao() {
-		return dataExpiracao;
-	}
-
-	public void setDataExpiracao(Calendar dataExpiracao) {
-		this.dataExpiracao = dataExpiracao;
-	}
-
 	public StatusBinarioEnum getStatus() {
 		return status;
 	}
@@ -138,20 +111,28 @@ public class Vaga implements Serializable {
 		this.status = status;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public Calendar getDataCriacao() {
+		return dataCriacao;
 	}
 
 	public void setDataCriacao(Calendar dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public Calendar getDataCriacao() {
-		return dataCriacao;
+	public Calendar getDataExpiracao() {
+		return dataExpiracao;
+	}
+
+	public void setDataExpiracao(Calendar dataExpiracao) {
+		this.dataExpiracao = dataExpiracao;
+	}
+
+	public Setor getSetor() {
+		return setor;
+	}
+
+	public void setSetor(Setor setor) {
+		this.setor = setor;
 	}
 
 	public Set<VagaPreenchida> getInscritos() {
@@ -162,11 +143,9 @@ public class Vaga implements Serializable {
 		this.inscritos = inscritos;
 	}
 
-	public Setor getSetor() {
-		return setor;
-	}
+	/*
+	 * Getters and Setters
+	 * 
+	 */
 
-	public void setSetor(Setor setor) {
-		this.setor = setor;
-	}
 }
