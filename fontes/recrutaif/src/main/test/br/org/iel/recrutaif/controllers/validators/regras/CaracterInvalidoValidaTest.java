@@ -5,13 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.text.ParseException;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import br.org.iel.recrutaif.model.entity.Vaga;
 
 class CaracterInvalidoValidaTest {
-
+	
+	@Ignore
 	@Test
 	@DisplayName("Foi inserido caracter")
 	public void validaSeFoiInseridoCaracter() throws ParseException {

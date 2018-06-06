@@ -1,19 +1,20 @@
 package br.org.iel.recrutaif.controllers.validators.regras;
 
+import br.org.iel.recrutaif.model.entity.Usuario;
 import java.util.Calendar;
-import java.util.function.Function;
 
 public class LimiteDeCaracterNoCampo {
 	
-		public static void valida(Calendar LimiteDeCaracterNoCampoo) {
-		  
-/*			Function toLimit(string = "15"){
-			        string.value = string.value.substring(0,10);*/
+/*		public static void valida(Vaga LimiteDeCaracterNoCampoo) {
+		
+			Function toLimit(vaga = "15"){
+			        string.value = string.value.substring(0,10);
 			        
-			}       
-/*		<input type="text" onkeyup="toLimit(this)" />*/
+			}  */     
+		//<input type="text" onkeyup="toLimit(this)" />*/
 			
 		}
+
 
 
 

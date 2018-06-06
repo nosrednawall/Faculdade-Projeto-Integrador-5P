@@ -2,7 +2,6 @@ package br.org.iel.recrutaif.controllers.validators;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import br.org.iel.recrutaif.model.entity.Usuario;
 
 public class UsuarioValidator {

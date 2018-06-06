@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.text.ParseException;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,7 @@ import br.org.iel.recrutaif.model.entity.Vaga;
 
 class LimiteDeCaracterNoCampoTest {
 
+	@Ignore
 	@Test
 	@DisplayName("Limite de 50 caracteres respeitado")
 	public void LimiteDeCaracteresOK() throws ParseException {
