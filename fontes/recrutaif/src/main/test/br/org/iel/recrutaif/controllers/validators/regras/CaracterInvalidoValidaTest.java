@@ -12,38 +12,6 @@ import org.junit.jupiter.api.Test;
 import br.org.iel.recrutaif.model.entity.Vaga;
 
 class CaracterInvalidoValidaTest {
-	
-	@Ignore
-	@Test
-	@DisplayName("Foi inserido caracter")
-	public void validaSeFoiInseridoCaracter() throws ParseException {
 
-		String conteudo = "MumRáá";
-		Vaga vagaTeste = new Vaga();
-		vagaTeste.setTitulo(conteudo);
-		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
-				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
-			assertTrue("Campo contem caracteres", vagaTeste.getTitulo().isEmpty());
-		{
-			return;
-		}
-	}
 
-	@Test
-	@DisplayName("Foi inserido número")
-	public void validaSeFoiInseridoNumero() throws ParseException {
-
-		String conteudo = "141425";
-		Vaga vagaTeste = new Vaga();
-		vagaTeste.setTitulo(conteudo);
-		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
-				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
-
-			assertTrue("Campo contem números", vagaTeste.getTitulo().isEmpty());
-		{
-			return;
-
-	}
-
-}
 }

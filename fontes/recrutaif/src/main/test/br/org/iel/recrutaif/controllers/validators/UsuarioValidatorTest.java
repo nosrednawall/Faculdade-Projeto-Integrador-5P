@@ -9,6 +9,10 @@ import org.junit.jupiter.api.Test;
 import br.org.iel.recrutaif.model.entity.Usuario;
 import br.org.iel.recrutaif.model.entity.Vaga;
 
+/*
+Testa Campo Registre-se do login
+*/
+
 class UsuarioValidatorTest {
 
 	/*
@@ -73,8 +77,42 @@ class UsuarioValidatorTest {
 		assertTrue("O campo está preenchido", validaVaga.getNome().isEmpty());
 	}
 
+	/*
+	Testa se o campo foi inserido numeros
+	*/
+	
+	@Test
+	@DisplayName("Foi inserido caracter")
+	public void validaSeFoiInseridoCaracter() throws ParseException {
+
+		String conteudo = "MumRáá";
+		Usuario validaVaga = new Usuario();
+		validaVaga.setNome(conteudo);
+		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
+				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
+			assertTrue("Campo contem caracteres", validaVaga.getNome().isEmpty());
+		{
+			return;
+		}
+	}
+
+	@Test
+	@DisplayName("Foi inserido número")
+	public void validaSeFoiInseridoNumero() throws ParseException {
+
+		String conteudo = "141425";
+		Usuario validaVaga = new Usuario();
+		validaVaga.setNome(conteudo);
+		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
+				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
+			assertTrue("Campo contem caracteres", validaVaga.getNome().isEmpty());
+		{
+			return;
+		}
 
 }
+}
+
 
 
 
