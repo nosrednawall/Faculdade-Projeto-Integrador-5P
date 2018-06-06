@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package br.org.iel.recrutaif.controllers.validators;
 
 import java.util.regex.Matcher;
@@ -45,9 +45,9 @@ public class RegistroValidar extends Usuario{
 						}
 				}
 			}
-		}
+
 }
-=======
+}
 //package br.org.iel.recrutaif.controllers.validators;
 //
 //import java.util.regex.Matcher;
@@ -97,4 +97,4 @@ public class RegistroValidar extends Usuario{
 //			}
 //		}
 //}
->>>>>>> bc27429855706848b599150298e356371e91ddf9
+

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package br.org.iel.recrutaif.controllers.validators.regras;
 
 import br.org.iel.recrutaif.model.entity.Usuario;
@@ -19,7 +18,7 @@ public class LimiteDeCaracterNoCampo {
 
 
 
-=======
+
 //package br.org.iel.recrutaif.controllers.validators.regras;
 //
 //import java.util.Calendar;
@@ -39,4 +38,4 @@ public class LimiteDeCaracterNoCampo {
 //
 //
 //
->>>>>>> bc27429855706848b599150298e356371e91ddf9
+
