@@ -39,7 +39,7 @@ angular.module('vagaServices', ['ngResource'])
 
                     recursoVaga.save(vaga, function () {
                         resolve({
-                            mensagem: '[INFO]Setor' + vaga.titulo + 'Adicionado com sucesso!',
+                            mensagem: '[INFO]Vaga' + vaga.titulo + 'Adicionado com sucesso!',
                             inclusao: true
                         });
                     }, function (erro) {

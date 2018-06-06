@@ -1,9 +1,10 @@
 package br.org.iel.recrutaif.model.entity;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +13,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,11 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
@@ -54,51 +50,25 @@ public class Vaga implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
-	@Column(name = "titulo", length = 20, nullable = false) // copiado do Everton by Anderson
+	@Column(name = "titulo", nullable = false) // copiado do Everton by Anderson
 	private String titulo;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
-	@Lob // permite essa coluna possuir grande volume de dados
+	@Column(name = "descricao", nullable = false)
 	private String descricao;
 
-	// @NotNull
-	// @NotBlank
-	// @NotEmpty
-	// @OneToMany(fetch = FetchType.LAZY)
-	// @JoinTable( name = "vaga_setor", joinColumns = @JoinColumn(name="vaga_id"),
-	// inverseJoinColumns = @JoinColumn(name="setor_id") )
-	// private Set<Setor> setores;
-
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Enumerated(EnumType.STRING)
 	private StatusBinarioEnum status;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Temporal(TemporalType.DATE)
-	private Calendar dataCriacao;
+	private Date dataCriacao;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Temporal(TemporalType.DATE)
-	private Calendar dataExpiracao;
+	private Date dataExpiracao;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Setor setor;
 
-	@OneToMany(mappedBy = "vaga")
+	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY)
 	private Set<VagaPreenchida> inscritos;
 
 	/**
@@ -109,17 +79,18 @@ public class Vaga implements Serializable {
 	public Vaga() {
 	}
 
-	/*
-	 * Getters and Setters
-	 * 
-	 */
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-	// Inserido limitador de coluna - Everton
-	@Column(name = "titulo", length = 10, nullable = false)
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -132,14 +103,6 @@ public class Vaga implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Calendar getDataExpiracao() {
-		return dataExpiracao;
-	}
-
-	public void setDataExpiracao(Calendar dataExpiracao) {
-		this.dataExpiracao = dataExpiracao;
-	}
-
 	public StatusBinarioEnum getStatus() {
 		return status;
 	}
@@ -148,20 +111,28 @@ public class Vaga implements Serializable {
 		this.status = status;
 	}
 
-	public Integer getId() {
-		return id;
+	public Date getDataCriacao() {
+		return dataCriacao;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setDataCriacao(Calendar dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public Calendar getDataCriacao() {
-		return dataCriacao;
+	public Date getDataExpiracao() {
+		return dataExpiracao;
+	}
+
+	public void setDataExpiracao(Date dataExpiracao) {
+		this.dataExpiracao = dataExpiracao;
+	}
+
+	public Setor getSetor() {
+		return setor;
+	}
+
+	public void setSetor(Setor setor) {
+		this.setor = setor;
 	}
 
 	public Set<VagaPreenchida> getInscritos() {
@@ -172,11 +143,9 @@ public class Vaga implements Serializable {
 		this.inscritos = inscritos;
 	}
 
-	public Setor getSetor() {
-		return setor;
-	}
+	/*
+	 * Getters and Setters
+	 * 
+	 */
 
-	public void setSetor(Setor setor) {
-		this.setor = setor;
-	}
 }
