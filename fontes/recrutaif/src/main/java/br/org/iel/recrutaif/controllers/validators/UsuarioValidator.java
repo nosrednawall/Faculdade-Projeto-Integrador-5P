@@ -6,7 +6,7 @@ import br.org.iel.recrutaif.model.entity.Usuario;
 
 public class UsuarioValidator {
 
-	public boolean validaVaga(Usuario usuario) {
+	public boolean validaUsuario(Usuario usuario) {
 		boolean resultado = true;
 
 		if (dataEhValida(usuario) == false) {

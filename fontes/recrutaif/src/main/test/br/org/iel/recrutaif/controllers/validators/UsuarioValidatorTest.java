@@ -1,13 +1,10 @@
 package br.org.iel.recrutaif.controllers.validators;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.text.ParseException;
-import org.junit.Ignore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import br.org.iel.recrutaif.model.entity.Usuario;
-import br.org.iel.recrutaif.model.entity.Vaga;
 
 /*
 Testa Campo Registre-se do login
@@ -20,38 +17,36 @@ class UsuarioValidatorTest {
 	*/
 	
 	@Test
-	@DisplayName("Limite de 100 caracteres respeitado")
-	public void LimiteDe100CaracteresRespeitado() throws ParseException {
-		String Cem = "Rá";
+	@DisplayName("Tem mais de 100 caracteres")
+	public void TemMaisDe100Caracteres() throws ParseException {
+		String cem = "dasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+				+ "dassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+				+ "dassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+				+ "dassssssssssssssssssssssssssssssssssssss";
+
+		UsuarioValidator validador = new UsuarioValidator();
 		
-		Usuario validaVaga = new Usuario();
+		Usuario usuario = new Usuario();
 		
-		validaVaga.setNome(Cem);
-		assertTrue("O campo está dentro de cinquenta caracteres", validaVaga.getNome().isEmpty());
+		usuario.setNome(cem);
+		
+		assertTrue("O campo tem mais de 100 caracteres", validador.validaUsuario(usuario));
 	}
 	
 	@Test
-	@DisplayName("Limite de 100 caracteres NOK")
-	public void LimiteDe100CaracteresNOK() throws ParseException {
-		String Cem = "NaMinhaMaquinaFuncionaRádfffffffffffffffffffffffffffffffffffffffffddddddddddddddddddddd"
-				+ "fdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-				+ "sdssssssdsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-				+ "fdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-				+ "sdssssssdsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-				+ "fdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-				+ "sdssssssdsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-				+ "fdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-				+ "sdssssssdsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-				+ "fdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-				+ "sdssssssdsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+	@DisplayName("Tem menos de 100 caracteres")
+	public void TemMenosDe100Caracteres() throws ParseException {
+		String cem = "Antigos Espiritos do Mal Transformem este código decadente em JUnit";
 		
-		Usuario validaVaga = new Usuario();
+		UsuarioValidator validador = new UsuarioValidator();
 		
-		validaVaga.setNome(Cem);
-		assertFalse("O campo está dentro de cinquenta caracteres", validaVaga.getNome().isEmpty());
+		Usuario usuario = new Usuario();
+		
+		usuario.setNome(cem);
+		
+		assertTrue("O campo tem menos de 100 caracteres", validador.validaUsuario(usuario));
 	}
-	
-	
+		
 	/*
 	Testa se o campo esta vazio
 	*/
@@ -110,7 +105,7 @@ class UsuarioValidatorTest {
 			return;
 		}
 
-}
+	}
 }
 
 
