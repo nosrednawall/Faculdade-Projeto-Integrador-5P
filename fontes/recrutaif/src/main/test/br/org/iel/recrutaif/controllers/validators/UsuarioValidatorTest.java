@@ -53,24 +53,24 @@ class UsuarioValidatorTest {
 	*/
 	
 	@Test
-	@DisplayName("Retorna OK se o campo estiver vazio")
-	public void RetornarOKSeOCampoEstiverVazio() throws ParseException {
+	@DisplayName("Retorna Erro se o campo estiver vazio")
+	public void RetornarErroSeOCampoEstiverVazio() throws ParseException {
 
 		String conteudo = "";
-		Vaga vagaTeste = new Vaga();
-		vagaTeste.setTitulo(conteudo);
-		
-/*			VagaValidator.validar(vagaTeste);*/
+		Usuario validaVaga = new Usuario();
+		validaVaga.setNome(conteudo);
+		assertTrue("O campo está preenchido", validaVaga.getNome().isEmpty());
+
 	}
 
 	@Test
-	@DisplayName("Retorna Erro se o campo estiver preenchido")
-	public void RetornarErroSeOCampoEstiverPreenchido() throws ParseException {
+	@DisplayName("Retorna OK se o campo estiver preenchido")
+	public void RetornarOKSeOCampoEstiverPreenchido() throws ParseException {
 
-		String conteudo = "dasdasd";
-		Vaga vagaTeste = new Vaga();
-		vagaTeste.setTitulo(conteudo);
-		assertTrue("O campo está preenchido", vagaTeste.getTitulo().isEmpty());
+		String conteudo = "ererer";
+		Usuario validaVaga = new Usuario();
+		validaVaga.setNome(conteudo);
+		assertTrue("O campo está preenchido", validaVaga.getNome().isEmpty());
 	}
 
 
