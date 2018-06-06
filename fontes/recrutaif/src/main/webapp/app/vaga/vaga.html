@@ -1,9 +1,7 @@
-<!-- $scope.setor.nome -->
 <div class="page-header text-center">
 	<h1>{{vaga.titulo}}</h1>
 </div>
 
-<!-- $scope.mensagem -->
 <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
 
 <form novalidate name="formulario" class="row" ng-submit="submeter()">
@@ -37,10 +35,11 @@
 			<label for="vaga-setor">Setor</label>
 			<select>
 				<option>Selecione</option>
-				<option ng-model="vaga.setor" ng-repeat="setor in setores" value="{{setor.id}}">{{setor.nome}}</option>
+				<option ng-model="vaga.setor" ng-repeat="setor in setores" value="{{setor.id}}" class="form-control">{{setor.nome}}</option>
 			</select>
 		</div>
 
+		<!-- BOTÕES -->
 		<button type="submit" class="btn btn-primary">Salvar</button>
 		<a href="#/vagas" class="btn btn-primary" meu-focus focado="focado">Voltar</a>
 	</div>

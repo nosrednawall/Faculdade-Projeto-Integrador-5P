@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('recrutaif').controller('SetorController', function ($scope, recursoSetor, $routeParams, cadastroDeSetor) {
+    angular.module('recrutaif').controller('SetorController', function ($scope, $routeParams, recursoSetor, cadastroDeSetor) {
 
         //variáveis para interação com o scopo
         $scope.setor = {};
