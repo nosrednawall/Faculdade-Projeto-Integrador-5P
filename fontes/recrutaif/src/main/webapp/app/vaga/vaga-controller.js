@@ -1,4 +1,4 @@
-angular.module('recrutaif').controller('VagaController', function ($scope, $routeParams, recursoVaga, cadastroDeVaga) {
+angular.module('recrutaif').controller('VagaController', function ($scope, $routeParams, recursoVaga, cadastroDeVaga, recursoSetor) {
 
     //variáveis para interação com o scopo
     $scope.vaga = {};
