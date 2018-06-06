@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +13,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -57,22 +57,15 @@ public class Vaga implements Serializable {
 	@NotNull
 	@NotBlank
 	@NotEmpty
-	@Column(name = "titulo", length = 20, nullable = false) // copiado do Everton by Anderson
+	@Column(name = "titulo", nullable = false) // copiado do Everton by Anderson
 	private String titulo;
 
 	@NotNull
 	@NotBlank
 	@NotEmpty
-	@Lob // permite essa coluna possuir grande volume de dados
+	// @Lob // permite essa coluna possuir grande volume de dados
+	@Column(name = "descricao", nullable = false)
 	private String descricao;
-
-	// @NotNull
-	// @NotBlank
-	// @NotEmpty
-	// @OneToMany(fetch = FetchType.LAZY)
-	// @JoinTable( name = "vaga_setor", joinColumns = @JoinColumn(name="vaga_id"),
-	// inverseJoinColumns = @JoinColumn(name="setor_id") )
-	// private Set<Setor> setores;
 
 	@NotNull
 	@NotBlank
@@ -92,13 +85,10 @@ public class Vaga implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataExpiracao;
 
-	@NotNull
-	@NotBlank
-	@NotEmpty
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Setor setor;
 
-	@OneToMany(mappedBy = "vaga")
+	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY)
 	private Set<VagaPreenchida> inscritos;
 
 	/**

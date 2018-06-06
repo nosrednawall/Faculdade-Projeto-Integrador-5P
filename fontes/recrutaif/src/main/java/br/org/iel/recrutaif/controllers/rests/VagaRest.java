@@ -1,5 +1,6 @@
 package br.org.iel.recrutaif.controllers.rests;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -32,30 +33,33 @@ public class VagaRest {
 
 	/**
 	 * método salva vaga no bd e retorna o id da vaga salva
+	 * 
 	 * @param entity
 	 * @return
 	 */
 	@POST
 	@Consumes("application/json")
 	public Response create(Vaga entity) {
-		
+
+		System.out.println(entity);
 		VagaValidator validacao = new VagaValidator();
-		
-		
-		if(validacao.validaVaga(entity)) {
+
+		entity.setDataCriacao(Calendar.getInstance());
+
+		if (validacao.validaVaga(entity)) {
 			dao.save(entity);
 			return Response
 					.created(UriBuilder.fromResource(VagaRest.class).path(String.valueOf(entity.getId())).build())
 					.build();
 		}
-		
 
 		return Response.status(Status.CONFLICT).entity(entity).build();
-		
+
 	}
 
 	/**
 	 * método recebe o id e retorna a vaga
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -77,6 +81,7 @@ public class VagaRest {
 
 	/**
 	 * Lista todas as vagas, recebendo o status como argumento
+	 * 
 	 * @param status
 	 * @return
 	 */
@@ -89,6 +94,7 @@ public class VagaRest {
 
 	/**
 	 * Atualiza a vaga, recebe o id no caminho e no corpo a vaga completa e alterada
+	 * 
 	 * @param id
 	 * @param entity
 	 * @return

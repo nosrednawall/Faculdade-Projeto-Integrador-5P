@@ -15,7 +15,6 @@ public boolean validaVaga(Vaga vaga) {
 	}
 
 	private boolean dataEhValida(Vaga vaga) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 }
