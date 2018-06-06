@@ -139,12 +139,12 @@
 
         $routeProvider.when('/vaga/new', {
             templateUrl: 'app/vaga/criavaga.html',
-            controller: 'CriaVagaController'
+            controller: 'VagaController'
         });
 
         $routeProvider.when('/vaga/edit/:vagaId', {
             templateUrl: 'app/vaga/criavaga.html',
-            controller: 'CriaVagaController'
+            controller: 'VagaController'
         });
 
         // __________________________________________________________________________
