@@ -8,28 +8,40 @@
 
 <form novalidate name="formulario" class="row" ng-submit="submeter()">
 	<div class="col">
+
+		<!-- TITULO -->
 		<div class="form-group">
-			<label for="titulo-vaga">Titulo</label> <input ng-model="vaga.titulo"
-				type="text" class="form-control" name="titulo" required
-				ng-maxlength="20" />
-
-			<!-- ng-show       mostra a mensagem quando ocorrer erro no formulario,-->
-			<span
-				ng-show="formulario.$submitted && formulario.titulo.$error.required"
-				class="form-control alert-danger"> Titulo vaga obrigatório </span>
-
-			<!--mostra erro quando é digitado mais de 20 caracteres-->
-			<span ng-show="formulario.titulo.$error.maxlength"
-				class="form-control alert-danger"> Deve conter no máximo 20
-				caracteres </span>
-
-
-			<!-- se o formulário for inválido o botão de enviar fica desabilitado -->
-			<button ng-disable="formulario.$invalid" type="submit"
-				class="btn btn-primary">Salvar</button>
-
-			<!-- Muda o foco para o botão de voltar, mas não funciona ainda -->
-			<a href="#/vagas" class="btn btn-primary" meu-focus focado="focado">Voltar</a>
+			<label for="titulo-vaga">Titulo</label>
+			<input ng-model="vaga.titulo" type="text" class="form-control" name="titulo" required ng-maxlength="20" />
 		</div>
+
+		<!-- DESCRICAO -->
+		<div class="form-group">
+			<label for="titulo-descricao">Descrição</label>
+			<input ng-model="vaga.descricao" type="text" class="form-control" name="descricao" required ng-maxlength="100" />
+		</div>
+
+		<!-- DATA EXPIRACAO -->
+		<div class="form-group">
+			<label for="data-expiracao">Data Expiração</label>
+			<datepicker date-format="yyyy-MM-dd">
+				<input type="text" ng-model="vaga.dataExpiracao" class="form-control" />
+				<span class="input-group-addon" style="cursor: pointer">
+					<i class="fa fa-lg fa-calendar"></i>
+				</span>
+			</datepicker>
+		</div>
+
+		<!-- SETOR -->
+		<div class="form-group">
+			<label for="vaga-setor">Setor</label>
+			<select>
+				<option>Selecione</option>
+				<option ng-model="vaga.setor" ng-repeat="setor in setores" value="{{setor.id}}">{{setor.nome}}</option>
+			</select>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Salvar</button>
+		<a href="#/vagas" class="btn btn-primary" meu-focus focado="focado">Voltar</a>
 	</div>
 </form>

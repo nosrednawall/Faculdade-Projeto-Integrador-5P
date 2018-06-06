@@ -138,12 +138,12 @@
         });
 
         $routeProvider.when('/vaga/new', {
-            templateUrl: 'app/vaga/criavaga.html',
+            templateUrl: 'app/vaga/vaga.html',
             controller: 'VagaController'
         });
 
         $routeProvider.when('/vaga/edit/:vagaId', {
-            templateUrl: 'app/vaga/criavaga.html',
+            templateUrl: 'app/vaga/vaga.html',
             controller: 'VagaController'
         });
 

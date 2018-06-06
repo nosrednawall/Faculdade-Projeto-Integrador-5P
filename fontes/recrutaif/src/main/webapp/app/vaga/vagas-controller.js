@@ -18,7 +18,7 @@ angular.module('recrutaif').controller('VagasController',function($scope,recurso
     }, function(erro){
         //caso dê erro imprime o erro para o usuário
         console.log(error);
-        console.log("[ERROR] Erro ao listar os setores");
+        console.log("[ERROR] Erro ao listar as vagas");
     });
 
     //funcao para remover setor

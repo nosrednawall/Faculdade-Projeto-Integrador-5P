@@ -14,25 +14,18 @@
 
         <div class="form-group">
             <label for="matricula">Matrícula</label>
-            <input ng-model="usuario.matricula"
-                    type="text"
-                    class="form-control"
-                    name="matricula"
-                    required />
+            <input ng-model="usuario.matricula" type="text" class="form-control" name="matricula" required />
             <!-- Validadores -->
-            <span ng-show="formulario.$submitted && formulario.matricula.$error.required"
-            class="form-control alert-danger"> Campo obligatório </span>
-            <span ng-show="formulario.matricula.$error.maxlength || formulario.matricula.$error.minlength"
-            class="form-control alert-danger" > Matrícula deve conter 5 números</span>
+            <span ng-show="formulario.$submitted && formulario.matricula.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <span ng-show="formulario.matricula.$error.maxlength || formulario.matricula.$error.minlength" class="form-control alert-danger">
+            Matrícula deve conter 5 números</span>
 
         </div>
 
         <div class="form-group">
             <label for="data-admissao-usuario">Data Admissão</label>
             <datepicker date-format="yyyy-MM-dd">
-              <input type="text"
-                     ng-model="usuario.dataAdmissao"
-                     class="form-control" />
+                <input type="text" ng-model="usuario.dataAdmissao" class="form-control" />
                 <span class="input-group-addon" style="cursor: pointer">
                     <i class="fa fa-lg fa-calendar"></i>
                 </span>
