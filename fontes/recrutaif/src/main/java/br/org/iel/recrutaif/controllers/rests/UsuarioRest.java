@@ -20,7 +20,6 @@ import javax.ws.rs.core.UriBuilder;
 import com.google.gson.Gson;
 
 import br.org.iel.recrutaif.controllers.validators.UsuarioValidator;
-import br.org.iel.recrutaif.controllers.validators.VagaValidator;
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
