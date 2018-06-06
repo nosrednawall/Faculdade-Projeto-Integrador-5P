@@ -36,7 +36,7 @@ class UsuarioValidatorTest {
 	@Test
 	@DisplayName("Tem menos de 100 caracteres")
 	public void TemMenosDe100Caracteres() throws ParseException {
-		String cem = "Antigos Espiritos do Mal Transformem este código decadente em JUnit";
+		String cem = "Antigos espiritos do mal transformem este teste decadente em JUnit!!! O de vida eterna!!!";
 		
 		UsuarioValidator validador = new UsuarioValidator();
 		
@@ -54,27 +54,34 @@ class UsuarioValidatorTest {
 	@Test
 	@DisplayName("Retorna Erro se o campo estiver vazio")
 	public void RetornarErroSeOCampoEstiverVazio() throws ParseException {
-
-		String conteudo = "";
-		Usuario validaVaga = new Usuario();
-		validaVaga.setNome(conteudo);
-		assertTrue("O campo está preenchido", validaVaga.getNome().isEmpty());
+		//String vazio = null;
+		
+		UsuarioValidator validador = new UsuarioValidator();
+		
+		Usuario usuario = new Usuario();
+		
+		usuario.setNome(null);
+		
+		assertTrue("O campo está vazio!", validador.validaUsuario(usuario));
 
 	}
 
 	@Test
 	@DisplayName("Retorna OK se o campo estiver preenchido")
 	public void RetornarOKSeOCampoEstiverPreenchido() throws ParseException {
-
-		String conteudo = "ererer";
-		Usuario validaVaga = new Usuario();
-		validaVaga.setNome(conteudo);
-		assertTrue("O campo está preenchido", validaVaga.getNome().isEmpty());
-	}
-
-	/*
+		String vazio = "Cheio";
+		
+		UsuarioValidator validador = new UsuarioValidator();
+		
+		Usuario usuario = new Usuario();
+		
+		usuario.setNome(vazio);
+		
+		assertTrue("O campo está preenchido!", validador.validaUsuario(usuario));
+		
+/*	
 	Testa se o campo foi inserido numeros
-	*/
+	
 	
 	@Test
 	@DisplayName("Foi inserido caracter")
@@ -106,9 +113,9 @@ class UsuarioValidatorTest {
 		}
 
 	}
+
+*/
 }
-
-
-
+}
 
 

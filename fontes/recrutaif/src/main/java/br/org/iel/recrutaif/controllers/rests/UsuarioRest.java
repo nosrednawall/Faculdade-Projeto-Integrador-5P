@@ -53,7 +53,7 @@ public class UsuarioRest {
 
 		UsuarioValidator validacao = new UsuarioValidator();
 
-		if (validacao.validaVaga(entity)) {
+		if (validacao.validaUsuario(entity)) {
 			dao.save(entity);
 			return Response
 					.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
