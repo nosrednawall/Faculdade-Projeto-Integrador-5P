@@ -1,9 +1,13 @@
 package br.org.iel.recrutaif.controllers.validators;
 
 import static org.junit.Assert.assertTrue;
+
 import java.text.ParseException;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
+
 import br.org.iel.recrutaif.model.entity.Usuario;
 
 /*
@@ -54,18 +58,42 @@ class UsuarioValidatorTest {
 	@Test
 	@DisplayName("Retorna Erro se o campo estiver vazio")
 	public void RetornarErroSeOCampoEstiverVazio() throws ParseException {
-		//String vazio = null;
+		String vazio = "";
 		
 		UsuarioValidator validador = new UsuarioValidator();
 		
 		Usuario usuario = new Usuario();
 		
-		usuario.setNome(null);
-		
+		usuario.setNome(vazio);
+				
 		assertTrue("O campo está vazio!", validador.validaUsuario(usuario));
 
 	}
+	
+/*	@Test
+	@DisplayName("teste1")
+	public void teste() throws ParseException {
 
+        String test = "";
+        
+        if (StringUtils.isBlank(test)) {
+            System.out.println("THE STRING TEST IS EMPTY");
+        }
+
+     }
+	
+	@Test
+	@DisplayName("teste1")
+	public void teste2() throws ParseException {
+
+        String testOne = null;
+   
+        if (StringUtils.isBlank(testOne)) {
+            System.out.println("THE STRING TEST IS NULL");
+        }
+
+    }*/
+	
 	@Test
 	@DisplayName("Retorna OK se o campo estiver preenchido")
 	public void RetornarOKSeOCampoEstiverPreenchido() throws ParseException {
@@ -115,7 +143,12 @@ class UsuarioValidatorTest {
 	}
 
 */
+	
+
+		
 }
+	
+
 }
 
 
