@@ -50,12 +50,28 @@ class UsuarioValidatorTest {
 		
 		assertTrue("O campo tem menos de 100 caracteres", validador.validaUsuario(usuario));
 	}
-		
-	/*
+      
+    /*
 	Testa se o campo esta vazio
 	*/
 	
-	@Test
+  	@Test
+  	@DisplayName("Retorna Erro se o campo estiver vazio")
+  	public void RetornarErroSeOCampoEstiverVazio() throws ParseException {
+  		
+  //		String vazio = StringUtils.isBlank(null);
+  		  		
+  		UsuarioValidator validador = new UsuarioValidator();
+  		
+  		Usuario usuario = new Usuario();
+  		
+//  		usuario.setNome(vazio);
+  				
+  		assertTrue("O campo está vazio!", validador.validaUsuario(usuario));
+
+  	}
+      
+/*	@Test
 	@DisplayName("Retorna Erro se o campo estiver vazio")
 	public void RetornarErroSeOCampoEstiverVazio() throws ParseException {
 		String vazio = "";
@@ -68,7 +84,7 @@ class UsuarioValidatorTest {
 				
 		assertTrue("O campo está vazio!", validador.validaUsuario(usuario));
 
-	}
+	}*/
 	
 /*	@Test
 	@DisplayName("teste1")
