@@ -79,15 +79,15 @@ public class UsuarioRest {
 		if (entity == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		// return Response.ok(entity).build();
+		 return Response.ok(entity).build();
 
-		Gson gson = new Gson();
-
-		String usuarioGson = gson.toJson(entity);
-
-		System.out.println(usuarioGson);
-
-		return Response.accepted(usuarioGson).build();
+//		Gson gson = new Gson();
+//
+//		String usuarioGson = gson.toJson(entity);
+//
+//		System.out.println(usuarioGson);
+//
+//		return Response.accepted(usuarioGson).build();
 	}
 
 	@GET
@@ -97,14 +97,6 @@ public class UsuarioRest {
 
 		return results;
 	}
-
-	// @GET
-	// @Produces("application/json")
-	// public List<Usuario> listaUsuarios(@QueryParam("status") StatusUsuario
-	// status) {
-	// final List<Usuario> results = dao.listaTodos(status);
-	// return results;
-	// }
 
 	@PUT
 	@Path("/{id:[0-9][0-9]*}")

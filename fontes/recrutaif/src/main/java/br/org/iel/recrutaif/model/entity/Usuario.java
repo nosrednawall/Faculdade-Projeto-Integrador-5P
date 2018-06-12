@@ -1,8 +1,7 @@
 package br.org.iel.recrutaif.model.entity;
 
-
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -64,7 +63,7 @@ public class Usuario implements Serializable {
 	private String email;
 
 	@Temporal(TemporalType.DATE)
-	private Calendar dataAdmissao;
+	private Date dataAdmissao;
 
 	@Enumerated(EnumType.STRING)
 	private NivelPermissao permissao;
@@ -72,9 +71,9 @@ public class Usuario implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private StatusBinarioEnum status;
 
-	@OneToMany(mappedBy="candidato")
+	@OneToMany(mappedBy = "candidato")
 	private Set<VagaPreenchida> candidaturas;
-	
+
 	/**
 	 * Contrutores e metodos
 	 */
@@ -123,14 +122,6 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public Calendar getDataAdmissao() {
-		return dataAdmissao;
-	}
-
-	public void setDataAdmissao(Calendar dataAdmissao) {
-		this.dataAdmissao = dataAdmissao;
-	}
-
 	public NivelPermissao getPermissao() {
 		return permissao;
 	}
@@ -145,6 +136,14 @@ public class Usuario implements Serializable {
 
 	public void setStatus(StatusBinarioEnum status) {
 		this.status = status;
+	}
+
+	public Date getDataAdmissao() {
+		return dataAdmissao;
+	}
+
+	public void setDataAdmissao(Date dataAdmissao) {
+		this.dataAdmissao = dataAdmissao;
 	}
 
 	/**
