@@ -23,7 +23,6 @@ import br.org.iel.recrutaif.model.dao.VagaDao;
 import br.org.iel.recrutaif.model.entity.Vaga;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
-//@Seguro
 @Stateless
 @Path("/vagas")
 public class VagaRest {
@@ -68,7 +67,7 @@ public class VagaRest {
 	 * @return
 	 */
 	@GET
-	@Path("/{id:[0-9][0-9]}")
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces("application/json")
 	public Response buscaPorId(@PathParam("id") Integer id) {
 		Vaga entity;

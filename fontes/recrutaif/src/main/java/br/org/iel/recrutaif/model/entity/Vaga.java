@@ -68,7 +68,7 @@ public class Vaga implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Setor setor;
 
-	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<VagaPreenchida> inscritos;
 
 	/**

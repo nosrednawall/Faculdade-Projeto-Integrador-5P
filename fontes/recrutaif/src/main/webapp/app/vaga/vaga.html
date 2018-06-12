@@ -10,13 +10,15 @@
 		<!-- TITULO -->
 		<div class="form-group">
 			<label for="titulo-vaga">Titulo</label>
-			<input ng-model="vaga.titulo" type="text" class="form-control" name="titulo" required ng-maxlength="20" />
+			<input ng-model="vaga.titulo" type="text" class="form-control" 
+			name="titulo" required ng-maxlength="20" />
 		</div>
 
 		<!-- DESCRICAO -->
 		<div class="form-group">
 			<label for="titulo-descricao">Descrição</label>
-			<input ng-model="vaga.descricao" type="text" class="form-control" name="descricao" required ng-maxlength="100" />
+			<input ng-model="vaga.descricao" type="text" class="form-control" 
+			name="descricao" required ng-maxlength="100" />
 		</div>
 
 		<!-- DATA EXPIRACAO -->
@@ -33,9 +35,10 @@
 		<!-- SETOR -->
 		<div class="form-group">
 			<label for="vaga-setor">Setor</label>
-			<select>
+			<select class="form-control">
 				<option>Selecione</option>
-				<option ng-model="vaga.setor" ng-repeat="setor in setores" value="{{setor}}" class="form-control">{{setor.nome}}</option>
+				<option ng-model="vaga.setor" ng-repeat="setor in setores" value="{{setor}}" 
+				class="form-control">{{setor.nome}}</option>
 			</select>
 		</div>
 
