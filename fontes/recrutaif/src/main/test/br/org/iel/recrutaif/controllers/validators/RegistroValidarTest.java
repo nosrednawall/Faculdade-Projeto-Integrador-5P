@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 /*
  * Teste de cadastro de usuário
@@ -20,8 +21,8 @@ public class RegistroValidarTest {
 	@Before
 	
 	public void abreBrowser() {
-	   System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-	   driver = new ChromeDriver();
+	   System.setProperty("webdriver.Firefox.driver", "C:\\chromedriver.exe");
+	   driver = new FirefoxDriver();
 	   driver.get("http://localhost:8080/recrutaif/");
 	   driver.manage().window().maximize();
 }
