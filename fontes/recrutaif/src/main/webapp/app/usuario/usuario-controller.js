@@ -28,7 +28,7 @@ angular
              * variáveis criadas quando a tela do controlador é acessada
              */
 
-             /**Esse desgramado aqui estava zerando a variável, vai tomando nota */
+            /**Esse desgramado aqui estava zerando a variável, vai tomando nota */
             // $scope.usuario = [];
             $scope.mensagem = '';
             //_________________________________________________________________________________________________________________________
@@ -40,7 +40,6 @@ angular
                 recursoUsuario.get({ usuarioId: $routeParams.usuarioId },
                     function (usuario) {
                         $scope.usuario = usuario;
-                        $scope.usuario.dataAdmissao = $filter('date')(usuario.dataAdmissao, 'yyyy/MM/dd');
                     },
                     function (erro) {
                         console.log(error);
