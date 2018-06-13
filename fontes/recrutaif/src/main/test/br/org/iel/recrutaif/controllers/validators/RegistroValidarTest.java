@@ -1,6 +1,5 @@
 package br.org.iel.recrutaif.controllers.validators;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -9,19 +8,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-/*Teste de cadastro de usuário*/
+/*
+ * Teste de cadastro de usuário
+ * 
+ * */
 
 public class RegistroValidarTest {
 		
-	
 	//private WebDriver driver = new FirefoxDriver();
 	
 	private WebDriver driver;
 	@Before
 	
 	public void abreBrowser() {
-	   System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-	   driver = new ChromeDriver();
+	   System.setProperty("webdriver.Firefox.driver", "C:\\chromedriver.exe");
+	   driver = new FirefoxDriver();
 	   driver.get("http://localhost:8080/recrutaif/");
 	   driver.manage().window().maximize();
 }
