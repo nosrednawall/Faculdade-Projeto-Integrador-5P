@@ -1,16 +1,13 @@
 package br.org.iel.recrutaif.controllers.validators;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.text.ParseException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.StringUtils;
 
 import br.org.iel.recrutaif.model.entity.Usuario;
-
 
 /*
 Testa Campo Registre-se do login
@@ -54,6 +51,41 @@ class UsuarioValidatorTest {
 		assertTrue("O campo tem menos de 100 caracteres", validador.validaUsuario(usuario));
 	}
 	
+
+	/*Testa se o campo foi inserido numeros
+	*/
+	
+	@Test
+	@DisplayName("Foi inserido caracter")
+	public void validaSeFoiInseridoCaracter() throws ParseException {
+
+		String conteudo = "MumRáá";
+		Usuario validaVaga = new Usuario();
+		validaVaga.setNome(conteudo);
+		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
+				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
+			assertTrue("Campo contem caracteres", validaVaga.getNome().isEmpty());
+		{
+			return;
+		}
+	}
+
+	@Test
+	@DisplayName("Foi inserido número")
+	public void validaSeFoiInseridoNumero() throws ParseException {
+
+		String conteudo = "141425";
+		Usuario validaVaga = new Usuario();
+		validaVaga.setNome(conteudo);
+		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
+				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
+			assertTrue("Campo contem números", validaVaga.getNome().isEmpty());
+		{
+			return;
+		}
+	}
+}
+
 /*
 Testa Campo Registre-se do login
 
@@ -167,38 +199,7 @@ class UsuarioValidatorTest {
 		
 		assertTrue("O campo está preenchido!", validador.validaUsuario(usuario));
 		
-	
-	Testa se o campo foi inserido numeros
-	
-	
-	@Test
-	@DisplayName("Foi inserido caracter")
-	public void validaSeFoiInseridoCaracter() throws ParseException {
 
-		String conteudo = "MumRáá";
-		Usuario validaVaga = new Usuario();
-		validaVaga.setNome(conteudo);
-		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
-				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
-			assertTrue("Campo contem caracteres", validaVaga.getNome().isEmpty());
-		{
-			return;
-		}
-	}
-
-	@Test
-	@DisplayName("Foi inserido número")
-	public void validaSeFoiInseridoNumero() throws ParseException {
-
-		String conteudo = "141425";
-		Usuario validaVaga = new Usuario();
-		validaVaga.setNome(conteudo);
-		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
-				&& Character.isAlphabetic((((String) conteudo).charAt(conteudo.length() - 1))))
-			assertTrue("Campo contem caracteres", validaVaga.getNome().isEmpty());
-		{
-			return;
-		}
 
 	}
 
@@ -210,6 +211,6 @@ class UsuarioValidatorTest {
 
 */	
 
-}
+
 
 
