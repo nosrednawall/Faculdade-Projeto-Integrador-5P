@@ -17,24 +17,37 @@ public class RegistroValidarTest {
 	
 	private WebDriver driver;
 	@After
-		
+	
 	public void abreBrowser() {
+	   System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
+	   driver = new FirefoxDriver();
+	   driver.get("http://eliasnogueira.com");
+	   driver.quit();
+}
+
+/*	public void abreBrowser() {
 		WebDriver driver = new FirefoxDriver();
 		driver.get("http://localhost:8080/recrutaif/");
-		driver.manage().window().maximize();
-	}
+		driver.manage().window().maximize();*/
+	
 	
 	@Test
 	public void test() {
 		//System.out.println( "Erro aqui mesmo");
+		
 		WebElement email = driver.findElement(By.name("Usuario.email"));
 		WebElement senha = driver.findElement(By.name("Usuario.senha"));
 		//System.out.println( "Erro aqui");
+		
 		email.sendKeys("everton@recrutaif.com.br");
 		senha.sendKeys("123");
+		
+		WebElement botaoSalvar = driver.findElement(By.id("btnSalvar"));
+		botaoSalvar.click();
+		
 	}
 	
 }
 
-//	@After	
+
 
