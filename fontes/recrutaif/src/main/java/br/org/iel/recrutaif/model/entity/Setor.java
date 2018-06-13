@@ -31,14 +31,6 @@ public class Setor implements Serializable {
 	@Column(name = "nome", nullable=false,length=21)
 	private String nome;
 
-	
-	@Deprecated
-	public Setor() {
-	}
-	
-	// getters and setters
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {

@@ -3,10 +3,16 @@ package br.org.iel.recrutaif.controllers.validators;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import br.org.iel.recrutaif.model.entity.Usuario;
 
 public class RegistroValidar extends Usuario{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	static Usuario Usuario;
 	
 	private boolean email;
@@ -47,4 +53,12 @@ public class RegistroValidar extends Usuario{
 			}
 
 }
+
+	public boolean isNome() {
+		return nome;
+	}
+
+	public void setNome(boolean nome) {
+		this.nome = nome;
+	}
 }

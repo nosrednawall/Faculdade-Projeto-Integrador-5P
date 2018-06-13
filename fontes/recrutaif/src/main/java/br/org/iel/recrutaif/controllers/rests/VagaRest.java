@@ -45,7 +45,6 @@ public class VagaRest {
 		System.out.println(entity);
 		VagaValidator validacao = new VagaValidator();
 
-//		entity.setDataCriacao(Calendar.getInstance());
 		entity.setDataCriacao(Date.class.newInstance());
 		entity.setStatus(StatusBinarioEnum.ATIVO);
 

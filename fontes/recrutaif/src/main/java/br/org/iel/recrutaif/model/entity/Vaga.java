@@ -50,7 +50,7 @@ public class Vaga implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
-	@Column(name = "titulo", nullable = false) // copiado do Everton by Anderson
+	@Column(name = "titulo", nullable = false)
 	private String titulo;
 
 	@Column(name = "descricao", nullable = false)
@@ -71,13 +71,6 @@ public class Vaga implements Serializable {
 	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<VagaPreenchida> inscritos;
 
-	/**
-	 * Construtores e métodos
-	 */
-
-	// para o hibernate
-	public Vaga() {
-	}
 
 	public Integer getId() {
 		return id;
@@ -142,10 +135,4 @@ public class Vaga implements Serializable {
 	public void setInscritos(Set<VagaPreenchida> inscritos) {
 		this.inscritos = inscritos;
 	}
-
-	/*
-	 * Getters and Setters
-	 * 
-	 */
-
 }

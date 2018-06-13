@@ -17,8 +17,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
-import com.google.gson.Gson;
-
 import br.org.iel.recrutaif.controllers.validators.UsuarioValidator;
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
@@ -62,8 +60,6 @@ public class UsuarioRest {
 
 		System.out.println("Caiu fora do if dentro do usuario rest");
 		return Response.status(Status.CONFLICT).entity(entity).build();
-
-		// return Response.ok().build();
 	}
 
 	@GET
@@ -79,15 +75,7 @@ public class UsuarioRest {
 		if (entity == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		 return Response.ok(entity).build();
-
-//		Gson gson = new Gson();
-//
-//		String usuarioGson = gson.toJson(entity);
-//
-//		System.out.println(usuarioGson);
-//
-//		return Response.accepted(usuarioGson).build();
+		return Response.ok(entity).build();
 	}
 
 	@GET
@@ -115,9 +103,7 @@ public class UsuarioRest {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		try {
-
 			entity = dao.update(entity);
-
 		} catch (OptimisticLockException e) {
 			return Response.status(Response.Status.CONFLICT).entity(e.getEntity()).build();
 		}

@@ -9,9 +9,8 @@ import javax.persistence.EntityManager;
  * @author anderson
  *
  * @param <T>
- *            será a classe passada como argumento
  * @param entity
- *            entidade que será salva
+ * 
  */
 
 public abstract class BaseDao<T> implements Serializable {
@@ -21,9 +20,7 @@ public abstract class BaseDao<T> implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	// construtor em branco
-	public BaseDao() {
-	}
+	public BaseDao() {}
 
 	// Administrador de entidade
 	protected abstract EntityManager getEntityManager();

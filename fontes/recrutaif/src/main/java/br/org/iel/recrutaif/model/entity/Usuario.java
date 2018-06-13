@@ -74,14 +74,6 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy = "candidato")
 	private Set<VagaPreenchida> candidaturas;
 
-	/**
-	 * Contrutores e metodos
-	 */
-
-	// @Deprecated preciso fazer alguns testes unitários
-	public Usuario() {
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -145,10 +137,4 @@ public class Usuario implements Serializable {
 	public void setDataAdmissao(Date dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
 	}
-
-	/**
-	 * Getters and Setters
-	 * 
-	 */
-
 }
