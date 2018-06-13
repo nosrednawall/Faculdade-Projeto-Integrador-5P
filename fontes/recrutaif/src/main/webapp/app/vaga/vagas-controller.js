@@ -22,7 +22,7 @@ angular.module('recrutaif').controller('VagasController',function($scope,recurso
     });
 
     //funcao para remover setor
-    $scope.inativar = function(vagas){
+    $scope.inativar = function(vaga){
 
         vaga.status = 'INATIVO';
 
