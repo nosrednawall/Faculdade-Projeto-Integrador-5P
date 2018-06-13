@@ -21,8 +21,8 @@ public class RegistroValidarTest {
 	public void abreBrowser() {
 	   System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
 	   driver = new FirefoxDriver();
-	   driver.get("http://eliasnogueira.com");
-	   driver.quit();
+	   driver.get("http://localhost:8080/recrutaif/");
+	   //driver.quit();
 }
 
 /*	public void abreBrowser() {
