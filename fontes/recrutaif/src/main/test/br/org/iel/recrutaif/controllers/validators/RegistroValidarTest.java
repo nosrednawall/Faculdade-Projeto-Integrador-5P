@@ -1,5 +1,6 @@
 package br.org.iel.recrutaif.controllers.validators;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -15,7 +16,7 @@ public class RegistroValidarTest {
 	//private WebDriver driver = new FirefoxDriver();
 	
 	private WebDriver driver;
-	@Before
+	@After
 		
 	public void abreBrowser() {
 		WebDriver driver = new FirefoxDriver();
@@ -25,10 +26,10 @@ public class RegistroValidarTest {
 	
 	@Test
 	public void test() {
-		System.out.println( "Erro aqui mesmo");
+		//System.out.println( "Erro aqui mesmo");
 		WebElement email = driver.findElement(By.name("Usuario.email"));
 		WebElement senha = driver.findElement(By.name("Usuario.senha"));
-		System.out.println( "Erro aqui");
+		//System.out.println( "Erro aqui");
 		email.sendKeys("everton@recrutaif.com.br");
 		senha.sendKeys("123");
 	}
