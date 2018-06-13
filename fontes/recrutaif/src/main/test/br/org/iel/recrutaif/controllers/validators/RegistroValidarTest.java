@@ -16,13 +16,13 @@ public class RegistroValidarTest {
 	//private WebDriver driver = new FirefoxDriver();
 	
 	private WebDriver driver;
-	@After
+	@Before
 	
 	public void abreBrowser() {
 	   System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
 	   driver = new FirefoxDriver();
-	   driver.get("http://localhost:8080/recrutaif/");
-	   //driver.quit();
+	   driver.get("http://localhost:8080/recrutaif/#/login");
+	   driver.manage().window().maximize();
 }
 
 /*	public void abreBrowser() {

@@ -1,16 +1,28 @@
 package br.org.iel.recrutaif.controllers.validators;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-	public class teste{
+/*Teste de cadastro de usuário*/
+
+public class teste {
 		
-		public void testeMarionetteDriver(){
-
-	   System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
-	   WebDriver driver = new FirefoxDriver();
-	   driver.get("http://eliasnogueira.com");
-	   driver.quit();
-
-	}
+	
+	//private WebDriver driver = new FirefoxDriver();
+	
+	private WebDriver driver;
+	
+	@BeforeClass
+	public void abreBrowser() throws Exception {
+	   System.setProperty("webdriver.chrome.driver", "C:\\geckodriver.exe");
+	   driver = new FirefoxDriver();
+	   driver.get("http:\\localhost:8080/");
+	   driver.manage().window().maximize();
+}
 }
