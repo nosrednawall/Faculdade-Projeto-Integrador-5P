@@ -1,11 +1,9 @@
 package br.org.iel.recrutaif.controllers.validators;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /*
@@ -18,13 +16,19 @@ public class RegistroValidarTest {
 	//private WebDriver driver = new FirefoxDriver();
 	
 	private WebDriver driver;
-	@Before
 	
-	public void abreBrowser() {
-	   System.setProperty("webdriver.Firefox.driver", "C:\\chromedriver.exe");
+	   public void abreBrowser() {
+		   
+		   System.setProperty("webdriver.Firefox.driver", "C:\\geckodriver.exe");
+		   WebDriver driver = new FirefoxDriver();
+		   driver.get("http://www.google.com.br");
+		   WebElement campoDeTexto = driver.findElement(By.name("q"));
+		   campoDeTexto.sendKeys("Caelum");
+		   
+/*	   System.setProperty("webdriver.Firefox.driver", "C:\\geckodriver.exe");
 	   driver = new FirefoxDriver();
-	   driver.get("http://localhost:8080/recrutaif/");
-	   driver.manage().window().maximize();
+	   driver.get("http://www.google.com.br");
+	   driver.manage().window().maximize();*/
 }
 
 /*	public void abreBrowser() {
