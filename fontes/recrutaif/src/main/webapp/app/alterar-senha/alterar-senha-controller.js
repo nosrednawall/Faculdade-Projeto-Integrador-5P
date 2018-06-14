@@ -4,7 +4,8 @@ angular
 
         $scope.filtro = ''; //variável responsável pelo filtro de setores, dentro do scope
         $scope.mensagem = '';   //variável responsável pela mensagem de interação com o usuário dentro do scope
-
+        $scope.usuario = {};
+                                                                    
         var usuarioCookie = $rootScope.globals.currentUser;
 
         if (usuarioCookie != null) {
