@@ -9,20 +9,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 /*
  * Teste de cadastro de usuário
- * 
- * */
+ */
 
 public class RegistroValidarTest {
 		
-	//private WebDriver driver = new FirefoxDriver();
+	WebDriver driver = new FirefoxDriver();
 	
-	private WebDriver driver;
-	@Before
+	//private WebDriver driver;
+	//@Before
 	
-	public void abreBrowser() {
+	public void abreBrowserFirefox() {
 	   System.setProperty("webdriver.Firefox.driver", "C:\\geckodriver.exe");
 	   driver = new FirefoxDriver();
-	   driver.get("http://localhost:8080/recrutaif/");
+	   driver.get("http://google.com.br");
 	   driver.manage().window().maximize();
 }
 
