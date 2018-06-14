@@ -147,6 +147,11 @@
             controller: 'VagaController'
         });
 
+        $routeProvider.when('/vaga/view/:vagaId', {
+            templateUrl: 'app/vaga/vaga-view.html',
+            controller: 'VagaController'
+        });
+
         // __________________________________________________________________________
 
 

@@ -25,11 +25,11 @@
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Titulo</th>
-						<th scope="col">Setor</th>
 						<th scope="col">Data criação</th>
 						<th scope="col">Data expiração</th>
 						<th scope="col">Editar</th>
 						<th scope="col">Remover</th>
+						<th scope="col">Visualizar</th>
 					</tr>
 				</thead>
 				<!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
@@ -37,7 +37,6 @@
 					<tr>
 						<!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
 						<th scope="row">{{vaga.titulo}}</th>
-						<th scope="row">{{vaga.setor}}</th>
 						<th scope="row">{{vaga.dataCriacao}}</th>
 						<th scope="row">{{vaga.dataExpiracao}}</th>
 						<th scope="row">
@@ -46,8 +45,8 @@
 						<th scope="row">
 							<button ng-click="inativar(vaga)" class="btn btn-danger " href="">Inativar</button>
 						</th>
-						<th>
-							
+						<th scope="row">
+							<a class="btn btn-primary" href="#/vaga/view/{{vaga.id}}">Visualizar</a>
 						</th>
 					</tr>
 				</tbody>

@@ -54,5 +54,22 @@
                         });
                 }
             };
+            $scope.candidatar = function () {
+                
+                    cadastroDeVaga.cadastrar($scope.vaga)
+                        //se der certo a mensagem é atualizada com o sucesso
+                        .then(function (dados) {
+                            console.log("entrou no then " + dados);
+                            $scope.mensagem = dados.mensagem;
+                            //se inclusao retornar true, ele limpa o objeto vaga
+                            if (dados.inclusao) {
+                                $scope.vaga = {};
+                                // $scope.focado = true;
+                            }
+                            //se der algum erro, o erro é capturado(catch), e atualizado a mensagem com o erro
+                        }).catch(function (erro) {
+                            $scope.mensagem = erro.mensagem;
+                        });
+            };
         });
 })();
