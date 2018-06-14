@@ -2,10 +2,10 @@
     'use strict';
     angular
         .module('recrutaif')
-        .controller('MenuController', function ($cookieStore, $scope, recursoUsuario, $rootScope, $location, $http) {
+        .controller('MenuCtrl', function ($scope,$rootScope, $location, $http) {
 
             var usuarioLogado = $rootScope.globals.currentUser;
-
+            this.permissao = usuarioLogado.permissao;
             
 
         }); /**Fecha o angular.module */

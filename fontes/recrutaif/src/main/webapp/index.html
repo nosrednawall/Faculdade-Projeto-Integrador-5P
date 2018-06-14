@@ -26,7 +26,7 @@
 
 <body>
 
-  <!-- <div ng-controller="UsuarioLogado as ul"> -->
+  <div ng-controller="MenuCtrl as pessoa">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#/principal">Recrutaif</a>
@@ -43,15 +43,15 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" ng-if="$rootScope.globals.currentUser.permissao == ADMINISTRADOR" href="#/setores">Visualizar setores</a>
-          
+            <a class="nav-link" ng-if="pessoa.permissao == 'ADMINISTRADOR'" href="#/setores">Visualizar setores</a>
+
 
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#/usuarios">Visualizar usuários</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#/alterar-senha/{{usuarioLogado.id}}">Alterar dados
+            <a class="nav-link" href="#/alterar-senha/">Alterar dados
             </a>
           </li>
         </ul>
@@ -63,7 +63,7 @@
       </div>
     </nav>
 
-  <!-- </div> -->
+  </div>
   <!--FIM NG-CONTROLLER USUARIOLOGADO-->
 
   <main role="main" class="container">
