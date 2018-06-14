@@ -18,10 +18,14 @@ public class teste {
         WebDriver driver = null;
         System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get("http://localhost:8080/recrutaif/#/login");
+        driver.get("http://localhost:8080/recrutaif/#/register");
          
+        WebElement nome = driver.findElement(By.name("nome"));
+        nome.sendKeys("rá");
+       
         
-       // WebElement inputregisterLocalidade = driver.findElement(By.name("register"));
+        
+      // WebElement inputregister = driver.findElement(By.name("register"));
         
       //  <a href="#/register"> ou registre-se</a>
         
