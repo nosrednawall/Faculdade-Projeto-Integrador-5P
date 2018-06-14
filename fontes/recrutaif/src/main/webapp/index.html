@@ -43,7 +43,9 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#/setores">Visualizar setores</a>
+            <a class="nav-link" ng-if="$rootScope.globals.currentUser.permissao == ADMINISTRADOR" href="#/setores">Visualizar setores</a>
+          
+
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#/usuarios">Visualizar usuários</a>

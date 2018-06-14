@@ -6,7 +6,7 @@
 
             $scope.usuario = {};
             $scope.mensagem = '';
-
+            $rootScope.globals = {};
             delete $window.sessionStorage.token;
 
 
