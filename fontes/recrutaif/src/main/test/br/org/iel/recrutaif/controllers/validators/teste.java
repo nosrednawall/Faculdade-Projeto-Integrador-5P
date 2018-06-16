@@ -23,7 +23,11 @@ public class teste {
         WebElement nome = driver.findElement(By.name("nome"));
         nome.sendKeys("rá");
        
+        WebElement matricula = driver.findElement(By.name("matricula"));
+        matricula.sendKeys("Munráaaa");
         
+  //      WebElement usuario.dataAdmissao = driver.findElement(By.name("usuario.dataAdmissao"));
+  //      usuario.dataAdmissao.sendKeys("Munráaaa");
         
       // WebElement inputregister = driver.findElement(By.name("register"));
         
