@@ -11,16 +11,6 @@ angular.module('vagaServices', ['ngResource'])
             }
         });
     })
-    //cria uma fabrica de recursos
-    .factory('recursoVagaPreenchida', function ($resource) {
-
-        //retorna um recurso
-        return $resource('rest/vagaspreenchidas/:vagaPreenchidaId', null, {
-            update: {
-                method: 'PUT' //Estudar 
-            }
-        });
-    })
 
     .factory('cadastroDeVaga', function (recursoVaga, $q) {
 

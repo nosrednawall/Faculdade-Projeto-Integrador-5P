@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('recrutaif')
-        .controller('VagaController', function ($scope, $routeParams, $rootScope, recursoVaga, recursoVagaPreenchida, cadastroDeVaga, recursoSetor) {
+        .controller('VagaController', function ($scope, $routeParams, $rootScope, recursoVaga, cadastroDeVagaPreenchida, cadastroDeVaga, recursoSetor) {
 
             //variáveis para interação com o scopo
             $scope.vaga = {};
@@ -57,24 +57,24 @@
             };
             $scope.candidatar = function () {
 
-               var vagaPreenchida = [];
-               vagaPreenchida.candidato = $rootScope.globals.currentUser;
-               vagaPreenchida.vaga = $scope.vaga;
+                var vagaPreenchida = [];
+                vagaPreenchida.candidato = $rootScope.globals.currentUser;
+                vagaPreenchida.vaga = $scope.vaga;
 
-                    cadastroDeVaga.cadastrarCandidatura(vagaPreenchida)
-                        //se der certo a mensagem é atualizada com o sucesso
-                        .then(function (dados) {
-                            console.log("entrou no then " + dados);
-                            $scope.mensagem = dados.mensagem;
-                            //se inclusao retornar true, ele limpa o objeto vaga
-                            if (dados.inclusao) {
-                                $scope.vaga = {};
-                                // $scope.focado = true;
-                            }
-                            //se der algum erro, o erro é capturado(catch), e atualizado a mensagem com o erro
-                        }).catch(function (erro) {
-                            $scope.mensagem = erro.mensagem;
-                        });
+                cadastroDeVagaPreenchida.cadastrarCandidatura(vagaPreenchida)
+                    //se der certo a mensagem é atualizada com o sucesso
+                    .then(function (dados) {
+                        console.log("entrou no then " + dados);
+                        $scope.mensagem = dados.mensagem;
+                        //se inclusao retornar true, ele limpa o objeto vaga
+                        if (dados.inclusao) {
+                            $scope.vaga = {};
+                            // $scope.focado = true;
+                        }
+                        //se der algum erro, o erro é capturado(catch), e atualizado a mensagem com o erro
+                    }).catch(function (erro) {
+                        $scope.mensagem = erro.mensagem;
+                    });
             };
         });
 })();

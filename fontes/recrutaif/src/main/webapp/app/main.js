@@ -8,6 +8,7 @@
             'ngCookies',
             'minhasDiretivas',
             'vagaServices',
+            'vagaPreenchidaServices',
             'setorServices',
             'usuarioServices',
             '720kb.datepicker'
