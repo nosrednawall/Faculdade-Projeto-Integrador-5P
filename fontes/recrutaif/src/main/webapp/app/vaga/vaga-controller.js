@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('recrutaif')
-        .controller('VagaController', function ($scope, $routeParams, $rootScope, recursoVaga, cadastroDeVaga, recursoSetor) {
+        .controller('VagaController', function ($scope, $routeParams, $rootScope, recursoVaga, recursoVagaPreenchida, cadastroDeVaga, recursoSetor) {
 
             //variáveis para interação com o scopo
             $scope.vaga = {};
@@ -15,6 +15,7 @@
                     //caso dê certo o que retornar será passado para setor
                     function (vaga) {
                         $scope.vaga = vaga;
+
                     },
                     //caso dê errado será passado mensagem de erro ao usuario
                     function (erro) {

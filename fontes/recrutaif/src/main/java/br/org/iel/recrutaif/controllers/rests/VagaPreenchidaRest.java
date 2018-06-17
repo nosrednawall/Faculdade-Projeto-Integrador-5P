@@ -19,7 +19,6 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.model.dao.VagaPreenchidaDao;
-import br.org.iel.recrutaif.model.entity.Vaga;
 import br.org.iel.recrutaif.model.entity.VagaPreenchida;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 

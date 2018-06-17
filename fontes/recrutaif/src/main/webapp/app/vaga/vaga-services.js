@@ -11,6 +11,16 @@ angular.module('vagaServices', ['ngResource'])
             }
         });
     })
+    //cria uma fabrica de recursos
+    .factory('recursoVagaPreenchida', function ($resource) {
+
+        //retorna um recurso
+        return $resource('rest/vagaspreenchidas/:vagaPreenchidaId', null, {
+            update: {
+                method: 'PUT' //Estudar 
+            }
+        });
+    })
 
     .factory('cadastroDeVaga', function (recursoVaga, $q) {
 
@@ -56,22 +66,19 @@ angular.module('vagaServices', ['ngResource'])
             return $q(function (resolve, reject) {
                 console.log(vagaPreenchida);
 
-                recursoVaga.update({ vagaId: vaga.id }, vaga, function () {
+                recursoVagaPreenchida.save(vagaPreenchida, function () {
                     resolve({
-                        mensagem: '[INFO] Vaga ' + vaga.titulo + ' atualizado com sucesso!',
+                        mensagem: '[INFO] Candidatura efetuada com sucesso com sucesso!',
                         inclusao: false
                     });
                 }, function (erro) {
                     console.log(erro);
                     reject({
-                        mensagem: '[ERRO] Não foi possível altera ' + vaga.titulo
+                        mensagem: '[ERRO] Não foi possível efetuar acandidatura'
                     });
                 });
-
-
             });
         };
-
         return servico;
     })
     ;
