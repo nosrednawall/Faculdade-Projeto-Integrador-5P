@@ -1,6 +1,5 @@
 package br.org.iel.recrutaif.controllers.rests;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -16,10 +15,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.model.dao.VagaPreenchidaDao;
 import br.org.iel.recrutaif.model.entity.VagaPreenchida;
+import br.org.iel.recrutaif.model.entity.VagaPreenchidaIds;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 @Stateless
@@ -39,16 +38,23 @@ public class VagaPreenchidaRest {
 	 */
 	@POST
 	@Consumes("application/json")
-	public Response create(VagaPreenchida entity) throws InstantiationException, IllegalAccessException {
+	public Response create(VagaPreenchidaIds ids) throws InstantiationException, IllegalAccessException{
+		
 
-		System.out.println(entity);
-
-		entity.setDataInscricao(Date.class.newInstance());
-
-		dao.save(entity);
-		return Response
-				.created(UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
-				.build();
+		System.out.println("E a vaga é "+ids);
+		
+//		Vaga vaga = new VagaDao().find(gson.fromJson(dadosVagaPreenchida, Integer.class));
+		
+		return Response.ok().build();
+		
+//		System.out.println(entity);
+//
+//		entity.setDataInscricao(Date.class.newInstance());
+//
+//		dao.save(entity);
+//		return Response
+//				.created(UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
+//				.build();
 
 	}
 
