@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('recrutaif')
-        .controller('VagaController', function ($scope, $routeParams, recursoVaga, cadastroDeVaga, recursoSetor) {
+        .controller('VagaController', function ($scope, $routeParams, $rootScope, recursoVaga, cadastroDeVaga, recursoSetor) {
 
             //variáveis para interação com o scopo
             $scope.vaga = {};
@@ -55,8 +55,12 @@
                 }
             };
             $scope.candidatar = function () {
-                
-                    cadastroDeVaga.cadastrar($scope.vaga)
+
+               var vagaPreenchida = [];
+               vagaPreenchida.candidato = $rootScope.globals.currentUser;
+               vagaPreenchida.vaga = $scope.vaga;
+
+                    cadastroDeVaga.cadastrarCandidatura(vagaPreenchida)
                         //se der certo a mensagem é atualizada com o sucesso
                         .then(function (dados) {
                             console.log("entrou no then " + dados);

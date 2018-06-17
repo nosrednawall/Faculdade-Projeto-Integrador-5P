@@ -1,7 +1,7 @@
 package br.org.iel.recrutaif.model.entity;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class VagaPreenchida implements Serializable{
 	private Integer id;
 	
 	@Temporal(TemporalType.DATE)
-	private Calendar dataInscricao;
+	private Date dataInscricao;
 	
 	@ManyToOne
 	 @JoinColumn(name = "vaga_id")
@@ -50,11 +50,11 @@ public class VagaPreenchida implements Serializable{
 		this.id = id;
 	}
 
-	public Calendar getDataInscricao() {
+	public Date getDataInscricao() {
 		return dataInscricao;
 	}
 
-	public void setDataInscricao(Calendar dataInscricao) {
+	public void setDataInscricao(Date dataInscricao) {
 		this.dataInscricao = dataInscricao;
 	}
 

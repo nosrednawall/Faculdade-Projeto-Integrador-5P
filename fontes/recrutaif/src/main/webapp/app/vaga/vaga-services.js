@@ -50,6 +50,28 @@ angular.module('vagaServices', ['ngResource'])
                 }
             });
         };
+
+        servico.cadastrarCandidatura = function (vagaPreenchida) {
+            //retornando promessa na mão
+            return $q(function (resolve, reject) {
+                console.log(vagaPreenchida);
+
+                recursoVaga.update({ vagaId: vaga.id }, vaga, function () {
+                    resolve({
+                        mensagem: '[INFO] Vaga ' + vaga.titulo + ' atualizado com sucesso!',
+                        inclusao: false
+                    });
+                }, function (erro) {
+                    console.log(erro);
+                    reject({
+                        mensagem: '[ERRO] Não foi possível altera ' + vaga.titulo
+                    });
+                });
+
+
+            });
+        };
+
         return servico;
     })
     ;
