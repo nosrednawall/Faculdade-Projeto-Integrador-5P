@@ -41,6 +41,13 @@ public class VagaPreenchida implements Serializable{
 	 @JoinColumn(name = "candidato_id")
 	private Usuario candidato;
 	
+	public VagaPreenchida() {}
+	
+	public VagaPreenchida(Date dataInscricao, Vaga vaga, Usuario candidato) {
+		this.dataInscricao = dataInscricao;
+		this.vaga = vaga;
+		this.candidato = candidato;
+	}
 
 	public Integer getId() {
 		return id;
