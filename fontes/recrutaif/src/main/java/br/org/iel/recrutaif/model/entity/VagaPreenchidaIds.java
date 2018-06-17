@@ -12,18 +12,26 @@ public class VagaPreenchidaIds implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer vagaId;
-	private Integer usuarioId;
-	public Integer getUsuarioId() {
-		return usuarioId;
+	private Integer candidatoId;
+
+	
+	
+	@Override
+	public String toString() {
+		return "VagaPreenchidaIds [vagaId=" + vagaId + ", candidatoId=" + candidatoId + "]";
 	}
-	public void setUsuarioId(Integer usuarioId) {
-		this.usuarioId = usuarioId;
-	}
+	
 	public Integer getVagaId() {
 		return vagaId;
 	}
 	public void setVagaId(Integer vagaId) {
 		this.vagaId = vagaId;
+	}
+	public Integer getCandidatoId() {
+		return candidatoId;
+	}
+	public void setCandidatoId(Integer candidatoId) {
+		this.candidatoId = candidatoId;
 	}
 	
 }

@@ -38,23 +38,24 @@ public class VagaPreenchidaRest {
 	 */
 	@POST
 	@Consumes("application/json")
-	public Response create(VagaPreenchidaIds ids) throws InstantiationException, IllegalAccessException{
-		
+	@Produces("application/json")
+	public Response create(VagaPreenchidaIds ids) throws InstantiationException, IllegalAccessException {
 
-		System.out.println("E a vaga é "+ids);
-		
-//		Vaga vaga = new VagaDao().find(gson.fromJson(dadosVagaPreenchida, Integer.class));
-		
+		System.out.println("E a vaga é " + ids);
+
+		// Vaga vaga = new VagaDao().find(gson.fromJson(dadosVagaPreenchida,
+		// Integer.class));
+
 		return Response.ok().build();
-		
-//		System.out.println(entity);
-//
-//		entity.setDataInscricao(Date.class.newInstance());
-//
-//		dao.save(entity);
-//		return Response
-//				.created(UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
-//				.build();
+
+		// System.out.println(entity);
+		//
+		// entity.setDataInscricao(Date.class.newInstance());
+		//
+		// dao.save(entity);
+		// return Response
+		// .created(UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
+		// .build();
 
 	}
 
