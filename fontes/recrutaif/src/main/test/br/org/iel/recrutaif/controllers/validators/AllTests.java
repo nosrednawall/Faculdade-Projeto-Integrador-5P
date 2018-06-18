@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ RegistroValidarTest.class, teste.class })
+@SuiteClasses({ RegistroValidarTest.class, UsuarioValidator.class })
 public class AllTests {
 
 }

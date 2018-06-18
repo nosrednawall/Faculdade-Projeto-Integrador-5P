@@ -19,7 +19,7 @@ public class RegistroValidar extends Usuario{
 	private boolean senha;
 	private boolean matricula;	
 	private boolean nome;	
-	
+	private boolean dataAdmissao;
 
 	private boolean validarEmail() {
 		return email;
@@ -31,6 +31,10 @@ public class RegistroValidar extends Usuario{
 
 	private boolean validarMatricula() {
 		return matricula;
+	}
+	
+	private boolean Date() {
+		return dataAdmissao;
 	}
 
 	private void validaNome(String nomeUsuario) {
