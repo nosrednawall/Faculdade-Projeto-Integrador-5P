@@ -11,6 +11,7 @@
             'vagaPreenchidaServices',
             'setorServices',
             'usuarioServices',
+            'processosSeletivosServices',
             '720kb.datepicker'
         ]).config(config).run(run);
 
@@ -155,6 +156,10 @@
 
         // __________________________________________________________________________
 
+        $routeProvider.when('/processos/actives/:processoId', {
+            templateUrl: 'app/processos-seletivos/processos-seletivos.html',
+            controller: 'ProcessosSeletivosController'
+        });
 
 
         // _____       ___   _____   _____        ___   _____  
