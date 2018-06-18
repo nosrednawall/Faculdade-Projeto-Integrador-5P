@@ -1,21 +1,20 @@
 (function () {
     'use strict';
     angular.
-        module('recrutaif', [
-            'ngAnimate',
-            'ngRoute',
-            'ngResource',
-            'ngCookies',
-            'minhasDiretivas',
-            'vagaServices',
-            'vagaPreenchidaServices',
-            'setorServices',
-            'usuarioServices',
-            'processosSeletivosServices',
-            '720kb.datepicker'
-        ]).config(config).run(run);
+    module('recrutaif', [
+        'ngAnimate',
+        'ngRoute',
+        'ngResource',
+        'ngCookies',
+        'minhasDiretivas',
+        'vagaServices',
+        'setorServices',
+        'usuarioServices',
+        '720kb.datepicker'
+    ]).config(config).run(run);
 
     config.$inject = ['$routeProvider', '$locationProvider'];
+
     function config($routeProvider, $locationProvider, $httpProvider) {
         // .config(function ($routeProvider, $locationProvider, ) {
 
@@ -156,11 +155,27 @@
 
         // __________________________________________________________________________
 
-        $routeProvider.when('/processos/actives/:processoId', {
-            templateUrl: 'app/processos-seletivos/processos-seletivos.html',
-            controller: 'ProcessosSeletivosController'
-        });
+        // _     _       ___   _____       ___   _____  
+        // | |   / /     /   | /  ___|     /   | /  ___/ 
+        // | |  / /     / /| | | |        / /| | | |___  
+        // | | / /     / / | | | |  _    / / | | \___  \ 
+        // | |/ /     / /  | | | |_| |  / /  | |  ___| | 
+        // |___/     /_/   |_| \_____/ /_/   |_| /_____/ 
 
+        // _____   _____    _____   _____   __   _   _____   _   _   _   _____       ___   _____  
+        // |  _  \ |  _  \  | ____| | ____| |  \ | | /  ___| | | | | | | |  _  \     /   | /  ___/ 
+        // | |_| | | |_| |  | |__   | |__   |   \| | | |     | |_| | | | | | | |    / /| | | |___  
+        // |  ___/ |  _  /  |  __|  |  __|  | |\   | | |     |  _  | | | | | | |   / / | | \___  \ 
+        // | |     | | \ \  | |___  | |___  | | \  | | |___  | | | | | | | |_| |  / /  | |  ___| | 
+        // |_|     |_|  \_\ |_____| |_____| |_|  \_| \_____| |_| |_| |_| |_____/ /_/   |_| /_____/ 
+
+        // $routeProvider.when('/vagas-preenchidas/view/:vagasPreenchidasId', {
+        //     templateUrl: 'app/vaga-preenchida/vagas-preenchidas.html',
+        //     controller: 'VagasPreenchidasController'
+        // });
+
+
+        // __________________________________________________________________________
 
         // _____       ___   _____   _____        ___   _____  
         // |  _  \     /   | |  _  \ |  _  \      /   | /  _  \ 
@@ -173,13 +188,16 @@
         $routeProvider.when('/principal', {
             templateUrl: 'app/principal/principal.html',
         });
-        $routeProvider.otherwise({ redirectTo: '/setores' });
+        $routeProvider.otherwise({
+            redirectTo: '/setores'
+        });
     } //criado módulo chamado recrutaif que não tem nenhuma dependencia ainda, não depende de outros módulos
 
-    
-    
-    
+
+
+
     run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
+
     function run($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};

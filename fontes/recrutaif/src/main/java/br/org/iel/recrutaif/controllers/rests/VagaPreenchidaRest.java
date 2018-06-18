@@ -25,7 +25,6 @@ import br.org.iel.recrutaif.model.entity.Usuario;
 import br.org.iel.recrutaif.model.entity.Vaga;
 import br.org.iel.recrutaif.model.entity.VagaPreenchida;
 import br.org.iel.recrutaif.model.entity.VagaPreenchidaIds;
-import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 @Stateless
 @Path("/vagaspreenchidas")
@@ -58,15 +57,11 @@ public class VagaPreenchidaRest {
 		 
 		 VagaPreenchida entity = new VagaPreenchida(horarioInscricao, vaga, usuario);
 		 
-		 System.out.println(entity);
-		
 		 dao.save(entity);
 		 return Response
 		 .created(UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
 		 .build();
 
-//		return Response.ok().build();
-		
 	}
 
 	/**
@@ -99,8 +94,8 @@ public class VagaPreenchidaRest {
 	 */
 	@GET
 	@Produces("application/json")
-	public List<VagaPreenchida> listaVagas() {
-		final List<VagaPreenchida> results = dao.listaTodos(StatusBinarioEnum.ATIVO);
+	public List<VagaPreenchida> listaVagas(VagaPreenchidaIds ids) {
+		final List<VagaPreenchida> results = dao.listaTodos(ids);
 		return results;
 	}
 
