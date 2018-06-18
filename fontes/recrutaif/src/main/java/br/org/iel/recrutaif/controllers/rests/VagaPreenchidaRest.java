@@ -1,5 +1,6 @@
 package br.org.iel.recrutaif.controllers.rests;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -15,7 +16,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriBuilder;
 
+import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.dao.VagaDao;
 import br.org.iel.recrutaif.model.dao.VagaPreenchidaDao;
 import br.org.iel.recrutaif.model.entity.Usuario;
@@ -30,8 +33,10 @@ public class VagaPreenchidaRest {
 
 	@Inject
 	private VagaPreenchidaDao dao;
+	@Inject
 	private VagaDao daoVaga;
-	private Usuario daoUsuario;
+	@Inject
+	private UsuarioDao daoUsuario;
 
 	/**
 	 * método salva vaga no bd e retorna o id da vaga salva
@@ -48,19 +53,19 @@ public class VagaPreenchidaRest {
 
 		System.out.println(ids);
 		 Vaga vaga = daoVaga.find(ids.getVagaId());
-//		 Usuario usuario = new UsuarioDao().find(ids.getCandidatoId());
-//		 Date horarioInscricao = Date.class.newInstance();
-//		 
-//		 VagaPreenchida entity = new VagaPreenchida(horarioInscricao, vaga, usuario);
-//		 
-//		 System.out.println(entity);
-//		
-//		 dao.save(entity);
-//		 return Response
-//		 .created(UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
-//		 .build();
+		 Usuario usuario = daoUsuario.find(ids.getCandidatoId());
+		 Date horarioInscricao = Date.class.newInstance();
+		 
+		 VagaPreenchida entity = new VagaPreenchida(horarioInscricao, vaga, usuario);
+		 
+		 System.out.println(entity);
+		
+		 dao.save(entity);
+		 return Response
+		 .created(UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
+		 .build();
 
-		return Response.ok().build();
+//		return Response.ok().build();
 		
 	}
 
