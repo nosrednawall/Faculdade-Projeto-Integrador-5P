@@ -25,7 +25,7 @@
         <div class="form-group">
             <label for="data-admissao-usuario">Data Admissão</label>
             <datepicker date-format="yyyy-MM-dd">
-                <input type="text" ng-model="usuario.dataAdmissao" class="form-control" />
+                <input name="dataAdmissao" type="text" ng-model="usuario.dataAdmissao" class="form-control" />
                 <span class="input-group-addon" style="cursor: pointer">
                     <i class="fa fa-lg fa-calendar"></i>
                 </span>
@@ -48,7 +48,7 @@
                 Senha inválida </span>
         </div>
 
-        <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
+        <button ng-disable="formulario.$invalid" type="submit" name = "salvar" class="btn btn-primary">Salvar</button>
 
         <a href="#/usuarios" class="btn btn-primary">Voltar</a>
     </div>
