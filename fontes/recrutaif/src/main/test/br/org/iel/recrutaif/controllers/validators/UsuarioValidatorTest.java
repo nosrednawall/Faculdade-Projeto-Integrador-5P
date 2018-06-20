@@ -46,7 +46,33 @@ class UsuarioValidatorTest {
 		assertTrue("O campo tem menos de 100 caracteres", validador.validaUsuario(usuario));
 	}
 	
+	@Test
+	@DisplayName("Tem mais de 50 caracteres")
+	public void TemMaisDe50Caracteres() throws ParseException {
+		
+		String Cem = "dasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+				+ "dassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+				+ "dassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
+			
+		UsuarioValidator validador = new UsuarioValidator();
+		Usuario usuario = new Usuario();
+		usuario.setNome(Cem);
+		assertTrue("O campo tem mais de 100 caracteres", validador.validaUsuario(usuario));
+	}
+	
+	@Test
+	@DisplayName("Tem menos de 50 caracteres")
+	public void TemMenosDe50Caracteres() throws ParseException {
+		String Cem = "Antigos espiritos do mal transformem este teste decadente em JUnit!!! O de vida eterna!!!";
+		
+		UsuarioValidator validador = new UsuarioValidator();
+		Usuario usuario = new Usuario();
+		usuario.setNome(Cem);
+		assertTrue("O campo tem menos de 100 caracteres", validador.validaUsuario(usuario));
+	}
+	
 
+	
 	/*Testa se o campo foi inserido numeros
 	*/
 	
