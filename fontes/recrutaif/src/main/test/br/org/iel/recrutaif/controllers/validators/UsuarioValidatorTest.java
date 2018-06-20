@@ -1,5 +1,6 @@
 package br.org.iel.recrutaif.controllers.validators;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.text.ParseException;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import br.org.iel.recrutaif.model.entity.Usuario;
 
 /*
-Testa Campo Registre-se do login
+* Testa Campo Registre-se do login
 */
 
 class UsuarioValidatorTest {
@@ -23,31 +24,25 @@ class UsuarioValidatorTest {
 	@DisplayName("Tem mais de 100 caracteres")
 	public void TemMaisDe100Caracteres() throws ParseException {
 		
-		String cem = "dasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+		String Cem = "dasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
 				+ "dassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
 				+ "dassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
 				+ "dassssssssssssssssssssssssssssssssssssss";
 
 		UsuarioValidator validador = new UsuarioValidator();
-		
 		Usuario usuario = new Usuario();
-		
-		usuario.setNome(cem);
-		
+		usuario.setNome(Cem);
 		assertTrue("O campo tem mais de 100 caracteres", validador.validaUsuario(usuario));
 	}
 	
 	@Test
 	@DisplayName("Tem menos de 100 caracteres")
 	public void TemMenosDe100Caracteres() throws ParseException {
-		String cem = "Antigos espiritos do mal transformem este teste decadente em JUnit!!! O de vida eterna!!!";
+		String Cem = "Antigos espiritos do mal transformem este teste decadente em JUnit!!! O de vida eterna!!!";
 		
 		UsuarioValidator validador = new UsuarioValidator();
-		
 		Usuario usuario = new Usuario();
-		
-		usuario.setNome(cem);
-		
+		usuario.setNome(Cem);
 		assertTrue("O campo tem menos de 100 caracteres", validador.validaUsuario(usuario));
 	}
 	
@@ -59,7 +54,7 @@ class UsuarioValidatorTest {
 	@DisplayName("Foi inserido caracter")
 	public void validaSeFoiInseridoCaracter() throws ParseException {
 
-		String conteudo = "MumRáá";
+		String conteudo = "Mexico Campeão";
 		Usuario validaVaga = new Usuario();
 		validaVaga.setNome(conteudo);
 		if (Character.isAlphabetic((((String) conteudo).charAt(0)))
@@ -84,56 +79,15 @@ class UsuarioValidatorTest {
 			return;
 		}
 	}
-}
-
-/*
-Testa Campo Registre-se do login
 
 
-class UsuarioValidatorTest {
-
-	
-	Testa limite de caracteres de no maximo 100 --- OK
-	
-	
-	@Test
-	@DisplayName("Tem mais de 100 caracteres")
-	public void TemMaisDe100Caracteres() throws ParseException {
-		String cem = "dasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-				+ "dassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-				+ "dassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-				+ "dassssssssssssssssssssssssssssssssssssss";
-
-		UsuarioValidator validador = new UsuarioValidator();
-		
-		Usuario usuario = new Usuario();
-		
-		usuario.setNome(cem);
-		
-		assertTrue("O campo tem mais de 100 caracteres", validador.validaUsuario(usuario));
-	}
-	
-	@Test
-	@DisplayName("Tem menos de 100 caracteres")
-	public void TemMenosDe100Caracteres() throws ParseException {
-		String cem = "Antigos espiritos do mal transformem este teste decadente em JUnit!!! O de vida eterna!!!";
-		
-		UsuarioValidator validador = new UsuarioValidator();
-		
-		Usuario usuario = new Usuario();
-		
-		usuario.setNome(cem);
-		
-		assertTrue("O campo tem menos de 100 caracteres", validador.validaUsuario(usuario));
-	}*/
-      
     /*
 	Testa se o campo esta vazio
 	*/
 	
-  /*	@Test
+  	@Test
   	@DisplayName("Retorna Erro se o campo estiver vazio")
-  	public void RetornarErroSeOCampoEstiverVazio() throws ParseException {
+  	public void RetornarErroSeOCampoEstiverNull() throws ParseException {
   		
   		String vazio = null;
   		  		
@@ -148,7 +102,7 @@ class UsuarioValidatorTest {
   	}
       
 	@Test
-	@DisplayName("Retorna Erro se o campo estiver vazio")
+	@DisplayName("Retorna Erro se o campo estiver em branco")
 	public void RetornarErroSeOCampoEstiverVazio() throws ParseException {
 		String vazio = "";
 		
@@ -158,58 +112,14 @@ class UsuarioValidatorTest {
 		
 		usuario.setNome(vazio);
 				
-		assertTrue("O campo está vazio!", validador.validaUsuario(usuario));
+		assertTrue("", validador.validaUsuario(usuario));
 
 	}
 	
-	@Test
-	@DisplayName("teste1")
-	public void teste() throws ParseException {
 
-        String test = "";
-        
-        if (StringUtils.isBlank(test)) {
-            System.out.println("THE STRING TEST IS EMPTY");
-        }
-
-     }
-	
-	@Test
-	@DisplayName("teste1")
-	public void teste2() throws ParseException {
-
-        String testOne = null;
-   
-        if (StringUtils.isBlank(testOne)) {
-            System.out.println("THE STRING TEST IS NULL");
-        }
-
-    }
-	
-	@Test
-	@DisplayName("Retorna OK se o campo estiver preenchido")
-	public void RetornarOKSeOCampoEstiverPreenchido() throws ParseException {
-		String vazio = "Cheio";
-		
-		UsuarioValidator validador = new UsuarioValidator();
-		
-		Usuario usuario = new Usuario();
-		
-		usuario.setNome(vazio);
-		
-		assertTrue("O campo está preenchido!", validador.validaUsuario(usuario));
-		
-
-
-	}
-
-
-	
-
-		
 }
 
-*/	
+	
 
 
 

@@ -41,6 +41,18 @@ public class VagaRest {
 	@POST
 	@Consumes("application/json")
 	public Response create(Vaga entity) throws InstantiationException, IllegalAccessException {
+		
+/*
+		if (validacao.validaVaga(entity)) {
+			dao.save(entity);
+			return Response
+					.created(UriBuilder.fromResource(Vaga.class).path(String.valueOf(entity.getId())).build())
+					.build();
+		}
+
+		System.out.println("Caiu fora do if dentro do Vaga rest");
+		return Response.status(Status.CONFLICT).entity(entity).build();*/
+	
 
 		System.out.println(entity);
 		VagaValidator validacao = new VagaValidator();

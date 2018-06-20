@@ -17,4 +17,6 @@ public boolean validaVaga(Vaga vaga) {
 	private boolean dataEhValida(Vaga vaga) {
 		return true;
 	}
+	
+	
 }

@@ -1,10 +1,9 @@
 package br.org.iel.recrutaif.controllers.validators;
 
 import java.util.concurrent.TimeUnit;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,9 +13,7 @@ public class TesteSelenium {
     /**
      * @ Teste com Selenium + JUnit
      */
-		
-	
-	@Before
+			
 	@Test
     public void testeSeleniumOK(){
          
@@ -28,7 +25,7 @@ public class TesteSelenium {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
      
         WebElement nome = driver.findElement(By.name("nome"));
-        nome.sendKeys("Gabriel Jesus");
+        nome.sendKeys("Fernando Silva Paulo");
        
         WebElement matricula = driver.findElement(By.name("matricula"));
         matricula.sendKeys("101010");
@@ -36,6 +33,8 @@ public class TesteSelenium {
         System.out.println("Antes da Data");
         
         WebElement dataAdmissao = driver.findElement(By.className("dataAdmissao"));
+        dataAdmissao.sendKeys("");
+        dataAdmissao.click();
         dataAdmissao.sendKeys("10.09.18");
         
         System.out.println("Depos Data");
