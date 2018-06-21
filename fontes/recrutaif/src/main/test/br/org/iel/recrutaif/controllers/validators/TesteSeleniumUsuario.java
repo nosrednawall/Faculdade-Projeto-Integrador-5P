@@ -27,21 +27,21 @@ public class TesteSeleniumUsuario {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
 		WebElement nome = driver.findElement(By.name("nome"));
-		nome.sendKeys("Fernando Silva Paulo");
+		nome.sendKeys("Marco Polo Paulo Algusto");
 
 		WebElement matricula = driver.findElement(By.name("matricula"));
-		matricula.sendKeys("669");
+		matricula.sendKeys("32324");
 
 		WebElement dataAdmissao = driver.findElement(By.name("dataAdmissao"));
 		Actions action = new Actions(driver);
 		action.doubleClick(dataAdmissao).perform();
-		dataAdmissao.sendKeys(new String[] { "19921116" });
+		dataAdmissao.sendKeys(new String[] { "19921128" });
 
 		WebElement email = driver.findElement(By.name("email"));
-		email.sendKeys("hahahahahahahahahahahahha@haha.hahahahaha");
+		email.sendKeys("marco.polo.paulo.augusto@gmail.com");
 
 		WebElement senha = driver.findElement(By.name("senha"));
-		senha.sendKeys("OmogugadeidiTal");
+		senha.sendKeys("123456");
 
 		WebElement salvar = driver.findElement(By.name("salvar"));
 		salvar.click();
