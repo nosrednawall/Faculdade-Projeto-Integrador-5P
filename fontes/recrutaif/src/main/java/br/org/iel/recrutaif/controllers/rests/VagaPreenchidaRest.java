@@ -48,20 +48,30 @@ public class VagaPreenchidaRest {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response create(VagaPreenchidaIds ids) throws InstantiationException, IllegalAccessException {
+	public Response create(VagaPreenchidaIds ids) {
 
 		System.out.println(ids);
-		 Vaga vaga = daoVaga.find(ids.getVagaId());
-		 Usuario usuario = daoUsuario.find(ids.getCandidatoId());
-		 Date horarioInscricao = Date.class.newInstance();
-		 
-		 VagaPreenchida entity = new VagaPreenchida(horarioInscricao, vaga, usuario);
-		 
-		 dao.save(entity);
-		 return Response
-		 .created(UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
-		 .build();
+		Vaga vaga = daoVaga.find(ids.getVagaId());
+		Usuario usuario = daoUsuario.find(ids.getCandidatoId());
+		Date horarioInscricao;
+		try {
+			horarioInscricao = Date.class.newInstance();
+			VagaPreenchida entity = new VagaPreenchida(horarioInscricao, vaga, usuario);
 
+			dao.save(entity);
+			return Response.created(
+					UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
+					.build();
+			
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return Response.status(Status.BAD_REQUEST).build();
 	}
 
 	/**
