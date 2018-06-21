@@ -2,12 +2,9 @@ package br.org.iel.recrutaif.controllers.validators;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import java.text.ParseException;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import br.org.iel.recrutaif.model.entity.Usuario;
 
 /*
