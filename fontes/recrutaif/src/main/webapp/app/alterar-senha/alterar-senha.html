@@ -20,10 +20,10 @@
                         <th scope="row" ng-model="usuario.matricula"></th>
                         <th scope="row" ng-model="usuario.email"></th>
                         <th scope="row">
-                            <a class="btn btn-primary" href="">Ativos</a>
+                            <a class="text-primary" href="">Ativos</a>
                         </th>
                         <th scope="row">
-                            <a class="btn btn-primary" href="">Encerrados</a>
+                            <a class="text-primary" href="">Encerrados</a>
                         </th>
                     </tr>
                 </tbody>
@@ -39,8 +39,7 @@
         <div class="form-group">
             <label for="senha-usuario">Senha</label>
             <input ng-model="usuario.senha" type="password" class="form-control" name="senha" required />
-            <span ng-show="formulario.$submitted &&
-                 formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+            <span ng-show="formulario.$submitted && formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
             <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger">
             Senha inválida </span>
         </div>

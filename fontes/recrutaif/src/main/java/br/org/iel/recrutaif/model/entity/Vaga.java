@@ -33,6 +33,7 @@ import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 @NamedQueries({
 
 		@NamedQuery(name = "Vaga.listarTodos", query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setor LEFT JOIN FETCH v.inscritos WHERE v.status = :pStatus"),
+		@NamedQuery(name = "Vaga.listarTodosSemStatus", query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setor LEFT JOIN FETCH v.inscritos"),
 		@NamedQuery(name = "Vaga.find", query = "SELECT DISTINCT v FROM Vaga v LEFT JOIN FETCH v.setor LEFT JOIN FETCH v.inscritos WHERE v.id = :pId") })
 @Entity
 @Table(name = "vaga")

@@ -27,7 +27,6 @@ import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
  * @author anderson
  *
  */
-// @Seguro
 @Stateless
 @Path("/usuarios")
 public class UsuarioRest {
