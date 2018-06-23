@@ -56,8 +56,7 @@ public class UsuarioRest {
 					.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())
 					.build();
 		}
-
-		System.out.println("Caiu fora do if dentro do usuario rest");
+		System.out.println("[INFO] NÃO FOI POSSIVEL VALIDAR O USUÁRIO");
 		return Response.status(Status.CONFLICT).entity(entity).build();
 	}
 
@@ -66,6 +65,7 @@ public class UsuarioRest {
 	@Produces("application/json")
 	public Response buscaPorId(@PathParam("id") Integer id) {
 		Usuario entity;
+
 		try {
 			entity = dao.find(Usuario.class, id);
 		} catch (NoResultException nre) {
@@ -74,13 +74,28 @@ public class UsuarioRest {
 		if (entity == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
+
 		return Response.ok(entity).build();
 	}
 
 	@GET
+	@Path("/listar/{status:[0-2]*}")
 	@Produces("application/json")
-	public List<Usuario> listaUsuarios() {
-		final List<Usuario> results = dao.listaTodos(StatusBinarioEnum.ATIVO);
+	public List<Usuario> listaUsuarios(@PathParam("status") Integer idstatus) {
+
+		StatusBinarioEnum status;
+
+		final List<Usuario> results;
+
+		if (idstatus == 0) {
+			status = StatusBinarioEnum.ATIVO;
+		} else if (idstatus == 1) {
+			status = StatusBinarioEnum.INATIVO;
+		} else {
+			status = StatusBinarioEnum.AMBOS;
+		}
+
+		results = dao.listaTodos(status);
 
 		return results;
 	}

@@ -29,6 +29,7 @@ import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
  */
 @NamedQueries({
 		@NamedQuery(name = "Usuario.listarTodos", query = "SELECT DISTINCT u FROM Usuario u LEFT JOIN FETCH u.candidaturas WHERE u.status = :pStatus"),
+		@NamedQuery(name = "Usuario.listarTodosSemStatus", query = "SELECT DISTINCT u FROM Usuario u LEFT JOIN FETCH u.candidaturas"),
 		@NamedQuery(name = "Usuario.find", query = "SELECT DISTINCT u FROM Usuario u LEFT JOIN FETCH u.candidaturas WHERE u.id = :pId"),
 		@NamedQuery(name = "Usuario.loga", query = "SELECT DISTINCT u FROM Usuario u  LEFT JOIN FETCH u.candidaturas WHERE u.email = :pEmail AND u.senha = :pSenha") })
 @XmlRootElement

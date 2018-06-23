@@ -13,13 +13,13 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.model.dao.SetorDao;
 import br.org.iel.recrutaif.model.entity.Setor;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 /**
  * Classe rest de setor
@@ -45,6 +45,7 @@ public class SetorRest {
 	@POST
 	@Consumes("application/json")
 	public Response create(Setor entity) {
+		entity.setStatus(StatusBinarioEnum.ATIVO);
 		dao.save(entity);
 		return Response
 				.created(UriBuilder.fromResource(SetorRest.class).path(String.valueOf(entity.getId())).build())
@@ -81,26 +82,27 @@ public class SetorRest {
 		return Response.ok(entity).build();
 	}
 
-	/**
-	 * Método para listar os setores, dentro de um minimo e máximo
-	 * @param startPosition
-	 * @param maxResult
-	 * @return
-	 */
 	@GET
+	@Path("/listar/{status:[0-3]*}")
 	@Produces("application/json")
-	public List<Setor> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
+	public List<Setor> listaUsuarios(@PathParam("status") Integer idstatus) {
 
-		if (startPosition != null) {
-			startPosition = 1;
+		StatusBinarioEnum status;
+
+		final List<Setor> results;
+
+		if (idstatus == 0) {
+			status = StatusBinarioEnum.ATIVO;
+		} else if (idstatus == 1) {
+			status = StatusBinarioEnum.INATIVO;
+		} else {
+			status = StatusBinarioEnum.AMBOS;
 		}
-		if (maxResult != null) {
-			maxResult = 99999999;
-		}
-		final List<Setor> results = dao.listAll(startPosition, maxResult);
+
+		results = dao.listaTodos(status);
+
 		return results;
 	}
-
 	/**
 	 * Método para atualizar um setor, pelo id
 	 * @param id

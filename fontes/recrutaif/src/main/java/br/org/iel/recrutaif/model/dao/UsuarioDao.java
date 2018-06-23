@@ -22,7 +22,7 @@ import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 
 	/**
-	 * 
+	 * serial
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -37,17 +37,21 @@ public class UsuarioDao extends BaseDao<Usuario> implements Serializable {
 	 */
 	@Override
 	protected EntityManager getEntityManager() {
-		// TODO Auto-generated method stub
 		return this.em;
 	}
 
 	/**
-	 * Método lista todos os usuarios
+	 * Método lista todos os usuarios com status e sem status
 	 * 
 	 * @param status
 	 * @return
 	 */
 	public List<Usuario> listaTodos(StatusBinarioEnum status) {
+		
+		if(status.equals(StatusBinarioEnum.AMBOS)) {
+			TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.listarTodosSemStatus", Usuario.class);
+			return query.getResultList();
+		}
 		TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.listarTodos", Usuario.class);
 		query.setParameter("pStatus", status);
 

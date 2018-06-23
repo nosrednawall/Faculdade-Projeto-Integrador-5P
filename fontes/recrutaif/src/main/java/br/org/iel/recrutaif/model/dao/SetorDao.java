@@ -9,13 +9,15 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.org.iel.recrutaif.model.entity.Setor;
+import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
+
 /**
  * 
  * @author anderson
  *
  */
 @Stateless
-public class SetorDao extends BaseDao<Setor> implements Serializable{
+public class SetorDao extends BaseDao<Setor> implements Serializable {
 	/**
 	 * 
 	 */
@@ -35,19 +37,35 @@ public class SetorDao extends BaseDao<Setor> implements Serializable{
 	}
 
 	/**
-	 * Método listar os setores, conforme os indices fornecidos, se não fornecer listará todos os setores
-	 * @param startPosition
-	 * @param maxResult
+	 * metodo busca setor
+	 * 
+	 * @param id
 	 * @return
 	 */
-	public List<Setor> listAll(Integer startPosition, Integer maxResult) {
-		TypedQuery<Setor> findAllQuery = em.createQuery("SELECT DISTINCT s FROM Setor s ORDER BY s.id", Setor.class);
-		if (startPosition != null) {
-			findAllQuery.setFirstResult(startPosition);
-		}
-		if (maxResult != null) {
-			findAllQuery.setMaxResults(maxResult);
-		}
-		return findAllQuery.getResultList();
+	public Setor find(Integer id) {
+
+		TypedQuery<Setor> query = getEntityManager().createNamedQuery("Setor.find", Setor.class);
+		query.setParameter("pId", id);
+
+		return query.getSingleResult();
 	}
+
+	/**
+	 * Metodo lista setores com ou sem status
+	 * 
+	 * @param status
+	 * @return
+	 */
+	public List<Setor> listaTodos(StatusBinarioEnum status) {
+
+		if (status.equals(StatusBinarioEnum.AMBOS)) {
+			TypedQuery<Setor> query = getEntityManager().createNamedQuery("Setor.listarTodosSemStatus", Setor.class);
+			return query.getResultList();
+		}
+		TypedQuery<Setor> query = getEntityManager().createNamedQuery("Setor.listarTodos", Setor.class);
+		query.setParameter("pStatus", status);
+
+		return query.getResultList();
+	}
+
 }
