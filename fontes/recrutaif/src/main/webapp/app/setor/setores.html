@@ -27,7 +27,7 @@
 						<th scope="col">#</th>
 						<th scope="col">Nome Setor</th>
 						<th scope="col">Status</th>
-						<th scope="col">Editar</th>
+						<th scope="col" >Editar</th>
 						<th scope="col">Inativar</th>
 					</tr>
 				</thead>
@@ -37,10 +37,14 @@
 						<th scope="row">{{setor.nome}}</th>
 						<th scope="row">{{setor.status}}</th>
 						<th scope="row">
-							<a class="text-danger" href="#/setor/edit/{{setor.id}}">Editar</a>
+							<a class="text-info" href="#/setor/edit/{{setor.id}}">
+								<i class="fas fa-edit"></i>
+							</a>
 						</th>
 						<th scope="row">
-							<p ng-click="inativar(setor)" class="text-danger">Inativar</p>
+							<p ng-click="inativar(setor)" class="text-danger">
+								<i class="fas fa-times-circle"></i>
+							</p>
 						</th>
 					</tr>
 				</tbody>
