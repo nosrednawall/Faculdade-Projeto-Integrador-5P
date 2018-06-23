@@ -14,6 +14,12 @@
             });
         })
 
+        .factory('listaSetores', function ($resource) {
+
+            //retorna um recurso
+            return $resource('rest/setores/listar/:statusId', null);
+        })
+
         //o $q serve para trabalhar com as promessas
         .factory('cadastroDeSetor', function (recursoSetor, $q) {
 
@@ -26,7 +32,9 @@
                     //verifica se o setor informado possui id
                     if (setor.id) {
 
-                        recursoSetor.update({ setorId: setor.id }, setor, function () {
+                        recursoSetor.update({
+                            setorId: setor.id
+                        }, setor, function () {
                             resolve({
                                 mensagem: '[INFO] Setor ' + setor.nome + ' atualizado com sucesso!',
                                 inclusao: false

@@ -26,21 +26,21 @@
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Nome Setor</th>
+						<th scope="col">Status</th>
 						<th scope="col">Editar</th>
-						<th scope="col">Remover</th>
+						<th scope="col">Inativar</th>
 					</tr>
 				</thead>
-				<!--o pipe | filter:filtro é basicamente o filtro que está sendo enviado pelo input acima-->
 				<tbody ng-repeat="setor in setores | filter:filtro">
 					<tr>
-						<!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
 						<th scope="row">{{setor.id}}</th>
 						<th scope="row">{{setor.nome}}</th>
+						<th scope="row">{{setor.status}}</th>
 						<th scope="row">
-							<a class="btn btn-primary" href="#/setor/edit/{{setor.id}}">Editar</a>
+							<a class="text-danger" href="#/setor/edit/{{setor.id}}">Editar</a>
 						</th>
 						<th scope="row">
-							<button ng-click="remover(setor)" class="btn btn-danger " href="">Remover</button>
+							<p ng-click="inativar(setor)" class="text-danger">Inativar</p>
 						</th>
 					</tr>
 				</tbody>

@@ -1,44 +1,43 @@
 (function () {
     'use strict';
-    angular.module('recrutaif').controller('SetoresController', function ($scope, recursoSetor) {
-        //módulos que não são mais utilizados, porque estão sendo injetados pelo recursoSetor: $http,$resource
+    angular
+        .module('recrutaif')
+        .controller('SetoresController', function ($scope, recursoSetor, listaSetores) {
 
-        //módulo controller, para setor
+            $scope.setores = []; //variável responsável pelo loop de setor dentro do scope
+            $scope.filtro = ''; //variável responsável pelo filtro de setores, dentro do scope
+            $scope.mensagem = ''; //variável responsável pela mensagem de interação com o usuário dentro do scope
 
-        //variáveis de interação com o scope
-        $scope.setores = [];    //variável responsável pelo loop de setor dentro do scope
-        $scope.filtro = ''; //variável responsável pelo filtro de setores, dentro do scope
-        $scope.mensagem = '';   //variável responsável pela mensagem de interação com o usuário dentro do scope
-
-        // essa variável não é mais utilizada porque está sendo injetada pelo recursoSetor nos módulos acima
-        // var recursoSetor = $resource('rest/setores/:setorId');
-
-        //função busca uma lista de setores
-        recursoSetor.query(function (setores) {
-            //salva a lista de setores dentro da variável de escope $setores
-            $scope.setores = setores;
-        }, function (erro) {
-            //caso dê erro imprime o erro para o usuário
-            console.log(error);
-            console.log("[ERROR] Erro ao listar os setores");
-        });
-
-        //funcao para remover setor
-        $scope.remover = function (setor) {
-
-            //ele tenta remover um setor, passando o id em setor.id ao coringa setorId
-            recursoSetor.delete({ setorId: setor.id }, function () {
-
-                //caso dê certo é atualizado a lista e informado o usuário
-                var indiceSetor = $scope.setores.indexOf(setor);
-                $scope.setores.splice(indiceSetor, 1);
-                $scope.mensagem = "[INFO] Setor " + setor.nome + " foi removido com sucesso!";
-            }, function () {
-
-                //caso dê erro é informado o usuário
+            listaSetores.query({
+                statusId: 2
+            }, function (setores) {
+                $scope.setores = setores;
+            }, function (erro) {
                 console.log(error);
-                $scope.mensagem = "[ERROR] Erro ao remover o setor" + setor.nome;
+                console.log("[ERROR] Erro ao listar os setores");
             });
-        };
-    });
+
+            $scope.inativar = function (setor) {
+
+                if (setor.status === "ATIVO") {
+                    setor.status = "INATIVO";
+                } else {
+                    setor.status = "ATIVO";
+                }
+
+                recursoSetor.update({
+                    setorId: setor.id
+                }, setor, function () {
+                    resolve({
+                        mensagem: '[INFO] Setor ' + setor.nome + ' atualizado com sucesso!',
+                        inclusao: false
+                    });
+                }, function (erro) {
+                    console.log(erro);
+                    reject({
+                        mensagem: '[ERRO] Não foi possível alterar o setor ' + setor.nome
+                    });
+                });
+            };
+        });
 })();
