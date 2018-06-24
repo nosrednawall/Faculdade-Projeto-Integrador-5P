@@ -38,15 +38,16 @@ public class VagaDao extends BaseDao<Vaga> implements Serializable {
 	 * @return
 	 */
 	public List<Vaga> listaTodos(StatusBinarioEnum status) {
+		TypedQuery<Vaga> query;
+		System.out.println("[INFO] O STATUS É: " + status);
 
 		if (status.equals(StatusBinarioEnum.AMBOS)) {
-			TypedQuery<Vaga> query = getEntityManager().createNamedQuery("Vaga.listarTodosSemStatus", Vaga.class);
-			return query.getResultList();
+			query = getEntityManager().createNamedQuery("Vaga.listarTodosSemStatus", Vaga.class);
+		} else {
+			query = getEntityManager().createNamedQuery("Vaga.listarTodos", Vaga.class);
+
+			query.setParameter("pStatus", status);
 		}
-
-		TypedQuery<Vaga> query = getEntityManager().createNamedQuery("Vaga.listarTodos", Vaga.class);
-
-		query.setParameter("pStatus", status);
 
 		return query.getResultList();
 	}

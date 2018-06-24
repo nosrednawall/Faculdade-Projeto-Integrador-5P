@@ -13,14 +13,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
@@ -70,11 +69,11 @@ public class Vaga implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Setor setor;
 
-	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany()
 	private Set<VagaPreenchida> inscritos;
-
-	@Transient
-	private Integer idSetor;
+//	
+//	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Set<VagaPreenchida> inscritos;
 
 	public Integer getId() {
 		return id;
@@ -84,7 +83,7 @@ public class Vaga implements Serializable {
 	public String toString() {
 		return "Vaga [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", status=" + status
 				+ ", dataCriacao=" + dataCriacao + ", dataExpiracao=" + dataExpiracao + ", setor=" + setor
-				+ ", inscritos=" + inscritos + ", idSetor=" + idSetor + "]";
+				+ ", inscritos=" + inscritos +"]";
 	}
 
 	public void setId(Integer id) {
@@ -146,12 +145,16 @@ public class Vaga implements Serializable {
 	public void setInscritos(Set<VagaPreenchida> inscritos) {
 		this.inscritos = inscritos;
 	}
+	@Deprecated
+	public Vaga() {}
 
-	public Integer getIdSetor() {
-		return idSetor;
-	}
-
-	public void setIdSetor(Integer idSetor) {
-		this.idSetor = idSetor;
+	public Vaga(String titulo, String descricao, StatusBinarioEnum status, Date dataCriacao, Date dataExpiracao,
+			Setor setor) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.status = status;
+		this.dataCriacao = dataCriacao;
+		this.dataExpiracao = dataExpiracao;
+		this.setor = setor;
 	}
 }

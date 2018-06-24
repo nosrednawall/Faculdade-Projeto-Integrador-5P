@@ -23,6 +23,7 @@ import br.org.iel.recrutaif.model.dao.SetorDao;
 import br.org.iel.recrutaif.model.dao.VagaDao;
 import br.org.iel.recrutaif.model.entity.Setor;
 import br.org.iel.recrutaif.model.entity.Vaga;
+import br.org.iel.recrutaif.model.entity.VagaIds;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 @Stateless
@@ -44,18 +45,18 @@ public class VagaRest {
 	 */
 	@POST
 	@Consumes("application/json")
-	public Response create(Vaga entity) throws InstantiationException, IllegalAccessException {
+	public Response create(VagaIds entity) throws InstantiationException, IllegalAccessException {
 
 		System.out.println(entity);
 		VagaValidator validacao = new VagaValidator();
 
-		entity.setDataCriacao(Date.class.newInstance());
-		entity.setStatus(StatusBinarioEnum.ATIVO);
 		Setor setor = daoSetor.find(entity.getIdSetor());
-		entity.setSetor(setor);
 
-		if (validacao.validaVaga(entity)) {
-			dao.save(entity);
+		Vaga vaga = new Vaga(entity.getTitulo(), entity.getDescricao(), StatusBinarioEnum.ATIVO,
+				Date.class.newInstance(), entity.getDataExpiracao(), setor);
+
+		if (validacao.validaVaga(vaga)) {
+			dao.save(vaga);
 			return Response
 					.created(UriBuilder.fromResource(VagaRest.class).path(String.valueOf(entity.getId())).build())
 					.build();

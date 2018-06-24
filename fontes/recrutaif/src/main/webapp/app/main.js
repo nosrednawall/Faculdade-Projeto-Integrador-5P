@@ -10,7 +10,8 @@
         'vagaServices',
         'setorServices',
         'usuarioServices',
-        '720kb.datepicker'
+        '720kb.datepicker',
+        'vagaPreenchidaServices'
     ]).config(config).run(run);
 
     config.$inject = ['$routeProvider', '$locationProvider'];
