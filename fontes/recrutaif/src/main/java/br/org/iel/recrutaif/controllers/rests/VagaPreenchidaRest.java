@@ -16,6 +16,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriBuilder;
+
+import com.google.gson.Gson;
 
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.dao.VagaDao;
@@ -47,8 +50,13 @@ public class VagaPreenchidaRest {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response create(VagaPreenchidaIds ids) {
+	public Response create(String vagaPreenchidaJson) {
 
+		
+		System.out.println(vagaPreenchidaJson);
+		Gson gson = new Gson();
+
+		VagaPreenchidaIds ids = gson.fromJson(vagaPreenchidaJson, VagaPreenchidaIds.class);
 		System.out.println(ids);
 		Vaga vaga = daoVaga.find(ids.getVagaId());
 		Usuario usuario = daoUsuario.find(ids.getCandidatoId());
@@ -59,10 +67,10 @@ public class VagaPreenchidaRest {
 			VagaPreenchida entity = new VagaPreenchida(horarioInscricao, vaga, usuario);
 
 			dao.save(entity);
-			return Response.ok(entity).build();
-//			return Response.created(
-//					UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
-//					.build();
+			// return Response.ok(entity).build();
+			return Response.created(
+					UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
+					.build();
 
 		} catch (InstantiationException e) {
 			e.printStackTrace();

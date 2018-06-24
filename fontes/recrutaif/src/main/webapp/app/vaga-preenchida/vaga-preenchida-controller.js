@@ -21,33 +21,33 @@
                     });
             };
 
-            // $scope.candidatar = function () {
+            $scope.candidatar = function () {
 
-            //     var vagaPreenchida = [];
-            //     vagaPreenchida.candidato = $rootScope.globals.currentUser.id;
-            //     vagaPreenchida.vaga = $scope.vaga.id;
+                var vagaPreenchida = [];
+                vagaPreenchida.vagaId = $scope.vaga.id;
+                vagaPreenchida.candidatoId = $rootScope.globals.currentUser.id;
 
-            //     cadastroDeVagaPreenchida.cadastrarCandidatura(vagaPreenchida)
-            //         .then(function (dados) {
-            //             console.log("entrou no then " + dados);
-            //             $scope.mensagem = dados.mensagem;
-            //             if (dados.inclusao) {
-            //                 $scope.vaga = {};
-            //             }
-            //         }).catch(function (erro) {
-            //             $scope.mensagem = erro.mensagem;
-            //         });
+                console.log('entrou em candidatar');
+                console.log(vagaPreenchida);
+                cadastroDeVagaPreenchida.cadastrarCandidatura(vagaPreenchida)
+                    .then(function (dados) {
+                        console.log("entrou no then " + dados);
+                        $scope.mensagem = dados.mensagem;
 
-            //     // $http.post('rest/vagaspreenchidas', {
-            //     //         vagaId: vagaPreenchida.vaga,
-            //     //         candidatoId: vagaPreenchida.candidato
-            //     //     })
-            //     //     .then(function () {
+                    }).catch(function (erro) {
+                        $scope.mensagem = erro.mensagem;
+                    });
 
-            //     //         mensagem: '[INFO] Candidatura efetuada com sucesso com sucesso!'
+                // $http.post('rest/vagaspreenchidas', {
+                //         vagaId: vagaPreenchida.vaga,
+                //         candidatoId: vagaPreenchida.candidato
+                //     })
+                //     .then(function () {
 
-            //     //     }, function (erro) {
-            //     //         mensagem: '[ERRO] Não foi possível efetuar acandidatura'
-            //     //     });
-            // };
+                //         mensagem: '[INFO] Candidatura efetuada com sucesso com sucesso!'
+
+                //     }, function (erro) {
+                //         mensagem: '[ERRO] Não foi possível efetuar acandidatura'
+                //     });
+            };
         });

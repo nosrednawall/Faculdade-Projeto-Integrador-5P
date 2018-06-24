@@ -21,7 +21,10 @@ angular.module('vagaPreenchidaServices', ['ngResource'])
             return $q(function (resolve, reject) {
                 console.log(vagaPreenchida);
 
-                recursoVagaPreenchida.save(vagaPreenchida, function () {
+                recursoVagaPreenchida.save({
+                    vagaId: vagaPreenchida.vagaId,
+                    candidatoId: vagaPreenchida.candidatoId
+                }, function () {
                     resolve({
                         mensagem: '[INFO] Candidatura efetuada com sucesso com sucesso!',
                         inclusao: false
@@ -35,6 +38,4 @@ angular.module('vagaPreenchidaServices', ['ngResource'])
             });
         };
         return servico;
-    })
-    ;
-
+    });
