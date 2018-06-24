@@ -1,4 +1,4 @@
-angular.module('recrutaif').controller('UsuariosController',function($scope,recursoUsuario){
+angular.module('recrutaif').controller('UsuariosController',function($scope,recursoUsuario,listaUsuarios){
     //módulos que não são mais utilizados, porque estão sendo injetados pelo recursoSetor: $http,$resource
 
 //módulo controller, para setor
@@ -12,7 +12,9 @@ angular.module('recrutaif').controller('UsuariosController',function($scope,recu
     // var recursoSetor = $resource('rest/setores/:setorId');
 
     //função busca uma lista de setores
-    recursoUsuario.query(function(usuarios){
+    listaUsuarios.query({
+        statusId:2
+    },function(usuarios){
         //salva a lista de setores dentro da variável de escope $setores
         $scope.usuarios = usuarios;
         console.log(usuarios);

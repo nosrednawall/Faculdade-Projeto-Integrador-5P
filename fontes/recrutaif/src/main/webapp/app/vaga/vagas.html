@@ -37,8 +37,8 @@
 					<tr>
 						<!--a class dessas colunas é uma animação de transição, porém não finciona com colunas :-( -->
 						<th scope="row">{{vaga.titulo}}</th>
-						<th scope="row">{{vaga.dataCriacao}}</th>
-						<th scope="row">{{vaga.dataExpiracao}}</th>
+						<th scope="row">{{vaga.dataCriacao | date:'dd/MM/yyyy'}}</th>
+						<th scope="row">{{vaga.dataExpiracao | date:'dd/MM/yyyy'}}</th>
 						<th scope="row">
 							<a class="btn btn-primary" href="#/vaga/edit/{{vaga.id}}">Editar</a>
 						</th>

@@ -30,6 +30,11 @@ angular
         } /**Fecha funcão */
     ) /**Fecha Factory 1 */
 
+    .factory('listaUsuarios', function ($resource) {
+
+        //retorna um recurso
+        return $resource('rest/usuarios/listar/:statusId', null);
+    })
 
     // ________________________________________________________________________________________________________
     // _____       ___   _____   _____   _____   _____   __    __       _____  

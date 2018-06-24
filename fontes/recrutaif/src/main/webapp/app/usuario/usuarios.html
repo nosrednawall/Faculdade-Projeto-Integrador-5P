@@ -25,7 +25,7 @@
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">#</th>
-           		 		<th scope="col">Nome </th>
+						<th scope="col">Nome </th>
 						<th scope="col">Data Admissão </th>
 						<th scope="col">Editar</th>
 						<th scope="col">Inativar</th>
@@ -34,16 +34,19 @@
 				<tbody ng-repeat="usuario in usuarios | filter:filtro">
 					<tr>
 						<th scope="row">{{usuario.id}}</th>
-            			<th scope="row">{{usuario.nome}}</th>
-						<th scope="row">{{usuario.dataAdmissao | date:'yyyy/MM/dd'}}</th>
+						<th scope="row">{{usuario.nome}}</th>
+						<th scope="row">{{usuario.dataAdmissao | date:'dd/MM/yyyy'}}</th>
 						<th scope="row">
-							<a class="btn btn-primary" 
-							href="#/usuario/edit/{{usuario.id}}">Editar</a>
+							<a class="text-info" href="#/usuario/edit/{{usuario.id}}">
+								<i class="fas fa-edit"></i>
+							</a>
 						</th>
 						<th scope="row">
-							<button ng-click="inativar(usuario)" 
-							class="btn btn-danger " href="">Inativar</button>
+							<p ng-click="inativar(usuario)" class="text-danger">
+								<i class="fas fa-times-circle"></i>
+							</p>
 						</th>
+
 					</tr>
 				</tbody>
 			</table>
