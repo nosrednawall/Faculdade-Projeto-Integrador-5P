@@ -94,9 +94,23 @@ public class VagaRest {
 	 * @return
 	 */
 	@GET
+	@Path("/listar/{status:[0-3]*}")
 	@Produces("application/json")
-	public List<Vaga> listaVagas() {
-		final List<Vaga> results = dao.listaTodos(StatusBinarioEnum.ATIVO);
+	public List<Vaga> listaVagas(@PathParam("status") Integer idstatus) {
+		StatusBinarioEnum status;
+
+		final List<Vaga> results;
+
+		if (idstatus == 0) {
+			status = StatusBinarioEnum.ATIVO;
+		} else if (idstatus == 1) {
+			status = StatusBinarioEnum.INATIVO;
+		} else {
+			status = StatusBinarioEnum.AMBOS;
+		}
+
+		results = dao.listaTodos(status);
+
 		return results;
 	}
 

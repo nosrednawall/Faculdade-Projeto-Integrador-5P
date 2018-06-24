@@ -12,6 +12,14 @@ angular.module('vagaServices', ['ngResource'])
         });
     })
 
+    //cria uma fabrica de recursos
+    .factory('listaVagas', function ($resource) {
+
+        //retorna um recurso
+        return $resource('rest/vagas/lista/:statusId', null, {
+        });
+    })
+
     .factory('cadastroDeVaga', function (recursoVaga, $q) {
 
         var servico = {};
