@@ -38,7 +38,12 @@ angular
 
                 var indiceVagas = $scope.vagas.indexOf(vaga);
                 $scope.vagas.splice(indiceVagas, 1);
-                $scope.mensagem = "[INFO] Vaga " + vaga.titulo + " foi " + vaga.status + " com sucesso!";
+                if (vaga.status === 'ATIVO') {
+                    $scope.mensagem = "[INFO] Vaga " + vaga.titulo + " foi ativada com sucesso!";
+                } else {
+                    $scope.mensagem = "[INFO] Vaga " + vaga.titulo + " foi inativada com sucesso!";
+                }
+
             }, function () {
                 console.log(error);
                 $scope.mensagem = "[ERROR] Erro ao alterar a vaga" + vaga.titulo;
