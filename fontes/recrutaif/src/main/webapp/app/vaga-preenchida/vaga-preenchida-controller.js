@@ -1,17 +1,11 @@
     angular
         .module('recrutaif')
-        .controller('VagaPreenchidaController', function ($scope, $routeParams, $rootScope, $http, recursoVaga) {
+        .controller('VagaPreenchidaController', function ($scope, $routeParams, $rootScope, recursoVaga, cadastroDeVagaPreenchida) {
 
-            // variáveis para interação com o scopo
             $scope.vaga = {};
             $scope.mensagem = '';
 
-
-            /** get ou busca vaga */
             if ($routeParams.vagaId) {
-                // faz uma requisição get, passando o numero do parametro da url
-                // para o coringa,
-                $scope.setor = {};
                 recursoVaga.get({
                         vagaId: $routeParams.vagaId
                     },
@@ -36,16 +30,27 @@
                 vagaPreenchida.candidato = $rootScope.globals.currentUser.id;
                 vagaPreenchida.vaga = $scope.vaga.id;
 
-                $http.post('rest/vagaspreenchidas', {
-                        vagaId: vagaPreenchida.vaga,
-                        candidatoId: vagaPreenchida.candidato
-                    })
-                    .then(function () {
-
-                        mensagem: '[INFO] Candidatura efetuada com sucesso com sucesso!'
-
-                    }, function (erro) {
-                        mensagem: '[ERRO] Não foi possível efetuar acandidatura'
+                cadastroDeVagaPreenchida.cadastrarCandidatura(vagaPreenchida)
+                    .then(function (dados) {
+                        console.log("entrou no then " + dados);
+                        $scope.mensagem = dados.mensagem;
+                        if (dados.inclusao) {
+                            $scope.vaga = {};
+                        }
+                    }).catch(function (erro) {
+                        $scope.mensagem = erro.mensagem;
                     });
+
+                // $http.post('rest/vagaspreenchidas', {
+                //         vagaId: vagaPreenchida.vaga,
+                //         candidatoId: vagaPreenchida.candidato
+                //     })
+                //     .then(function () {
+
+                //         mensagem: '[INFO] Candidatura efetuada com sucesso com sucesso!'
+
+                //     }, function (erro) {
+                //         mensagem: '[ERRO] Não foi possível efetuar acandidatura'
+                //     });
             };
         });

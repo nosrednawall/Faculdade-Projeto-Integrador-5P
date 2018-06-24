@@ -16,7 +16,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.model.dao.UsuarioDao;
 import br.org.iel.recrutaif.model.dao.VagaDao;
@@ -37,7 +36,6 @@ public class VagaPreenchidaRest {
 	@Inject
 	private UsuarioDao daoUsuario;
 
-
 	/**
 	 * método salva vaga no bd e retorna o id da vaga salva
 	 * 
@@ -55,22 +53,20 @@ public class VagaPreenchidaRest {
 		Vaga vaga = daoVaga.find(ids.getVagaId());
 		Usuario usuario = daoUsuario.find(ids.getCandidatoId());
 
-		
 		Date horarioInscricao;
 		try {
 			horarioInscricao = Date.class.newInstance();
 			VagaPreenchida entity = new VagaPreenchida(horarioInscricao, vaga, usuario);
 
 			dao.save(entity);
-			return Response.created(
-					UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
-					.build();
-			
+			return Response.ok(entity).build();
+//			return Response.created(
+//					UriBuilder.fromResource(VagaPreenchidaRest.class).path(String.valueOf(entity.getId())).build())
+//					.build();
+
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

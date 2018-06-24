@@ -68,22 +68,4 @@
                         });
                 }
             };
-            $scope.candidatar = function () {
-
-                var vagaPreenchida = [];
-                vagaPreenchida.candidato = $rootScope.globals.currentUser.id;
-                vagaPreenchida.vaga = $scope.vaga.id;
-
-                $http.post('rest/vagaspreenchidas', {
-                        vagaId: vagaPreenchida.vaga,
-                        candidatoId: vagaPreenchida.candidato
-                    })
-                    .then(function () {
-
-                        mensagem: '[INFO] Candidatura efetuada com sucesso com sucesso!'
-
-                    }, function (erro) {
-                        mensagem: '[ERRO] Não foi possível efetuar acandidatura'
-                    });
-            };
         });
