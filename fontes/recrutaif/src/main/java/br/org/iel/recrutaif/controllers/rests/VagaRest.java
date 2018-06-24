@@ -19,7 +19,9 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import br.org.iel.recrutaif.controllers.validators.VagaValidator;
+import br.org.iel.recrutaif.model.dao.SetorDao;
 import br.org.iel.recrutaif.model.dao.VagaDao;
+import br.org.iel.recrutaif.model.entity.Setor;
 import br.org.iel.recrutaif.model.entity.Vaga;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
@@ -29,36 +31,28 @@ public class VagaRest {
 
 	@Inject
 	private VagaDao dao;
+	@Inject
+	private SetorDao daoSetor;
 
 	/**
 	 * método salva vaga no bd e retorna o id da vaga salva
 	 * 
 	 * @param entity
 	 * @return
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
 	 */
 	@POST
 	@Consumes("application/json")
 	public Response create(Vaga entity) throws InstantiationException, IllegalAccessException {
-		
-/*
-		if (validacao.validaVaga(entity)) {
-			dao.save(entity);
-			return Response
-					.created(UriBuilder.fromResource(Vaga.class).path(String.valueOf(entity.getId())).build())
-					.build();
-		}
-
-		System.out.println("Caiu fora do if dentro do Vaga rest");
-		return Response.status(Status.CONFLICT).entity(entity).build();*/
-	
 
 		System.out.println(entity);
 		VagaValidator validacao = new VagaValidator();
 
 		entity.setDataCriacao(Date.class.newInstance());
 		entity.setStatus(StatusBinarioEnum.ATIVO);
+		Setor setor = daoSetor.find(entity.getIdSetor());
+		entity.setSetor(setor);
 
 		if (validacao.validaVaga(entity)) {
 			dao.save(entity);

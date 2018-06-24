@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
@@ -72,6 +73,8 @@ public class Vaga implements Serializable {
 	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<VagaPreenchida> inscritos;
 
+	@Transient
+	private Integer idSetor;
 
 	public Integer getId() {
 		return id;
@@ -135,5 +138,13 @@ public class Vaga implements Serializable {
 
 	public void setInscritos(Set<VagaPreenchida> inscritos) {
 		this.inscritos = inscritos;
+	}
+
+	public Integer getIdSetor() {
+		return idSetor;
+	}
+
+	public void setIdSetor(Integer idSetor) {
+		this.idSetor = idSetor;
 	}
 }

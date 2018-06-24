@@ -1,6 +1,6 @@
     angular
         .module('recrutaif')
-        .controller('VagaController', function ($scope, $routeParams, $rootScope, $http, recursoVaga, cadastroDeVaga, recursoSetor) {
+        .controller('VagaController', function ($scope, $routeParams, $rootScope, $http, recursoVaga, cadastroDeVaga, recursoSetor,listaSetores) {
 
             // variáveis para interação com o scopo
             $scope.vaga = {};
@@ -16,6 +16,8 @@
                     // caso dê certo o que retornar será passado para setor
                     function (vaga) {
                         $scope.vaga = vaga;
+                        console.log(vaga);
+                        // recursoSetor.get({setorId:vaga.setor})
 
                     },
                     // caso dê errado será passado mensagem de erro ao usuario
@@ -26,7 +28,7 @@
             };
 
             /** Função responsável por colocar o nome e o id de setor no select */
-            recursoSetor.query(function (setores) {
+            listaSetores.query({statusId: 0},function (setores) {
                 // salva a lista de setores dentro da variável de escope
                 // $setores
                 $scope.setores = setores;
@@ -42,6 +44,7 @@
                 if ($scope.formulario.$valid) {
                     // tenta cadastrar o vaga usando a funcao cadastroDevaga,
                     // passando o vaga do scope
+                    console.log($scope.vaga);
                     cadastroDeVaga.cadastrar($scope.vaga)
                         // se der certo a mensagem é atualizada com o sucesso
                         .then(function (dados) {

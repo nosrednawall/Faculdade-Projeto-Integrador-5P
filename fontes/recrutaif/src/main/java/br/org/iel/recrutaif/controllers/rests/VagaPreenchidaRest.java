@@ -37,6 +37,7 @@ public class VagaPreenchidaRest {
 	@Inject
 	private UsuarioDao daoUsuario;
 
+
 	/**
 	 * método salva vaga no bd e retorna o id da vaga salva
 	 * 
@@ -53,6 +54,8 @@ public class VagaPreenchidaRest {
 		System.out.println(ids);
 		Vaga vaga = daoVaga.find(ids.getVagaId());
 		Usuario usuario = daoUsuario.find(ids.getCandidatoId());
+
+		
 		Date horarioInscricao;
 		try {
 			horarioInscricao = Date.class.newInstance();

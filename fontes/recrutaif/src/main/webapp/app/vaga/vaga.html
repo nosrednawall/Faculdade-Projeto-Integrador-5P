@@ -35,9 +35,9 @@
 		<!-- SETOR -->
 		<div class="form-group">
 			<label for="vaga-setor">Setor</label>
-			<select class="form-control">
+			<select class="form-control" ng-model="vaga.idsetor">
 				<option>Selecione</option>
-				<option ng-model="vaga.setor" ng-repeat="setor in setores" value="{{setor}}" 
+				<option  ng-repeat="setor in setores" value="{{setor.id}}" 
 				class="form-control">{{setor.nome}}</option>
 			</select>
 		</div>
