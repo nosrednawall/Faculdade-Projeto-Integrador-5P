@@ -6,7 +6,6 @@
         'ngRoute',
         'ngResource',
         'ngCookies',
-        'minhasDiretivas',
         'vagaServices',
         'setorServices',
         'usuarioServices',
@@ -17,15 +16,6 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
 
     function config($routeProvider, $locationProvider, $httpProvider) {
-        // .config(function ($routeProvider, $locationProvider, ) {
-
-
-        // | |\| ¯|¯ |¯ |¯| |¯ |¯ |¯| ¯|¯ /¯\ |¯\ |¯| |¯| 
-        // | | |  |  |¯ |¯\ |_ |¯ |¯   |  |¯| |_/ |_| |¯\ 
-        //            ¯         ¯                         
-        // $httpProvider.interceptors.push('tokenInterceptor');
-
-        // _______________________________________________________________________
 
 
         //     ___   _       _____   _____   _____        ___   _____   
