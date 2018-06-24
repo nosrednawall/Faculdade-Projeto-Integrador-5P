@@ -80,6 +80,13 @@ public class Vaga implements Serializable {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "Vaga [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", status=" + status
+				+ ", dataCriacao=" + dataCriacao + ", dataExpiracao=" + dataExpiracao + ", setor=" + setor
+				+ ", inscritos=" + inscritos + ", idSetor=" + idSetor + "]";
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}

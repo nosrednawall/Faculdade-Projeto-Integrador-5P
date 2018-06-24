@@ -12,17 +12,17 @@ import br.org.iel.recrutaif.model.entity.Vaga;
 import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 @Stateless
-public class VagaDao extends BaseDao<Vaga> implements Serializable{
+public class VagaDao extends BaseDao<Vaga> implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Entity manager e getEntitymanager
 	 */
-	
+
 	@PersistenceContext(unitName = "recrutaif-persistence-unit")
 	private EntityManager em;
 
@@ -30,32 +30,38 @@ public class VagaDao extends BaseDao<Vaga> implements Serializable{
 	protected EntityManager getEntityManager() {
 		return this.em;
 	}
-	
+
 	/**
 	 * Método para listar vagas pelo status
+	 * 
 	 * @param status
 	 * @return
 	 */
 	public List<Vaga> listaTodos(StatusBinarioEnum status) {
-		TypedQuery<Vaga> query = getEntityManager().createNamedQuery(
-				"Vaga.listarTodos", Vaga.class);
-		
+
+		if (status.equals(StatusBinarioEnum.AMBOS)) {
+			TypedQuery<Vaga> query = getEntityManager().createNamedQuery("Vaga.listarTodosSemStatus", Vaga.class);
+			return query.getResultList();
+		}
+
+		TypedQuery<Vaga> query = getEntityManager().createNamedQuery("Vaga.listarTodos", Vaga.class);
+
 		query.setParameter("pStatus", status);
 
 		return query.getResultList();
 	}
-	
+
 	/**
 	 * Método para procurar vaga pelo ID
+	 * 
 	 * @param id
 	 * @return
 	 */
 	public Vaga find(Integer id) {
-		
-		TypedQuery<Vaga> query = getEntityManager().createNamedQuery(
-				"Vaga.find", Vaga.class);
+
+		TypedQuery<Vaga> query = getEntityManager().createNamedQuery("Vaga.find", Vaga.class);
 		query.setParameter("pId", id);
-		
+
 		return query.getSingleResult();
 	}
 

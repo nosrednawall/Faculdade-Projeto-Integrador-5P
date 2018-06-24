@@ -76,7 +76,7 @@ public class SetorRest {
 	@Produces("application/json")
 	public Response findById(@PathParam("id") Integer id) {
 
-		Setor entity = dao.find(Setor.class, id);
+		Setor entity = dao.find(id);
 
 		return Response.ok(entity).build();
 	}

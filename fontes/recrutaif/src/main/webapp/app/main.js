@@ -148,10 +148,7 @@
             controller: 'VagaController'
         });
 
-        $routeProvider.when('/vaga/view/:vagaId', {
-            templateUrl: 'app/vaga/vaga-view.html',
-            controller: 'VagaController'
-        });
+
 
         // __________________________________________________________________________
 
@@ -174,6 +171,10 @@
         //     controller: 'VagasPreenchidasController'
         // });
 
+        $routeProvider.when('/vaga-preenchida/view/:vagaId', {
+            templateUrl: 'app/vaga-preenchida/vaga-preenchida.html',
+            controller: 'VagaPreenchidaController'
+        });
 
         // __________________________________________________________________________
 

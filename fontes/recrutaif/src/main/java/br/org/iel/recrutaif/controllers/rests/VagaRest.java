@@ -78,10 +78,8 @@ public class VagaRest {
 		Vaga entity;
 		try {
 			entity = dao.find(id);
+			System.out.println(entity);
 		} catch (NoResultException nre) {
-			entity = null;
-		}
-		if (entity == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		return Response.ok(entity).build();

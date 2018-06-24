@@ -16,8 +16,7 @@ angular.module('vagaServices', ['ngResource'])
     .factory('listaVagas', function ($resource) {
 
         //retorna um recurso
-        return $resource('rest/vagas/lista/:statusId', null, {
-        });
+        return $resource('rest/vagas/listar/:statusId', null);
     })
 
     .factory('cadastroDeVaga', function (recursoVaga, $q) {
@@ -31,7 +30,9 @@ angular.module('vagaServices', ['ngResource'])
                 //verifica se o setor informado possui id
                 if (vaga.id) {
 
-                    recursoVaga.update({ vagaId: vaga.id }, vaga, function () {
+                    recursoVaga.update({
+                        vagaId: vaga.id
+                    }, vaga, function () {
                         resolve({
                             mensagem: '[INFO] Vaga ' + vaga.titulo + ' atualizado com sucesso!',
                             inclusao: false
@@ -78,6 +79,4 @@ angular.module('vagaServices', ['ngResource'])
             });
         };
         return servico;
-    })
-    ;
-
+    });

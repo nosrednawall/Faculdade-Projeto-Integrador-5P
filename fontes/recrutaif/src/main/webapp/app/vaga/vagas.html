@@ -27,6 +27,7 @@
 						<th scope="col">Titulo</th>
 						<th scope="col">Data criação</th>
 						<th scope="col">Data expiração</th>
+						<th scope="col">Status</th>
 						<th scope="col">Editar</th>
 						<th scope="col">Remover</th>
 						<th scope="col">Visualizar</th>
@@ -39,14 +40,21 @@
 						<th scope="row">{{vaga.titulo}}</th>
 						<th scope="row">{{vaga.dataCriacao | date:'dd/MM/yyyy'}}</th>
 						<th scope="row">{{vaga.dataExpiracao | date:'dd/MM/yyyy'}}</th>
+						<th scope="row">{{vaga.status}}</th>
 						<th scope="row">
-							<a class="btn btn-primary" href="#/vaga/edit/{{vaga.id}}">Editar</a>
+							<a class="text-info" href="#/vaga/edit/{{vaga.id}}">
+								<i class="fas fa-edit"></i>
+							</a>
 						</th>
 						<th scope="row">
-							<button ng-click="inativar(vaga)" class="btn btn-danger " href="">Alterar status</button>
+							<p ng-click="alterar(vaga)" class="text-danger">
+								<i class="fas fa-times-circle"></i>
+							</p>
 						</th>
 						<th scope="row">
-							<a class="btn btn-primary" href="#/vaga/view/{{vaga.id}}">Visualizar</a>
+							<a class="btn btn-primary" href="#/vaga-preenchida/view/{{vaga.id}}">
+								<i class="fab fa-sistrix"></i>
+							</a>
 						</th>
 					</tr>
 				</tbody>
