@@ -10,15 +10,17 @@
                         <th scope="col">Nome </th>
                         <th scope="col">Matrícula </th>
                         <th scope="col">E-mail</th>
+                        <th scope="col">Data Admissão</th>
                         <th scope="col">Processos em aberto</th>
                         <th scope="col">Processos encerrados</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row" ng-model="usuario.nome"></th>
-                        <th scope="row" ng-model="usuario.matricula"></th>
-                        <th scope="row" ng-model="usuario.email"></th>
+                        <th scope="row" >{{usuario.nome}}</th>
+                        <th scope="row" >{{usuario.matricula}}</th>
+                        <th scope="row" >{{usuario.email}}</th>
+                        <th scope="row" >{{usuario.dataAdmissao | date:'dd/MM/yyyy'}}</th>
                         <th scope="row">
                             <a class="text-primary" href="">Ativos</a>
                         </th>

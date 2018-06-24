@@ -27,7 +27,6 @@ import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
  *
  */
 
-//@Seguro
 @Stateless
 @Path("/setores")
 public class SetorRest {

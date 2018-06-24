@@ -23,7 +23,7 @@ import br.org.iel.recrutaif.model.enums.StatusBinarioEnum;
 
 @NamedQueries({
 		@NamedQuery(name = "Setor.listarTodos", query = "SELECT DISTINCT s FROM Setor s WHERE s.status = :pStatus"),
-		@NamedQuery(name = "Setor.listarTodosSemStatus", query = "SELECT DISTINCT s FROM Setor") })
+		@NamedQuery(name = "Setor.listarTodosSemStatus", query = "SELECT DISTINCT s FROM Setor s") })
 
 @Entity
 @Table(name = "setor")
