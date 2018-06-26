@@ -27,9 +27,10 @@
 						<th scope="col">Titulo</th>
 						<th scope="col">Data criação</th>
 						<th scope="col">Data expiração</th>
+						<th scope="col">Setor</th>
 						<th scope="col">Status</th>
 						<th scope="col">Editar</th>
-						<th scope="col">Remover</th>
+						<th scope="col">Alterar Status</th>
 						<th scope="col">Visualizar</th>
 					</tr>
 				</thead>
@@ -40,6 +41,7 @@
 						<th scope="row">{{vaga.titulo}}</th>
 						<th scope="row">{{vaga.dataCriacao | date:'dd/MM/yyyy'}}</th>
 						<th scope="row">{{vaga.dataExpiracao | date:'dd/MM/yyyy'}}</th>
+						<th scope="row">{{vaga.setor.nome}}</th>
 						<th scope="row">{{vaga.status}}</th>
 						<th scope="row">
 							<a class="text-info" href="#/vaga/edit/{{vaga.id}}">
