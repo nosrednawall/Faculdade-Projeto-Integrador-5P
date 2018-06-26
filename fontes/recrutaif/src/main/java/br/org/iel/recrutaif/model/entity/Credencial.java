@@ -1,10 +1,16 @@
 package br.org.iel.recrutaif.model.entity;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Credencial {
+public class Credencial implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String email;
 	private String senha;
 	
