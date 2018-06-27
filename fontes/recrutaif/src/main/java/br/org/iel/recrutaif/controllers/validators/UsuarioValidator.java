@@ -20,14 +20,15 @@ public class UsuarioValidator {
 			imprimeLog("Problema ao validar Senha");
 			validacao = false;
 		}
-		if (ValidacoesUtil.validaDataAdmissao(pessoa.getDataAdmissao()) == false) {
-			imprimeLog("Problema ao validar DataAdmissao");
-			validacao = false;
-		}
-		if (ValidacoesUtil.validaMatricula(pessoa.getMatricula()) == false) {
-			imprimeLog("Problema ao validar DataAdmissao");
-			validacao = false;
-		}
+
+		// if (ValidacoesUtil.validaDataAdmissao(pessoa.getDataAdmissao()) == false) {
+		// imprimeLog("Problema ao validar DataAdmissao");
+		// validacao = false;
+		// }
+		// if (ValidacoesUtil.validaMatricula(pessoa.getMatricula()) == false) {
+		// imprimeLog("Problema ao validar DataAdmissao");
+		// validacao = false;
+		// }
 		return validacao;
 	}
 

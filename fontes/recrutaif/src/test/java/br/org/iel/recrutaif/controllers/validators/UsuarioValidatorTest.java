@@ -13,18 +13,21 @@ class UsuarioValidatorTest {
 	void testValidaUsuario() {
 
 		Usuario usuario = new Usuario();
-		
+		UsuarioValidator validador = new UsuarioValidator();
+
 		usuario.setNome("Alucard Nosferatu");
 		usuario.setDataAdmissao(ValidacoesUtil.getDataInDate("16/11/1992"));
 		usuario.setEmail("alucard@nosferatu.com");
 		usuario.setMatricula("666");
 		usuario.setSenha("MinhaSenha123");
-		
-		assertTrue(ValidacoesUtil.validaNome(usuario.getNome()));
-		assertTrue(ValidacoesUtil.validaDataAdmissao(usuario.getDataAdmissao()));
-		assertTrue(ValidacoesUtil.validaEmail(usuario.getEmail()));
-		assertTrue(ValidacoesUtil.validaMatricula(usuario.getMatricula()));
-		assertTrue(ValidacoesUtil.validaSenha(usuario.getSenha()));
+
+		assertTrue(validador.validaUsuario(usuario));
+
+		// assertTrue(ValidacoesUtil.validaNome(usuario.getNome()));
+		// assertTrue(ValidacoesUtil.validaDataAdmissao(usuario.getDataAdmissao()));
+		// assertTrue(ValidacoesUtil.validaEmail(usuario.getEmail()));
+		// assertTrue(ValidacoesUtil.validaMatricula(usuario.getMatricula()));
+		// assertTrue(ValidacoesUtil.validaSenha(usuario.getSenha()));
 	}
 
 }

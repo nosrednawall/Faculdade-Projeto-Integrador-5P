@@ -15,9 +15,10 @@ public class ExpressoesRegularesUtil {
 	private final String REGEX_CPF = "^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}";
 	private final String REGEX_TELEFONE = "^\\([1-9]{2}\\) (?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}$";
 	// private final String REGEX_SENHA = "^[a-zA-Z]\\w{3,14}$";
-	private final String REGEX_SENHA = "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S$";
+	private final String REGEX_SENHA = "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{8,})\\S$";
 	private final String REGEX_NOME = VALIDA_TEXTO_COM_ACENTUACAO_E_NOMES_EM_GERAL;
 	private final String REGEX_NOME_FORTE = "^(?![ ])(?!.*[ ]{3})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)\\s*?|(?:[A-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'][^\\s]*\\s*?)(?!.*[ ]$))+$";
+	private final String REGEX_MATRICULA = "^\\\\d{5}$";
 
 	/**
 	 * Regex para textos
@@ -86,5 +87,9 @@ public class ExpressoesRegularesUtil {
 
 	public String getREGEX_COMPLEMENTO() {
 		return REGEX_COMPLEMENTO;
+	}
+
+	public String getREGEX_MATRICULA() {
+		return REGEX_MATRICULA;
 	}
 }

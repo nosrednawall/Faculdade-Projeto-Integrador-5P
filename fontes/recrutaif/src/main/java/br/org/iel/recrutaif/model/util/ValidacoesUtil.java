@@ -241,8 +241,8 @@ public class ValidacoesUtil {
 	 * @return
 	 */
 	public static boolean validaMatricula(String matricula) {
-		if (!matricula.matches(regex.getREGEX_SENHA())) {
-			imprimeLog("problema ao validar data Admissao");
+		if (!matricula.matches(regex.getREGEX_MATRICULA())) {
+			imprimeLog("problema ao validar matricula");
 			return false;
 		}
 		return true;
