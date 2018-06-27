@@ -247,4 +247,67 @@ public class ValidacoesUtil {
 		}
 		return true;
 	}
+
+	public static boolean validaDescricao(String descricao) {
+
+		if (!descricao.matches(regex.getREGEX_DESCRICAO())) {
+			imprimeLog("problema ao validar descricao");
+			return false;
+		}
+		return true;
+	}
+
+	public static boolean validaTitulo(String titulo) {
+
+		if (!titulo.matches(regex.getREGEX_TITULO())) {
+			imprimeLog("problema ao validar titulo");
+			return false;
+		}
+		return true;
+	}
+
+	public static boolean validaDataExpiracao(Date dataExpiracao) {
+		boolean validado = true;
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+		// verifica se não é nulo
+		if (dataExpiracao != null) {
+			String dataTexto = dateFormat.format(dataExpiracao);
+
+			// verifica se não está vazio
+			if (dataTexto.isEmpty()) {
+				imprimeLog("dataExpiracao não pode ser vazio");
+				validado = false;
+			}
+
+			/**
+			 * tenta fazer um parse, caso esteja no formato errado lança excessão
+			 */
+			dateFormat.setLenient(false); // aqui o pulo do gato
+			try {
+				System.out.println(dateFormat.parse(dataTexto));
+				// data válida
+			} catch (ParseException ex) {
+				imprimeLog("dataExpiracao inválida " + ex);
+				validado = false;
+			}
+
+			// verifica se não excedeu a idade máxima
+			if (dataExpiracao.before(regras.getMaxAge())) {
+				imprimeLog("dataExpiracao não pode ser maior que a data limite de " + regras.getPrazoMaximoVaga());
+				validado = false;
+			}
+
+			// verifica se não está menor que a idade mínima
+			if (dataExpiracao.after(regras.getMinAge())) {
+				imprimeLog("dataExpiracao não pode ser menor que a data limite de " + regras.getPrazoMinimoVaga());
+				validado = false;
+			}
+
+		} else {
+			imprimeLog("dataExpiracao não pode ser nulo");
+			validado = false;
+		}
+		return validado;
+	}
 }

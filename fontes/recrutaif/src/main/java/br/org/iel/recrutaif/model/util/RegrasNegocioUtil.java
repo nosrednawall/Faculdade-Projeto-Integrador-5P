@@ -11,6 +11,18 @@ public class RegrasNegocioUtil {
 	 * @return
 	 */
 
+	public Date getPrazoMinimoVaga() {
+		Calendar currentDate = Calendar.getInstance();
+		currentDate.add(Calendar.DAY_OF_WEEK_IN_MONTH, +1);
+		return currentDate.getTime();
+	}
+
+	public Date getPrazoMaximoVaga() {
+		Calendar currentDate = Calendar.getInstance();
+		currentDate.add(Calendar.MONTH, +180);
+		return currentDate.getTime();
+	}
+
 	public Date getMinAge() {
 		Calendar currentDate = Calendar.getInstance();
 		currentDate.add(Calendar.YEAR, -100);

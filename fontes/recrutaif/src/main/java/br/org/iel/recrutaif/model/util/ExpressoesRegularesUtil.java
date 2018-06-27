@@ -21,10 +21,10 @@ public class ExpressoesRegularesUtil {
 	private final String REGEX_MATRICULA = "^\\\\d{5}$";
 
 	/**
-	 * Regex para textos
+	 * Regex para vaga
 	 */
-	private final String REGEX_TEXTO_ALFANUMERICO = "^[A-Za-z0-9]+";
-	private final String REGEX_TEXTO_ALFABETO = "^[A-Za-z]+";
+	private final String REGEX_DESCRICAO = "(?=^.{2,500}$)^[A-ZÀÁÂĖÈÉÊÌÍÒÓÔÕÙÚÛÇ][a-zàáâãèéêìíóôõùúç]+(?:[ ](?:das?|dos?|de|e|Av.?|R.?|[A-Za-zÀ-ð0-9]+))*$";
+	private final String REGEX_TITULO = "(?=^.{2,50}$)^[A-ZÀÁÂĖÈÉÊÌÍÒÓÔÕÙÚÛÇ][a-zàáâãèéêìíóôõùúç]+(?:[ ](?:das?|dos?|de|e|[A-Za-zÀ-ú]+))*$";
 
 	/**
 	 * Patters para endereço
@@ -65,14 +65,6 @@ public class ExpressoesRegularesUtil {
 		return REGEX_NOME_FORTE;
 	}
 
-	public String getREGEX_TEXTO_ALFANUMERICO() {
-		return REGEX_TEXTO_ALFANUMERICO;
-	}
-
-	public String getREGEX_TEXTO_ALFABETO() {
-		return REGEX_TEXTO_ALFABETO;
-	}
-
 	public String getREGEX_CEP() {
 		return REGEX_CEP;
 	}
@@ -91,5 +83,13 @@ public class ExpressoesRegularesUtil {
 
 	public String getREGEX_MATRICULA() {
 		return REGEX_MATRICULA;
+	}
+
+	public String getREGEX_DESCRICAO() {
+		return REGEX_DESCRICAO;
+	}
+
+	public String getREGEX_TITULO() {
+		return REGEX_TITULO;
 	}
 }

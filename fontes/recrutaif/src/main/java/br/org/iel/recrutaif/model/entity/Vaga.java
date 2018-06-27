@@ -71,9 +71,10 @@ public class Vaga implements Serializable {
 
 	@ManyToMany()
 	private Set<VagaPreenchida> inscritos;
-//	
-//	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	private Set<VagaPreenchida> inscritos;
+	//
+	// @OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade =
+	// CascadeType.ALL)
+	// private Set<VagaPreenchida> inscritos;
 
 	public Integer getId() {
 		return id;
@@ -83,7 +84,7 @@ public class Vaga implements Serializable {
 	public String toString() {
 		return "Vaga [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", status=" + status
 				+ ", dataCriacao=" + dataCriacao + ", dataExpiracao=" + dataExpiracao + ", setor=" + setor
-				+ ", inscritos=" + inscritos +"]";
+				+ ", inscritos=" + inscritos + "]";
 	}
 
 	public void setId(Integer id) {
@@ -145,8 +146,9 @@ public class Vaga implements Serializable {
 	public void setInscritos(Set<VagaPreenchida> inscritos) {
 		this.inscritos = inscritos;
 	}
-	@Deprecated
-	public Vaga() {}
+
+	public Vaga() {
+	}
 
 	public Vaga(String titulo, String descricao, StatusBinarioEnum status, Date dataCriacao, Date dataExpiracao,
 			Setor setor) {
