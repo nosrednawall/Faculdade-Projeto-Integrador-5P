@@ -36,6 +36,16 @@ public class LoginRest {
 
 	private Usuario validarCrendenciais(Credencial credencial) {
 
+//		try {
+//			CriptografarSenhaUtil crypt = new CriptografarSenhaUtil();
+//			String senha;
+//			senha = crypt.createHash(credencial.getSenha());
+//			credencial.setSenha(senha);
+//		} catch (CannotPerformOperationException e) {
+//			System.out.println("[ERRO] problema ao criptografar senha " + e);
+//			// e.printStackTrace();
+//		}
+
 		return dao.getBuscaPorEmail(credencial);
 	}
 }

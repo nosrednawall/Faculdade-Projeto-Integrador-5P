@@ -51,6 +51,17 @@ public class UsuarioRest {
 		UsuarioValidator validacao = new UsuarioValidator();
 
 		if (validacao.validaUsuario(entity)) {
+			//não consigo comparar o hash criado aqui com o do login
+			// try {
+			// CriptografarSenhaUtil crypt = new CriptografarSenhaUtil();
+			// String senha;
+			// senha = crypt.createHash(entity.getSenha());
+			// entity.setSenha(senha);
+			// } catch (CannotPerformOperationException e) {
+			// System.out.println("[ERRO] problema ao criptografar senha " + e);
+			// // e.printStackTrace();
+			// }
+
 			dao.save(entity);
 			return Response
 					.created(UriBuilder.fromResource(UsuarioRest.class).path(String.valueOf(entity.getId())).build())

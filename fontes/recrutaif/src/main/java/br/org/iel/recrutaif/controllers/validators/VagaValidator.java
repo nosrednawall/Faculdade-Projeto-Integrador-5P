@@ -15,10 +15,10 @@ public class VagaValidator {
 			imprimeLog("Problema ao validar Nome");
 			validacao = false;
 		}
-		if (ValidacoesUtil.validaDataExpiracao(vaga.getDataExpiracao()) == false) {
-			imprimeLog("Problema ao validar Data Expiracao");
-			validacao = false;
-		}
+		// if (ValidacoesUtil.validaDataExpiracao(vaga.getDataExpiracao()) == false) {
+		// imprimeLog("Problema ao validar Data Expiracao");
+		// validacao = false;
+		// }
 		return validacao;
 	}
 
