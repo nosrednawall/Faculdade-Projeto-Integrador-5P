@@ -293,13 +293,13 @@ public class ValidacoesUtil {
 			}
 
 			// verifica se não excedeu a idade máxima
-			if (dataExpiracao.before(regras.getMaxAge())) {
-				imprimeLog("dataExpiracao não pode ser maior que a data limite de " + regras.getPrazoMaximoVaga());
+			if (dataExpiracao.before(regras.getPrazoMinimoVaga())) {
+				imprimeLog("dataExpiracao não pode ser maior que a data limite de " + regras.getPrazoMinimoVaga());
 				validado = false;
 			}
 
 			// verifica se não está menor que a idade mínima
-			if (dataExpiracao.after(regras.getMinAge())) {
+			if (dataExpiracao.after(regras.getPrazoMaximoVaga())) {
 				imprimeLog("dataExpiracao não pode ser menor que a data limite de " + regras.getPrazoMinimoVaga());
 				validado = false;
 			}
