@@ -222,10 +222,8 @@ public class ValidacoesUtil {
 					validado = false;
 				}
 			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -236,6 +234,12 @@ public class ValidacoesUtil {
 		return validado;
 	}
 
+	/**
+	 * Valida matricula
+	 * 
+	 * @param matricula
+	 * @return
+	 */
 	public static boolean validaMatricula(String matricula) {
 		if (!matricula.matches(regex.getREGEX_SENHA())) {
 			imprimeLog("problema ao validar data Admissao");
