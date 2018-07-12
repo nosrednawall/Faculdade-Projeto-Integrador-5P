@@ -42,10 +42,6 @@ public class Vaga implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Atributos
-	 */
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, nullable = false)
@@ -71,10 +67,6 @@ public class Vaga implements Serializable {
 
 	@ManyToMany()
 	private Set<VagaPreenchida> inscritos;
-	//
-	// @OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade =
-	// CascadeType.ALL)
-	// private Set<VagaPreenchida> inscritos;
 
 	public Integer getId() {
 		return id;
