@@ -3,7 +3,7 @@ package br.org.iel.recrutaif.model.util;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RegrasNegocioUtil {
+public class Util {
 
 	/**
 	 * Função retorna a idade mínima
@@ -11,19 +11,19 @@ public class RegrasNegocioUtil {
 	 * @return
 	 */
 
-	public Date getPrazoMinimoVaga() {
+	public static Date getPrazoMinimoVaga() {
 		Calendar currentDate = Calendar.getInstance();
 		currentDate.add(Calendar.DAY_OF_WEEK_IN_MONTH, +1);
 		return currentDate.getTime();
 	}
 
-	public Date getPrazoMaximoVaga() {
+	public static Date getPrazoMaximoVaga() {
 		Calendar currentDate = Calendar.getInstance();
 		currentDate.add(Calendar.MONTH, +180);
 		return currentDate.getTime();
 	}
 
-	public Date getMinAge() {
+	public static Date getMinAge() {
 		Calendar currentDate = Calendar.getInstance();
 		currentDate.add(Calendar.YEAR, -100);
 		return currentDate.getTime();
@@ -34,7 +34,7 @@ public class RegrasNegocioUtil {
 	 * 
 	 * @return
 	 */
-	public Date getMaxAge() {
+	public static Date getMaxAge() {
 		Calendar currentDate = Calendar.getInstance();
 		currentDate.add(Calendar.YEAR, -18);
 		return currentDate.getTime();
