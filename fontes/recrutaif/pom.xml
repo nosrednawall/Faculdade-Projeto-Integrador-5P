@@ -6,27 +6,33 @@
 	
 	<groupId>br.org.iel</groupId>
 	<artifactId>recrutaif</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<packaging>war</packaging>
 	<build>
 		<finalName>recrutaif</finalName>
 	</build>
 
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
+	<!--INICIO DEPENDINCIAS GOOGLE  -->
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.4</version>
 		</dependency>
-		
+	<!--FIM DEPENDINCIAS GOOGLE  -->
+
+<!-- _______________________________________________DEPENDENCIAS PARA TESTES___________________________________________________________ -->
+
+	<!--INICIO DEPENDINCIAS SELENIUM  -->
+
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -51,6 +57,10 @@
 			<scope>test</scope>
 		</dependency>
 
+	<!--FIM DEPENDINCIAS SELENIUM  -->
+
+	<!--INICIO DEPENDINCIAS JUNIT  -->
+
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -58,6 +68,8 @@
 			<version>5.2.0</version>
 			<scope>test</scope>
 		</dependency>
+
+	<!--FIM DEPENDINCIAS JUNIT  -->
 
 	</dependencies>
 	<dependencyManagement>
