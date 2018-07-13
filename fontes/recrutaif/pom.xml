@@ -12,6 +12,15 @@
 		<finalName>recrutaif</finalName>
 	</build>
 
+	<repositories>
+	    <repository>
+	        <id>prime-repo</id>
+	        <name>PrimeFaces Maven Repository</name>
+	        <url>http://repository.primefaces.org</url>
+	        <layout>default</layout>
+	    </repository>
+	</repositories>
+
 	<dependencies>
 
 		<dependency>
@@ -28,6 +37,31 @@
 			<version>2.8.4</version>
 		</dependency>
 	<!--FIM DEPENDENCIAS GOOGLE  -->
+
+	<!--INICIO DEPENDENCIAS PRIMEFACES  -->
+		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.2</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/all-themes -->
+		<dependency>
+		    <groupId>org.primefaces.themes</groupId>
+		    <artifactId>all-themes</artifactId>
+		    <version>1.0.10</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions -->
+		<dependency>
+		    <groupId>org.primefaces.extensions</groupId>
+		    <artifactId>primefaces-extensions</artifactId>
+		    <version>6.2</version>
+		</dependency>
+		
+	<!--FIM DEPENDENCIAS PRIMEFACES  -->
+
 
 	<!--INICIO DEPENDENCIAS JSF  -->
 
