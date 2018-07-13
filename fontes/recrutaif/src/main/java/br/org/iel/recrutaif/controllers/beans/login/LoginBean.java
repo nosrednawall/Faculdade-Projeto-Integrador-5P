@@ -1,12 +1,12 @@
 package br.org.iel.recrutaif.controllers.beans.login;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
+import javax.enterprise.context.RequestScoped;
 
-@Alternative
-@ApplicationScoped
+@RequestScoped
 public class LoginBean {
 
-	
+	public LoginBean() {
+		// TODO Auto-generated constructor stub
+	}
 
 }
