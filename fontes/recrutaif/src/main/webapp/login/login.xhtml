@@ -11,17 +11,19 @@
 			<h:form>
 				<p:growl id="msgs" showDetail="true" />
 
-				<p:panelGrid columns="2">
-					<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />
-					<p:inputText id="nomeUsuario" />
+				<div style="height: 600px">
+				
+					<p:panelGrid columns="2">
+						<p:outputLabel for="nomeUsuario" value="Nome Usuário:" />
+						<p:inputText id="nomeUsuario" />
 
-					<p:outputLabel for="senha" value="Senha:" />
-					<p:password id="senha" />
+						<p:outputLabel for="senha" value="Senha:" />
+						<p:password id="senha" />
 
-					<p:commandButton value="Enviar" icon="ui-icon-star" ajax="false" />
+						<p:commandButton value="Enviar" icon="ui-icon-star" ajax="false" />
 
-				</p:panelGrid>
-
+					</p:panelGrid>
+				</div>
 				<div style="clear: both" />
 			</h:form>
 		</div>
