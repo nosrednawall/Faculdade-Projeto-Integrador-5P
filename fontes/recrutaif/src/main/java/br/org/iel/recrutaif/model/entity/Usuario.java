@@ -19,8 +19,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.org.iel.recrutaif.model.enums.NivelPermissao;
@@ -55,8 +53,6 @@ public class Usuario implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
-	@NotNull
-	@Size(min = 5, max = 250)
 	@Column(nullable = false)
 	private String nome;
 

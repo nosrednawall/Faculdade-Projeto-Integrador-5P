@@ -1,0 +1,35 @@
+{
+  "name": "recrutaif",
+  "homepage": "https://github.com/nosrednawall/Faculdade-Projeto-Integrador-5P",
+  "authors": [
+    "nosrednawall <nosrednawall@gmail.com>"
+  ],
+  "description": "Software para recrutamento interno",
+  "main": "app/main.js",
+  "keywords": [
+    "recrutaif",
+    "recrutamento",
+    "interno",
+    "recruta-if"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "angular": "angularjs#^1.7.0",
+    "ui-bootstrap": "^2.5.6",
+    "angularjs-datepicker": "^2.1.23",
+    "ngAnimate": "*",
+    "nganimate.css": "^3.2.0",
+    "moment": "^2.22.1",
+    "moment-jdateformatparser": "^1.1.0",
+    "angular-momentjs": "^0.2.2"
+  }
+}

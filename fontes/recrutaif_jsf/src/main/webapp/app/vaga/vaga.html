@@ -1,0 +1,48 @@
+<div class="page-header text-center">
+	<h1>{{vaga.titulo}}</h1>
+</div>
+
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col col-md-auto">
+
+				<!-- TITULO -->
+				<div class="form-group">
+					<label for="titulo-vaga">Titulo</label>
+					<input ng-model="vaga.titulo" type="text" class="form-control" name="titulo" required ng-maxlength="20" />
+				</div>
+
+				<!-- DESCRICAO -->
+				<div class="form-group">
+					<label for="titulo-descricao">Descrição</label>
+					<textarea rows="4" ng-model="vaga.descricao" type="text" class="form-control" name="descricao" required ng-maxlength="100"></textarea>
+				</div>
+
+				<!-- DATA EXPIRACAO -->
+				<div class="form-group">
+					<label for="data-expiracao">Data Expiração</label>
+					<datepicker date-format="yyyy-MM-dd">
+						<input type="text" ng-model="vaga.dataExpiracao" class="form-control" />
+					</datepicker>
+				</div>
+
+				<div ng-hide="{{vaga.id}}'">
+					<div class="form-group">
+						<label for="vaga-setor">Setor</label>
+						<select class="form-control" ng-model="vaga.idSetor">
+							<option>Selecione</option>
+							<option ng-repeat="setor in setores" value="{{setor.id}}" class="form-control">{{setor.nome}}</option>
+						</select>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Salvar</button>
+				<a href="#/vagas" class="btn btn-primary" meu-focus focado="focado">Voltar</a>
+			</div>
+		</div>
+	</div>
+</form>

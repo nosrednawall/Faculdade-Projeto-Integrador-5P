@@ -1,0 +1,130 @@
+<!doctype html>
+<!-- lang quer dizer o idioma do site, e ng-app é o nome do
+     módulo principal do site para essa aplicação, nesse caso angular-->
+<html lang="pt-BR" ng-app="recrutaif">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- para dar suporte a telas recursivas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="resources/images/RecrutaIf.png">
+
+    <!-- suporte ao navegador da microsoft -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recrutaif</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link rel="stylesheet" href="resources/css/bootstrap.css" /> -->
+    <link rel="stylesheet" href="resources/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+    <!-- Stilos próprios -->
+    <link rel="stylesheet" href="resources/css/starter-template.css" />
+    <link rel="stylesheet" href="resources/css/login.css" />
+    <!-- Stilo do datepicker -->
+    <link rel="stylesheet" href="resources/css/angular-datepicker.css" />
+</head>
+
+<body>
+
+    <!-- <div ng-controller="MenuCtrl as pessoa"> -->
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#/principal">Recrutaif</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#/vagas">Vagas
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#/setores">Visualizar setores</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#/usuarios">Visualizar usuários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#/alterar-senha/">Alterar dados
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="#/login">
+                        <span style="color: Tomato;">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- </div> -->
+    <!--FIM NG-CONTROLLER USUARIOLOGADO-->
+
+    <main role="main" class="container">
+        <ng-view></ng-view>
+    </main>
+    <!-- /.container -->
+
+    <hr>
+    <div id="footer">
+        <div class="container">
+            <p>
+                Powered by
+                <a href="https://github.com/nosrednawall/
+					Faculdade-Projeto-Integrador-5P/graphs/
+					contributors">RecrutaIf Team</a>
+            </p>
+        </div>
+    </div>
+
+    <!--recursos do angular-->
+    <script src="resources/js/angular/angular.min.js"></script>
+    <script src="resources/js/angular/angular-animate.min.js"></script>
+    <script src="resources/js/angular/angular-route.min.js"></script>
+    <script src="resources/js/angular/angular-resource.min.js"></script>
+    <script src="resources/js/angular/angular-datepicker.js"></script>
+    <script src="resources/js/angular/angular-cookies.min.js"></script>
+
+    <!-- recursos bootstrap -->
+    <script src="resources/js/bootstrap/jquery-3.0.0.min.js"></script>
+    <script src="resources/js/bootstrap/bootstrap.js"></script>
+    <script src="resources/js/bootstrap/popper.min.js"></script>
+
+    <!--main da aplicação-->
+    <script src="app/main.js"></script>
+
+    <!--controllers da aplicação-->
+    <script src="app/setor/setor-controller.js"></script>
+    <script src="app/setor/setores-controller.js"></script>
+    <script src="app/login/login-controller.js"></script>
+    <script src="app/usuario/usuario-controller.js"></script>
+    <script src="app/usuario/usuarios-controller.js"></script>
+    <script src="app/alterar-senha/alterar-senha-controller.js"></script>
+    <script src="app/vaga/vaga-controller.js"></script>
+    <script src="app/vaga/vagas-controller.js"></script>
+    <script src="app/menu/menu-controller.js"></script>
+    <script src="app/vaga-preenchida/vaga-preenchida-controller.js"></script>
+
+    <!--Diretivas da aplicação-->
+    <script src="app/directives/minhas-diretivas.js"></script>
+    <!-- <script src="app/directives/calendario-diretiva.js"></script> //tem que estudar para implementar melhor essa diretiva -->
+
+    <!--Serviços da aplicação-->
+    <script src="app/services/token-interceptor.js"></script>
+    <script src="app/setor/setor-services.js"></script>
+    <script src="app/vaga/vaga-services.js"></script>
+    <script src="app/vaga-preenchida/vaga-preenchida-services.js"></script>
+    <script src="app/usuario/usuario-services.js"></script>
+</body>
+
+</html>

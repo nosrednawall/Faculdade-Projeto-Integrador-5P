@@ -10,6 +10,10 @@ import java.util.regex.Pattern;
 
 public class ValidacoesUtil {
 
+	// chamo as regex daqui
+	static ExpressoesRegularesUtil regex = new ExpressoesRegularesUtil();
+	static RegrasNegocioUtil regras = new RegrasNegocioUtil();
+
 	/**
 	 * Valida cep
 	 * 
@@ -17,7 +21,7 @@ public class ValidacoesUtil {
 	 * @return boolean
 	 */
 	public static boolean validaSenha(String senha) {
-		if (!senha.matches(ExpressoesRegularesUtil.REGEX_SENHA)) {
+		if (!senha.matches(regex.getREGEX_SENHA())) {
 			return false;
 		}
 		return true;
@@ -47,7 +51,7 @@ public class ValidacoesUtil {
 				validado = false;
 			}
 
-			if (!nome.matches(ExpressoesRegularesUtil.REGEX_NOME)) {
+			if (!nome.matches(regex.getREGEX_NOME())) {
 				imprimeLog("O Campo nome não é válido");
 				validado = false;
 			}
@@ -81,7 +85,7 @@ public class ValidacoesUtil {
 			/**
 			 * Verifica se o email é válido, ex: possui \w@\w.\w
 			 */
-			if (!email.matches(ExpressoesRegularesUtil.REGEX_EMAIL)) {
+			if (!email.matches(regex.getREGEX_EMAIL())) {
 				imprimeLog("Email informado não é um email válido");
 				validado = false;
 			}
@@ -128,14 +132,14 @@ public class ValidacoesUtil {
 			}
 
 			// verifica se não excedeu a idade máxima
-			if (dataNascimento.before(Util.getMaxAge())) {
-				imprimeLog("DataNascimento não pode ser maior que a data limite de " + Util.getMaxAge());
+			if (dataNascimento.before(regras.getMaxAge())) {
+				imprimeLog("DataNascimento não pode ser maior que a data limite de " + regras.getMaxAge());
 				validado = false;
 			}
 
 			// verifica se não está menor que a idade mínima
-			if (dataNascimento.after(Util.getMinAge())) {
-				imprimeLog("DataNascimento não pode ser menor que a data limite de " + Util.getMinAge());
+			if (dataNascimento.after(regras.getMinAge())) {
+				imprimeLog("DataNascimento não pode ser menor que a data limite de " + regras.getMinAge());
 				validado = false;
 			}
 
@@ -214,7 +218,7 @@ public class ValidacoesUtil {
 			// verifica se não está menor que a data de hoje, ou seja no futuro
 			try {
 				if (dataAdmissao.after(Date.class.newInstance())) {
-					imprimeLog("DataNascimento não pode ser menor que a data limite de " + Util.getMinAge());
+					imprimeLog("DataNascimento não pode ser menor que a data limite de " + regras.getMinAge());
 					validado = false;
 				}
 			} catch (InstantiationException e) {
@@ -237,7 +241,7 @@ public class ValidacoesUtil {
 	 * @return
 	 */
 	public static boolean validaMatricula(String matricula) {
-		if (!matricula.matches(ExpressoesRegularesUtil.REGEX_MATRICULA)) {
+		if (!matricula.matches(regex.getREGEX_MATRICULA())) {
 			imprimeLog("problema ao validar matricula");
 			return false;
 		}
@@ -246,7 +250,7 @@ public class ValidacoesUtil {
 
 	public static boolean validaDescricao(String descricao) {
 
-		if (!descricao.matches(ExpressoesRegularesUtil.REGEX_DESCRICAO)) {
+		if (!descricao.matches(regex.getREGEX_DESCRICAO())) {
 			imprimeLog("problema ao validar descricao");
 			return false;
 		}
@@ -255,7 +259,7 @@ public class ValidacoesUtil {
 
 	public static boolean validaTitulo(String titulo) {
 
-		if (!titulo.matches(ExpressoesRegularesUtil.REGEX_TITULO)) {
+		if (!titulo.matches(regex.getREGEX_TITULO())) {
 			imprimeLog("problema ao validar titulo");
 			return false;
 		}
@@ -289,14 +293,14 @@ public class ValidacoesUtil {
 			}
 
 			// verifica se não excedeu a idade máxima
-			if (dataExpiracao.before(Util.getPrazoMinimoVaga())) {
-				imprimeLog("dataExpiracao não pode ser maior que a data limite de " + Util.getPrazoMinimoVaga());
+			if (dataExpiracao.before(regras.getPrazoMinimoVaga())) {
+				imprimeLog("dataExpiracao não pode ser maior que a data limite de " + regras.getPrazoMinimoVaga());
 				validado = false;
 			}
 
 			// verifica se não está menor que a idade mínima
-			if (dataExpiracao.after(Util.getPrazoMaximoVaga())) {
-				imprimeLog("dataExpiracao não pode ser menor que a data limite de " + Util.getPrazoMinimoVaga());
+			if (dataExpiracao.after(regras.getPrazoMaximoVaga())) {
+				imprimeLog("dataExpiracao não pode ser menor que a data limite de " + regras.getPrazoMinimoVaga());
 				validado = false;
 			}
 

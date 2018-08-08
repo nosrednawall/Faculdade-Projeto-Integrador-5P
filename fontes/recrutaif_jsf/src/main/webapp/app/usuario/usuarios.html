@@ -1,0 +1,55 @@
+<!-- $scope.mensagem -->
+<p class="alert alert-info" ng-show="mensagem.length">{{mensagem}}</p>
+
+<div class="row">
+	<div class="col-md-12">
+		<form>
+			<!--ng-model = "filtro" serve para transferir o input para o controller-->
+			<div class="input-group">
+
+				<span class="input-group-btn">
+					<a href="#/usuario/new" class="btn btn-primary">Novo Usuario</a>
+				</span>
+				<input ng-model="filtro" class="form-control" placeholder="filtrar" ng-model-options="{debounce: 500}" />
+			</div>
+			<!--ng-model-options="{debounce:500}"  serve para dar um delay e não aplicar locamente o filtro -->
+		</form>
+	</div>
+	<!--/col-->
+</div>
+<!--/row-->
+<div class="row">
+	<div class="col-md-12">
+		<div class="table-responsive">
+			<table class="table coluna-animada">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Nome </th>
+						<th scope="col">Data Admissão </th>
+						<th scope="col">Editar</th>
+						<th scope="col">Inativar</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="usuario in usuarios | filter:filtro">
+					<tr>
+						<th scope="row">{{usuario.id}}</th>
+						<th scope="row">{{usuario.nome}}</th>
+						<th scope="row">{{usuario.dataAdmissao | date:'dd/MM/yyyy'}}</th>
+						<th scope="row">
+							<a class="text-info" href="#/usuario/edit/{{usuario.id}}">
+								<i class="fas fa-edit"></i>
+							</a>
+						</th>
+						<th scope="row">
+							<p ng-click="inativar(usuario)" class="text-danger">
+								<i class="fas fa-times-circle"></i>
+							</p>
+						</th>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

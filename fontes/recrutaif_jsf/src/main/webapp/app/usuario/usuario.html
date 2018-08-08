@@ -1,0 +1,55 @@
+<div class="page-header text-center">
+    <h1>{{usuario.nome}}</h1>
+</div>
+<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-md-auto">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input ng-model="usuario.nome" type="text" class="form-control" name="nome" required />
+                </div>
+
+
+                <div class="form-group">
+                    <label for="matricula">Matrícula</label>
+                    <input ng-model="usuario.matricula" type="text" class="form-control" name="matricula" required />
+                    <!-- Validadores -->
+                    <span ng-show="formulario.$submitted && formulario.matricula.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+                    <span ng-show="formulario.matricula.$error.maxlength || formulario.matricula.$error.minlength" class="form-control alert-danger">
+                        Matrícula deve conter 5 números</span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="data-admissao-usuario">Data Admissão</label>
+                    <datepicker date-format="yyyy-MM-dd">
+                        <input name="dataAdmissao" type="text" ng-model="usuario.dataAdmissao" class="form-control" />
+                    </datepicker>
+                </div>
+
+                <div class="form-group">
+                    <label for="email-usuario">E-mail</label>
+                    <input ng-model="usuario.email" type="email" class="form-control" name="email" />
+                    <span ng-show="formulario.$submitted && formulario.email.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+                    <span ng-show="formulario.email.$error.maxlength || formulario.email.$error.minlength" class="form-control alert-danger">
+                        E-mail inválido </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha-usuario">Senha</label>
+                    <input ng-model="usuario.senha" type="password" class="form-control" name="senha" required />
+                    <span ng-show="formulario.$submitted && formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+                    <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger">
+                        Senha inválida </span>
+                </div>
+
+                <button ng-disable="formulario.$invalid" type="submit" name="salvar" class="btn btn-primary">Salvar</button>
+
+                <a href="#/usuarios" class="btn btn-primary">Voltar</a>
+            </div>
+        </div>
+    </div>
+</form>

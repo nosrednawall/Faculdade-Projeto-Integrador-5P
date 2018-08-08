@@ -1,0 +1,56 @@
+<p ng-show="mensagem.length" class="alert alert-info">
+    {{mensagem}}</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table coluna-animada">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nome </th>
+                        <th scope="col">Matrícula </th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Data Admissão</th>
+                        <th scope="col">Processos em aberto</th>
+                        <th scope="col">Processos encerrados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{usuario.nome}}</th>
+                        <th scope="row">{{usuario.matricula}}</th>
+                        <th scope="row">{{usuario.email}}</th>
+                        <th scope="row">{{usuario.dataAdmissao | date:'dd/MM/yyyy'}}</th>
+                        <th scope="row">
+                            <a class="text-primary" href="">Ativos</a>
+                        </th>
+                        <th scope="row">
+                            <a class="text-primary" href="">Encerrados</a>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+
+    <div class="container">
+        <div class="row justify-content-md-left">
+            <div class="col col-md-auto">
+                <div class="form-group">
+                    <label for="senha-usuario">Senha</label>
+                    <input ng-model="usuario.senha" type="password" class="form-control" name="senha" required />
+                    <span ng-show="formulario.$submitted && formulario.senha.$error.required" class="form-control alert-danger"> Campo obligatório </span>
+                    <span ng-show="formulario.senha.$error.maxlength || formulario.senha.$error.minlength" class="form-control alert-danger">
+                        Senha inválida </span>
+                </div>
+
+                <button ng-disable="formulario.$invalid" type="submit" class="btn btn-primary">Salvar</button>
+
+                <a href="#/vagas" class="btn btn-primary">Voltar</a>
+            </div>
+        </div>
+    </div>
+</form>
